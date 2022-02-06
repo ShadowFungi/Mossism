@@ -27,6 +27,6 @@ At The Moment Nothing Really
 - Create a disccusion asking for the feature you want, and why you think it would improve the game, along with providing any implications it may have
 ## FAQ:
 - Q: Why are the textures not provided in the source?
-- A: Because they're not done yet and I would like to refine.'
+- A: Because they're not done yet and I would like to refine them.
 - Q: When will you provide the textures in the source?
 - A: When they're at point suitable for distribution.
