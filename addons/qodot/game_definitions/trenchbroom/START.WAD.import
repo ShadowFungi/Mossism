@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.wad"
+type="Resource"
+path="res://.import/START.WAD-155781542ef85fa613c902b216ede7f4.tres"
+
+[deps]
+
+source_file="res://addons/qodot/game_definitions/trenchbroom/START.WAD"
+dest_files=[ "res://.import/START.WAD-155781542ef85fa613c902b216ede7f4.tres" ]
+
+[params]
+
+palette_file="res://addons/qodot/palette.lmp"

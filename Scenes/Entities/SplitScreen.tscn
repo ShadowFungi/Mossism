@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://default_env.tres" type="Environment" id=1]
+[ext_resource path="res://Scenes/Maps/Pit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Entities/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Player/SplitScreen.gd" type="Script" id=4]
+
+[sub_resource type="World" id=1]
+environment = ExtResource( 1 )
+
+[node name="Node" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="VPortsContainer" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="VPortsContainer"]
+margin_right = 1280.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="VPortsContainer/ViewportContainer"]
+size = Vector2( 1280, 360 )
+world = SubResource( 1 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Player" parent="VPortsContainer/ViewportContainer/Viewport" instance=ExtResource( 3 )]
+id = 1
+
+[node name="ThePit" parent="VPortsContainer/ViewportContainer/Viewport" instance=ExtResource( 2 )]
+
+[node name="ViewportContainer2" type="ViewportContainer" parent="VPortsContainer"]
+margin_top = 360.0
+margin_right = 1280.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport2" type="Viewport" parent="VPortsContainer/ViewportContainer2"]
+size = Vector2( 1280, 360 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Player" parent="VPortsContainer/ViewportContainer2/Viewport2" instance=ExtResource( 3 )]
+id = 2

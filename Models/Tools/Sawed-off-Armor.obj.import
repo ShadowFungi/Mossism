@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Sawed-off-Armor.obj-8c0a0d91bf7eef140c514f4daba21b13.mesh"
+
+[deps]
+
+files=[ "res://.import/Sawed-off-Armor.obj-8c0a0d91bf7eef140c514f4daba21b13.mesh" ]
+
+source_file="res://Models/Tools/Sawed-off-Armor.obj"
+dest_files=[ "res://.import/Sawed-off-Armor.obj-8c0a0d91bf7eef140c514f4daba21b13.mesh", "res://.import/Sawed-off-Armor.obj-8c0a0d91bf7eef140c514f4daba21b13.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.5, 0.5, 0.5 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

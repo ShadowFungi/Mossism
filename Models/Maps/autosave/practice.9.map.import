@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/practice.9.map-e13d0f3d1e95f6debdb3f3ad1ee1d45f.tres"
+
+[deps]
+
+source_file="res://Models/Maps/autosave/practice.9.map"
+dest_files=[ "res://.import/practice.9.map-e13d0f3d1e95f6debdb3f3ad1ee1d45f.tres" ]
+
+[params]
+

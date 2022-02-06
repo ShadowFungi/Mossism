@@ -1,0 +1,107 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Models/Tools/Sawed-off-Armor-F.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Models/Textures/Sawed-Off_Armor/Sawed-Off_Armor_rough.png" type="Texture" id=3]
+[ext_resource path="res://Models/Textures/Sawed-Off_Armor/Sawed-Off_Armor_occ.png" type="Texture" id=4]
+[ext_resource path="res://Models/Textures/Sawed-Off_Armor/Sawed-Off_Armor_nor.png" type="Texture" id=5]
+[ext_resource path="res://Models/Textures/Sawed-Off_Armor/Sawed-Off_Armor_base.png" type="Texture" id=6]
+[ext_resource path="res://Models/Textures/Sawed-Off_Armor/Sawed-Off_Armor_metal.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Entities/Bullet.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Fonts/Terminal Grotesque/terminal-grotesque.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="CapsuleShape" id=10]
+radius = 1.18668
+height = 2.54828
+
+[sub_resource type="SpatialMaterial" id=5]
+render_priority = 1
+albedo_texture = ExtResource( 6 )
+metallic_texture = ExtResource( 7 )
+roughness_texture = ExtResource( 3 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 5 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 4 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[sub_resource type="Skin" id=6]
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.278431, 0.286275, 0.207843, 0.901961 )
+border_width_left = 3
+border_width_top = 6
+border_width_right = 3
+border_color = Color( 0.670588, 0.596078, 0.45098, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_detail = 3
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=11]
+size = 64
+extra_spacing_top = 2
+extra_spacing_space = 1
+font_data = ExtResource( 9 )
+
+[node name="Player" type="KinematicBody"]
+collision_layer = 4
+input_capture_on_drag = true
+script = ExtResource( 2 )
+bullet = ExtResource( 8 )
+
+[node name="CollisionShapeBody" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.00284485, 0.999996, 0, -0.999996, -0.00284485, 0, 2.4383, 0 )
+shape = SubResource( 10 )
+
+[node name="pivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52246, 0 )
+
+[node name="PlayerCamera" type="Camera" parent="pivot"]
+current = true
+fov = 82.0
+far = 45.0
+
+[node name="SawedOff" type="MeshInstance" parent="pivot/PlayerCamera"]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.398443, -0.641265 )
+portal_mode = 4
+include_in_bound = false
+material_override = SubResource( 5 )
+mesh = ExtResource( 1 )
+skin = SubResource( 6 )
+material/0 = null
+
+[node name="Muzzle" type="Spatial" parent="pivot/PlayerCamera/SawedOff"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.15, -2.559 )
+
+[node name="Hud" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Hud"]
+anchor_left = 0.117969
+anchor_top = 0.843056
+anchor_right = 0.882812
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="Hud/Panel"]
+anchor_left = 0.227273
+anchor_right = 0.772727
+anchor_bottom = 0.496241
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "10/10"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
