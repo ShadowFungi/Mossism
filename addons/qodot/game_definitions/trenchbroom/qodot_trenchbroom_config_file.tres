@@ -9,10 +9,10 @@
 [resource]
 script = ExtResource( 1 )
 export_file = false
-target_file = "C:/OtherPrograms/TrenchBroom/games/Qodot/GameConfig.cfg"
-game_name = "Qodot"
+target_file = "/mnt/sda1/MISC/LinuxPrograms/TrenchBroom/games/Mossism/GameConfig.cfg"
+game_name = "Mossism"
 brush_tags = [ ExtResource( 2 ), ExtResource( 5 ) ]
 face_tags = [ ExtResource( 4 ), ExtResource( 3 ) ]
 face_attrib_surface_flags = [  ]
 face_attrib_content_flags = [  ]
-fgd_filenames = [ "Qodot.fgd" ]
+fgd_filenames = [ "Mossism.fgd" ]

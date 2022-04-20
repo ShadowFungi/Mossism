@@ -8,11 +8,11 @@ rough = true
 bounce = 1.0
 
 [sub_resource type="SphereMesh" id=1]
-radius = 0.5
-height = 1.0
+radius = 0.15
+height = 0.3
 
 [sub_resource type="SphereShape" id=2]
-radius = 0.49469
+radius = 0.15
 
 [node name="Bullet" type="RigidBody"]
 physics_material_override = SubResource( 3 )
