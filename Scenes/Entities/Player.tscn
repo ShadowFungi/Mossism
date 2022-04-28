@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Models/Tools/Sawed-off-Armor-F.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/Terminal Grotesque/Term-Grotesque-64.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Textures/UV/Sawed-Off_Armor/sawed-off_spatial.tres" type="Material" id=4]
-[ext_resource path="res://Scenes/Entities/Bullet.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleShape" id=10]
 radius = 1.18668
@@ -29,9 +28,8 @@ anti_aliasing = false
 
 [node name="Player" type="KinematicBody"]
 collision_layer = 4
-input_capture_on_drag = true
+input_ray_pickable = false
 script = ExtResource( 2 )
-bullet = ExtResource( 8 )
 
 [node name="CollisionShapeBody" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -0.00284485, 0.999996, 0, -0.999996, -0.00284485, 0, 2.4383, 0 )
@@ -41,15 +39,16 @@ shape = SubResource( 10 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52246, 0 )
 
 [node name="PlayerCamera" type="Camera" parent="pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0812859 )
 doppler_tracking = 1
 current = true
-fov = 78.0
+fov = 80.0
 near = 0.02
-far = 50.0
+far = 45.0
 
 [node name="SawedOff" type="MeshInstance" parent="pivot/PlayerCamera"]
-transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.398443, -0.641265 )
-portal_mode = 4
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0.425993, -0.345, -0.577 )
+portal_mode = 1
 include_in_bound = false
 layers = 129
 mesh = ExtResource( 1 )
@@ -57,20 +56,21 @@ skin = SubResource( 6 )
 material/0 = ExtResource( 4 )
 
 [node name="Muzzle" type="Spatial" parent="pivot/PlayerCamera/SawedOff"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, -2.559 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, -2.4 )
 
 [node name="Hud" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="Hud"]
 anchor_left = 0.117969
 anchor_top = 0.843056
 anchor_right = 0.882812
 anchor_bottom = 1.0
+mouse_filter = 2
 custom_styles/panel = SubResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": true

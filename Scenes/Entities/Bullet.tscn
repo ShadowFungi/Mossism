@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Player/Bullet.gd" type="Script" id=1]
 
@@ -7,9 +7,20 @@ friction = 0.5
 rough = true
 bounce = 1.0
 
+[sub_resource type="SpatialMaterial" id=4]
+flags_vertex_lighting = true
+params_diffuse_mode = 1
+params_specular_mode = 1
+albedo_color = Color( 0.588235, 0.588235, 0.588235, 1 )
+metallic = 0.26
+roughness = 0.7
+
 [sub_resource type="SphereMesh" id=1]
+material = SubResource( 4 )
 radius = 0.15
 height = 0.3
+radial_segments = 10
+rings = 5
 
 [sub_resource type="SphereShape" id=2]
 radius = 0.15

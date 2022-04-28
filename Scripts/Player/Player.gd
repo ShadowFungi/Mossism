@@ -1,19 +1,23 @@
 extends KinematicBody
 
-const GRAVITY = -16
+const GRAVITY = -20
 var vel = Vector3()
 const MAX_SPEED = 12
-const JUMP_SPEED = 14
+const JUMP_SPEED = 18
 const ACCEL = 4.5
 
 var dir = Vector3()
 
 const DEACCEL= 16
-const MAX_SLOPE_ANGLE = 60
+const MAX_SLOPE_ANGLE = 65
 
-export (PackedScene) var bullet
+var health = 10
 
-onready var world1 = get_parent().get_parent().get_parent().get_node("ViewportContainer/Viewport/ThePit")
+onready var pause_menu = get_tree().root.get_node("Control/PauseMenu")
+
+onready var bullet = preload("res://Scenes/Entities/Bullet.tscn")
+
+onready var world1 = get_tree().root.get_node("Control/ViewportContainer/Viewport/ThePit")
 
 export var id = 0
 
@@ -21,6 +25,8 @@ var camera
 var rotation_helper
 
 var MOUSE_SENSITIVITY = 0.05
+
+onready var timer = pause_menu.get_node("Timer")
 
 func _ready():
 	camera = $pivot/PlayerCamera
@@ -54,25 +60,25 @@ func process_input(delta):
 			rotation_helper.rotate_x(deg2rad(25 * MOUSE_SENSITIVITY))
 
 			var camera_rot = rotation_helper.rotation_degrees
-			camera_rot.x = clamp(camera_rot.x, -70, 70)
+			camera_rot.x = clamp(camera_rot.x, -80, 80)
 			rotation_helper.rotation_degrees = camera_rot
 		if Input.is_action_pressed('player-%s_look_down' % id):
 			rotation_helper.rotate_x(deg2rad(-25 * MOUSE_SENSITIVITY))
 
 			var camera_rot = rotation_helper.rotation_degrees
-			camera_rot.x = clamp(camera_rot.x, -70, 70)
+			camera_rot.x = clamp(camera_rot.x, -80, 80)
 			rotation_helper.rotation_degrees = camera_rot
 		if Input.is_action_pressed('player-%s_look_left' % id):
 			self.rotate_y(deg2rad(-25 * MOUSE_SENSITIVITY * -1))
 			
 			var camera_rot = rotation_helper.rotation_degrees
-			camera_rot.x = clamp(camera_rot.x, -70, 70)
+			camera_rot.x = clamp(camera_rot.x, -80, 80)
 			rotation_helper.rotation_degrees = camera_rot
 		if Input.is_action_pressed('player-%s_look_right' % id):
 			self.rotate_y(deg2rad(25 * MOUSE_SENSITIVITY * -1))
 			
 			var camera_rot = rotation_helper.rotation_degrees
-			camera_rot.x = clamp(camera_rot.x, -70, 70)
+			camera_rot.x = clamp(camera_rot.x, -80, 80)
 			rotation_helper.rotation_degrees = camera_rot
 
 		if Input.is_action_just_pressed('player-%s_shoot' % id):
@@ -117,17 +123,13 @@ func process_input(delta):
 
 		if Input.is_action_just_pressed('mouse_shoot'):
 			var b1 = bullet.instance()
-			var b2 = bullet.instance()
 			world1.add_child(b1)
+			b1.transform = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.translated(Vector3(0.2, 0, 0))
+			b1.apply_central_impulse(-$pivot/PlayerCamera/SawedOff/Muzzle.global_transform.basis.z * 100)
+			var b2 = bullet.instance()
 			world1.add_child(b2)
-			b1.transform.origin.y = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.origin.y
-			b1.transform.origin.x = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.origin.x + .2
-			b1.transform.origin.z = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.origin.z
-			b1.apply_central_impulse(-$pivot/PlayerCamera/SawedOff/Muzzle.global_transform.basis.z * 80)
-			b2.transform.origin.y = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.origin.y
-			b2.transform.origin.x = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.origin.x - .2
-			b2.transform.origin.z = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.origin.z
-			b2.apply_central_impulse(-$pivot/PlayerCamera/SawedOff/Muzzle.global_transform.basis.z * 80)
+			b2.transform = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.translated(-Vector3(0.2, 0, 0))
+			b2.apply_central_impulse(-$pivot/PlayerCamera/SawedOff/Muzzle.global_transform.basis.z * 100)
 		
 		input_movement_vector = input_movement_vector.normalized()
 		
@@ -142,14 +144,15 @@ func process_input(delta):
 			if Input.is_action_just_pressed('keyboard_jump'):
 				vel.y = JUMP_SPEED
 		# ----------------------------------
-
-		# ----------------------------------
+		
 		# Capturing/Freeing the cursor
 		if Input.is_action_just_pressed('keyboard_cancel'):
-			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			else:
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			pause_menu.visible = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			get_tree().paused = true
+			timer.one_shot = true
+			timer.wait_time = 1
+			timer.start()
 		# ----------------------------------
 
 func _input(event):
@@ -159,14 +162,14 @@ func _input(event):
 			$pivot.rotate_x(-event.relative.y * (MOUSE_SENSITIVITY / 15))
 			
 			var camera_rot = rotation_helper.rotation_degrees
-			camera_rot.x = clamp(camera_rot.x, -70, 70)
+			camera_rot.x = clamp(camera_rot.x, -80, 80)
 			rotation_helper.rotation_degrees = camera_rot
 
 func process_movement(delta):
 	dir.y = 0
 	dir = dir.normalized()
 
-	vel.y += delta * GRAVITY
+	vel.y += GRAVITY * (delta * 1.2)
 
 	var hvel = vel
 	hvel.y = 0

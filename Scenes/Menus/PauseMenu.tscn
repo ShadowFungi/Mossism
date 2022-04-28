@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/Terminal Grotesque/Term-Grotesque-42.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/Menus/PauseMenu/ResumeButton.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Menus/PauseMenu/QuitButton.gd" type="Script" id=4]
+
+[node name="PauseMenu" type="Control"]
+pause_mode = 2
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_neighbour_left = NodePath("ResumeButton")
+focus_neighbour_top = NodePath("ResumeButton")
+focus_neighbour_right = NodePath("ResumeButton")
+focus_neighbour_bottom = NodePath("ResumeButton")
+focus_next = NodePath("ResumeButton")
+focus_previous = NodePath("ResumeButton")
+focus_mode = 2
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ResumeButton" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 0.404687
+anchor_top = 0.252778
+anchor_right = 0.595312
+anchor_bottom = 0.351389
+margin_bottom = -1.52588e-05
+focus_neighbour_right = NodePath("../QuitButton")
+focus_neighbour_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+custom_fonts/font = ExtResource( 1 )
+text = "Resume"
+script = ExtResource( 3 )
+
+[node name="QuitButton" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 0.404687
+anchor_top = 0.654167
+anchor_right = 0.595312
+anchor_bottom = 0.752778
+margin_top = 3.05176e-05
+hint_tooltip = "when you're sure you want to give up?"
+focus_neighbour_left = NodePath("../ResumeButton")
+focus_neighbour_top = NodePath("../ResumeButton")
+focus_previous = NodePath("../ResumeButton")
+custom_fonts/font = ExtResource( 1 )
+text = "Quit"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Timer" type="Timer" parent="."]
+pause_mode = 2
+
+[connection signal="pressed" from="ResumeButton" to="ResumeButton" method="_pressed"]
+[connection signal="pressed" from="QuitButton" to="QuitButton" method="_pressed"]
+[connection signal="timeout" from="Timer" to="ResumeButton" method="_on_Timer_timeout"]

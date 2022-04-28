@@ -1,15 +1,15 @@
 extends Control
 
 
-var scene : NodePath = "res://Scenes/Modes/SinglePlayer.tscn"
+var scene = preload("res://Scenes/Modes/SinglePlayer.tscn")
 
 func _on_PlayButton_pressed():
-	get_tree().change_scene(scene)
+	get_tree().change_scene_to(scene)
 
 
 
 func _on_MultiplayerToggle_pressed():
-	if scene == "res://Scenes/Modes/SplitScreen.tscn":
-		scene = "res://Scenes/Modes/SinglePlayer.tscn"
+	if scene == preload("res://Scenes/Modes/SplitScreen.tscn"):
+		scene = preload("res://Scenes/Modes/SinglePlayer.tscn")
 	else:
-		scene = "res://Scenes/Modes/SplitScreen.tscn"
+		scene = preload("res://Scenes/Modes/SplitScreen.tscn")

@@ -9,3 +9,6 @@ export_presets.cfg
 data_*/
 /Textures/wads/START.WAD
 /Textures/wads/START.WAD.import
+/Models/Maps/autosave
+/Textures/Menus/game_start.png
+/Textures/Menus/game_start.png.import
