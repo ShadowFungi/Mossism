@@ -37,12 +37,6 @@ render_target_update_mode = 3
 [node name="Player" parent="VPortsContainer/ViewportContainer1/Viewport" instance=ExtResource( 3 )]
 id = 1
 
-[node name="PauseMenu" parent="VPortsContainer/ViewportContainer1/Viewport" instance=ExtResource( 6 )]
-visible = false
-
-[node name="GameOver" parent="VPortsContainer/ViewportContainer1/Viewport" instance=ExtResource( 5 )]
-visible = false
-
 [node name="ViewportContainer2" type="ViewportContainer" parent="VPortsContainer"]
 margin_top = 360.0
 margin_right = 1280.0
@@ -59,8 +53,8 @@ render_target_update_mode = 3
 [node name="Player" parent="VPortsContainer/ViewportContainer2/Viewport" instance=ExtResource( 3 )]
 id = 2
 
-[node name="PauseMenu" parent="VPortsContainer/ViewportContainer2/Viewport" instance=ExtResource( 6 )]
+[node name="PauseMenu" parent="." instance=ExtResource( 6 )]
 visible = false
 
-[node name="GameOver" parent="VPortsContainer/ViewportContainer2/Viewport" instance=ExtResource( 5 )]
+[node name="GameOver" parent="." instance=ExtResource( 5 )]
 visible = false

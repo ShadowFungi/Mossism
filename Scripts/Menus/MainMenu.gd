@@ -13,3 +13,7 @@ func _on_MultiplayerToggle_pressed():
 		scene = preload("res://Scenes/Modes/SinglePlayer.tscn")
 	else:
 		scene = preload("res://Scenes/Modes/SplitScreen.tscn")
+
+
+func _on_OptionsButton_pressed():
+	get_tree().change_scene("res://Scenes/Menus/OptionsMenu.tscn")

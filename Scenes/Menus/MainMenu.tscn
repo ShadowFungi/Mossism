@@ -81,4 +81,5 @@ expand = true
 stretch_mode = 4
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="MultiplayerToggle" to="." method="_on_MultiplayerToggle_pressed"]

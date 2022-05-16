@@ -37,7 +37,7 @@ var MOUSE_SENSITIVITY = 0.05
 var timer
 
 func _ready():
-	world1 = get_tree().root.get_node("Node/VPortsContainer/ViewportContainer%s/Viewport/ThePit" % id)
+	world1 = get_tree().root.get_node("Node/VPortsContainer/ViewportContainer1/Viewport/ThePit")
 	pause_menu = get_tree().root.get_node("Node/PauseMenu")
 	timer = pause_menu.get_node("Timer")
 	camera = $pivot/PlayerCamera
