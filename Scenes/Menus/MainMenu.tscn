@@ -73,7 +73,6 @@ anchor_top = 0.713889
 anchor_right = 0.549219
 anchor_bottom = 0.888889
 theme = SubResource( 2 )
-disabled = true
 toggle_mode = true
 shortcut_in_tooltip = false
 texture_normal = ExtResource( 5 )

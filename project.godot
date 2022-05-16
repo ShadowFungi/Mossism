@@ -457,6 +457,11 @@ keyboard_reload={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+keyboard_sprint={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 mouse_shoot={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
@@ -467,6 +472,24 @@ mouse_interact={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+3d_render/layer_1="world"
+3d_render/layer_2="player"
+3d_render/layer_3="player1"
+3d_render/layer_4="player2"
+3d_render/layer_5="player3"
+3d_render/layer_6="player4"
+3d_render/layer_7="projectiles"
+3d_physics/layer_1="world"
+3d_physics/layer_2="player"
+3d_physics/layer_3="player1"
+3d_physics/layer_4="player2"
+3d_physics/layer_5="player3"
+3d_physics/layer_6="player4"
+3d_physics/layer_7="projectiles"
+3d_physics/layer_8="enemies"
 
 [memory]
 

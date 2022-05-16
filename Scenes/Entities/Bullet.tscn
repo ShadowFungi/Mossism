@@ -19,13 +19,15 @@ roughness = 0.7
 material = SubResource( 4 )
 radius = 0.15
 height = 0.3
-radial_segments = 10
-rings = 5
+radial_segments = 6
+rings = 3
 
 [sub_resource type="SphereShape" id=2]
 radius = 0.15
 
 [node name="Bullet" type="RigidBody"]
+collision_layer = 64
+collision_mask = 65
 physics_material_override = SubResource( 3 )
 script = ExtResource( 1 )
 

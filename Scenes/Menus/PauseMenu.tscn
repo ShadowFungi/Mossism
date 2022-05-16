@@ -20,6 +20,11 @@ mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.211765, 0.211765, 0.211765, 0.466667 )
+
 [node name="ResumeButton" type="Button" parent="."]
 pause_mode = 2
 anchor_left = 0.404687

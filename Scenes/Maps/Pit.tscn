@@ -4887,6 +4887,8 @@ shape = SubResource( 570 )
 
 [node name="entity_87_trigger" type="Area" parent="QodotMap"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.25, 52 )
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 17 )
 
 [node name="entity_87_brush_0_collision_shape" type="CollisionShape" parent="QodotMap/entity_87_trigger"]

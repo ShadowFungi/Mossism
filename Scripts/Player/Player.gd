@@ -2,22 +2,30 @@ extends KinematicBody
 
 const GRAVITY = -20
 var vel = Vector3()
-const MAX_SPEED = 12
+const MAX_SPEED = 20
+const DEFAULT_SPEED = 14
 const JUMP_SPEED = 18
 const ACCEL = 4.5
+const MAX_HEALTH = 50
+const DEFAULT_HEALTH = 10
+const MIN_HEALTH = 1
+
+var cur_speed = 14
+var cur_health : int
+var max_available_health : int = 10
 
 var dir = Vector3()
-
+ 
 const DEACCEL= 16
 const MAX_SLOPE_ANGLE = 65
 
 var health = 10
 
-onready var pause_menu = get_tree().root.get_node("Control/PauseMenu")
+var pause_menu
 
 onready var bullet = preload("res://Scenes/Entities/Bullet.tscn")
 
-onready var world1 = get_tree().root.get_node("Control/ViewportContainer/Viewport/ThePit")
+var world1
 
 export var id = 0
 
@@ -26,9 +34,12 @@ var rotation_helper
 
 var MOUSE_SENSITIVITY = 0.05
 
-onready var timer = pause_menu.get_node("Timer")
+var timer
 
 func _ready():
+	world1 = get_tree().root.get_node("Node/VPortsContainer/ViewportContainer%s/Viewport/ThePit" % id)
+	pause_menu = get_tree().root.get_node("Node/PauseMenu")
+	timer = pause_menu.get_node("Timer")
 	camera = $pivot/PlayerCamera
 	rotation_helper = $pivot
 
@@ -37,6 +48,7 @@ func _ready():
 func _physics_process(delta):
 	process_input(delta)
 	process_movement(delta)
+	update_health()
 
 func process_input(delta):
 	
@@ -82,10 +94,7 @@ func process_input(delta):
 			rotation_helper.rotation_degrees = camera_rot
 
 		if Input.is_action_just_pressed('player-%s_shoot' % id):
-			var b = bullet.instance()
-			world1.add_child(b)
-			b.transform = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform
-			b.apply_central_impulse(-$pivot/PlayerCamera/SawedOff/Muzzle.global_transform.basis.z * 100)
+			fire()
 		
 		input_movement_vector = input_movement_vector.normalized()
 		
@@ -112,6 +121,10 @@ func process_input(delta):
 		
 	else:
 		
+		if Input.is_action_pressed("keyboard_sprint"):
+			cur_speed = 18
+		else:
+			cur_speed = DEFAULT_SPEED
 		if Input.is_action_pressed('keyboard_forward'):
 			input_movement_vector.y += 1
 		if Input.is_action_pressed('keyboard_back'):
@@ -122,14 +135,8 @@ func process_input(delta):
 			input_movement_vector.x += 1
 
 		if Input.is_action_just_pressed('mouse_shoot'):
-			var b1 = bullet.instance()
-			world1.add_child(b1)
-			b1.transform = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.translated(Vector3(0.2, 0, 0))
-			b1.apply_central_impulse(-$pivot/PlayerCamera/SawedOff/Muzzle.global_transform.basis.z * 100)
-			var b2 = bullet.instance()
-			world1.add_child(b2)
-			b2.transform = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.translated(-Vector3(0.2, 0, 0))
-			b2.apply_central_impulse(-$pivot/PlayerCamera/SawedOff/Muzzle.global_transform.basis.z * 100)
+			fire()
+			input_movement_vector = -get_node("pivot").global_transform.basis.y * 1.05
 		
 		input_movement_vector = input_movement_vector.normalized()
 		
@@ -168,14 +175,16 @@ func _input(event):
 func process_movement(delta):
 	dir.y = 0
 	dir = dir.normalized()
-
-	vel.y += GRAVITY * (delta * 1.2)
+	if cur_speed != DEFAULT_SPEED:
+		vel.y += GRAVITY * (delta * (1.2 * (cur_speed / 14.5 )))
+	else:
+		vel.y += GRAVITY * (delta * 1.2)
 
 	var hvel = vel
 	hvel.y = 0
 
 	var target = dir
-	target *= MAX_SPEED
+	target *= cur_speed
 
 	var accel
 	if dir.dot(hvel) > 0:
@@ -187,3 +196,35 @@ func process_movement(delta):
 	vel.x = hvel.x
 	vel.z = hvel.z
 	vel = move_and_slide(vel, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
+
+func fire():
+	var b1 = bullet.instance()
+	world1.add_child(b1)
+	b1.transform = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.translated(Vector3(0.2, 0, 0))
+	b1.apply_central_impulse(-$pivot/PlayerCamera/SawedOff/Muzzle.global_transform.basis.z * 100)
+	var b2 = bullet.instance()
+	world1.add_child(b2)
+	b2.transform = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.translated(-Vector3(0.2, 0, 0))
+	b2.apply_central_impulse(-$pivot/PlayerCamera/SawedOff/Muzzle.global_transform.basis.z * 100)
+	if id != 0:
+		b1.id = id
+		b2.id = id
+		if id == 1:
+			b1.set_collision_layer(136)
+			b2.set_collision_layer(136)
+		if id == 2:
+			b1.set_collision_layer(136)
+			b2.set_collision_layer(136)
+		if id == 3:
+			b1.set_collision_layer(136)
+			b2.set_collision_layer(136)
+		if id == 4:
+			b1.set_collision_layer(136)
+			b2.set_collision_layer(136)
+
+func update_health():
+	var health_label = get_node("Hud/Panel/HealthLabel")
+	health_label.text = String(cur_health) + "/" + String(max_available_health)
+
+func _on_player_entered(area):
+	pass # Replace with function body.
