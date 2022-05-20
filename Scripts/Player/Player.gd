@@ -23,7 +23,7 @@ var health = 10
 
 var pause_menu
 
-onready var bullet = preload("res://Scenes/Entities/Bullet.tscn")
+onready var bullet = preload("res://Scenes/Entities/Player/Bullet.tscn")
 
 var world1
 
@@ -37,8 +37,8 @@ var MOUSE_SENSITIVITY = 0.05
 var timer
 
 func _ready():
-	world1 = get_tree().root.get_node("Node/VPortsContainer/ViewportContainer1/Viewport/ThePit")
-	pause_menu = get_tree().root.get_node("Node/PauseMenu")
+	world1 = get_tree().root.get_node("Node/ViewContainer/ViewportContainer/Viewport/ThePit")
+	pause_menu = get_node("Hud/PauseMenu")
 	timer = pause_menu.get_node("Timer")
 	camera = $pivot/PlayerCamera
 	rotation_helper = $pivot
@@ -58,7 +58,7 @@ func process_input(delta):
 	var cam_xform = camera.get_global_transform()
 
 	var input_movement_vector = Vector2()
-	if id != 0:
+	if id >= 0:
 		if Input.is_action_pressed('player-%s_forward' % id):
 			input_movement_vector.y += 1
 		if Input.is_action_pressed('player-%s_back' % id):
@@ -119,7 +119,7 @@ func process_input(delta):
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		# ----------------------------------
 		
-	else:
+	if id == 0:
 		
 		if Input.is_action_pressed("keyboard_sprint"):
 			cur_speed = 18
@@ -206,21 +206,6 @@ func fire():
 	world1.add_child(b2)
 	b2.transform = $pivot/PlayerCamera/SawedOff/Muzzle.global_transform.translated(-Vector3(0.2, 0, 0))
 	b2.apply_central_impulse(-$pivot/PlayerCamera/SawedOff/Muzzle.global_transform.basis.z * 100)
-	if id != 0:
-		b1.id = id
-		b2.id = id
-		if id == 1:
-			b1.set_collision_layer(136)
-			b2.set_collision_layer(136)
-		if id == 2:
-			b1.set_collision_layer(136)
-			b2.set_collision_layer(136)
-		if id == 3:
-			b1.set_collision_layer(136)
-			b2.set_collision_layer(136)
-		if id == 4:
-			b1.set_collision_layer(136)
-			b2.set_collision_layer(136)
 
 func update_health():
 	var health_label = get_node("Hud/Panel/HealthLabel")

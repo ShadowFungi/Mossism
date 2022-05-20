@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Scenes/Maps/Pit.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Entities/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Entities/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Player/SplitScreen.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/Menus/GameOver.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Menus/PauseMenu.tscn" type="PackedScene" id=6]
 
 [sub_resource type="World" id=1]
 environment = ExtResource( 1 )
@@ -13,48 +11,28 @@ environment = ExtResource( 1 )
 [node name="Node" type="Spatial"]
 script = ExtResource( 4 )
 
-[node name="VPortsContainer" type="GridContainer" parent="."]
+[node name="ViewContainer" type="GridContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/vseparation = 0
 custom_constants/hseparation = 0
 
-[node name="ViewportContainer1" type="ViewportContainer" parent="VPortsContainer"]
-margin_right = 1280.0
-margin_bottom = 360.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-stretch = true
-
-[node name="Viewport" type="Viewport" parent="VPortsContainer/ViewportContainer1"]
-size = Vector2( 1280, 360 )
-world = SubResource( 1 )
-handle_input_locally = false
-render_target_update_mode = 3
-
-[node name="ThePit" parent="VPortsContainer/ViewportContainer1/Viewport" instance=ExtResource( 2 )]
-
-[node name="Player" parent="VPortsContainer/ViewportContainer1/Viewport" instance=ExtResource( 3 )]
-id = 1
-
-[node name="ViewportContainer2" type="ViewportContainer" parent="VPortsContainer"]
-margin_top = 360.0
+[node name="ViewportContainer" type="ViewportContainer" parent="ViewContainer"]
 margin_right = 1280.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
 
-[node name="Viewport" type="Viewport" parent="VPortsContainer/ViewportContainer2"]
-size = Vector2( 1280, 360 )
+[node name="Viewport" type="Viewport" parent="ViewContainer/ViewportContainer"]
+size = Vector2( 1280, 720 )
+world = SubResource( 1 )
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Player" parent="VPortsContainer/ViewportContainer2/Viewport" instance=ExtResource( 3 )]
-id = 2
+[node name="ThePit" parent="ViewContainer/ViewportContainer/Viewport" instance=ExtResource( 2 )]
 
-[node name="PauseMenu" parent="." instance=ExtResource( 6 )]
-visible = false
-
-[node name="GameOver" parent="." instance=ExtResource( 5 )]
-visible = false
+[node name="Player" parent="ViewContainer/ViewportContainer/Viewport" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88037, 0 )

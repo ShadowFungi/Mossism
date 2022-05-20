@@ -1,15 +1,9 @@
 extends Button
 
 
-var mode = 0
-
-var id
-
 var can_unpause = false
 onready var timer = get_parent().get_node("Timer")
 
-func _ready():
-	id = get_tree().root.get_node("Node/VPortsContainer/ViewportContainer0/Viewport/Player").id
 
 func _pressed():
 	get_parent().hide()

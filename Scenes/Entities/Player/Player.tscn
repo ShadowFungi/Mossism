@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Models/Tools/Sawed-off-Armor-F.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/Terminal Grotesque/Term-Grotesque-64.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Textures/UV/Sawed-Off_Armor/sawed-off_spatial.tres" type="Material" id=4]
+[ext_resource path="res://Scenes/Menus/PauseMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Menus/GameOver.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpatialMaterial" id=14]
 params_diffuse_mode = 1
@@ -125,5 +127,11 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="GameOver" parent="Hud" instance=ExtResource( 6 )]
+visible = false
+
+[node name="PauseMenu" parent="Hud" instance=ExtResource( 5 )]
+visible = false
 
 [connection signal="area_entered" from="Area" to="." method="_on_player_entered"]
