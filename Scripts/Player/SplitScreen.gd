@@ -7,6 +7,7 @@ onready var world
 onready var player_scene = preload("res://Scenes/Entities/Player/PlayerViewport.tscn")
 onready var player
 
+
 func _ready():
 	player = player_scene.instance()
 	world = viewport1.get_world()

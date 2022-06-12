@@ -33,12 +33,13 @@ var camera
 var rotation_helper
 
 var MOUSE_SENSITIVITY = 0.05
+var CONTROLLER_SENSITIVITY = 0.07
 
 var timer
 
 func _ready():
 	world1 = get_tree().root.get_node("Node/ViewContainer/ViewportContainer/Viewport/ThePit")
-	pause_menu = get_node("Hud/PauseMenu")
+	pause_menu = get_node("PauseMenu")
 	timer = pause_menu.get_node("Timer")
 	camera = $pivot/PlayerCamera
 	rotation_helper = $pivot
@@ -69,25 +70,25 @@ func process_input(delta):
 			input_movement_vector.x += 1
 		
 		if Input.is_action_pressed('player-%s_look_up' % id):
-			rotation_helper.rotate_x(deg2rad(25 * MOUSE_SENSITIVITY))
+			rotation_helper.rotate_x(deg2rad(25 * CONTROLLER_SENSITIVITY))
 
 			var camera_rot = rotation_helper.rotation_degrees
 			camera_rot.x = clamp(camera_rot.x, -80, 80)
 			rotation_helper.rotation_degrees = camera_rot
 		if Input.is_action_pressed('player-%s_look_down' % id):
-			rotation_helper.rotate_x(deg2rad(-25 * MOUSE_SENSITIVITY))
+			rotation_helper.rotate_x(deg2rad(-25 * CONTROLLER_SENSITIVITY))
 
 			var camera_rot = rotation_helper.rotation_degrees
 			camera_rot.x = clamp(camera_rot.x, -80, 80)
 			rotation_helper.rotation_degrees = camera_rot
 		if Input.is_action_pressed('player-%s_look_left' % id):
-			self.rotate_y(deg2rad(-25 * MOUSE_SENSITIVITY * -1))
+			self.rotate_y(deg2rad(-25 * CONTROLLER_SENSITIVITY * -1))
 			
 			var camera_rot = rotation_helper.rotation_degrees
 			camera_rot.x = clamp(camera_rot.x, -80, 80)
 			rotation_helper.rotation_degrees = camera_rot
 		if Input.is_action_pressed('player-%s_look_right' % id):
-			self.rotate_y(deg2rad(25 * MOUSE_SENSITIVITY * -1))
+			self.rotate_y(deg2rad(25 * CONTROLLER_SENSITIVITY * -1))
 			
 			var camera_rot = rotation_helper.rotation_degrees
 			camera_rot.x = clamp(camera_rot.x, -80, 80)
@@ -179,19 +180,19 @@ func process_movement(delta):
 		vel.y += GRAVITY * (delta * (1.2 * (cur_speed / 14.5 )))
 	else:
 		vel.y += GRAVITY * (delta * 1.2)
-
+		
 	var hvel = vel
 	hvel.y = 0
-
+	
 	var target = dir
 	target *= cur_speed
-
+	
 	var accel
 	if dir.dot(hvel) > 0:
 		accel = ACCEL
 	else:
 		accel = DEACCEL
-
+	
 	hvel = hvel.linear_interpolate(target, accel * delta)
 	vel.x = hvel.x
 	vel.z = hvel.z

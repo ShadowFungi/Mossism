@@ -1,32 +1,206 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://default_env.tres" type="Environment" id=1]
+[ext_resource path="res://Scenes/Entities/Player/PlayerViewport.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Maps/Pit.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Entities/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Textures/UV/Sawed-Off_Armor/Sawed-Off_Armor_base.png" type="Texture" id=3]
 
-[sub_resource type="World" id=1]
-environment = ExtResource( 1 )
+[sub_resource type="Shader" id=2]
+code = "// NOTE: Shader automatically converted from Godot Engine 3.4.4.stable.mono's SpatialMaterial.
 
-[node name="Node" type="Spatial"]
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_oren_nayar,specular_disabled;
+uniform vec4 albedo : hint_color;
+uniform sampler2D texture_albedo : hint_albedo;
+uniform float point_size : hint_range(0,128);
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+uniform sampler2D diffuse_curve : hint_white;
+
+// Specular light uniforms. Set specular to zero to turn off the effect.
+// The texture map uses the red channel for the specular value, green for amount
+// and blue for smoothness.
+uniform float specular : hint_range(0,1) = 0.5;
+uniform float specular_amount : hint_range(0,1) = 0.5;
+uniform float specular_smoothness : hint_range(0,1) = 0.05;
+uniform sampler2D texture_specular : hint_white;
+
+// Rim light uniforms. Set rim to zero to turn off the effect.
+// The texture map uses the red channel for the rim value, green for rim amount
+// and blue for smoothness.
+uniform float rim : hint_range(0,1) = 0.5;
+uniform float rim_amount : hint_range(0,1) = 0.2;
+uniform float rim_smoothness : hint_range(0,1) = 0.05;
+uniform sampler2D texture_rim : hint_white;
+
+// Roughness and metallic here are only for reflection purposes if you are
+// using SS reflections or want the sky reflected on your material. In most
+// cases you don't want to change those, but you can try them. The surface
+// texture maps the red channel to roughness and the green channel to metallic.
+uniform float metallic : hint_range(0,1) = 0.0;
+uniform float roughness : hint_range(0,1) = 1.0;
+uniform sampler2D texture_surface : hint_white;
+
+// Emission from base code.
+uniform vec4 emission : hint_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform float emission_energy = 1.0;
+uniform sampler2D texture_emission : hint_black_albedo;
+
+// Normal map from base code.
+uniform float normal_scale : hint_range(-16,16) = 1.0;
+uniform sampler2D texture_normal : hint_normal;
+
+// Depth map from base code.
+uniform float depth_scale = 0.0;
+uniform int depth_min_layers = 8;
+uniform int depth_max_layers = 32;
+uniform bool flip_tangent = false;
+uniform bool flip_binormal = false;
+uniform sampler2D texture_depth : hint_black;
+
+// Ambient occlusion from base code.
+uniform float ao_light_affect: hint_range(0,1) = 0.0;
+uniform sampler2D ao_map : hint_white;
+
+// Anisotropy from base code.
+uniform float anisotropy_ratio: hint_range(-1,1) = 0.0;
+uniform vec3 anisotropy_direction = vec3(0.0, -1.0, 0.0);
+uniform float aniso_map_dir_ratio: hint_range(0,1) = 0.0;
+uniform sampler2D anisotropy_flowmap : hint_aniso;
+
+// Subsurface scattering, from base code.
+uniform float subsurface_scattering : hint_range(0,1) = 0.0;
+uniform sampler2D texture_sss : hint_white;
+
+// Transmission, from base code.
+uniform vec4 transmission : hint_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform sampler2D texture_transmission : hint_black;
+
+// Refraction from base code.
+uniform float refraction : hint_range(-16,16) = 0.00;
+const vec4 refraction_texture_channel = vec4(1.0, 0.0, 0.0, 0.0); // Refraction channel is set to red.
+uniform sampler2D texture_refraction;
+
+// UV scale and offset from base code.
+uniform vec2 uv_scale = vec2(1,1);
+uniform vec2 uv_offset = vec2(0,0);
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	SPECULAR = specular;
+}
+
+const float PI = 3.14159265358979323846;
+
+
+void light() {
+	// Let's start by incorporating specular and rim textures. Pay attention to
+	// the channels and what each value does.
+	float spec_value = specular * texture(texture_specular, UV).r;
+	float spec_gloss = pow(2.0, 8.0 * (1.0 - specular_amount * texture(texture_specular, UV).g));
+	float spec_smooth = specular_smoothness * texture(texture_specular, UV).b;
+	float rim_value = rim * texture(texture_rim, UV).r;
+	float rim_width = rim_amount * texture(texture_rim, UV).g;
+	float rim_smooth = rim_smoothness * texture(texture_rim, UV).b;
+	
+	// Diffuse part. We take the dot product between light and normal, multiply it by attenuation
+	// and apply it to the diffuse curve. This means the diffuse curve gets to do the dot product
+	// smoothing, set multiple light bands each with its own tone and smoothing, etc etc. I reccomend
+	// using the gradient tool to make a curve, since it gives you control of each point's position
+	// and color with precision. The curve tool works too, it gives you control of different
+	// interpolation methods but you have less control over each point's exact position and value.
+	vec3 litness = texture(diffuse_curve, vec2(dot(LIGHT, NORMAL), 0.0)).r * ATTENUATION;
+	DIFFUSE_LIGHT += ALBEDO * LIGHT_COLOR * (litness + TRANSMISSION * (ATTENUATION - litness));
+	
+	// Specular part. We use the Blinn-Phong specular calculations with a smoothstep
+	// function to toonify. Mess with the specular uniforms to see what each one does.
+	// It also deals with anisotropy. If you want to remove anisotropy calculations,
+	// remove flowchart, aniso_dir, aniso and replace spec by dot(NORMAL, half).
+	vec3 half = normalize(VIEW + LIGHT);
+	vec3 flowchart = (texture(anisotropy_flowmap, UV).rgb * 2.0 - 1.0);
+	vec3 aniso_dir = mix(normalize(anisotropy_direction), flowchart, aniso_map_dir_ratio);
+	float aniso = max(0, sin(dot(normalize(NORMAL + aniso_dir), half) * PI));
+	float spec = mix(dot(NORMAL, half), aniso, anisotropy_ratio * texture(anisotropy_flowmap, UV).a);
+	float spec_intensity = pow(spec, spec_gloss * spec_gloss);
+	spec_intensity = smoothstep(0.05, 0.05 + spec_smooth, spec_intensity);
+	SPECULAR_LIGHT += LIGHT_COLOR * spec_value * spec_intensity * litness;
+	
+	// Rim part. We use the view and normal vectors only to find out if we're looking
+	// at a pixel from the edge of the object or not. We add the final value to specular
+	// light values so that Godot treats it as specular.
+	float rim_dot = 1.0 - dot(NORMAL, VIEW);
+	float rim_threshold = pow((1.0 - rim_width), dot(LIGHT, NORMAL));
+	float rim_intensity = smoothstep(rim_threshold - rim_smooth/2.0, rim_threshold + rim_smooth/2.0, rim_dot);
+	SPECULAR_LIGHT += LIGHT_COLOR * rim_value * rim_intensity * litness;
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_name = "Default_OBJ"
+shader = SubResource( 2 )
+shader_param/albedo = Color( 0.8, 0.8, 0.8, 1 )
+shader_param/point_size = 1.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/specular = 0.047
+shader_param/specular_amount = 0.292
+shader_param/specular_smoothness = 0.0
+shader_param/rim = 0.0
+shader_param/rim_amount = 0.0
+shader_param/rim_smoothness = 0.0
+shader_param/metallic = 0.516
+shader_param/roughness = 0.813
+shader_param/emission = Color( 0, 0, 0, 1 )
+shader_param/emission_energy = 1.0
+shader_param/normal_scale = 1.0
+shader_param/depth_scale = 0.0
+shader_param/depth_min_layers = 8
+shader_param/depth_max_layers = 32
+shader_param/flip_tangent = false
+shader_param/flip_binormal = false
+shader_param/ao_light_affect = 0.0
+shader_param/anisotropy_ratio = 0.0
+shader_param/anisotropy_direction = Vector3( 0, -1, 0 )
+shader_param/aniso_map_dir_ratio = 0.0
+shader_param/subsurface_scattering = 0.0
+shader_param/transmission = Color( 0, 0, 0, 1 )
+shader_param/refraction = 0.0
+shader_param/uv_scale = Vector2( 1, 1 )
+shader_param/uv_offset = Vector2( 0, 0 )
+shader_param/texture_albedo = ExtResource( 3 )
+
+[node name="Node" type="Node"]
 
 [node name="ViewContainer" type="GridContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="ViewportContainer" type="ViewportContainer" parent="ViewContainer"]
+[node name="ViewportContainer" parent="ViewContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 1280.0
 margin_bottom = 720.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-stretch = true
 
-[node name="Viewport" type="Viewport" parent="ViewContainer/ViewportContainer"]
-size = Vector2( 1280, 720 )
-world = SubResource( 1 )
-handle_input_locally = false
-render_target_update_mode = 3
+[node name="SawedOff" parent="ViewContainer/ViewportContainer/Viewport/Player/pivot/PlayerCamera" index="0"]
+material/0 = SubResource( 1 )
 
-[node name="ThePit" parent="ViewContainer/ViewportContainer/Viewport" instance=ExtResource( 2 )]
+[node name="ThePit" parent="ViewContainer/ViewportContainer/Viewport" index="1" instance=ExtResource( 2 )]
 
-[node name="Player" parent="ViewContainer/ViewportContainer/Viewport" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+[editable path="ViewContainer/ViewportContainer"]
+[editable path="ViewContainer/ViewportContainer/Viewport/Player"]

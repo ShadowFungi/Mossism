@@ -1,0 +1,38 @@
+newmtl StoneWall
+
+newmtl Tiles/Clear
+map_Kd textures/Tiles/Clear.png
+
+newmtl Tiles/Door
+map_Kd textures/Tiles/Door.png
+
+newmtl Tiles/Fencing
+map_Kd textures/Tiles/Fencing.png
+
+newmtl Tiles/GreenBricks
+map_Kd textures/Tiles/GreenBricks.png
+
+newmtl Tiles/HeartButton
+map_Kd textures/Tiles/HeartButton.png
+
+newmtl Tiles/Lava
+map_Kd textures/Tiles/Lava.png
+
+newmtl Tiles/RoofDoor
+map_Kd textures/Tiles/RoofDoor.png
+
+newmtl Tiles/Roofing
+map_Kd textures/Tiles/Roofing.png
+
+newmtl Tiles/StoneWall
+map_Kd textures/Tiles/StoneWall.png
+
+newmtl Tiles/Wood
+map_Kd textures/Tiles/Wood.png
+
+newmtl Tiles/WoodFlooring
+map_Kd textures/Tiles/WoodFlooring.png
+
+newmtl __TB_empty
+map_Kd textures/__TB_empty.png
+

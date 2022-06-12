@@ -4,15 +4,16 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Sawed-Off_Armor_rough.png-5d25ae4a1af5b2a2587b48b8b8f4537e.s3tc.stex"
 path.etc2="res://.import/Sawed-Off_Armor_rough.png-5d25ae4a1af5b2a2587b48b8b8f4537e.etc2.stex"
+path.etc="res://.import/Sawed-Off_Armor_rough.png-5d25ae4a1af5b2a2587b48b8b8f4537e.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/UV/Sawed-Off_Armor/Sawed-Off_Armor_rough.png"
-dest_files=[ "res://.import/Sawed-Off_Armor_rough.png-5d25ae4a1af5b2a2587b48b8b8f4537e.s3tc.stex", "res://.import/Sawed-Off_Armor_rough.png-5d25ae4a1af5b2a2587b48b8b8f4537e.etc2.stex" ]
+dest_files=[ "res://.import/Sawed-Off_Armor_rough.png-5d25ae4a1af5b2a2587b48b8b8f4537e.s3tc.stex", "res://.import/Sawed-Off_Armor_rough.png-5d25ae4a1af5b2a2587b48b8b8f4537e.etc2.stex", "res://.import/Sawed-Off_Armor_rough.png-5d25ae4a1af5b2a2587b48b8b8f4537e.etc.stex" ]
 
 [params]
 

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+export_file = false
+target_folder = ""
+fgd_name = "Mossism"
+base_fgd_files = [  ]
+entity_definitions = [ null ]

@@ -6,7 +6,7 @@
 
 [resource]
 resource_name = "Default_OBJ"
-params_specular_mode = 2
+params_specular_mode = 4
 albedo_color = Color( 0.8, 0.8, 0.8, 1 )
 albedo_texture = ExtResource( 2 )
 metallic = 0.55

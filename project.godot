@@ -234,9 +234,13 @@ config/name="Mossism"
 run/main_scene="res://Scenes/Menus/Splash.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Mossism"
-boot_splash/image="res://Textures/Menus/BootSplash.png"
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
+
+[audio]
+
+fullsize=true
+image="res://Textures/Menus/BootSplash.png"
 
 [autoload]
 
@@ -463,7 +467,7 @@ keyboard_reload={
 }
 keyboard_sprint={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 mouse_shoot={
@@ -486,6 +490,7 @@ mouse_interact={
 3d_render/layer_5="player3"
 3d_render/layer_6="player4"
 3d_render/layer_7="projectiles"
+3d_render/layer_8="enemy"
 3d_physics/layer_1="world"
 3d_physics/layer_2="player"
 3d_physics/layer_3="player1"
@@ -493,10 +498,11 @@ mouse_interact={
 3d_physics/layer_5="player3"
 3d_physics/layer_6="player4"
 3d_physics/layer_7="projectiles"
-3d_physics/layer_8="enemies"
+3d_physics/layer_8="enemy"
 3d_physics/layer_9="triggers"
 3d_physics/layer_10="buttons"
 3d_physics/layer_11="stair-slope"
+3d_physics/layer_12="enemy projectiles"
 
 [memory]
 
@@ -510,37 +516,18 @@ remote_fs/page_read_ahead=6
 [physics]
 
 common/enable_pause_aware_picking=true
-3d/physics_engine="Bullet"
 
 [rendering]
 
-quality/intended_usage/framebuffer_allocation=3
+quality/driver/fallback_to_gles2=true
 2d/snapping/use_gpu_pixel_snap=true
 threads/thread_model=2
-quality/directional_shadow/size=1984
-quality/directional_shadow/size.mobile=1024
-quality/shadow_atlas/size=1984
-quality/shadow_atlas/size.mobile=1024
-quality/shadow_atlas/cubemap_size=128
-quality/shadow_atlas/quadrant_0_subdiv=0
-quality/shadow_atlas/quadrant_1_subdiv=1
-quality/shadow_atlas/quadrant_2_subdiv=2
-quality/shadow_atlas/quadrant_3_subdiv=3
+threads/thread_safe_bvh=true
+vram_compression/import_etc=true
 quality/shadows/filter_mode=0
-quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
-quality/reflections/irradiance_max_size=64
 quality/filters/anisotropic_filter_level=2
-quality/lightmapping/use_bicubic_sampling=false
-limits/rendering/max_renderable_lights=1920
-limits/rendering/max_renderable_reflections=384
-limits/rendering/max_lights_per_object=14
 quality/subsurface_scattering/quality=0
 quality/subsurface_scattering/weight_samples=false
-cpu_lightmapper/quality/low_quality_ray_count=14
-cpu_lightmapper/quality/medium_quality_ray_count=28
-cpu_lightmapper/quality/high_quality_ray_count=56
-cpu_lightmapper/quality/ultra_quality_ray_count=112
-quality/reflections/atlas_size=1024
-quality/reflections/atlas_subdiv=6
+quality/filters/use_debanding=true
 environment/default_environment="res://default_env.tres"

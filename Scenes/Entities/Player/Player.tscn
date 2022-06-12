@@ -50,7 +50,7 @@ corner_radius_top_right = 50
 corner_detail = 3
 anti_aliasing = false
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody" groups=["Player"]]
 collision_layer = 2
 collision_mask = 191
 input_ray_pickable = false
@@ -73,7 +73,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52246, -0.888676 )
 
 [node name="PlayerCamera" type="Camera" parent="pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0812859 )
-doppler_tracking = 1
+doppler_tracking = 2
 current = true
 fov = 80.0
 near = 0.02
@@ -103,6 +103,7 @@ shape = SubResource( 13 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+input_pass_on_modal_close_click = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -128,10 +129,10 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="GameOver" parent="Hud" instance=ExtResource( 6 )]
+[node name="GameOver" parent="." instance=ExtResource( 6 )]
 visible = false
 
-[node name="PauseMenu" parent="Hud" instance=ExtResource( 5 )]
+[node name="PauseMenu" parent="." instance=ExtResource( 5 )]
 visible = false
 
 [connection signal="area_entered" from="Area" to="." method="_on_player_entered"]
