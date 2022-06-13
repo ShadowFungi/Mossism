@@ -17,7 +17,7 @@ var max_available_health : int = 10
 var dir = Vector3()
  
 const DEACCEL= 16
-const MAX_SLOPE_ANGLE = 65
+const MAX_SLOPE_ANGLE = 70
 
 var health = 10
 
@@ -104,20 +104,14 @@ func process_input(delta):
 		dir += cam_xform.basis.x * input_movement_vector.x
 		# ----------------------------------
 
-		# ----------------------------------
 		# Jumping
 		if is_on_floor():
 			if Input.is_action_just_pressed('player-%s_jump' % id):
 				vel.y = JUMP_SPEED
 		# ----------------------------------
 
-		# ----------------------------------
-		# Capturing/Freeing the cursor
 		if Input.is_action_just_pressed('player-%s_ui_cancel' % id):
-			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			else:
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			pass
 		# ----------------------------------
 		
 	if id == 0:
@@ -162,6 +156,12 @@ func process_input(delta):
 			timer.wait_time = 1
 			timer.start()
 		# ----------------------------------
+		
+		if Input.is_action_just_pressed("ui_end"):
+			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			else:
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _input(event):
 	if id == 0:
