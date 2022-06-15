@@ -43,7 +43,9 @@ func _ready():
 	timer = pause_menu.get_node("Timer")
 	camera = $pivot/PlayerCamera
 	rotation_helper = $pivot
-
+	
+	Controller.total_players += 1
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
@@ -114,6 +116,15 @@ func process_input(delta):
 			pass
 		# ----------------------------------
 		
+		if Input.is_action_just_pressed('player-%s_pause' % id):
+			pause_menu.visible = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			if Controller.total_players <=1:
+				get_tree().paused = true
+			timer.one_shot = true
+			timer.wait_time = 1
+			timer.start()
+		
 	if id == 0:
 		
 		if Input.is_action_pressed("keyboard_sprint"):
@@ -151,7 +162,8 @@ func process_input(delta):
 		if Input.is_action_just_pressed('keyboard_cancel'):
 			pause_menu.visible = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			get_tree().paused = true
+			if Controller.total_players <=1:
+				get_tree().paused = true
 			timer.one_shot = true
 			timer.wait_time = 1
 			timer.start()
@@ -209,7 +221,7 @@ func fire():
 	b2.apply_central_impulse(-$pivot/PlayerCamera/SawedOff/Muzzle.global_transform.basis.z * 100)
 
 func update_health():
-	var health_label = get_node("Hud/Panel/HealthLabel")
+	var health_label = get_node("Hud/Panel/Control/HBoxContainer/HealthLabel")
 	health_label.text = String(cur_health) + "/" + String(max_available_health)
 
 func _on_player_entered(area):

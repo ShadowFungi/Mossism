@@ -51,10 +51,11 @@ func add_player(player_instance, world_instance, id):
 		"player-{n}_look_down".format({"n":id}): Vector3.BACK,
 		"player-{n}_look_left".format({"n":id}): Vector3.LEFT,
 		"player-{n}_look_right".format({"n":id}): Vector3.RIGHT,
-		"player-{n}_jump".format({"n":id}): Vector3.RIGHT,
-		"player-{n}_ui_cancel".format({"n":id}): Vector3.RIGHT,
-		"player-{n}_shoot".format({"n":id}): Vector3.RIGHT,
-		"player-{n}_interact".format({"n":id}): Vector3.RIGHT,
+		"player-{n}_jump".format({"n":id}): Vector3.ZERO,
+		"player-{n}_ui_cancel".format({"n":id}): Vector3.ZERO,
+		"player-{n}_pause".format({"n":id}): Vector3.ZERO,
+		"player-{n}_shoot".format({"n":id}): Vector3.ZERO,
+		"player-{n}_interact".format({"n":id}): Vector3.ZERO,
 	})
 	
 	var strafe_right_action : String
@@ -208,6 +209,19 @@ func add_player(player_instance, world_instance, id):
 	
 	InputMap.action_add_event(ui_cancel_action, ui_cancel_action_event)
 	
+	var pause_action : String
+	var pause_action_event : InputEventJoypadButton
+	
+	pause_action = "player-{n}_pause".format({"n":id})
+	InputMap.add_action(pause_action)
+	
+	pause_action_event = InputEventJoypadButton.new()
+	
+	pause_action_event.set_device(id)
+	pause_action_event.set_button_index(JOY_BUTTON_11)
+	
+	InputMap.action_add_event(pause_action, pause_action_event)
+	
 	var shoot_action : String
 	var shoot_action_event : InputEventJoypadButton
 	
@@ -229,6 +243,7 @@ func drop_player(id) -> void :
 		if String(id) in String(Controller.ids["players"]):
 			print(String(Controller.ids["players"][String(id)]))
 			get_tree().root.get_node(Controller.ids["players"][String(id)]).get_parent().get_parent().queue_free()
+			Controller.total_players -= 1
 			return
 		else:
 			return

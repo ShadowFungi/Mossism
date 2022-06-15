@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Models/Tools/Sawed-off-Armor-F.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Textures/UV/Sawed-Off_Armor/sawed-off_spatial.tres" type="Material" id=4]
 [ext_resource path="res://Scenes/Menus/PauseMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Menus/GameOver.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Textures/HUD/HealthIcon.png" type="Texture" id=7]
 
 [sub_resource type="SpatialMaterial" id=14]
 params_diffuse_mode = 1
@@ -40,14 +41,14 @@ radius = 1.33571
 height = 2.51928
 
 [sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.278431, 0.286275, 0.207843, 0.901961 )
-border_width_left = 3
-border_width_top = 6
-border_width_right = 3
-border_color = Color( 0.670588, 0.596078, 0.45098, 1 )
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_detail = 3
+bg_color = Color( 0.278431, 0.286275, 0.207843, 1 )
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_color = Color( 0.333333, 0.172549, 0.101961, 1 )
+corner_radius_top_left = 124
+corner_radius_top_right = 124
+corner_detail = 2
 anti_aliasing = false
 
 [node name="Player" type="KinematicBody" groups=["Player"]]
@@ -118,16 +119,56 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="HealthLabel" type="Label" parent="Hud/Panel"]
-anchor_left = 0.227273
-anchor_right = 0.772727
-anchor_bottom = 0.496241
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 3 )
-align = 1
+[node name="Control" type="Control" parent="Hud/Panel"]
+anchor_left = 0.115424
+anchor_top = 0.079643
+anchor_right = 0.884576
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud/Panel/Control"]
+anchor_left = 0.216467
+anchor_right = 0.783533
+anchor_bottom = 1.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="Hud/Panel/Control/HBoxContainer"]
+margin_right = 140.0
+margin_bottom = 104.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 133, 104 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="HealthLabel" type="Label" parent="Hud/Panel/Control/HBoxContainer"]
+margin_left = 144.0
+margin_top = 19.0
+margin_right = 282.0
+margin_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "10/10"
+align = 1
+valign = 1
+
+[node name="ColorRect" type="ColorRect" parent="Hud/Panel/Control/HBoxContainer"]
+margin_left = 286.0
+margin_right = 427.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 1, 1, 1, 0 )
 
 [node name="GameOver" parent="." instance=ExtResource( 6 )]
 visible = false
