@@ -2,7 +2,7 @@ extends "res://Scripts/Enemies/BaseEnemy.gd"
 
 var space_state
 var entered
-var target
+var target : Node
 
 onready var eyes = $Eyes
 onready var shootTimer = $ShootTimer
@@ -49,6 +49,7 @@ func _on_ChaseArea_body_entered(body):
 	if body.is_in_group("Player"):
 		state = CHASE
 		target = body
+		cur_speed = MAX_SPEED
 
 
 func _on_ChaseArea_body_exited(body):
@@ -69,6 +70,8 @@ func _on_ShootTimer_timeout():
 
 
 func _process(delta):
+	var direction : Vector3
+	vel.y += GRAVITY * (delta * 1.2)
 	
 	if ray.is_colliding():
 		state = ALERT
@@ -85,7 +88,12 @@ func _process(delta):
 		FLEE:
 			pass
 		CHASE:
-			pass
+			eyes.look_at(target.global_transform.origin, Vector3.UP)
+			rotate_y(deg2rad(eyes.rotation.y * TURN_SPEED))
+			direction = Vector3(target.global_transform.origin.x - global_transform.origin.x, 0, target.global_transform.origin.z - global_transform.origin.z)
 		STUNNED:
 			pass
+			
+	direction.y = vel.y
+	move_and_slide(direction * cur_speed * delta, Vector3.UP)
 

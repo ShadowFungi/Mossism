@@ -66,7 +66,7 @@ __meta__ = {
 [node name="RayCast" type="RayCast" parent="EyeMesh"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.73115e-08, 0, -0.983202 )
 enabled = true
-cast_to = Vector3( 0, 0, -30 )
+cast_to = Vector3( 0, 0, -20 )
 collision_mask = 2
 debug_shape_thickness = 3
 
@@ -81,6 +81,7 @@ shape = SubResource( 3 )
 [node name="HurtArea" type="Area" parent="."]
 collision_layer = 128
 collision_mask = 66
+monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="HurtArea"]
 transform = Transform( 0.00191982, -0.999998, 0, -4.37113e-08, -8.3918e-11, 1, -0.999998, -0.00191982, -4.37114e-08, 0, 0, 0 )
@@ -90,7 +91,6 @@ shape = SubResource( 7 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5 )
 collision_layer = 128
 collision_mask = 2
-monitoring = false
 monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="FleeArea"]
@@ -108,7 +108,6 @@ shape = SubResource( 9 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5 )
 collision_layer = 128
 collision_mask = 2
-monitoring = false
 monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="ChaseArea"]
