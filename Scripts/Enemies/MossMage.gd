@@ -7,7 +7,7 @@ var target : Node
 onready var eyes = $Eyes
 onready var shootTimer = $ShootTimer
 
-const TURN_SPEED = 2
+const TURN_SPEED = 4
 
 func _ready():
 	space_state = get_world().direct_space_state
@@ -84,16 +84,14 @@ func _process(delta):
 			pass
 		ALERT:
 			eyes.look_at(target.global_transform.origin, Vector3.UP)
-			rotate_y(deg2rad(eyes.rotation.y * TURN_SPEED))
 		FLEE:
 			pass
 		CHASE:
 			eyes.look_at(target.global_transform.origin, Vector3.UP)
-			rotate_y(deg2rad(eyes.rotation.y * TURN_SPEED))
-			direction = Vector3(target.global_transform.origin.x - global_transform.origin.x, 0, target.global_transform.origin.z - global_transform.origin.z)
+			direction = Vector3((target.global_transform.origin.x - global_transform.origin.x), 0, (target.global_transform.origin.z - global_transform.origin.z))
 		STUNNED:
 			pass
 			
 	direction.y = vel.y
 	move_and_slide(direction * cur_speed * delta, Vector3.UP)
-
+	rotate_y(deg2rad(eyes.rotation.y * TURN_SPEED))

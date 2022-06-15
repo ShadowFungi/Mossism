@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Enemies/MossMage.gd" type="Script" id=1]
 
@@ -23,22 +23,18 @@ metallic = 0.02
 metallic_specular = 0.65
 roughness = 0.75
 
-[sub_resource type="CapsuleShape" id=3]
-radius = 2.23286
-height = 4.973
-
 [sub_resource type="CapsuleShape" id=7]
 radius = 2.41403
 height = 4.58711
 
 [sub_resource type="SphereShape" id=8]
-radius = 8.0
+radius = 6.0
 
 [sub_resource type="SphereShape" id=9]
-radius = 15.0
+radius = 10.0
 
 [sub_resource type="SphereShape" id=10]
-radius = 20.0
+radius = 25.0
 
 [node name="MossMage" type="KinematicBody"]
 collision_layer = 128
@@ -74,10 +70,6 @@ debug_shape_thickness = 3
 
 [node name="StunTimer" type="Timer" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37115e-08, 0, 0, 0 )
-shape = SubResource( 3 )
-
 [node name="HurtArea" type="Area" parent="."]
 collision_layer = 128
 collision_mask = 66
@@ -100,6 +92,7 @@ shape = SubResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5 )
 collision_layer = 128
 collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="AlertArea"]
 shape = SubResource( 9 )
