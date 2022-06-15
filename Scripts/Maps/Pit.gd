@@ -9,4 +9,4 @@ func _on_death_trigger():
 
 
 func _on_entity_265_button_trigger():
-	pass # Replace with function body.
+	get_node("Navigation/NavigationMeshInstance")

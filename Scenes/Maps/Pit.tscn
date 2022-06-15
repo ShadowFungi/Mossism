@@ -9380,6 +9380,7 @@ shape = SubResource( 1412 )
 [node name="MossMage" parent="." instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.7636, -2.2644, 45.6193 )
 
+[connection signal="trigger" from="Navigation/NavigationMeshInstance/QodotMap/entity_265_button" to="." method="_on_entity_265_button_trigger"]
 [connection signal="trigger" from="Navigation/NavigationMeshInstance/QodotMap/entity_265_button" to="Navigation/NavigationMeshInstance/QodotMap/entity_18_mover" method="use"]
 [connection signal="trigger" from="Navigation/NavigationMeshInstance/QodotMap/entity_265_button" to="Navigation/NavigationMeshInstance/QodotMap/entity_203_mover" method="use"]
 [connection signal="trigger" from="Navigation/NavigationMeshInstance/QodotMap/entity_265_button" to="Navigation/NavigationMeshInstance/QodotMap/entity_204_mover" method="use"]
