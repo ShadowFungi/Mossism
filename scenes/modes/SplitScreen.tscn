@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/entities/player/PlayerViewport.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/player/SplitScreen.gd" type="Script" id=2]
+[ext_resource path="res://scenes/maps/pit.tscn" type="PackedScene" id=3]
+
+[node name="Node" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="ViewContainer" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+input_pass_on_modal_close_click = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+
+[node name="ViewportContainer" parent="ViewContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="ThePit" parent="ViewContainer/ViewportContainer/Viewport" index="1" instance=ExtResource( 3 )]
+
+[editable path="ViewContainer/ViewportContainer"]
+[editable path="ViewContainer/ViewportContainer/Viewport/Player"]

@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot_sfxr/GodotSfxr.gd"
 }, {
+"base": "Area",
+"class": "HitBox",
+"language": "GDScript",
+"path": "res://scripts/sensor_boxes/HitBox.gd"
+}, {
+"base": "Area",
+"class": "HurtBox",
+"language": "GDScript",
+"path": "res://scripts/sensor_boxes/HurtBox.gd"
+}, {
 "base": "LiquidLayer",
 "class": "LavaLayer",
 "language": "GDScript",
@@ -191,6 +201,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "GodotSfxr": "",
+"HitBox": "",
+"HurtBox": "",
 "LavaLayer": "",
 "LiquidLayer": "",
 "OrbitArm": "",
@@ -231,7 +243,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Mossism"
-run/main_scene="res://Scenes/Menus/Splash.tscn"
+run/main_scene="res://scenes/menus/Splash.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Mossism"
 boot_splash/use_filter=false
@@ -244,13 +256,12 @@ image="res://Textures/Menus/BootSplash.png"
 
 [autoload]
 
-Controller="*res://Scripts/AutoLoads/Controller.gd"
+Controller="*res://scripts/autoLoads/Controller.gd"
 
 [display]
 
 window/size/width=1280
 window/size/height=720
-window/stretch/aspect="keep"
 
 [editor_plugins]
 
@@ -449,11 +460,16 @@ mouse_interact={
 3d_physics/layer_10="buttons"
 3d_physics/layer_11="stair-slope"
 3d_physics/layer_12="enemy projectiles"
+3d_navigation/layer_1="world"
 
 [memory]
 
 limits/multithreaded_server/rid_pool_prealloc=80
 limits/message_queue/max_size_kb=4128
+
+[mono]
+
+project/assembly_name="Mossism"
 
 [network]
 
@@ -461,11 +477,12 @@ remote_fs/page_read_ahead=6
 
 [physics]
 
+3d/smooth_trimesh_collision=true
 common/enable_pause_aware_picking=true
+3d/physics_engine="Bullet"
 
 [rendering]
 
-quality/driver/fallback_to_gles2=true
 2d/snapping/use_gpu_pixel_snap=true
 threads/thread_model=2
 threads/thread_safe_bvh=true
@@ -473,6 +490,9 @@ vram_compression/import_etc=true
 quality/shadows/filter_mode=0
 quality/reflections/high_quality_ggx=false
 quality/filters/anisotropic_filter_level=2
+gles3/shaders/shader_compilation_mode=2
+gles3/shaders/shader_compilation_mode.mobile=2
+gles3/shaders/shader_compilation_mode.web=2
 quality/subsurface_scattering/quality=0
 quality/subsurface_scattering/weight_samples=false
 quality/filters/use_debanding=true

@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/enemies/MossMage.gd" type="Script" id=1]
+[ext_resource path="res://scripts/sensor_boxes/HurtBox.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleMesh" id=2]
+radius = 2.3
+mid_height = 5.0
+radial_segments = 8
+rings = 4
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.380392, 0.313726, 0.490196, 1 )
+metallic = 0.02
+metallic_specular = 0.65
+roughness = 0.75
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 1, 1, 2 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.196078, 0.113725, 0.329412, 1 )
+metallic = 0.02
+metallic_specular = 0.65
+roughness = 0.75
+
+[sub_resource type="CapsuleShape" id=7]
+radius = 2.6443
+height = 4.48732
+
+[sub_resource type="CapsuleShape" id=8]
+radius = 2.31569
+height = 4.91476
+
+[node name="MossMage" type="KinematicBody"]
+collision_layer = 128
+collision_mask = 67
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 8.47033e-22, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+layers = 128
+mesh = SubResource( 2 )
+material/0 = SubResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EyeMesh" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0.00243522, 1.97834, -1.47492 )
+layers = 128
+mesh = SubResource( 4 )
+material/0 = SubResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RayCast0" type="RayCast" parent="EyeMesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.73115e-08, 0, -0.983202 )
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+collision_mask = 2
+debug_shape_thickness = 3
+
+[node name="RayCast2" type="RayCast" parent="EyeMesh"]
+transform = Transform( 1, 1.08313e-08, -1.42596e-09, -1.08313e-08, 0.965926, -0.258819, -1.42596e-09, 0.258819, 0.965926, 8.73115e-08, 0, -0.983202 )
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+collision_mask = 2
+debug_shape_thickness = 3
+
+[node name="RayCast3" type="RayCast" parent="EyeMesh"]
+transform = Transform( 1, -1.08313e-08, -1.42596e-09, 1.08313e-08, 0.965926, 0.258819, -1.42596e-09, -0.258819, 0.965926, 8.73115e-08, 0, -0.983202 )
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+collision_mask = 2
+debug_shape_thickness = 3
+
+[node name="RayCast4" type="RayCast" parent="EyeMesh"]
+transform = Transform( 0.965926, 1.13133e-08, -0.258819, -1.13133e-08, 1, 1.48943e-09, 0.258819, 1.48943e-09, 0.965926, 1.08499e-07, 0, -0.983202 )
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+collision_mask = 2
+debug_shape_thickness = 3
+
+[node name="RayCast5" type="RayCast" parent="EyeMesh"]
+transform = Transform( 0.965926, -1.13133e-08, 0.258819, 1.13133e-08, 1, 1.48943e-09, -0.258819, 1.48943e-09, 0.965926, 1.08499e-07, 0, -0.983202 )
+enabled = true
+cast_to = Vector3( 0, 0, -20 )
+collision_mask = 2
+debug_shape_thickness = 3
+
+[node name="Eyes" type="Spatial" parent="."]
+
+[node name="StunTimer" type="Timer" parent="."]
+
+[node name="HurtBox" type="Area" parent="."]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="HurtBox"]
+transform = Transform( -4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="NavigationAgent" type="NavigationAgent" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( -4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0, 0 )
+shape = SubResource( 8 )
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="path_changed" from="NavigationAgent" to="." method="_on_NavigationAgent_path_changed"]
+[connection signal="velocity_computed" from="NavigationAgent" to="." method="_on_NavigationAgent_velocity_computed"]

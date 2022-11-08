@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Sawed-off_UV.obj-7f9c507295daa077084397524c02175d.mesh"
+
+[deps]
+
+files=[ "res://.import/Sawed-off_UV.obj-7f9c507295daa077084397524c02175d.mesh" ]
+
+source_file="res://models/tools/Sawed-off_UV.obj"
+dest_files=[ "res://.import/Sawed-off_UV.obj-7f9c507295daa077084397524c02175d.mesh", "res://.import/Sawed-off_UV.obj-7f9c507295daa077084397524c02175d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

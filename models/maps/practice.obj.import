@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/practice.obj-cbed6f53c20df91ffc5d5e1340915617.mesh"
+
+[deps]
+
+files=[ "res://.import/practice.obj-cbed6f53c20df91ffc5d5e1340915617.mesh" ]
+
+source_file="res://models/maps/practice.obj"
+dest_files=[ "res://.import/practice.obj-cbed6f53c20df91ffc5d5e1340915617.mesh", "res://.import/practice.obj-cbed6f53c20df91ffc5d5e1340915617.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.063, 0.063, 0.063 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

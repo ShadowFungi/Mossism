@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/MosslingRefined.obj-76f8e92ac9082a889ccb0933f95f3704.mesh"
+
+[deps]
+
+files=[ "res://.import/MosslingRefined.obj-76f8e92ac9082a889ccb0933f95f3704.mesh" ]
+
+source_file="res://models/enemies/MosslingRefined.obj"
+dest_files=[ "res://.import/MosslingRefined.obj-76f8e92ac9082a889ccb0933f95f3704.mesh", "res://.import/MosslingRefined.obj-76f8e92ac9082a889ccb0933f95f3704.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.75, 0.75, 0.75 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

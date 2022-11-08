@@ -1,0 +1,12 @@
+newmtl Tiles/Clear
+map_Kd textures/Tiles/Clear.png
+
+newmtl Tiles/StoneWall
+map_Kd textures/Tiles/StoneWall.png
+
+newmtl Tiles/Wood
+map_Kd textures/Tiles/Wood.png
+
+newmtl Tiles/WoodFlooring
+map_Kd textures/Tiles/WoodFlooring.png
+

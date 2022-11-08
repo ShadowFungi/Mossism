@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/terminal_grotesque/Term-Grotesque-64.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/menus/PauseMenu/QuitButton.gd" type="Script" id=2]
+
+[node name="GameOver" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.662745, 0.388235, 0.121569, 0.254902 )
+
+[node name="Button" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 0.386719
+anchor_top = 0.423611
+anchor_right = 0.613281
+anchor_bottom = 0.576389
+hint_tooltip = "Are you sure you want to do that?"
+custom_fonts/font = ExtResource( 1 )
+text = "QUIT"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
