@@ -1,0 +1,43 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Mossism-qodot"
+run/main_scene="res://scenes/levels/the_pit.tscn"
+config/features=PackedStringArray("4.0", "C#", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Controller="*res://scripts/autoloads/controller.gd"
+Level="*res://scripts/autoloads/level.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[dotnet]
+
+project/assembly_name="Mossism-qodot"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/qodot/plugin.cfg")
+
+[gui]
+
+fonts/canvas_textures/default_texture_filter=0
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TrenchBroomGameConfigFile" load_steps=6 format=3 uid="uid://dp3r530xwgxcm"]
+
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/trenchbroom/trenchbroom_game_config_file.gd" id="1"]
+[ext_resource type="Resource" path="res://addons/qodot/game_definitions/trenchbroom/brush_tags/trigger_tag.tres" id="2"]
+[ext_resource type="Resource" path="res://addons/qodot/game_definitions/trenchbroom/face_tags/skip_tag.tres" id="3"]
+[ext_resource type="Resource" path="res://addons/qodot/game_definitions/trenchbroom/face_tags/clip_tag.tres" id="4"]
+[ext_resource type="Resource" path="res://addons/qodot/game_definitions/trenchbroom/brush_tags/detail_tag.tres" id="5"]
+
+[resource]
+script = ExtResource("1")
+export_file = false
+target_file = "/mnt/crucial/MISC/LinuxPrograms/TrenchBroom/games/mossism-qodot_4/GameConfig.cfg"
+game_name = "mossism-qodot_4"
+brush_tags = Array[Resource]([ExtResource("2"), ExtResource("5")])
+face_tags = Array[Resource]([ExtResource("4"), ExtResource("3")])
+face_attrib_surface_flags = Array[Resource]([])
+face_attrib_content_flags = Array[Resource]([])
+fgd_filenames = ["Qodot.fgd", "Mossism.fgd"]

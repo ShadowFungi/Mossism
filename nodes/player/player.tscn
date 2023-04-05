@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://d0g2otvsh4qxm"]
+
+[ext_resource type="ArrayMesh" uid="uid://dpi66y6q3nt4i" path="res://assets/models/player/tools/Sawed-off-Armor-F.obj" id="1_ieijq"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_y4350"]
+[ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://environments/primary_environment.tres" id="2_j87wc"]
+[ext_resource type="Texture2D" uid="uid://dot5a0etu2d6a" path="res://assets/uv/Sawed-Off_Armor/Sawed-Off_Armor_base.png" id="3_qxpum"]
+[ext_resource type="Texture2D" uid="uid://c2771eq5u7onn" path="res://assets/uv/Sawed-Off_Armor/Sawed-Off_Armor_occ.png" id="4_ii2t5"]
+[ext_resource type="Texture2D" uid="uid://dhr16scdk3v55" path="res://assets/uv/Sawed-Off_Armor/Sawed-Off_Armor_metal.png" id="5_in1eu"]
+[ext_resource type="Texture2D" uid="uid://dr76a4cuajkt5" path="res://assets/uv/Sawed-Off_Armor/Sawed-Off_Armor_nor.png" id="6_v4c0a"]
+[ext_resource type="Texture2D" uid="uid://cvdxqog7xqbm" path="res://assets/uv/Sawed-Off_Armor/Sawed-Off_Armor_rough.png" id="7_g1vp0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vwdr8"]
+radius = 1.1
+height = 5.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r0dah"]
+albedo_texture = ExtResource("3_qxpum")
+metallic = 1.0
+metallic_texture = ExtResource("5_in1eu")
+roughness_texture = ExtResource("7_g1vp0")
+normal_enabled = true
+normal_texture = ExtResource("6_v4c0a")
+ao_enabled = true
+ao_texture = ExtResource("4_ii2t5")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_b8t88"]
+radius = 1.1
+height = 5.2
+radial_segments = 7
+rings = 2
+
+[node name="Character" type="CharacterBody3D"]
+script = ExtResource("1_y4350")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_vwdr8")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, 1.2, -0.5)
+
+[node name="Camera3D" type="Camera3D" parent="Pivot"]
+environment = ExtResource("2_j87wc")
+doppler_tracking = 1
+current = true
+
+[node name="SawedOff" type="MeshInstance3D" parent="Pivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00809, -0.345, -1.7748)
+mesh = ExtResource("1_ieijq")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_r0dah")
+
+[node name="Muzzle" type="Node3D" parent="Pivot/Camera3D/SawedOff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00212038, 0.191746, -2.53789)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Pivot/Camera3D/SawedOff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0554123, -1.69025)
+light_color = Color(1, 0.941176, 0.8, 1)
+light_energy = 16.0
+light_indirect_energy = 4.0
+light_volumetric_fog_energy = 5.0
+shadow_enabled = true
+shadow_opacity = 0.75
+shadow_blur = 1.75
+distance_fade_enabled = true
+spot_range = 15.0
+spot_angle = 12.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, -1.2, 0.5)
+mesh = SubResource("CapsuleMesh_b8t88")
+skeleton = NodePath("../..")
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true

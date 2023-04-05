@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://csdhvjkm1jr3"
+path="res://.godot/imported/arena-1.map-0bacc29be0c780950118267244bf90c8.tres"
+
+[deps]
+
+source_file="res://assets/models/maps/arena-1.map"
+dest_files=["res://.godot/imported/arena-1.map-0bacc29be0c780950118267244bf90c8.tres"]
+
+[params]
+

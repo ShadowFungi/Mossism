@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dpi66y6q3nt4i"
+path="res://.godot/imported/Sawed-off-Armor-F.obj-a7813255c232fb23cd3682989f5d0bb6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Sawed-off-Armor-F.obj-a7813255c232fb23cd3682989f5d0bb6.mesh"]
+
+source_file="res://assets/models/player/tools/Sawed-off-Armor-F.obj"
+dest_files=["res://.godot/imported/Sawed-off-Armor-F.obj-a7813255c232fb23cd3682989f5d0bb6.mesh", "res://.godot/imported/Sawed-off-Armor-F.obj-a7813255c232fb23cd3682989f5d0bb6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.6, 0.6, 0.6)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

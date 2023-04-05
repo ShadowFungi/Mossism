@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://d4an230vux6yl"]
+
+[ext_resource type="Script" path="res://addons/qodot/game_definitions/fgd/point_classes/light.gd" id="2_5ltt5"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="2_ewkcp"]
+
+[resource]
+script = ExtResource("2_ewkcp")
+scene = "----------------------------------------------------------------"
+scripting = "----------------------------------------------------------------"
+script_class = ExtResource("2_5ltt5")
+class_options = "----------------------------------------------------------------"
+classname = "omni"
+description = "Invisible omnidirectional light source "
+qodot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {
+"_color": Color(1, 1, 1, 1),
+"delay": {
+"Inverse distance falloff": 1,
+"Inverse distance squared": 2,
+"Inverse distance squared B": 5,
+"Linear falloff (Default)": 0,
+"Local minlight": 4,
+"No falloff": 3
+},
+"light": 300,
+"wait": 1
+}
+class_property_descriptions = {
+"_color": "Light color",
+"delay": "Attenuation",
+"light": "Brightness",
+"wait": "Fade distance multiplier"
+}
+meta_properties = {
+"color": Color(0.835294, 0.8, 0, 1)
+}
+node_options = "----------------------------------------------------------------"
+node_class = "Spatial"
+transient_node = false

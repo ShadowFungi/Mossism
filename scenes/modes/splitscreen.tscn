@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd2hcn2laiimj"]
+
+[ext_resource type="Script" path="res://scripts/player/split_screen.gd" id="1_qud8b"]
+
+[node name="splitscreen" type="Node2D"]
+script = ExtResource("1_qud8b")

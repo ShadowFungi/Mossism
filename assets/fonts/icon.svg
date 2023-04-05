@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256"
+   height="256"
+   viewBox="0 0 256 256"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5, 2022-02-04)"
+   sodipodi:docname="MossLogo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="false"
+     inkscape:document-units="px"
+     showgrid="false"
+     borderlayer="true"
+     inkscape:zoom="1.185877"
+     inkscape:cx="101.61256"
+     inkscape:cy="59.028045"
+     inkscape:window-width="1916"
+     inkscape:window-height="1036"
+     inkscape:window-x="0"
+     inkscape:window-y="20"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showborder="true"
+     inkscape:showpageshadow="true" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path61116" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="rect52752"
+       style="fill:#255219;fill-rule:evenodd;stroke:#000000;stroke-width:3.94475;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:35;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       d="M 82.327187,7.1777028 28.603082,83.584119 60.373297,207.13492 39.674578,83.460846 83.174693,18.241494 126.78267,65.116217 110.50288,85.232902 128,66.426 145.49712,85.232902 129.21732,65.116217 172.8253,18.241494 216.32542,83.460846 195.6267,207.13492 227.39692,83.584119 173.67281,7.1777028 128,63.613823 Z"
+       sodipodi:nodetypes="ccccccccccccccccc" />
+  </g>
+</svg>
