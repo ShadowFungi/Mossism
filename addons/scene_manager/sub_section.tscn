@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4edho3whn67t"]
+
+[ext_resource type="Script" path="res://addons/scene_manager/sub_section.gd" id="1_kgwwp"]
+[ext_resource type="Texture2D" uid="uid://dme1lg33nbnnh" path="res://addons/scene_manager/icons/GuiOptionArrowRight.png" id="1_yyg5g"]
+[ext_resource type="Script" path="res://addons/scene_manager/sub_section_button.gd" id="3_smgrs"]
+[ext_resource type="Texture2D" uid="uid://bhejhahjk1yaa" path="res://addons/scene_manager/icons/ImportFail.svg" id="4_chjuj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6qci"]
+bg_color = Color(0.156863, 0.176471, 0.207843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqp47"]
+bg_color = Color(0.219608, 0.239216, 0.266667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kx1we"]
+bg_color = Color(0.129412, 0.14902, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvnds"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="All" type="VBoxContainer"]
+offset_right = 1024.0
+offset_bottom = 23.0
+script = ExtResource("1_kgwwp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_u6qci")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yqp47")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kx1we")
+theme_override_styles/focus = SubResource("StyleBoxFlat_uvnds")
+text = "All"
+icon = ExtResource("1_yyg5g")
+alignment = 0
+script = ExtResource("3_smgrs")
+
+[node name="Delete" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+icon = ExtResource("4_chjuj")
+alignment = 0
+
+[node name="List" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[connection signal="button_up" from="HBoxContainer/Button" to="." method="_on_button_up"]
+[connection signal="button_up" from="HBoxContainer/Delete" to="." method="_on_delete_button_up"]

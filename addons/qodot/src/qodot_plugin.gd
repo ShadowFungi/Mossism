@@ -30,27 +30,34 @@ func _enter_tree() -> void:
 	# Project settings
 	setup_project_settings()
 
+	var csharp_support := QodotUtil.has_csharp_support()
+	if not csharp_support:
+		push_warning("Qodot: Engine does not have C# support. Map building and WAD imports are disabled.")
+
 	# Import plugins
 	map_import_plugin = QuakeMapImportPlugin.new()
 	palette_import_plugin = QuakePaletteImportPlugin.new()
-	wad_import_plugin = preload("res://addons/qodot/src/import_plugins/QuakeWadImportPlugin.cs").new()
+	if csharp_support:
+		wad_import_plugin = load("res://addons/qodot/src/import_plugins/QuakeWadImportPlugin.cs").new()
 
 	add_import_plugin(map_import_plugin)
 	add_import_plugin(palette_import_plugin)
-	add_import_plugin(wad_import_plugin)
+	if(wad_import_plugin):
+		add_import_plugin(wad_import_plugin)
 
 	# QodotMap button
-	qodot_map_control = create_qodot_map_control()
-	qodot_map_control.set_visible(false)
-	add_control_to_container(EditorPlugin.CONTAINER_SPATIAL_EDITOR_MENU, qodot_map_control)
+	if csharp_support:
+		qodot_map_control = create_qodot_map_control()
+		qodot_map_control.set_visible(false)
+		add_control_to_container(EditorPlugin.CONTAINER_SPATIAL_EDITOR_MENU, qodot_map_control)
 
-	qodot_map_progress_bar = create_qodot_map_progress_bar()
-	qodot_map_progress_bar.set_visible(false)
-	add_control_to_container(EditorPlugin.CONTAINER_INSPECTOR_BOTTOM, qodot_map_progress_bar)
+		qodot_map_progress_bar = create_qodot_map_progress_bar()
+		qodot_map_progress_bar.set_visible(false)
+		add_control_to_container(EditorPlugin.CONTAINER_INSPECTOR_BOTTOM, qodot_map_progress_bar)
 
-	add_custom_type("QodotMap", "Node3D", preload("res://addons/qodot/src/nodes/qodot_map.gd"), null)
-	add_custom_type("QodotEntity", "Node3D", preload("res://addons/qodot/src/nodes/qodot_entity.gd"), null)
-	add_custom_type("QodotNode3D", "Node3D", preload("res://addons/qodot/src/nodes/qodot_node3d.gd"), null)
+		add_custom_type("QodotMap", "Node3D", preload("res://addons/qodot/src/nodes/qodot_map.gd"), null)
+		add_custom_type("QodotEntity", "Node3D", preload("res://addons/qodot/src/nodes/qodot_entity.gd"), null)
+		add_custom_type("QodotNode3D", "Node3D", preload("res://addons/qodot/src/nodes/qodot_node3d.gd"), null)
 
 func _exit_tree() -> void:
 	remove_custom_type("QodotMap")
@@ -58,19 +65,24 @@ func _exit_tree() -> void:
 	remove_custom_type("QodotSpatial")
 	remove_import_plugin(map_import_plugin)
 	remove_import_plugin(palette_import_plugin)
-	remove_import_plugin(wad_import_plugin)
+	if wad_import_plugin:
+		remove_import_plugin(wad_import_plugin)
+		
 	map_import_plugin = null
 	palette_import_plugin = null
 	wad_import_plugin = null
 
-	remove_control_from_container(EditorPlugin.CONTAINER_SPATIAL_EDITOR_MENU, qodot_map_control)
-	qodot_map_control.queue_free()
-	qodot_map_control = null
+	if qodot_map_control:
+		remove_control_from_container(EditorPlugin.CONTAINER_SPATIAL_EDITOR_MENU, qodot_map_control)
+		qodot_map_control.queue_free()
+		qodot_map_control = null
 
-	remove_control_from_container(EditorPlugin.CONTAINER_SPATIAL_EDITOR_BOTTOM, qodot_map_progress_bar)
-	qodot_map_progress_bar.queue_free()
-	qodot_map_progress_bar = null
+	if qodot_map_progress_bar:
+		remove_control_from_container(EditorPlugin.CONTAINER_SPATIAL_EDITOR_BOTTOM, qodot_map_progress_bar)
+		qodot_map_progress_bar.queue_free()
+		qodot_map_progress_bar = null
 
+## Add Qodot-specific settings to Godot's Project Settings
 func setup_project_settings() -> void:
 	try_add_project_setting('qodot/textures/normal_pattern', TYPE_STRING, QodotTextureLoader.PBR_SUFFIX_PATTERNS[QodotTextureLoader.PBRSuffix.NORMAL])
 	try_add_project_setting('qodot/textures/metallic_pattern', TYPE_STRING, QodotTextureLoader.PBR_SUFFIX_PATTERNS[QodotTextureLoader.PBRSuffix.METALLIC])
@@ -79,10 +91,13 @@ func setup_project_settings() -> void:
 	try_add_project_setting('qodot/textures/ao_pattern', TYPE_STRING, QodotTextureLoader.PBR_SUFFIX_PATTERNS[QodotTextureLoader.PBRSuffix.AO])
 	try_add_project_setting('qodot/textures/height_pattern', TYPE_STRING, QodotTextureLoader.PBR_SUFFIX_PATTERNS[QodotTextureLoader.PBRSuffix.HEIGHT])
 
+## Add property, if not already present. See [method add_project_setting] for usage.
 func try_add_project_setting(name: String, type: int, value, info: Dictionary = {}) -> void:
 	if not ProjectSettings.has_setting(name):
 		add_project_setting(name, type, value, info)
 
+## Add property with path name and type from [enum @GlobalScope.Variant.Type] to Project Settings, defaulting to value.
+## Optionally, supply property info from info.
 func add_project_setting(name: String, type: int, value, info: Dictionary = {}) -> void:
 	ProjectSettings.set(name, value)
 
@@ -93,6 +108,7 @@ func add_project_setting(name: String, type: int, value, info: Dictionary = {}) 
 	ProjectSettings.add_property_info(info_dict)
 	ProjectSettings.set_initial_value(name, value)
 
+## Create the toolbar controls for [QodotMap] instances in the editor
 func create_qodot_map_control() -> Control:
 	var separator = VSeparator.new()
 
@@ -121,6 +137,7 @@ func create_qodot_map_control() -> Control:
 
 	return control
 
+## Create a progress bar for building a [QodotMap]
 func create_qodot_map_progress_bar() -> Control:
 	var progress_label = Label.new()
 	progress_label.name = "ProgressLabel"
@@ -142,6 +159,7 @@ func create_qodot_map_progress_bar() -> Control:
 	return progress_bar
 
 
+## Create the "Quick build" button for [QodotMap]s in the editor
 func qodot_map_quick_build() -> void:
 	var edited_object : QodotMap = edited_object_ref.get_ref()
 	if not edited_object:
@@ -157,6 +175,7 @@ func qodot_map_quick_build() -> void:
 
 	edited_object.verify_and_build()
 
+## Create the "Full Build" button for [QodotMap]s in the editor
 func qodot_map_full_build() -> void:
 	var edited_object : QodotMap = edited_object_ref.get_ref()
 	if not edited_object:
@@ -172,6 +191,7 @@ func qodot_map_full_build() -> void:
 
 	edited_object.verify_and_build()
 
+## Create the "Unwrap UV2" button for [QodotMap]s in the editor
 func qodot_map_unwrap_uv2() -> void:
 	var edited_object = edited_object_ref.get_ref()
 	if not edited_object:
@@ -185,6 +205,7 @@ func qodot_map_unwrap_uv2() -> void:
 
 	edited_object.unwrap_uv2()
 
+## Enable or disable the control for [QodotMap]s in the editor
 func set_qodot_map_control_disabled(disabled: bool) -> void:
 	if not qodot_map_control:
 		return
@@ -193,11 +214,13 @@ func set_qodot_map_control_disabled(disabled: bool) -> void:
 		if child is Button:
 			child.set_disabled(disabled)
 
+## Update the build progress bar (see: [method create_qodot_map_progress_bar]) to display the current step and progress (0-1)
 func qodot_map_build_progress(step: String, progress: float) -> void:
 	var progress_label = qodot_map_progress_bar.get_node("ProgressLabel")
 	qodot_map_progress_bar.value = progress
 	progress_label.text = step.capitalize()
 
+## Callback for when the build process for a [QodotMap] is finished.
 func qodot_map_build_complete(qodot_map: QodotMap) -> void:
 	var progress_label = qodot_map_progress_bar.get_node("ProgressLabel")
 	progress_label.text = "Build Complete"

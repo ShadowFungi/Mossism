@@ -1,7 +1,9 @@
 # Mossism:
 An Open Source Quake-esque FPS Made In The Godot Engine
+
 ## Gameplay:
 Movement and the capability of dying.
+
 ## To Do:
 - [ ] Controller support
 - [ ] Functioning health system
@@ -37,13 +39,17 @@ Movement and the capability of dying.
 	- [ ] 
 - [ ] Menus
 - [ ] Everything else...
+
 ## Contributing:
-### For Developers:
-- Fork The Project
-- Implement any features you want in the game by using the Godot Engine
-- Create a pull request for any features you add, and think would improve the game I'll add them to this repository if they are suitable and not very buggy
-### For Non-Developers:
-- Create a disccusion asking for the feature you want, and why you think it would improve the game, along with providing any implications it may have
+
+- ## For Developers:
+	- Fork The Project
+	- Implement any features you want in the game by using the Godot Engine
+	- Create a pull request for any features you add, and think would improve the game I'll add them to this repository if they are suitable and not very buggy
+
+- ## For Non-Developers:
+	- Create a disccusion asking for the feature you want, and why you think it would improve the game, along with providing any implications it may have
+
 ## FAQ:
 - Q: Why are the textures provided in the source?
 	- A: Because they're mostly done and I would like to provide them.
@@ -51,3 +57,8 @@ Movement and the capability of dying.
 	- A: Yes. Give it time.
 - Q: Why are there insults/snarky comments in the readme?
 	- A: To be a little reminiscent of Quake's manual and menus...
+
+## Credits:
+
+- [Scene Manager](https://github.com/maktoobgar/scene_manager) [maktoobgar](https://github.com/maktoobgar)
+- [Qodot](https://github.com/QodotPlugin/Qodot) [Varoius](https://github.com/QodotPlugin/Qodot/graphs/contributors)

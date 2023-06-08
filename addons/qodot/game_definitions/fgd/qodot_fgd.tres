@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://ccdjpf5j25aua" path="res://addons/qodot/game_definitions/fgd/base_classes/targetname_base_class.tres" id="4"]
 [ext_resource type="Resource" path="res://addons/qodot/game_definitions/fgd/solid_classes/trigger_solid_class.tres" id="5"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="6"]
-[ext_resource type="Resource" uid="uid://0vmau7m65rdq" path="res://addons/qodot/game_definitions/fgd/point_classes/receiver_point_class.tres" id="7"]
+[ext_resource type="Resource" path="res://addons/qodot/game_definitions/fgd/point_classes/receiver_point_class.tres" id="7"]
 [ext_resource type="Resource" path="res://addons/qodot/game_definitions/fgd/solid_classes/illusionary_solid_class.tres" id="8"]
 [ext_resource type="Resource" uid="uid://dxp37dladbquv" path="res://addons/qodot/game_definitions/fgd/solid_classes/worldspawn_solid_class.tres" id="9"]
 [ext_resource type="Resource" path="res://addons/qodot/game_definitions/fgd/solid_classes/group_solid_class.tres" id="10"]
@@ -23,7 +23,7 @@
 [resource]
 script = ExtResource("6")
 export_file = false
-target_folder = "/mnt/crucial/MISC/LinuxPrograms/TrenchBroom/games/mossism-qodot_4"
+target_folder = "C:/OtherPrograms/TrenchBroom/games/Qodot"
 fgd_name = "Qodot"
 base_fgd_files = Array[Resource]([])
-entity_definitions = [ExtResource("9"), ExtResource("1"), ExtResource("4"), ExtResource("12"), ExtResource("3"), ExtResource("13"), ExtResource("7"), ExtResource("18"), ExtResource("2"), ExtResource("10"), ExtResource("11"), ExtResource("8"), ExtResource("17"), ExtResource("5"), ExtResource("14"), ExtResource("19"), ExtResource("16"), ExtResource("15")]
+entity_definitions = Array[Resource]([ExtResource("9"), ExtResource("1"), ExtResource("4"), ExtResource("12"), ExtResource("3"), ExtResource("13"), ExtResource("7"), ExtResource("18"), ExtResource("2"), ExtResource("10"), ExtResource("11"), ExtResource("8"), ExtResource("17"), ExtResource("5"), ExtResource("14"), ExtResource("19"), ExtResource("16"), ExtResource("15")])

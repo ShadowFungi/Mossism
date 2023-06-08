@@ -1,9 +1,9 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://22bekvschagc"]
 
-[ext_resource type="Texture2D" uid="uid://c5p7bxuft5duq" path="res://textures/Roofing.png" id="1_oflgr"]
+[ext_resource type="Texture2D" uid="uid://cdhu1ggdlb740" path="res://textures/RoofDoor.png" id="1_qih4w"]
 
 [resource]
 diffuse_mode = 2
 specular_mode = 2
-albedo_texture = ExtResource("1_oflgr")
+albedo_texture = ExtResource("1_qih4w")
 texture_filter = 0

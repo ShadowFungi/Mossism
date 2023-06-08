@@ -11,20 +11,26 @@ config_version=5
 [application]
 
 config/name="Mossism-qodot"
-run/main_scene="res://scenes/levels/the_pit.tscn"
+run/main_scene="res://nodes/menus/StartMenu.tscn"
 config/features=PackedStringArray("4.0", "C#", "Forward Plus")
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 0)
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]
 
-Controller="*res://scripts/autoloads/controller.gd"
 Level="*res://scripts/autoloads/level.gd"
+Keyboard="*res://scripts/autoloads/keyboard.gd"
+Controller="*res://scripts/autoloads/controller.gd"
+SceneManager="*res://addons/scene_manager/scene_manager.tscn"
+Scenes="*res://addons/scene_manager/scenes.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
 
 [dotnet]
 
@@ -32,7 +38,7 @@ project/assembly_name="Mossism-qodot"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/qodot/plugin.cfg")
+enabled=PackedStringArray("res://addons/scene_manager/plugin.cfg", "res://addons/qodot/plugin.cfg")
 
 [gui]
 
@@ -41,3 +47,6 @@ fonts/canvas_textures/default_texture_filter=0
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method.mobile="forward_plus"
+renderer/rendering_method.web="forward_plus"
+environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 0)

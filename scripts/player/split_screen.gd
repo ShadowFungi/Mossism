@@ -29,19 +29,19 @@ func add_player(player_instance, world_instance, id):
 	print(instance_name)
 	
 	# Add basic information to autoload
-	Controller.player_instances.append(instance_name)
+	Keyboard.player_instances.append(instance_name)
 	get_tree().root.get_node("Node/ViewContainer").add_child(player_instance)
-	get_tree().root.get_node("Node/ViewContainer/%s/Viewport" % String(instance_name)).set_world(world_instance)
+	get_tree().root.get_node("Node/ViewContainer/%s/Viewport" % String(instance_name))
 	get_tree().root.get_node("Node/ViewContainer/%s/Viewport/Player" % String(instance_name)).id = id
 	
 	
 	# Run function to add key/controller bindings, if the id is not present.
-	if Controller.ids["players"][String(id)]:
-		Controller.ids["players"][String(id)] = "Node/ViewContainer/%s/Viewport/Player" % String(instance_name)
+	if Keyboard.ids["players"][String(id)]:
+		Keyboard.ids["players"][String(id)] = "Node/ViewContainer/%s/Viewport/Player" % String(instance_name)
 		bind_inputs(id)
 
 func bind_inputs(id):
-	Controller.input_map.append({
+	Keyboard.input_map.append({
 		"player-{n}_forward".format({"n":id}): Vector3.FORWARD,
 		"player-{n}_back".format({"n":id}): Vector3.BACK,
 		"player-{n}_strafe_left".format({"n":id}): Vector3.LEFT,

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciaqe7l3hugns"]
+
+[ext_resource type="Texture2D" uid="uid://dvb4ayacs7ohl" path="res://addons/scene_manager/icons/ImportFail.svg" id="1"]
+[ext_resource type="Script" path="res://addons/scene_manager/ignore_item.gd" id="2"]
+
+[node name="item" type="HBoxContainer"]
+offset_top = 24.0
+offset_right = 280.0
+offset_bottom = 48.0
+script = ExtResource("2")
+
+[node name="remove_at" type="Button" parent="."]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+icon = ExtResource("1")
+
+[node name="address" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+
+[connection signal="button_up" from="remove_at" to="." method="_on_remove_button_up"]

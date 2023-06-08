@@ -1,18 +1,21 @@
-[gd_resource type="Resource" script_class="TrenchBroomGameConfigFile" load_steps=6 format=3 uid="uid://dp3r530xwgxcm"]
+[gd_resource type="Resource" script_class="TrenchBroomGameConfig" load_steps=8 format=3 uid="uid://dp3r530xwgxcm"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/trenchbroom/trenchbroom_game_config_file.gd" id="1"]
-[ext_resource type="Resource" path="res://addons/qodot/game_definitions/trenchbroom/brush_tags/trigger_tag.tres" id="2"]
-[ext_resource type="Resource" path="res://addons/qodot/game_definitions/trenchbroom/face_tags/skip_tag.tres" id="3"]
-[ext_resource type="Resource" path="res://addons/qodot/game_definitions/trenchbroom/face_tags/clip_tag.tres" id="4"]
-[ext_resource type="Resource" path="res://addons/qodot/game_definitions/trenchbroom/brush_tags/detail_tag.tres" id="5"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/trenchbroom_game_config.gd" id="1"]
+[ext_resource type="Resource" path="res://addons/qodot/game_definitions/brush_tags/trigger_tag.tres" id="2"]
+[ext_resource type="Resource" path="res://addons/qodot/game_definitions/face_tags/skip_tag.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dpjjh0hst6xj" path="res://addons/qodot/game_definitions/face_tags/clip_tag.tres" id="4"]
+[ext_resource type="Resource" path="res://addons/qodot/game_definitions/brush_tags/detail_tag.tres" id="5"]
+[ext_resource type="Resource" uid="uid://7h57nuq1xmoi" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="5_y008x"]
+[ext_resource type="Texture2D" uid="uid://b2k2iutnsgjfy" path="res://addons/qodot/icon.png" id="6_t7we1"]
 
 [resource]
 script = ExtResource("1")
 export_file = false
-target_file = "/mnt/crucial/MISC/LinuxPrograms/TrenchBroom/games/mossism-qodot_4/GameConfig.cfg"
+trenchbroom_games_folder = ""
 game_name = "mossism-qodot_4"
+icon = ExtResource("6_t7we1")
+fgd_files = Array[Resource]([ExtResource("5_y008x")])
 brush_tags = Array[Resource]([ExtResource("2"), ExtResource("5")])
 face_tags = Array[Resource]([ExtResource("4"), ExtResource("3")])
 face_attrib_surface_flags = Array[Resource]([])
 face_attrib_content_flags = Array[Resource]([])
-fgd_filenames = ["Qodot.fgd", "Mossism.fgd"]

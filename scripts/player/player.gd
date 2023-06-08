@@ -25,7 +25,6 @@ var health = 10
 
 # External node setup
 var pause_menu
-var world1 = self.get_world_3d()
 
 @onready var bullet = preload("res://nodes/player/bullet.tscn")
 
@@ -40,6 +39,7 @@ var controller_sensitivity = 0.07
 
 # Variables used for actions
 @onready var timer = self.get_node("CoyoteTimer")
+var was_on_floor
 
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton:
@@ -53,7 +53,6 @@ func _unhandled_input(event: InputEvent):
 			pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-80), deg_to_rad(75))
 
 func _physics_process(delta):
-	var was_on_floor
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -86,7 +85,6 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed('player-%s_tool' % id):
 		fire()
-		print(velocity + pivot.global_transform.basis.z * 2)
 		velocity += pivot.global_transform.basis.z * 2
 	
 	move_and_slide()
@@ -97,10 +95,10 @@ func _physics_process(delta):
 
 func fire():
 	var shot1 = bullet.instantiate()
-	get_tree().root.get_node("/root/Node3D/QodotMap").add_child(shot1)
+	get_tree().root.get_node("/root/Node3D/NavigationRegion3D/QodotMap").add_child(shot1)
 	shot1.transform = camera.get_node("SawedOff/Muzzle").global_transform.translated(Vector3(0.2, 0, 0))
-	shot1.apply_central_impulse(-pivot.get_node("Camera3D/SawedOff/Muzzle").global_transform.basis.z * 50)
+	shot1.apply_central_impulse(-pivot.get_node("Camera3D/SawedOff/Muzzle").global_transform.basis.z * 80)
 	var shot2 = bullet.instantiate()
-	get_tree().root.get_node("/root/Node3D/QodotMap").add_child(shot2)
-	shot2.transform = camera.get_node("SawedOff/Muzzle").global_transform.translated(Vector3(0.2, 0, 0))
-	shot2.apply_central_impulse(-pivot.get_node("Camera3D/SawedOff/Muzzle").global_transform.basis.z * 50)
+	get_tree().root.get_node("/root/Node3D/NavigationRegion3D/QodotMap").add_child(shot2)
+	shot2.transform = camera.get_node("SawedOff/Muzzle").global_transform.translated(Vector3(-0.2, 0, 0))
+	shot2.apply_central_impulse(-pivot.get_node("Camera3D/SawedOff/Muzzle").global_transform.basis.z * 80)
