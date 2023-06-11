@@ -8,12 +8,23 @@ Movement and the capability of dying.
 - [ ] Controller support
 - [ ] Functioning health system
 - [x] Bouncy bullets {partial}
-- [ ] Add more weapons
-	- [x] Bouncy bullet sawed-off
-	- [ ] Melee weapon
-	- [ ] 4 dimensional flame thrower like thing
-	- [ ] Mossling weapons {may or may not be usable by player, have yet to decide}
+- [ ] Add items
+	- [ ] Add more weapons
+		- [x] Bouncy bullet sawed-off
+		- [ ] Melee weapon
+		- [ ] 4 dimensional flame thrower like thing
+		- [ ] Mossling weapons {may or may not be usable by player, have yet to decide}
+		- [ ] Electro-gun (It will shock you!)
+		- [ ] Defense Orbiter(s) (Temporary defense orb item)
+			- [ ] Light
+			- [ ] Electric
+			- [ ] Fire
+			- [ ] Water (Only usable by monsters)
 - [ ] Enemies
+	- [ ] Mossling
+	- [ ] Moss Mage
+	- [ ] Mossy Fiend
+	- [ ] Moss Arbiter
 - [ ] Enemy health system
 - [ ] Enemy damage
 - [ ] Player damage
