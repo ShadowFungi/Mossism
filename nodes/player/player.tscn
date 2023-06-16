@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0g2otvsh4qxm"]
+[gd_scene load_steps=8 format=3 uid="uid://d0g2otvsh4qxm"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_y4350"]
 [ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://environments/primary_environment.tres" id="2_j87wc"]
+[ext_resource type="PackedScene" uid="uid://bhe4g8hhy6h80" path="res://nodes/menus/player/PauseMenu.tscn" id="4_ms8s8"]
+[ext_resource type="PackedScene" uid="uid://d3uacef8ml2pc" path="res://nodes/menus/player/GameOver.tscn" id="5_elqys"]
 [ext_resource type="PackedScene" uid="uid://8g3p2sjmfj7e" path="res://assets/models/player/character/player.blend" id="9_2nelp"]
 [ext_resource type="PackedScene" uid="uid://b4ji8ko76a8y0" path="res://assets/models/player/tools/Sawed-off.blend" id="10_yxrsj"]
 
@@ -9,13 +11,8 @@
 radius = 1.1
 height = 5.2
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_b8t88"]
-radius = 1.1
-height = 4.0
-radial_segments = 7
-rings = 2
-
 [node name="Character" type="CharacterBody3D"]
+process_mode = 1
 script = ExtResource("1_y4350")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -25,13 +22,13 @@ shape = SubResource("CapsuleShape3D_vwdr8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, 1.2, -0.5)
 
 [node name="Camera3D" type="Camera3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07561, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.919275, 0)
 environment = ExtResource("2_j87wc")
 doppler_tracking = 1
 current = true
 
 [node name="SawedOff" parent="Pivot/Camera3D" instance=ExtResource("10_yxrsj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00516, -0.623662, -1.18779)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00516, -1.00996, -1.18779)
 
 [node name="Muzzle" type="Node3D" parent="Pivot/Camera3D/SawedOff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000235796, 0.160505, -2.0004)
@@ -46,13 +43,12 @@ shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 1.75
 distance_fade_enabled = true
-spot_range = 15.0
-spot_angle = 12.5
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, -1.85683, 0.54806)
-mesh = SubResource("CapsuleMesh_b8t88")
-skeleton = NodePath("../..")
+distance_fade_begin = 45.0
+distance_fade_shadow = 55.0
+distance_fade_length = 12.0
+spot_range = 20.0
+spot_attenuation = 1.46409
+spot_angle = 18.0
 
 [node name="player" parent="Pivot" instance=ExtResource("9_2nelp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00321626, -5.44928, 0.492667)
@@ -60,3 +56,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00321626, -5.44928, 0.4926
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.08
 one_shot = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_ms8s8")]
+
+[node name="GameOver" parent="." instance=ExtResource("5_elqys")]
+visible = false

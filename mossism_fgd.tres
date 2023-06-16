@@ -1,17 +1,17 @@
 [gd_resource type="Resource" script_class="QodotFGDFile" load_steps=8 format=3 uid="uid://diw7s7q00uc2h"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="1"]
+[ext_resource type="Resource" uid="uid://7h57nuq1xmoi" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="1_ggpma"]
 [ext_resource type="Resource" uid="uid://2utlowtag63b" path="res://fgd/point/light/lantern.tres" id="5_pcgeb"]
 [ext_resource type="Resource" uid="uid://d4an230vux6yl" path="res://fgd/point/light/omni.tres" id="6_dhxca"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="7_mvc8j"]
 [ext_resource type="Resource" uid="uid://dv4m5extrw8b0" path="res://fgd/solid/ground/ground_moving.tres" id="8"]
-[ext_resource type="Resource" uid="uid://7h57nuq1xmoi" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="9"]
 [ext_resource type="Resource" uid="uid://chiihlok481pv" path="res://fgd/solid/ground/ground_solid.tres" id="10"]
 [ext_resource type="Resource" uid="uid://fyy3l1ycptgy" path="res://fgd/solid/deadly/deadly_solid.tres" id="10_xwcvy"]
 
 [resource]
-script = ExtResource("1")
+script = ExtResource("7_mvc8j")
 export_file = false
-target_folder = "/mnt/crucial/MISC/LinuxPrograms/TrenchBroom/games/mossism-qodot_4"
+target_folder = "/mnt/crucial/MISC/LinuxPrograms/TrenchBroom/share/TrenchBroom/games/mossism-qodot_4"
 fgd_name = "Mossism"
-base_fgd_files = Array[Resource]([ExtResource("9")])
-entity_definitions = [ExtResource("10"), ExtResource("8"), ExtResource("10_xwcvy"), ExtResource("5_pcgeb"), ExtResource("6_dhxca")]
+base_fgd_files = Array[Resource]([ExtResource("1_ggpma")])
+entity_definitions = Array[Resource]([ExtResource("10"), ExtResource("8"), ExtResource("10_xwcvy"), ExtResource("5_pcgeb"), ExtResource("6_dhxca")])

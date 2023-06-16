@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhe4g8hhy6h80"]
+
+[ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_0rmq2"]
+[ext_resource type="Script" path="res://scripts/menus/player/PauseMenu.gd" id="2_1un1t"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mt5kr"]
+color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1nstg"]
+color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_v5avc"]
+color = Color(0, 0, 0, 0)
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0rmq2")
+script = ExtResource("2_1un1t")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.262745, 0.368627, 0.329412, 0.32549)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+action_mode = 0
+text = "RESUME"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/separation = 12
+theme_override_styles/separator = SubResource("StyleBoxLine_mt5kr")
+
+[node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/separation = 12
+theme_override_styles/separator = SubResource("StyleBoxLine_1nstg")
+
+[node name="MainMenuButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "MENU"
+
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_constants/separation = 12
+theme_override_styles/separator = SubResource("StyleBoxLine_v5avc")
+
+[node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+tooltip_text = "QUIT"
+text = "SURRENDER"
+
+[node name="Timer" type="Timer" parent="."]

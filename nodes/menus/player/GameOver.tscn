@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3uacef8ml2pc"]
+
+[ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_lorqo"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cower"]
+color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ie8n2"]
+color = Color(0, 0, 0, 0)
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lorqo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.494118, 0.164706, 0.196078, 0.278431)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+theme_override_styles/separator = SubResource("StyleBoxLine_cower")
+
+[node name="MainMenuButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "MENU"
+
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+theme_override_styles/separator = SubResource("StyleBoxLine_ie8n2")
+
+[node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "QUIT"
+text = "SURRENDER"

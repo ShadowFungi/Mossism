@@ -44,8 +44,10 @@ var was_on_floor
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	elif event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+#	elif event.is_action_pressed('player-%s_pause' % id):
+#		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if event.is_action_pressed('player-%s_pause' % id):
+		get_node("PauseMenu").pause()
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			self.rotate_y(-event.relative.x * mouse_sensitivity)
@@ -58,7 +60,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or !timer.is_stopped()):
+	if Input.is_action_just_pressed('player-%s_jump' % id) and (is_on_floor() or !timer.is_stopped()):
 		velocity.y = JUMP_SPEED
 
 	# Get the input direction and handle the movement/deceleration.
@@ -83,7 +85,7 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, cur_speed)
 		velocity.z = move_toward(velocity.z, 0, cur_speed)
 	
-	if Input.is_action_just_pressed('player-%s_tool' % id):
+	if Input.is_action_just_pressed('player-%s_tool' % id) && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		fire()
 		velocity += pivot.global_transform.basis.z * 2
 	
@@ -91,6 +93,7 @@ func _physics_process(delta):
 	
 	if was_on_floor and !is_on_floor():
 		timer.start()
+	
 
 
 func fire():
