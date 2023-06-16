@@ -1,6 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 assets/models/maps/autosave/
-*.[oO][lL][dD]
-*.old
+*.[oO][lL][dD]*
 *.old*
+*.blend*
+!*.blend
