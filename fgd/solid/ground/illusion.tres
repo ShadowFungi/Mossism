@@ -1,26 +1,24 @@
-[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://oeyljflwd3wl"]
+[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=2 format=3 uid="uid://c04pnn132rykt"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1"]
-[ext_resource type="Script" path="res://addons/qodot/game_definitions/fgd/solid_classes/trigger.gd" id="2"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_b7x8q"]
 
 [resource]
-script = ExtResource("1")
+script = ExtResource("1_b7x8q")
 spawn = "----------------------------------------------------------------"
 spawn_type = 2
 visual_build = "----------------------------------------------------------------"
-build_visuals = false
+build_visuals = true
 collision_build = "----------------------------------------------------------------"
-collision_shape_type = 1
+collision_shape_type = 0
 scripting = "----------------------------------------------------------------"
-script_class = ExtResource("2")
 class_options = "----------------------------------------------------------------"
-classname = "trigger"
-description = "Trigger Volume"
+classname = "ground_illusion"
+description = "A purely visual ground piece "
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {}
 class_property_descriptions = {}
 meta_properties = {}
 node_options = "----------------------------------------------------------------"
-node_class = "Area"
+node_class = "Node3D"
 transient_node = false

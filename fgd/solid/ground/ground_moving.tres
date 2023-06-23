@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=4 format=3 uid="uid://dv4m5extrw8b0"]
+[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://jdyg8dcavnlt"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1"]
-[ext_resource type="Resource" path="res://addons/qodot/game_definitions/fgd/solid_classes/mover_solid_class.tres" id="2"]
 [ext_resource type="Script" path="res://fgd/solid/ground/ground_moving.gd" id="3"]
 
 [resource]
@@ -16,15 +15,17 @@ scripting = "----------------------------------------------------------------"
 script_class = ExtResource("3")
 class_options = "----------------------------------------------------------------"
 classname = "ground_moving"
-description = "ground that moves which enemies can walk on"
+description = "Ground that moves which enemies can walk on"
 qodot_internal = false
-base_classes = Array[Resource]([ExtResource("2")])
-class_properties = {}
-class_property_descriptions = {}
-meta_properties = {
-"color": Color(0.8, 0.8, 0.8, 1),
-"size": AABB(-8, -8, -8, 8, 8, 8)
+base_classes = Array[Resource]([])
+class_properties = {
+"rotation": Vector3(0, 0, 0),
+"scale": Vector3(1, 1, 1),
+"speed": 0.0,
+"translation": Vector3(0, 0, 0)
 }
+class_property_descriptions = {}
+meta_properties = {}
 node_options = "----------------------------------------------------------------"
-node_class = "KinematicBody"
+node_class = "CharacterBody3D"
 transient_node = false

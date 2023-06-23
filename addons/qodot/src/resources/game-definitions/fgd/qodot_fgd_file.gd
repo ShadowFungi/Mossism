@@ -40,9 +40,10 @@ func do_export_file():
 
 func build_class_text() -> String:
 	var res : String = ""
-
-	for base_fgd in base_fgd_files:
-		res += base_fgd.build_class_text()
+	
+	if base_fgd_files:
+		for base_fgd in base_fgd_files:
+			res += base_fgd.build_class_text()
 
 	var entities = get_fgd_classes()
 	for ent in entities:

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=8 format=3 uid="uid://c1453aenu40jh"]
+
+[ext_resource type="Resource" uid="uid://dxp37dladbquv" path="res://addons/qodot/game_definitions/fgd/solid_classes/worldspawn_solid_class.tres" id="1_b2xs0"]
+[ext_resource type="Resource" uid="uid://dwqlmlnspmjlc" path="res://addons/qodot/game_definitions/fgd/solid_classes/group_solid_class.tres" id="2_rcs8o"]
+[ext_resource type="Resource" uid="uid://b8aisardk4k4u" path="res://addons/qodot/game_definitions/fgd/solid_classes/detail_solid_class.tres" id="3_kpkt2"]
+[ext_resource type="Resource" uid="uid://bckkevts2epos" path="res://addons/qodot/game_definitions/fgd/solid_classes/illusionary_solid_class.tres" id="4_t415w"]
+[ext_resource type="Resource" uid="uid://c5o31v30rw7v5" path="res://addons/qodot/game_definitions/fgd/base_classes/light_base_class.tres" id="5_i6wxk"]
+[ext_resource type="Resource" uid="uid://ccwosedfa8v8d" path="res://addons/qodot/game_definitions/fgd/point_classes/light_point_class.tres" id="6_qkwem"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="7_1nspy"]
+
+[resource]
+script = ExtResource("7_1nspy")
+export_file = false
+target_folder = "/mnt/crucial/MISC/LinuxPrograms/TrenchBroom/share/TrenchBroom/games/mossism-qodot_4"
+fgd_name = "Qodot"
+base_fgd_files = Array[Resource]([])
+entity_definitions = Array[Resource]([ExtResource("1_b2xs0"), ExtResource("2_rcs8o"), ExtResource("3_kpkt2"), ExtResource("4_t415w"), ExtResource("5_i6wxk"), ExtResource("6_qkwem")])

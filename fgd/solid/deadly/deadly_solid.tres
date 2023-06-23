@@ -18,10 +18,7 @@ qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {}
 class_property_descriptions = {}
-meta_properties = {
-"color": Color(0.8, 0.8, 0.8, 1),
-"size": AABB(-8, -8, -8, 8, 8, 8)
-}
+meta_properties = {}
 node_options = "----------------------------------------------------------------"
 node_class = ""
 transient_node = false

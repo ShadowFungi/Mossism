@@ -1,26 +1,26 @@
-[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://oeyljflwd3wl"]
+[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://ck2x6kl314052"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1"]
-[ext_resource type="Script" path="res://addons/qodot/game_definitions/fgd/solid_classes/trigger.gd" id="2"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_genqo"]
+[ext_resource type="Script" path="res://fgd/solid/wall/wall_solid.gd" id="2_4k2ij"]
 
 [resource]
-script = ExtResource("1")
+script = ExtResource("1_genqo")
 spawn = "----------------------------------------------------------------"
 spawn_type = 2
 visual_build = "----------------------------------------------------------------"
-build_visuals = false
+build_visuals = true
 collision_build = "----------------------------------------------------------------"
 collision_shape_type = 1
 scripting = "----------------------------------------------------------------"
-script_class = ExtResource("2")
+script_class = ExtResource("2_4k2ij")
 class_options = "----------------------------------------------------------------"
-classname = "trigger"
-description = "Trigger Volume"
+classname = "wall_solid"
+description = "A wall"
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {}
 class_property_descriptions = {}
 meta_properties = {}
 node_options = "----------------------------------------------------------------"
-node_class = "Area"
+node_class = "StaticBody3D"
 transient_node = false
