@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-signal  exploded
+signal exploded
 
 func _ready():
 	$Timer.start(5.0)

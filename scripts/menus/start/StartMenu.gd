@@ -1,6 +1,7 @@
-extends Button
+extends Control
 
-@export var scene : String
+@export var play_button_scene : String
+@export var options_button_scene : String
 @export var fade_speed : float = 1.0
 @export var fade_pattern : String = "fade"
 @export var fade_smoothness = 0.1
@@ -15,12 +16,20 @@ extends Button
 @onready var fade_in_opts = SceneManager.create_options(fade_speed, fade_pattern, fade_smoothness, fade_in_invert)
 @onready var general_opts = SceneManager.create_general_options(color, timeout, clickable, add_to_back)
 
+# Set button variables
+@onready var quit_button = get_node("HBoxContainer/VBoxContainer/QuitButton")
+@onready var play_button = get_node("HBoxContainer/VBoxContainer/PlayButton")
 
 func _ready() -> void:
 	var fade_in_scene_opts = SceneManager.create_options(1, "fade")
 	SceneManager.show_first_scene(fade_in_scene_opts, general_opts)
-	SceneManager.validate_scene(scene)
+	SceneManager.validate_scene(play_button_scene)
+	SceneManager.validate_scene(options_button_scene)
 	SceneManager.validate_pattern(fade_pattern)
+	
+	# Connect buttons to appropriate functions
+	quit_button.pressed.connect(get_tree().quit)
+	play_button.pressed.connect(play_pressed)
 
-func _pressed():
-	SceneManager.change_scene(scene, fade_out_opts, fade_in_opts, general_opts)
+func play_pressed():
+	SceneManager.change_scene(play_button_scene, fade_out_opts, fade_in_opts, general_opts)

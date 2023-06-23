@@ -5,3 +5,4 @@ assets/models/maps/autosave/
 *.old*
 *.blend*
 !*.blend
+!textures.old

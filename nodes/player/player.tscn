@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0g2otvsh4qxm"]
+[gd_scene load_steps=11 format=3 uid="uid://d0g2otvsh4qxm"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_y4350"]
-[ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://environments/primary_environment.tres" id="2_j87wc"]
+[ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="2_sv3mq"]
+[ext_resource type="Script" path="res://scripts/player/SawedOffBody.gd" id="3_dhlh0"]
 [ext_resource type="PackedScene" uid="uid://bhe4g8hhy6h80" path="res://nodes/menus/player/PauseMenu.tscn" id="4_ms8s8"]
 [ext_resource type="PackedScene" uid="uid://d3uacef8ml2pc" path="res://nodes/menus/player/GameOver.tscn" id="5_elqys"]
 [ext_resource type="PackedScene" uid="uid://8g3p2sjmfj7e" path="res://assets/models/player/character/player.blend" id="9_2nelp"]
@@ -9,32 +10,61 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vwdr8"]
 radius = 1.1
-height = 5.2
+height = 5.82908
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hpl1n"]
+exposure_multiplier = 0.15
+auto_exposure_enabled = true
+auto_exposure_scale = 0.04
+dof_blur_far_enabled = true
+dof_blur_far_distance = 50.0
+dof_blur_far_transition = 15.0
+dof_blur_amount = 0.06
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y8agc"]
+radius = 0.181096
+height = 1.94818
 
 [node name="Character" type="CharacterBody3D"]
 process_mode = 1
+collision_layer = 1048576
+collision_mask = 3
+floor_stop_on_slope = false
+floor_max_angle = 1.13446
+safe_margin = 0.003
 script = ExtResource("1_y4350")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_vwdr8")
 
 [node name="Pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, 1.2, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -0.25)
 
 [node name="Camera3D" type="Camera3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.919275, 0)
-environment = ExtResource("2_j87wc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04672, 0.0796062)
+environment = ExtResource("2_sv3mq")
+attributes = SubResource("CameraAttributesPractical_hpl1n")
 doppler_tracking = 1
 current = true
 
-[node name="SawedOff" parent="Pivot/Camera3D" instance=ExtResource("10_yxrsj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00516, -1.00996, -1.18779)
+[node name="SawedOffBody" type="CharacterBody3D" parent="Pivot/Camera3D"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.758, -0.648, -1.456)
+collision_layer = 1048576
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("3_dhlh0")
 
-[node name="Muzzle" type="Node3D" parent="Pivot/Camera3D/SawedOff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000235796, 0.160505, -2.0004)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/Camera3D/SawedOffBody"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.19209e-07, 1.19209e-07, -0.523513)
+shape = SubResource("CapsuleShape3D_y8agc")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Pivot/Camera3D/SawedOff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00979137, -0.0866531, -1.47695)
+[node name="SawedOff" parent="Pivot/Camera3D/SawedOffBody" instance=ExtResource("10_yxrsj")]
+
+[node name="Muzzle" type="Node3D" parent="Pivot/Camera3D/SawedOffBody/SawedOff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0985394, -1.35056)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Pivot/Camera3D/SawedOffBody/SawedOff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, -0.893085)
 light_color = Color(1, 0.941176, 0.8, 1)
 light_energy = 16.0
 light_indirect_energy = 4.0
@@ -51,7 +81,7 @@ spot_attenuation = 1.46409
 spot_angle = 18.0
 
 [node name="player" parent="Pivot" instance=ExtResource("9_2nelp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00321626, -5.44928, 0.492667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.5, 0.25)
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.08

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://7bpcvyff58dq"]
 
-[ext_resource type="Script" path="res://scripts/menus/start/play.gd" id="1_hoal8"]
 [ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_sugyd"]
+[ext_resource type="Script" path="res://scripts/menus/start/StartMenu.gd" id="2_4rstc"]
 [ext_resource type="Texture2D" uid="uid://bkxajnkyo1exf" path="res://assets/menus/MainMenuBackground.png" id="2_55md8"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_vahyk"]
@@ -15,6 +15,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_sugyd")
+script = ExtResource("2_4rstc")
+play_button_scene = "the_pit"
+options_button_scene = "OptionsMenu"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -42,8 +45,6 @@ alignment = 1
 [node name="PlayButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "PLAY"
-script = ExtResource("1_hoal8")
-scene = "the_pit"
 
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
