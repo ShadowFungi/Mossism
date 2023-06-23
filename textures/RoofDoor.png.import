@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdhu1ggdlb740"
-path.s3tc="res://.godot/imported/RoofDoor.png-f7b4865ead30113c634e6d8bbaaf9144.s3tc.ctex"
+path="res://.godot/imported/RoofDoor.png-f7b4865ead30113c634e6d8bbaaf9144.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/RoofDoor.png"
-dest_files=["res://.godot/imported/RoofDoor.png-f7b4865ead30113c634e6d8bbaaf9144.s3tc.ctex"]
+dest_files=["res://.godot/imported/RoofDoor.png-f7b4865ead30113c634e6d8bbaaf9144.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://x65nkb2ljgx1"
-path.s3tc="res://.godot/imported/StoneWall.png-ba05f987d090700295b1d99fab15d83c.s3tc.ctex"
+path="res://.godot/imported/StoneWall.png-ba05f987d090700295b1d99fab15d83c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/StoneWall.png"
-dest_files=["res://.godot/imported/StoneWall.png-ba05f987d090700295b1d99fab15d83c.s3tc.ctex"]
+dest_files=["res://.godot/imported/StoneWall.png-ba05f987d090700295b1d99fab15d83c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

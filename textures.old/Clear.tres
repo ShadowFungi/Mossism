@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cacuir1j7qioi"]
+
+[ext_resource type="Texture2D" uid="uid://c2ivs2im7m18k" path="res://assets/textures/Tiles/Clear.png" id="1"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1")
+texture_filter = 0

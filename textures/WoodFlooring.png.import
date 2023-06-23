@@ -3,21 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8gg2pravkeob"
-path.s3tc="res://.godot/imported/WoodFlooring.png-8866b1966577f9aec024b2bf4a7d2fe5.s3tc.ctex"
+path="res://.godot/imported/WoodFlooring.png-8866b1966577f9aec024b2bf4a7d2fe5.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/WoodFlooring.png"
-dest_files=["res://.godot/imported/WoodFlooring.png-8866b1966577f9aec024b2bf4a7d2fe5.s3tc.ctex"]
+dest_files=["res://.godot/imported/WoodFlooring.png-8866b1966577f9aec024b2bf4a7d2fe5.ctex"]
 
 [params]
 
-compress/mode=2
-compress/high_quality=false
+compress/mode=3
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

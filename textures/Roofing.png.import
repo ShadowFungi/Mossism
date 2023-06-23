@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5p7bxuft5duq"
-path.s3tc="res://.godot/imported/Roofing.png-2bfb2690f5e625d29d157a6756ff3556.s3tc.ctex"
+path="res://.godot/imported/Roofing.png-2bfb2690f5e625d29d157a6756ff3556.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/Roofing.png"
-dest_files=["res://.godot/imported/Roofing.png-2bfb2690f5e625d29d157a6756ff3556.s3tc.ctex"]
+dest_files=["res://.godot/imported/Roofing.png-2bfb2690f5e625d29d157a6756ff3556.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

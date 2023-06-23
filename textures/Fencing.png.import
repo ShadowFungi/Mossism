@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7jxt27idtnt8"
-path.s3tc="res://.godot/imported/Fencing.png-18a9cf9f25796056ec96a86682ec6870.s3tc.ctex"
+path="res://.godot/imported/Fencing.png-18a9cf9f25796056ec96a86682ec6870.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/Fencing.png"
-dest_files=["res://.godot/imported/Fencing.png-18a9cf9f25796056ec96a86682ec6870.s3tc.ctex"]
+dest_files=["res://.godot/imported/Fencing.png-18a9cf9f25796056ec96a86682ec6870.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

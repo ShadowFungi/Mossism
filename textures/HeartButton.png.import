@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dx5gjnggm5ahj"
-path.s3tc="res://.godot/imported/HeartButton.png-185caf15ed42d2bee3649a9d30784d56.s3tc.ctex"
+path="res://.godot/imported/HeartButton.png-185caf15ed42d2bee3649a9d30784d56.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/HeartButton.png"
-dest_files=["res://.godot/imported/HeartButton.png-185caf15ed42d2bee3649a9d30784d56.s3tc.ctex"]
+dest_files=["res://.godot/imported/HeartButton.png-185caf15ed42d2bee3649a9d30784d56.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
