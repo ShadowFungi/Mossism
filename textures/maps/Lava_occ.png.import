@@ -2,33 +2,33 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di3u8ehnk22ed"
-path="res://.godot/imported/Lava.png-9c2bf465ea84f7a45aa28b3d5f9d8fad.ctex"
+uid="uid://cc5o74jf3gfkw"
+path="res://.godot/imported/Lava_occ.png-ab95aee372f1642a2c5c05364c234f07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/pxo/Lava.png"
-dest_files=["res://.godot/imported/Lava.png-9c2bf465ea84f7a45aa28b3d5f9d8fad.ctex"]
+source_file="res://textures/maps/Lava_occ.png"
+dest_files=["res://.godot/imported/Lava_occ.png-ab95aee372f1642a2c5c05364c234f07.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=8
+roughness/src_normal="res://textures/maps/Lava_nor-new.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

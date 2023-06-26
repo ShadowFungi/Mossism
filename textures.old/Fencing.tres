@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cxp7caoipvskm"]
 
-[ext_resource type="Texture2D" uid="uid://c7jxt27idtnt8" path="res://textures/Fencing.png" id="1_444d7"]
+[ext_resource type="Texture2D" uid="uid://c7jxt27idtnt8" path="res://old_textures.old/Fencing.png" id="1_444d7"]
 
 [resource]
 transparency = 4

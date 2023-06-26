@@ -1,9 +1,17 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cxp7caoipvskm"]
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cxp7caoipvskm"]
 
-[ext_resource type="Texture2D" uid="uid://c7jxt27idtnt8" path="res://textures/Fencing.png" id="1_444d7"]
+[ext_resource type="Texture2D" uid="uid://c7jxt27idtnt8" path="res://textures/Fencing.png" id="1_lf2ed"]
+[ext_resource type="Texture2D" uid="uid://bhadhxf82ewso" path="res://textures/maps/Fencing_occ.png" id="2_demi0"]
+[ext_resource type="Texture2D" uid="uid://kknrn8yjq62d" path="res://textures/maps/Fencing_nor.png" id="2_k1gs8"]
 
 [resource]
 transparency = 4
 specular_mode = 1
-albedo_texture = ExtResource("1_444d7")
+albedo_texture = ExtResource("1_lf2ed")
+normal_enabled = true
+normal_scale = 4.5
+normal_texture = ExtResource("2_k1gs8")
+ao_enabled = true
+ao_texture = ExtResource("2_demi0")
+ao_texture_channel = 3
 texture_filter = 0

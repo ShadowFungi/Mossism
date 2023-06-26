@@ -1,9 +1,17 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bkffoa0ho8r2s"]
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bkffoa0ho8r2s"]
 
-[ext_resource type="Texture2D" uid="uid://bahucpykpfmob" path="res://textures/Wood.png" id="1_bus6h"]
+[ext_resource type="Texture2D" uid="uid://bahucpykpfmob" path="res://textures/Wood.png" id="1_4y73v"]
+[ext_resource type="Texture2D" uid="uid://bu4u48gm1ogq4" path="res://textures/maps/Wood_nor.png" id="2_4bpwl"]
+[ext_resource type="Texture2D" uid="uid://coatqghtnpj7q" path="res://textures/maps/Wood_occ.png" id="2_icrks"]
 
 [resource]
 diffuse_mode = 2
 specular_mode = 2
-albedo_texture = ExtResource("1_bus6h")
+albedo_texture = ExtResource("1_4y73v")
+normal_enabled = true
+normal_scale = 4.5
+normal_texture = ExtResource("2_4bpwl")
+ao_enabled = true
+ao_texture = ExtResource("2_icrks")
+ao_texture_channel = 3
 texture_filter = 0
