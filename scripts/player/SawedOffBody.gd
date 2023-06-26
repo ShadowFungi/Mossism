@@ -8,10 +8,10 @@ extends CharacterBody3D
 func _ready() -> void:
 	pos = position
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity = Vector3.ZERO
 	position = position.move_toward(pos, 0.2)
-	if position.distance_to(character.origin) > 9.5:
+	if position.distance_to(character.origin) > 7:
 		position = pos
 		#print(position.distance_to(character.origin))
 	move_and_slide()

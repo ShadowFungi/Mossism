@@ -1,60 +1,61 @@
 extends CharacterBody3D
 
 
-# Set basic constent values for movement
+## Set basic constent values for movement
 const MAX_SPEED = 20
 const DEFAULT_SPEED = 14
-const JUMP_SPEED = 17
+const JUMP_SPEED = 26
 const ACCEL = 4.5
 const DEACCEL= 16
 
-# Set basic constent values for health
+## Set basic constent values for health
 const MAX_HEALTH = 50
 const DEFAULT_HEALTH = 10
 const MIN_HEALTH = 1
 
-# Set variables for movement
+## Constants used for step traversal
+const MAX_SNAP_HEIGHT = 2.25
+const MIN_SNAP_DISTANCE = 1.25
+
+## Set variables for movement
 var dir : Vector3 = Vector3()
 var cur_speed = 14
 var gravity = 22.5
 
-# Set variables for health
+## Set variables for health
 var cur_health : int
 var max_available_health : int = 10
 var health = 10
 
-# External node setup
-var pause_menu
+## Set variables for step traversal
+var can_snap_down : bool = true
+var can_step_up : bool = true
 
-@onready var bullet = preload("res://nodes/player/bullet.tscn")
+## External node setup
+## Get StairDetection nodes for detecting stairs
+@onready var snap_detect = self.get_node('SnapDetection')
+@onready var step_detect = self.get_node('StepDetection')
+@onready var stair_timer = self.get_node('StairTimer')
+var timer_start_from : bool
+## Get PauseMenu node
+@onready var pause_menu = self.get_node("PauseMenu")
+## Preload the weapon projectile scene(s)
+@onready var sawed_off_bullet = preload("res://nodes/player/sawed_off_bullet.tscn")
 
+## Export the player ID so it can be changed when needed
 @export var id : int = 0
 
-# Variables used for camera movement 
+## Variables used for camera movement 
 @onready var pivot := self.get_node("Pivot")
 @onready var camera := self.get_node("Pivot/Camera3D")
 var mouse_pos = 0
 var mouse_sensitivity = 0.01
 var controller_sensitivity = 0.07
 
-# Variables used for actions
+## Variables used for actions
 @onready var timer = self.get_node("CoyoteTimer")
 var was_on_floor
 
-## Might use, needs more testing.
-#func _ready() -> void:
-#	camera.get_node("SawedOff/SawedOffBody").body_entered.connect(body_entered)
-#	camera.get_node("SawedOff/SawedOffBody").body_exited.connect(body_exited)
-#
-#func body_entered(body):
-#	print("SawedOff clipped")
-#	if !body.collision_layer == pow(2, 21-1):
-#		camera.get_node('SawedOff').transform = camera.get_node('SawedOff').transform.translated(Vector3(0, 0, 0.4))
-#
-#func body_exited(body):
-#	print("SawedOff freed")
-#	if !body.collision_layer == pow(2, 21-1):
-#		camera.get_node('SawedOff').transform = camera.get_node('SawedOff').transform.translated(Vector3(0, 0, -0.4))
 
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton:
@@ -71,13 +72,14 @@ func _unhandled_input(event: InputEvent):
 
 func _physics_process(delta):
 	## Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-
+	if !is_on_floor():
+		velocity.y -= gravity * delta + 0.1
+	
 	## Handle Jump.
 	if Input.is_action_just_pressed('player-%s_jump' % id) and (is_on_floor() or !timer.is_stopped()):
-		velocity.y = JUMP_SPEED * (delta + 1)
-
+		can_snap_down = false
+		velocity.y = JUMP_SPEED * (delta + 0.75)
+	
 	## Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector(
 		'player-%s_strafe_left' % id,
@@ -90,16 +92,50 @@ func _physics_process(delta):
 	## Also used for coyote time
 	if is_on_floor():
 		was_on_floor = true 
+		can_snap_down = true
 	else:
 		was_on_floor = false
 	
 	var direction = (self.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	if input_dir.x == 0 and input_dir.y == 0:
+		step_detect.rotation.y = deg_to_rad(0.0)
 	
 	## Check if a direction is available for movement
 	if direction:
 		## Apply velocity for horizontal movement
 		velocity.x = direction.x * cur_speed
 		velocity.z = direction.z * cur_speed
+		
+		if input_dir.x > 0:
+			if input_dir.y > 0:
+				step_detect.rotation.y = deg_to_rad(225.0)
+			if input_dir.y < 0:
+				step_detect.rotation.y = deg_to_rad(325.0)
+			if input_dir.y == 0:
+				step_detect.rotation.y = deg_to_rad(270.0)
+		if input_dir.x < 0:
+			if input_dir.y > 0:
+				step_detect.rotation.y = deg_to_rad(125.0)
+			if input_dir.y < 0:
+				step_detect.rotation.y = deg_to_rad(25.0)
+			if input_dir.y == 0:
+				step_detect.rotation.y = deg_to_rad(90.0)
+		if input_dir.y > 0:
+			if input_dir.x > 0:
+				step_detect.rotation.y = deg_to_rad(225.0)
+			if input_dir.x < 0:
+				step_detect.rotation.y = deg_to_rad(125.0)
+			if input_dir.x == 0:
+				step_detect.rotation.y = deg_to_rad(180.0)
+		if input_dir.y < 0:
+			if input_dir.x > 0:
+				step_detect.rotation.y = deg_to_rad(325.0)
+			if input_dir.x < 0:
+				step_detect.rotation.y = deg_to_rad(25.0)
+			if input_dir.x == 0:
+				step_detect.rotation.y = deg_to_rad(0.0)g
+		
 	else:
 		## Neutralize movement otherwise
 		velocity.x = move_toward(velocity.x, 0, cur_speed)
@@ -118,22 +154,53 @@ func _physics_process(delta):
 	if was_on_floor and !is_on_floor():
 		timer.start()
 	
+	if !is_on_floor(): snap_down()
 
 
 func fire():
-	## Prepare bullet instances
-	var shot1 = bullet.instantiate()
-	var shot2 = bullet.instantiate()
+	## Prepare sawed_off_bullet instances
+	var shot1 = sawed_off_bullet.instantiate()
+	var shot2 = sawed_off_bullet.instantiate()
 	
-	## Add bullet instances to the world
+	## Add sawed_off_bullet instances to the world
 	get_tree().root.get_node("/root/Node3D/NavigationRegion3D/QodotMap").add_child(shot1)
 	get_tree().root.get_node("/root/Node3D/NavigationRegion3D/QodotMap").add_child(shot2)
 	
-	## Set bullets to appropriate position
+	## Set sawed_off_bullets to appropriate position
 	shot1.transform = camera.get_node("SawedOffBody/SawedOff/Muzzle").global_transform.translated(Vector3(0.2, 0, 0))
 	shot2.transform = camera.get_node("SawedOffBody/SawedOff/Muzzle").global_transform.translated(Vector3(-0.2, 0, 0))
 	
 	## FIRE!
-	## Launch bullets through a central impulse
+	## Launch sawed_off_bullets through a central impulse
 	shot1.apply_central_impulse(-camera.get_node("SawedOffBody/SawedOff/Muzzle").global_transform.basis.z * 80)
 	shot2.apply_central_impulse(-camera.get_node("SawedOffBody/SawedOff/Muzzle").global_transform.basis.z * 80)
+
+func snap_down():
+	if can_snap_down == true:
+		can_step_up = false
+		if snap_detect.is_colliding() == true:
+			var body = snap_detect
+			if body.get_collider().get_child(0).get_aabb().size.y <= 1.25:
+				if global_position.distance_to(body.get_collision_point()) > 3.45 and global_position.distance_to(body.get_collision_point()) < 3.8:
+					global_position = global_position.move_toward(body.get_collision_point(), 0.15)
+		stair_timer.start()
+		timer_start_from = false
+
+func step_up(body: Node3D) -> void:
+	if can_step_up == true:
+		can_snap_down = false
+		var step = body
+		print(step.get_child(0).get_aabb().size.y)
+		if step.get_child(0).get_aabb().size.y <= 1.25:
+			global_position.y = global_position.move_toward(step.global_position, 0.2).y + 0.75
+			#translate_object_local(Vector3(-step.global_transform.basis.z.x, -step.global_transform.basis.z.y, -step.global_transform.basis.z.z / 1.75))
+			## Might be useful // saving for later
+			#translate_object_local(Vector3(-step.global_transform.basis.z * 3)
+		stair_timer.start()
+		timer_start_from = true
+
+func _on_stair_timer_timeout() -> void:
+	if timer_start_from == true:
+		can_snap_down = true
+	if timer_start_from == false:
+		can_step_up = true

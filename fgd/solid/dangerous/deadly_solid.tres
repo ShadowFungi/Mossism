@@ -20,5 +20,5 @@ class_properties = {}
 class_property_descriptions = {}
 meta_properties = {}
 node_options = "----------------------------------------------------------------"
-node_class = ""
+node_class = "Area3D"
 transient_node = false
