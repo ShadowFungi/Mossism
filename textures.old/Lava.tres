@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dj3atti3kerxb"]
-
-[ext_resource type="Texture2D" uid="uid://bkm743rqf334g" path="res://old_textures.old/Lava.png" id="1_i3k2c"]
-
-[resource]
-diffuse_mode = 2
-specular_mode = 2
-albedo_texture = ExtResource("1_i3k2c")
-texture_filter = 0

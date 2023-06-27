@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cc6465pyqucmw"]
-
-[ext_resource type="Texture2D" uid="uid://cwblk7lpuu0w6" path="res://old_textures.old/GreenBricks.png" id="1_h1e17"]
-
-[resource]
-diffuse_mode = 2
-specular_mode = 2
-albedo_texture = ExtResource("1_h1e17")
-texture_filter = 0

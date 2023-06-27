@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://vv65soud1hwi"]
-
-[ext_resource type="Texture2D" uid="uid://8gg2pravkeob" path="res://textures/WoodFlooring.png" id="1_7il4s"]
-
-[resource]
-diffuse_mode = 2
-specular_mode = 2
-albedo_texture = ExtResource("1_7il4s")
-texture_filter = 0
