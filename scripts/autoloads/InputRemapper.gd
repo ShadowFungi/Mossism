@@ -1,6 +1,7 @@
 extends Node
 
 var conf = ConfigFile.new()
+var keycode = InputEventKey.new()
 
 @export var forward : Key
 @export var back : Key
@@ -77,3 +78,23 @@ func load_map(map):
 func import_map(map: String):
 	conf.load(map)
 	load_map(map)
+
+
+func import_map_web(map: String):
+	var split_map = map.split("\n", false)
+	print(String(split_map[0]).to_int())
+	print(Keycodes.keys[String(split_map[1]).to_int()])
+	forward = Keycodes.keys[String(split_map[2]).to_int()]
+	back = Keycodes.keys[String(split_map[3]).to_int()]
+	strafe_left = Keycodes.keys[String(split_map[4]).to_int()]
+	strafe_right = Keycodes.keys[String(split_map[5]).to_int()]
+	jump = Keycodes.keys[String(split_map[6]).to_int()]
+	pause_native = Keycodes.keys[String(split_map[7]).to_int()]
+	pause_web =Keycodes.keys[String(split_map[8]).to_int()]
+	interact = Keycodes.keys[String(split_map[9]).to_int()]
+	tool_key = Keycodes.keys[String(split_map[10]).to_int()]
+	aim_key = Keycodes.keys[String(split_map[11]).to_int()]
+	
+	tool_mouse = Keycodes.keys[String(split_map[12]).to_int()]
+	aim_mouse = Keycodes.keys[String(split_map[13]).to_int()]
+	Keyboard.load_new_map()

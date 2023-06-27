@@ -17,9 +17,9 @@ extends Control
 @onready var general_opts = SceneManager.create_general_options(color, timeout, clickable, add_to_back)
 
 # Set button variables
-@onready var quit_button = get_node("HBoxContainer/VBoxContainer/QuitButton")
-@onready var play_button = get_node("HBoxContainer/VBoxContainer/PlayButton")
-@onready var options_button = get_node("HBoxContainer/VBoxContainer/OptionsButton")
+@onready var quit_button = get_node("HBoxContainer/VBoxContainer/MarginContainer3/QuitButton")
+@onready var play_button = get_node("HBoxContainer/VBoxContainer/MarginContainer/PlayButton")
+@onready var options_button = get_node("HBoxContainer/VBoxContainer/MarginContainer2/OptionsButton")
 
 
 func _ready() -> void:

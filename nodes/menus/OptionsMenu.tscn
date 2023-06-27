@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbceyy600jouo"]
+[gd_scene load_steps=7 format=3 uid="uid://cbceyy600jouo"]
 
+[ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_4y5vp"]
 [ext_resource type="Script" path="res://scripts/menus/OptionsMenu.gd" id="1_74say"]
+[ext_resource type="FontFile" uid="uid://b1i3j07tpbbx8" path="res://assets/fonts/terminal_grotesque/terminal-grotesque.ttf" id="3_rueyx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egh6j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2as51"]
+
+[sub_resource type="FontVariation" id="FontVariation_fp7ly"]
+base_font = ExtResource("3_rueyx")
 
 [node name="OptionsMenu" type="Control"]
 process_mode = 3
@@ -10,40 +19,75 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_4y5vp")
 script = ExtResource("1_74say")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_egh6j")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_2as51")
+tab_alignment = 1
+
+[node name="KEYMAPS" type="HBoxContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 6
 alignment = 1
 
-[node name="ImportKeyMapButton" type="Button" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Import Key Map"
-
-[node name="LoadKeyMapButton" type="OptionButton" parent="HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer"]
 layout_mode = 2
 
-[node name="SaveKeyMapButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="ImportKeyMapButton" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "IMPORT KEY MAP"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer"]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="LoadKeyMapButton" type="OptionButton" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_fp7ly")
+item_count = 1
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "DEFAULT KEY MAP"
+popup/item_0/id = 0
+popup/item_0/separator = true
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveKeyMapButton" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+text = "SAVE KEY MAP"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(138, 53)
+layout_mode = 2
+anchor_right = 0.107813
+anchor_bottom = 0.0736111
+metadata/_edit_use_anchors_ = true
+
+[node name="BackButton" type="Button" parent="MarginContainer2"]
 layout_mode = 2
 text = "BACK"
 
 [node name="ImportKeyMap" type="FileDialog" parent="."]
 initial_position = 1
-title = "Select a KeyMap to import"
+title = "Open a File"
 size = Vector2i(628, 400)
 ok_button_text = "Open"
 file_mode = 0
@@ -58,9 +102,9 @@ ok_button_text = "Save KeyMap"
 access = 2
 filters = PackedStringArray("*.cfg")
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ImportKeyMapButton" to="." method="_on_import_key_map_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/LoadKeyMapButton" to="." method="_on_load_key_map_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/SaveKeyMapButton" to="." method="_on_save_key_map_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer/ImportKeyMapButton" to="." method="_on_import_key_map_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer3/LoadKeyMapButton" to="." method="_on_load_key_map_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer4/SaveKeyMapButton" to="." method="_on_save_key_map_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="file_selected" from="ImportKeyMap" to="." method="_on_import_key_map_file_selected"]
 [connection signal="file_selected" from="SaveKeyMap" to="." method="_on_save_key_map_file_selected"]

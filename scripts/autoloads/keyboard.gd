@@ -57,7 +57,7 @@ func _ready() -> void:
 		var pause_action : String = "player-{n}_pause".format({"n":0})
 		var pause_action_event : InputEventKey
 		pause_action_event = InputEventKey.new()
-		if OS.get_name() == "HTML5":
+		if OS.has_feature('web'):
 			pause_action_event.keycode = InputRemapper.pause_web
 		else:
 			pause_action_event.keycode = InputRemapper.pause_native

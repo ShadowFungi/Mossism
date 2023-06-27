@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://7bpcvyff58dq"]
+[gd_scene load_steps=5 format=3 uid="uid://7bpcvyff58dq"]
 
 [ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_sugyd"]
 [ext_resource type="Script" path="res://scripts/menus/start/StartMenu.gd" id="2_4rstc"]
 [ext_resource type="Texture2D" uid="uid://bkxajnkyo1exf" path="res://assets/menus/MainMenuBackground.png" id="2_55md8"]
 [ext_resource type="PackedScene" uid="uid://cbceyy600jouo" path="res://nodes/menus/OptionsMenu.tscn" id="4_jldj4"]
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_vahyk"]
-color = Color(0, 0, 0, 0)
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -40,30 +37,33 @@ grow_vertical = 2
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 text = "PLAY"
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
-theme_override_styles/separator = SubResource("StyleBoxLine_vahyk")
 
-[node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 text = "OPTIONS"
 
-[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
-theme_override_styles/separator = SubResource("StyleBoxLine_vahyk")
 
-[node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer3"]
 layout_mode = 2
 text = "SURRENDER"
+
+[node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="OptionsMenu" parent="." instance=ExtResource("4_jldj4")]
 visible = false
