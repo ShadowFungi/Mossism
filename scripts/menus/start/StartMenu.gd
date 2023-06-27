@@ -19,6 +19,8 @@ extends Control
 # Set button variables
 @onready var quit_button = get_node("HBoxContainer/VBoxContainer/QuitButton")
 @onready var play_button = get_node("HBoxContainer/VBoxContainer/PlayButton")
+@onready var options_button = get_node("HBoxContainer/VBoxContainer/OptionsButton")
+
 
 func _ready() -> void:
 	var fade_in_scene_opts = SceneManager.create_options(1, "fade")
@@ -30,6 +32,13 @@ func _ready() -> void:
 	# Connect buttons to appropriate functions
 	quit_button.pressed.connect(get_tree().quit)
 	play_button.pressed.connect(play_pressed)
+	options_button.pressed.connect(options_pressed)
+
 
 func play_pressed():
 	SceneManager.change_scene(play_button_scene, fade_out_opts, fade_in_opts, general_opts)
+
+
+func options_pressed() -> void:
+	$OptionsMenu.show()
+	$HBoxContainer.hide()

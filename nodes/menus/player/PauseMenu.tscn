@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhe4g8hhy6h80"]
+[gd_scene load_steps=7 format=3 uid="uid://bhe4g8hhy6h80"]
 
 [ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_0rmq2"]
 [ext_resource type="Script" path="res://scripts/menus/player/PauseMenu.gd" id="2_1un1t"]
+[ext_resource type="PackedScene" uid="uid://cbceyy600jouo" path="res://nodes/menus/OptionsMenu.tscn" id="3_nlq0s"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_mt5kr"]
 color = Color(0, 0, 0, 0)
@@ -87,5 +88,9 @@ process_mode = 3
 layout_mode = 2
 tooltip_text = "QUIT"
 text = "SURRENDER"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("3_nlq0s")]
+visible = false
+layout_mode = 1
 
 [node name="Timer" type="Timer" parent="."]

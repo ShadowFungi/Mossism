@@ -134,7 +134,7 @@ func _physics_process(delta):
 			if input_dir.x < 0:
 				step_detect.rotation.y = deg_to_rad(25.0)
 			if input_dir.x == 0:
-				step_detect.rotation.y = deg_to_rad(0.0)g
+				step_detect.rotation.y = deg_to_rad(0.0)
 		
 	else:
 		## Neutralize movement otherwise
@@ -142,7 +142,7 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, cur_speed)
 	
 	## Check if the player is trying to use a tool
-	if Input.is_action_just_pressed('player-%s_tool' % id) && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+	if Input.is_action_just_pressed('player-%s_tool_mouse' % id) && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED or Input.is_action_just_pressed('player-%s_tool_key' % id):
 		## If so starts appropriate function
 		fire()
 		velocity += pivot.global_transform.basis.z * 2
@@ -190,7 +190,7 @@ func step_up(body: Node3D) -> void:
 	if can_step_up == true:
 		can_snap_down = false
 		var step = body
-		print(step.get_child(0).get_aabb().size.y)
+		#print(step.get_child(0).get_aabb().size.y)
 		if step.get_child(0).get_aabb().size.y <= 1.25:
 			global_position.y = global_position.move_toward(step.global_position, 0.2).y + 0.75
 			#translate_object_local(Vector3(-step.global_transform.basis.z.x, -step.global_transform.basis.z.y, -step.global_transform.basis.z.z / 1.75))

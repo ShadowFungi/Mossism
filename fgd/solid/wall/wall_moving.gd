@@ -60,7 +60,7 @@ func play_motion() -> void:
 	target_transform.origin.x = snapped(temp_transform.origin.x, 0.1)
 	target_transform.origin.y = snapped(temp_transform.origin.y, 0.1)
 	target_transform.origin.z = snapped(temp_transform.origin.z, 0.1)
-	print(target_transform)
+	#print(target_transform)
 	Level.map_baked = false
 
 
@@ -74,7 +74,7 @@ func reverse_motion() -> void:
 func motion_ended() -> void:
 	if snapped(transform.origin.z, 0.1) == target_transform.origin.z or snapped(transform.origin.y, 0.1) == target_transform.origin.y or snapped(transform.origin.x, 0.1) == target_transform.origin.x:
 		if Level.map_bake_ended != false:
-			print("success")
+			#print("success")
 			self.add_to_group("ground", true)
 			navmeshi.bake_navigation_mesh(true)
 			Level.map_baked = true

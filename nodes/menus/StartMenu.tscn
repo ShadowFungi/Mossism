@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://7bpcvyff58dq"]
+[gd_scene load_steps=6 format=3 uid="uid://7bpcvyff58dq"]
 
 [ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_sugyd"]
 [ext_resource type="Script" path="res://scripts/menus/start/StartMenu.gd" id="2_4rstc"]
 [ext_resource type="Texture2D" uid="uid://bkxajnkyo1exf" path="res://assets/menus/MainMenuBackground.png" id="2_55md8"]
+[ext_resource type="PackedScene" uid="uid://cbceyy600jouo" path="res://nodes/menus/OptionsMenu.tscn" id="4_jldj4"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_vahyk"]
 color = Color(0, 0, 0, 0)
@@ -63,3 +64,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_vahyk")
 [node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "SURRENDER"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("4_jldj4")]
+visible = false
+layout_mode = 1
