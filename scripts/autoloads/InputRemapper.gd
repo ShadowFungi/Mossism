@@ -82,8 +82,8 @@ func import_map(map: String):
 
 func import_map_web(map: String):
 	var split_map = map.split("\n", false)
-	print(String(split_map[0]).to_int())
-	print(Keycodes.keys[String(split_map[1]).to_int()])
+	#print(String(split_map[0]).to_int())
+	#print(Keycodes.keys[String(split_map[1]).to_int()])
 	forward = Keycodes.keys[String(split_map[2]).to_int()]
 	back = Keycodes.keys[String(split_map[3]).to_int()]
 	strafe_left = Keycodes.keys[String(split_map[4]).to_int()]

@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://ba3cip55sj4ou"]
+[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://fyy3l1ycptgy"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="2_8gywo"]
-[ext_resource type="Script" path="res://scripts/entities/fgd/wall_moving.gd" id="2_e76oc"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_5xrxg"]
+[ext_resource type="Script" path="res://scripts/entities/fgd/deadly_illusion.gd" id="2_betrc"]
 
 [resource]
-script = ExtResource("2_8gywo")
+script = ExtResource("1_5xrxg")
 spawn = "----------------------------------------------------------------"
 spawn_type = 2
 visual_build = "----------------------------------------------------------------"
@@ -12,20 +12,25 @@ build_visuals = true
 collision_build = "----------------------------------------------------------------"
 collision_shape_type = 1
 scripting = "----------------------------------------------------------------"
-script_class = ExtResource("2_e76oc")
+script_class = ExtResource("2_betrc")
 class_options = "----------------------------------------------------------------"
-classname = "wall_moving"
-description = "A wall that moves"
+classname = "dangerous_deadly_illusion"
+description = "the player will die if they touch this"
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"rotation": Vector3(0, 0, 0),
-"scale": Vector3(1, 1, 1),
-"speed": 0.0,
-"translation": Vector3(0, 0, 0)
+"damage_type": "",
+"layer_eight": 0,
+"layer_five": 0,
+"layer_four": 0,
+"layer_one": 0,
+"layer_seven": 0,
+"layer_six": 0,
+"layer_three": 0,
+"layer_two": 0
 }
 class_property_descriptions = {}
 meta_properties = {}
 node_options = "----------------------------------------------------------------"
-node_class = "CharacterBody3D"
+node_class = "Area3D"
 transient_node = false

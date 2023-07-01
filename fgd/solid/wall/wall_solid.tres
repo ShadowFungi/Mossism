@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://ck2x6kl314052"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_genqo"]
-[ext_resource type="Script" path="res://fgd/solid/wall/wall_solid.gd" id="2_4k2ij"]
+[ext_resource type="Script" path="res://scripts/entities/fgd/wall_solid.gd" id="2_4k2ij"]
 
 [resource]
 script = ExtResource("1_genqo")

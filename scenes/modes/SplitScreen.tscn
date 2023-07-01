@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://bl5k4opsieliy"]
+
+[ext_resource type="Script" path="res://scripts/levels/the_pit.gd" id="1_dmid3"]
+[ext_resource type="CameraAttributesPractical" uid="uid://gkwjgf6vkw8d" path="res://styles/camera_attributes/player.tres" id="2_mfrh2"]
+[ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="3_jcn2s"]
+[ext_resource type="PackedScene" uid="uid://d0g2otvsh4qxm" path="res://nodes/player/Player.tscn" id="4_6qlac"]
+[ext_resource type="PackedScene" uid="uid://cmsdyakbquy16" path="res://scenes/levels/ThePit.tscn" id="5_fct7e"]
+
+[sub_resource type="World3D" id="World3D_wecad"]
+environment = ExtResource("3_jcn2s")
+camera_attributes = ExtResource("2_mfrh2")
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_n2ieb"]
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"ground"
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_dmid3")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GridContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer"]
+world_3d = SubResource("World3D_wecad")
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+use_occlusion_culling = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Character" parent="GridContainer/SubViewportContainer/SubViewport" instance=ExtResource("4_6qlac")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22, 24.165, -13)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="GridContainer/SubViewportContainer/SubViewport"]
+process_mode = 1
+navigation_mesh = SubResource("NavigationMesh_n2ieb")
+
+[node name="ThePit" parent="GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D" instance=ExtResource("5_fct7e")]

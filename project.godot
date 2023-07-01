@@ -10,14 +10,15 @@ config_version=5
 
 [application]
 
-config/name="Mossism-qodot"
+config/name="Mossism"
 run/main_scene="res://nodes/menus/StartMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Mossism/"
-config/features=PackedStringArray("4.0", "C#", "Forward Plus")
+config/features=PackedStringArray("4.0", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 0)
+boot_splash/image="res://assets/menus/BootSplash.png"
 boot_splash/use_filter=false
-config/icon="res://icon.svg"
+config/icon="res://logo.svg"
 
 [audio]
 
@@ -32,6 +33,7 @@ SceneManager="*res://addons/scene_manager/scene_manager.tscn"
 Scenes="*res://addons/scene_manager/scenes.gd"
 InputRemapper="*res://scripts/autoloads/InputRemapper.gd"
 Keycodes="*res://scripts/autoloads/keycodes.gd"
+SpawnPlayer="*res://scripts/autoloads/SpawnPlayer.gd"
 
 [display]
 
@@ -39,7 +41,6 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
-window/stretch/aspect="ignore"
 
 [dotnet]
 

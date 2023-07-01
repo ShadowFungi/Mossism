@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=38 format=3 uid="uid://o8pjo3ilr2b6"]
+[gd_resource type="Theme" load_steps=39 format=3 uid="uid://o8pjo3ilr2b6"]
 
 [ext_resource type="FontFile" uid="uid://b1i3j07tpbbx8" path="res://assets/fonts/terminal_grotesque/terminal-grotesque.ttf" id="1_pmejq"]
 
@@ -167,7 +167,7 @@ corner_radius_top_left = 4
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="Image" id="Image_5w4o4"]
+[sub_resource type="Image" id="Image_jnywd"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 179, 179, 179, 163, 178, 178, 178, 166, 184, 184, 184, 18, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 184, 184, 184, 18, 178, 178, 178, 166, 178, 178, 178, 166, 255, 255, 255, 0, 255, 255, 255, 0, 177, 177, 177, 173, 178, 178, 178, 217, 177, 177, 177, 179, 184, 184, 184, 18, 255, 255, 255, 0, 255, 255, 255, 0, 184, 184, 184, 18, 178, 178, 178, 179, 178, 178, 178, 217, 178, 178, 178, 172, 255, 255, 255, 0, 255, 255, 255, 0, 175, 175, 175, 19, 178, 178, 178, 181, 178, 178, 178, 217, 177, 177, 177, 179, 184, 184, 184, 18, 184, 184, 184, 18, 178, 178, 178, 179, 178, 178, 178, 217, 179, 179, 179, 180, 175, 175, 175, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 175, 175, 175, 19, 178, 178, 178, 181, 178, 178, 178, 217, 177, 177, 177, 179, 178, 178, 178, 179, 178, 178, 178, 217, 179, 179, 179, 180, 175, 175, 175, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 175, 175, 175, 19, 178, 178, 178, 181, 178, 178, 178, 217, 178, 178, 178, 217, 179, 179, 179, 180, 175, 175, 175, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 175, 175, 175, 19, 178, 178, 178, 169, 178, 178, 178, 168, 175, 175, 175, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -177,7 +177,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_el643"]
-image = SubResource("Image_5w4o4")
+image = SubResource("Image_jnywd")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blsjb"]
 bg_color = Color(0.254902, 0.337255, 0.188235, 1)
@@ -257,6 +257,24 @@ border_color = Color(0.0941176, 0.219608, 0.192157, 1)
 corner_radius_top_right = 14
 corner_radius_bottom_left = 14
 corner_detail = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_entg0"]
+bg_color = Color(0.235294, 0.329412, 0.0784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.27451, 0.388235, 0.337255, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_detail = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0.164706, 0.0745098, 0.0745098, 0.6)
+shadow_size = 2
+shadow_offset = Vector2(0, -1)
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbq23"]
@@ -482,6 +500,7 @@ OptionButton/styles/normal_mirrored = null
 OptionButton/styles/pressed = SubResource("StyleBoxFlat_h37al")
 OptionButton/styles/pressed_mirrored = null
 Panel/styles/panel = SubResource("StyleBoxFlat_xfehe")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_entg0")
 PopupMenu/constants/h_separation = 6
 PopupMenu/constants/indent = 12
 PopupMenu/constants/v_separation = 6

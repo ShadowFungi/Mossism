@@ -21,13 +21,13 @@ func _ready() -> void:
 	js_select_define()
 
 func _on_import_key_map_button_pressed() -> void:
-	print(OS.get_name())
-	print(OS.has_feature('web'))
+	#print(OS.get_name())
+	#print(OS.has_feature('web'))
 	if OS.has_feature('web'):
 		JavaScriptBridge.eval("upload_map();", true)
 		await gui_input
-		print(JavaScriptBridge.eval("fileName;", true))
-		print(JavaScriptBridge.eval("fileData;", true))
+		#print(JavaScriptBridge.eval("fileName;", true))
+		#print(JavaScriptBridge.eval("fileData;", true))
 		InputRemapper.import_map_web(JavaScriptBridge.eval("fileData;", true))
 	else: $ImportKeyMap.show()
 

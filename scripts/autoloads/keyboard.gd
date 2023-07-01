@@ -2,10 +2,14 @@ extends Node
 
 var total_players : int = 0
 var player_instances : Array
+var player_id : Array
 var ids : Dictionary = {
-	"player":{}
+	"player0" : 0
 }
 var num : int
+var player_nodes : Array = [
+	"/root/Node3D/GridContainer/SubViewportContainer/SubViewport/Character"
+]
 
 # Setup input bindings for player 0
 func _ready() -> void:

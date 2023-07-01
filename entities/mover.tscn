@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dw4q2uvk2nx7a"]
 
-[ext_resource type="Script" path="res://scripts/entities/mover.gd" id="1_q8qsv"]
+[ext_resource type="Script" path="res://scripts/entities/fgd/mover.gd" id="1_q8qsv"]
 
 [node name="mover" type="CharacterBody3D"]
 script = ExtResource("1_q8qsv")

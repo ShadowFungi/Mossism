@@ -1,8 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhe4g8hhy6h80"]
+[gd_scene load_steps=9 format=3 uid="uid://bhe4g8hhy6h80"]
 
 [ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_0rmq2"]
 [ext_resource type="Script" path="res://scripts/menus/player/PauseMenu.gd" id="2_1un1t"]
 [ext_resource type="PackedScene" uid="uid://cbceyy600jouo" path="res://nodes/menus/OptionsMenu.tscn" id="3_nlq0s"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_nww5c"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_10myb"]
+events = [SubResource("InputEventKey_nww5c")]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_mt5kr"]
 color = Color(0, 0, 0, 0)
@@ -52,7 +59,10 @@ alignment = 1
 [node name="ResumeButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
 action_mode = 0
+shortcut = SubResource("Shortcut_10myb")
 text = "RESUME"
 
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
@@ -72,7 +82,7 @@ layout_mode = 2
 theme_override_constants/separation = 12
 theme_override_styles/separator = SubResource("StyleBoxLine_1nstg")
 
-[node name="MainMenuButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="MenuButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 text = "MENU"

@@ -13,7 +13,7 @@ var offset_transform: Transform3D
 var target_transform: Transform3D
 var final_transform: Transform3D
 
-@onready var navmeshi = get_tree().root.get_node("/root/Node3D/NavigationRegion3D")
+@onready var navmeshi = get_tree().root.get_node("/root/Node3D/GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D")
 
 var speed := 1.0
 
@@ -49,7 +49,8 @@ func _init() -> void:
 
 func _ready() -> void:
 	var navmesh = Callable(self, "_baked")
-	navmeshi.connect("bake_finished", navmesh)
+	if navmeshi:
+		navmeshi.connect("bake_finished", navmesh)
 
 func use() -> void:
 	play_motion()

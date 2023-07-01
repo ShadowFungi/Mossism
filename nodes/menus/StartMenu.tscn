@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://7bpcvyff58dq"]
+[gd_scene load_steps=7 format=3 uid="uid://7bpcvyff58dq"]
 
 [ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_sugyd"]
 [ext_resource type="Script" path="res://scripts/menus/start/StartMenu.gd" id="2_4rstc"]
 [ext_resource type="Texture2D" uid="uid://bkxajnkyo1exf" path="res://assets/menus/MainMenuBackground.png" id="2_55md8"]
 [ext_resource type="PackedScene" uid="uid://cbceyy600jouo" path="res://nodes/menus/OptionsMenu.tscn" id="4_jldj4"]
+[ext_resource type="Texture2D" uid="uid://b26r6ynmce02t" path="res://logo.svg" id="5_056ny"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k3ysy"]
 
 [node name="StartMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_sugyd")
 script = ExtResource("2_4rstc")
-play_button_scene = "the_pit"
+play_button_scene = "SplitScreen"
 options_button_scene = "OptionsMenu"
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -28,6 +32,7 @@ texture = ExtResource("2_55md8")
 stretch_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1280, 720)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,7 +44,28 @@ alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
-alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_k3ysy")
+
+[node name="MarginContainer5" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(175, 175)
+layout_mode = 2
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer/MarginContainer5"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(170, 170)
+layout_mode = 2
+texture = ExtResource("5_056ny")
+stretch_mode = 5
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+theme_override_styles/separator = SubResource("StyleBoxEmpty_k3ysy")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -61,9 +87,6 @@ layout_mode = 2
 [node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer3"]
 layout_mode = 2
 text = "SURRENDER"
-
-[node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
 
 [node name="OptionsMenu" parent="." instance=ExtResource("4_jldj4")]
 visible = false

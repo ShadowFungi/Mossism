@@ -46,10 +46,10 @@ func _ready():
 	#pause_menu = get_node("PauseMenu")
 	#timer = pause_menu.get_node("Timer")
 	
-	Controller.total_players += 1
+	#Controller.total_players += 1
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	print('player-%s' % id)
+	#print('player-%s' % id)
 
 func _physics_process(delta):
 	dir.y = 0

@@ -12,7 +12,9 @@ extends Area3D
 var layers : Dictionary
 var layer_collection : int
 
-signal trigger()
+var player : Node
+var damagable : bool = false
+var type : String = ""
 
 
 func update_properties() -> void:
@@ -32,19 +34,35 @@ func update_properties() -> void:
 		layers["seven"] = properties.layer_seven
 	if "layer_eight" in properties:
 		layers["eight"] = properties.layer_eight
+	if "damage_type" in properties:
+		if properties.damage_type == "lava":
+			type = properties.damage_type
+		if properties.damage_type == "poison":
+			type = properties.damage_type
 
 
-func _ready():
+func _ready() -> void:
 	for layer in layers:
 		#print(layers[layer])
 		layer_collection += pow(2, layers[layer]-1)
 	set_collision_mask(layer_collection)
-	print(get_collision_layer())
-	print(get_collision_mask())
-	self.body_entered.connect(handle_body_entered)
+	self.body_entered.connect(body_has_entered)
+	self.body_exited.connect(body_has_exited)
 
-func handle_body_entered(body: Node):
-	if body is StaticBody3D:
-		return
-	
-	emit_signal("trigger")
+
+func body_has_entered(body: Node):
+	if body.is_in_group("player") == true:
+		player = body
+		damagable = true
+
+
+func body_has_exited(body: Node):
+	if body.is_in_group("player") == true:
+		player = null
+		damagable = false
+
+
+func _physics_process(_delta: float) -> void:
+	if damagable == true:
+		print(player)
+		player.damage(type)

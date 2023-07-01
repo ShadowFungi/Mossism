@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0g2otvsh4qxm"]
+[gd_scene load_steps=13 format=3 uid="uid://d0g2otvsh4qxm"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_y4350"]
 [ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="2_sv3mq"]
 [ext_resource type="Script" path="res://scripts/player/SawedOffBody.gd" id="3_dhlh0"]
 [ext_resource type="PackedScene" uid="uid://bhe4g8hhy6h80" path="res://nodes/menus/player/PauseMenu.tscn" id="4_ms8s8"]
 [ext_resource type="PackedScene" uid="uid://d3uacef8ml2pc" path="res://nodes/menus/player/GameOver.tscn" id="5_elqys"]
+[ext_resource type="PackedScene" uid="uid://yqh4nksms18t" path="res://nodes/player/HeadsUpDisplay.tscn" id="6_62xy7"]
 [ext_resource type="PackedScene" uid="uid://8g3p2sjmfj7e" path="res://assets/models/player/character/player.blend" id="9_2nelp"]
 [ext_resource type="PackedScene" uid="uid://b4ji8ko76a8y0" path="res://assets/models/player/tools/Sawed-off.blend" id="10_yxrsj"]
 
@@ -23,9 +24,9 @@ radius = 0.181096
 height = 1.94818
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_acydd"]
-radius = 1.02693
+radius = 0.8
 
-[node name="Character" type="CharacterBody3D"]
+[node name="Character" type="CharacterBody3D" groups=["player"]]
 process_mode = 1
 collision_layer = 1048576
 collision_mask = 3
@@ -88,7 +89,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.5, 0.25)
 wait_time = 0.095
 one_shot = true
 
+[node name="HUD" parent="." instance=ExtResource("6_62xy7")]
+
 [node name="PauseMenu" parent="." instance=ExtResource("4_ms8s8")]
+visible = false
 
 [node name="GameOver" parent="." instance=ExtResource("5_elqys")]
 visible = false
@@ -98,14 +102,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86459, 0)
 target_position = Vector3(0, -2.25, 0)
 
 [node name="StepDetection" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.792, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.00427, 0)
 disable_mode = 2
 collision_layer = 1048576
 collision_mask = 3
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StepDetection"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.771633)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.766727)
 shape = SubResource("SphereShape3D_acydd")
 
 [node name="StairTimer" type="Timer" parent="."]

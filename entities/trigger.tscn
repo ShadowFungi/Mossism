@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://deglaa3vuql6q"]
 
-[ext_resource type="Script" path="res://scripts/entities/trigger.gd" id="1_xhqsl"]
+[ext_resource type="Script" path="res://scripts/entities/fgd/trigger.gd" id="1_xhqsl"]
 
 [node name="Area3D" type="Area3D"]
 script = ExtResource("1_xhqsl")

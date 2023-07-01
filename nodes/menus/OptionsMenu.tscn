@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbceyy600jouo"]
+[gd_scene load_steps=6 format=3 uid="uid://cbceyy600jouo"]
 
 [ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_4y5vp"]
 [ext_resource type="Script" path="res://scripts/menus/OptionsMenu.gd" id="1_74say"]
@@ -6,6 +6,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egh6j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2as51"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvsfi"]
 
 [node name="OptionsMenu" type="Control"]
 process_mode = 3
@@ -43,13 +45,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer"]
-layout_mode = 2
-
-[node name="ImportKeyMapButton" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer"]
-layout_mode = 2
-text = "IMPORT KEY MAP"
-
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer"]
 layout_mode = 2
 
@@ -62,12 +57,247 @@ popup/item_0/text = "DEFAULT KEY MAP"
 popup/item_0/id = 0
 popup/item_0/separator = true
 
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer"]
+layout_mode = 2
+
+[node name="ImportKeyMapButton" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "IMPORT KEY MAP"
+
 [node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer"]
 layout_mode = 2
 
 [node name="SaveKeyMapButton" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer4"]
 layout_mode = 2
 text = "SAVE KEY MAP"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "REMAP KEYS"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TabContainer/KEYMAPS"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Forward" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Forward"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Forward/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Forward/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "FORWARD"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Forward/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 52
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Forward/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "W"
+
+[node name="Backward" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Backward"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Backward/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Backward/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BACKWARD"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Backward/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 43
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Backward/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "S"
+
+[node name="Left" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Left"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Left/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Left/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "LEFT"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Left/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 106
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Left/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "A"
+
+[node name="Right" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Right"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Right/PanelContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Right/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "RIGHT"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Right/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 96
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Right/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "D"
+
+[node name="ShootKey" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootKey"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootKey/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootKey/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SHOOT KEY"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootKey/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 43
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootKey/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Q"
+
+[node name="Jump" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Jump"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Jump/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Jump/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "JUMP"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Jump/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 51
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Jump/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "SPACE"
+
+[node name="ShootMouse" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootMouse"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootMouse/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootMouse/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SHOOT"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootMouse/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootMouse/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Left Click"
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(138, 53)
@@ -97,8 +327,8 @@ ok_button_text = "Save KeyMap"
 access = 2
 filters = PackedStringArray("*.cfg")
 
-[connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer/ImportKeyMapButton" to="." method="_on_import_key_map_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer3/LoadKeyMapButton" to="." method="_on_load_key_map_button_pressed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer/ImportKeyMapButton" to="." method="_on_import_key_map_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer4/SaveKeyMapButton" to="." method="_on_save_key_map_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="file_selected" from="ImportKeyMap" to="." method="_on_import_key_map_file_selected"]

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://c0wc3cl8jepqi"]
+
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_gvp6v"]
+[ext_resource type="Script" path="res://scripts/entities/fgd/player_spawner.gd" id="2_8pa58"]
+
+[resource]
+script = ExtResource("1_gvp6v")
+scene = "----------------------------------------------------------------"
+scripting = "----------------------------------------------------------------"
+script_class = ExtResource("2_8pa58")
+class_options = "----------------------------------------------------------------"
+classname = "spawner_player"
+description = "A Player spawn point"
+qodot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {
+"angle": 0.0,
+"priority": 0
+}
+class_property_descriptions = {}
+meta_properties = {
+"color": Color(0.694118, 0.160784, 0.466667, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
+node_options = "----------------------------------------------------------------"
+node_class = "Area3D"
+transient_node = false

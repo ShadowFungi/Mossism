@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=14 format=3 uid="uid://diw7s7q00uc2h"]
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=16 format=3 uid="uid://diw7s7q00uc2h"]
 
+[ext_resource type="Resource" uid="uid://fyy3l1ycptgy" path="res://fgd/solid/dangerous/deadly_illusion.tres" id="3_jj3l0"]
 [ext_resource type="Resource" uid="uid://2utlowtag63b" path="res://fgd/point/light/lantern.tres" id="5_pcgeb"]
 [ext_resource type="Resource" uid="uid://d4an230vux6yl" path="res://fgd/point/light/omni.tres" id="6_dhxca"]
 [ext_resource type="Resource" uid="uid://c04pnn132rykt" path="res://fgd/solid/ground/illusion.tres" id="6_pvtpb"]
@@ -9,10 +10,11 @@
 [ext_resource type="Resource" uid="uid://ck2x6kl314052" path="res://fgd/solid/wall/wall_solid.tres" id="9_4f8sj"]
 [ext_resource type="Resource" uid="uid://chiihlok481pv" path="res://fgd/solid/ground/ground_solid.tres" id="10"]
 [ext_resource type="Resource" uid="uid://bc52nj4mm6xlo" path="res://fgd/solid/other/trigger.tres" id="10_nj6wq"]
-[ext_resource type="Resource" uid="uid://fyy3l1ycptgy" path="res://fgd/solid/dangerous/deadly_solid.tres" id="10_xwcvy"]
 [ext_resource type="Resource" uid="uid://rbexii4bcriq" path="res://fgd/point/logic/reciever.tres" id="11_2bvfe"]
 [ext_resource type="Resource" uid="uid://nwgr8od1syub" path="res://fgd/solid/button/button_any.tres" id="11_dae1n"]
 [ext_resource type="Resource" uid="uid://cxquaj3pk21cf" path="res://fgd/point/logic/signal.tres" id="12_qu8m8"]
+[ext_resource type="Resource" uid="uid://c0wc3cl8jepqi" path="res://fgd/point/spawn/spawn_player.tres" id="13_02d1v"]
+[ext_resource type="Resource" uid="uid://cef5pn2o6v5mp" path="res://fgd/solid/other/ladder.tres" id="14_7ystr"]
 
 [resource]
 script = ExtResource("7_mvc8j")
@@ -20,4 +22,4 @@ export_file = false
 target_folder = "/mnt/crucial/MISC/LinuxPrograms/TrenchBroom/share/TrenchBroom/games/mossism-qodot_4"
 fgd_name = "Mossism"
 base_fgd_files = Array[Resource]([])
-entity_definitions = Array[Resource]([ExtResource("10"), ExtResource("8"), ExtResource("10_xwcvy"), ExtResource("5_pcgeb"), ExtResource("6_dhxca"), ExtResource("6_pvtpb"), ExtResource("8_pe283"), ExtResource("9_4f8sj"), ExtResource("10_nj6wq"), ExtResource("11_dae1n"), ExtResource("11_2bvfe"), ExtResource("12_qu8m8")])
+entity_definitions = Array[Resource]([ExtResource("10"), ExtResource("8"), ExtResource("3_jj3l0"), ExtResource("5_pcgeb"), ExtResource("6_dhxca"), ExtResource("6_pvtpb"), ExtResource("8_pe283"), ExtResource("9_4f8sj"), ExtResource("10_nj6wq"), ExtResource("11_dae1n"), ExtResource("11_2bvfe"), ExtResource("12_qu8m8"), ExtResource("13_02d1v"), ExtResource("14_7ystr")])

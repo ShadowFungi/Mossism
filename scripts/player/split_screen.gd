@@ -6,7 +6,7 @@ func _ready():
 	Input.joy_connection_changed.connect(_on_joy_connection_changed.bind())
 
 
-# Called every whenever a input device is added or removed.
+# Called whenever a input device is added or removed.
 func _on_joy_connection_changed(device_id, connected):
 	# Checks if a input device has been connected.
 	if connected:
@@ -19,9 +19,10 @@ func _on_joy_connection_changed(device_id, connected):
 
 # Called to add a new player instance.
 func add_player(player_instance, world_instance, id):
+	Keyboard.total_players += 1
 	print(id)
 	# Sets the name of the new player instance
-	player_instance.set_name("ViewportContainer_" + String(id))
+	player_instance.set_name("SubViewport_" + String(id))
 	print("set_name attempted")
 	
 	# Set instance_name variable to name of player_instance
@@ -30,14 +31,15 @@ func add_player(player_instance, world_instance, id):
 	
 	# Add basic information to autoload
 	Keyboard.player_instances.append(instance_name)
-	get_tree().root.get_node("Node/ViewContainer").add_child(player_instance)
-	get_tree().root.get_node("Node/ViewContainer/%s/Viewport" % String(instance_name))
-	get_tree().root.get_node("Node/ViewContainer/%s/Viewport/Player" % String(instance_name)).id = id
+	get_tree().root.get_node("Node3D/SubViewportContainer").add_child(player_instance)
+	get_tree().root.get_node("Node3D/SubViewportContainer/%s/Viewport" % String(instance_name))
+	get_tree().root.get_node("Node3D/SubViewportContainer/%s/Viewport/Character" % String(instance_name)).id = id
+	Keyboard.player_nodes.append(get_tree().root.get_node("Node3D/SubViewportContainer/%s/Viewport/Character" % String(instance_name)))
 	
-	
+	Keyboard.player_id[Keyboard.total_players]
 	# Run function to add key/controller bindings, if the id is not present.
-	if Keyboard.ids["players"][String(id)]:
-		Keyboard.ids["players"][String(id)] = "Node/ViewContainer/%s/Viewport/Player" % String(instance_name)
+	if Keyboard.ids["player%s" % Keyboard.total_players][String(id)] != null:
+		Keyboard.ids["player%s" % Keyboard.total_players][String(id)] = "Node/ViewContainer/%s/Viewport/Character" % String(instance_name)
 		bind_inputs(id)
 
 func bind_inputs(id):

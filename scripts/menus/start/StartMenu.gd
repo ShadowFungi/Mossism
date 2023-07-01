@@ -2,14 +2,14 @@ extends Control
 
 @export var play_button_scene : String
 @export var options_button_scene : String
-@export var fade_speed : float = 1.0
+@export var fade_speed : float = 0.2
 @export var fade_pattern : String = "fade"
 @export var fade_smoothness = 0.1
 @export var fade_out_invert : bool = true
 @export var fade_in_invert : bool = false
 @export var color : Color = Color(0, 0, 0)
 @export var timeout : float = 0.0
-@export var clickable : bool = false
+@export var clickable : bool = true
 @export var add_to_back : bool = true
 
 @onready var fade_out_opts = SceneManager.create_options(fade_speed, fade_pattern, fade_smoothness, fade_out_invert)
@@ -23,6 +23,8 @@ extends Control
 
 
 func _ready() -> void:
+	get_node('/root/SceneManager').set_process_mode(Node.PROCESS_MODE_ALWAYS)
+	get_tree().set_pause(false)
 	var fade_in_scene_opts = SceneManager.create_options(1, "fade")
 	SceneManager.show_first_scene(fade_in_scene_opts, general_opts)
 	SceneManager.validate_scene(play_button_scene)
