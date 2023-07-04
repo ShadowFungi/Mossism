@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://yqh4nksms18t"]
 
-[ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_1eu80"]
+[ext_resource type="Theme" uid="uid://chmxi4wab3f42" path="res://styles/Hud.tres" id="1_th0wk"]
 [ext_resource type="Script" path="res://scripts/player/HeadsUpDisplay.gd" id="2_tpgrf"]
 
 [node name="HUD" type="Control"]
@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme = ExtResource("1_1eu80")
+theme = ExtResource("1_th0wk")
 script = ExtResource("2_tpgrf")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

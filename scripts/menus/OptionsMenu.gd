@@ -88,3 +88,11 @@ func js_select_define():
 		true
 	)
 
+
+func _on_remap_keys_toggled(button_pressed: bool) -> void:
+	if button_pressed == true:
+		get_node('MarginContainer/TabContainer/KEYMAPS/ScrollContainer').show()
+		get_node('MarginContainer/TabContainer/KEYMAPS/ScrollContainer').set_process_unhandled_key_input(true)
+	else:
+		get_node('MarginContainer/TabContainer/KEYMAPS/ScrollContainer').hide()
+		get_node('MarginContainer/TabContainer/KEYMAPS/ScrollContainer').set_process_unhandled_key_input(false)

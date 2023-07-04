@@ -23,11 +23,15 @@ var press_signal_delay :=  0.0
 var release_signal_delay :=  0.0
 
 var overlaps := 0
+var kill_bullets : bool = 0
 
 func update_properties() -> void:
 	if 'axis' in properties:
 		axis = properties.axis.normalized()
-
+	
+	if "kill_bullets" in properties:
+		kill_bullets = properties.kill_bullets
+	
 	if 'speed' in properties:
 		speed = properties.speed
 
@@ -61,6 +65,9 @@ func _process(delta: float) -> void:
 	position = position.lerp(target_position, speed * delta)
 
 func body_shape_entered(_body_id, body: Node, _body_shape_idx: int, _self_shape_idx: int) -> void:
+	if body.is_in_group("bullet") and kill_bullets == true:
+		body.queue_free()
+	
 	if body is StaticBody3D:
 		return
 

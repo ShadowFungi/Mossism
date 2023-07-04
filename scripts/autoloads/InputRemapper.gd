@@ -3,17 +3,17 @@ extends Node
 var conf = ConfigFile.new()
 var keycode = InputEventKey.new()
 
-@export var forward : Key
-@export var back : Key
-@export var strafe_left : Key
-@export var strafe_right : Key
-@export var jump : Key
-@export var ui_cancel : Key
-@export var pause_native : Key
-@export var pause_web : Key
-@export var tool_key : Key
-@export var interact : Key
-@export var aim_key : Key
+@export var forward : Key = KEY_W
+@export var back : Key = KEY_S
+@export var strafe_left : Key = KEY_A
+@export var strafe_right : Key = KEY_D
+@export var jump : Key = KEY_SPACE
+@export var ui_cancel : Key = KEY_X
+@export var pause_native : Key = KEY_ESCAPE
+@export var pause_web : Key = KEY_TAB
+@export var tool_key : Key = KEY_Q
+@export var interact : Key = KEY_F
+@export var aim_key : Key = KEY_E
 
 @export var tool_mouse : MouseButton
 @export var aim_mouse : MouseButton

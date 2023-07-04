@@ -21,6 +21,7 @@ base_classes = Array[Resource]([])
 class_properties = {
 "axis": Vector3(0, -1, 0),
 "depth": 0.8,
+"kill_bullets": 0,
 "mask_one": 0,
 "press_signal_delay": 0.0,
 "release_delay": 0.0,
@@ -28,7 +29,9 @@ class_properties = {
 "speed": 8.0,
 "trigger_signal_delay": 0.0
 }
-class_property_descriptions = {}
+class_property_descriptions = {
+"kill_bullets": "Should bullets be killed when colliding with button. Value should be 0 or 1"
+}
 meta_properties = {}
 node_options = "----------------------------------------------------------------"
 node_class = "Area3D"

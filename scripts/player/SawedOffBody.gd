@@ -11,7 +11,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	velocity = Vector3.ZERO
 	position = position.move_toward(pos, 0.2)
-	if position.distance_to(pos) > 4:
+	if position.distance_to(pos) > 3:
 		position = pos
 	#if position.distance_to(character.origin) > 10:
 	#	position = pos

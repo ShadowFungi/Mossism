@@ -19,12 +19,15 @@ description = "A wall that moves"
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
+"reversible": 0,
 "rotation": Vector3(0, 0, 0),
 "scale": Vector3(1, 1, 1),
 "speed": 0.0,
 "translation": Vector3(0, 0, 0)
 }
-class_property_descriptions = {}
+class_property_descriptions = {
+"reversible": "Can object reverse in motion. integer boolean"
+}
 meta_properties = {}
 node_options = "----------------------------------------------------------------"
 node_class = "CharacterBody3D"

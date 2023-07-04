@@ -1,13 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbceyy600jouo"]
+[gd_scene load_steps=9 format=3 uid="uid://cbceyy600jouo"]
 
 [ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_4y5vp"]
 [ext_resource type="Script" path="res://scripts/menus/OptionsMenu.gd" id="1_74say"]
+[ext_resource type="Script" path="res://scripts/menus/KeymapGUI.gd" id="3_otn8f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egh6j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2as51"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvsfi"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_eb6xf"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_qmjsv"]
+events = [SubResource("InputEventKey_eb6xf")]
 
 [node name="OptionsMenu" type="Control"]
 process_mode = 3
@@ -74,17 +82,19 @@ text = "SAVE KEY MAP"
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer2"]
+[node name="Button" type="CheckBox" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 text = "REMAP KEYS"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TabContainer/KEYMAPS"]
+visible = false
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 4
 follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
+script = ExtResource("3_otn8f")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer"]
 layout_mode = 2
@@ -112,6 +122,7 @@ text = "FORWARD"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Forward/PanelContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 52
 theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
 
@@ -270,35 +281,6 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
 layout_mode = 2
 text = "SPACE"
 
-[node name="ShootMouse" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootMouse"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootMouse/PanelContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootMouse/PanelContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "SHOOT"
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootMouse/PanelContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
-
-[node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootMouse/PanelContainer/HBoxContainer"]
-layout_mode = 2
-text = "Left Click"
-
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(138, 53)
 layout_mode = 2
@@ -308,6 +290,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BackButton" type="Button" parent="MarginContainer2"]
 layout_mode = 2
+shortcut = SubResource("Shortcut_qmjsv")
 text = "BACK"
 
 [node name="ImportKeyMap" type="FileDialog" parent="."]
@@ -330,6 +313,7 @@ filters = PackedStringArray("*.cfg")
 [connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer3/LoadKeyMapButton" to="." method="_on_load_key_map_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer/ImportKeyMapButton" to="." method="_on_import_key_map_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer4/SaveKeyMapButton" to="." method="_on_save_key_map_button_pressed"]
+[connection signal="toggled" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer2/Button" to="." method="_on_remap_keys_toggled"]
 [connection signal="pressed" from="MarginContainer2/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="file_selected" from="ImportKeyMap" to="." method="_on_import_key_map_file_selected"]
 [connection signal="file_selected" from="SaveKeyMap" to="." method="_on_save_key_map_file_selected"]

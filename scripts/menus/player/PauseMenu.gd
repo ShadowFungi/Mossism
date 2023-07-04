@@ -2,7 +2,7 @@ extends Control
 
 #@onready var id = get_parent().id
 @onready var resume_button = get_node("HBoxContainer/VBoxContainer/ResumeButton")
-@onready var quit_button = get_node("HBoxContainer/VBoxContainer/QuitButton")
+@onready var quit_button = self.get_node("HBoxContainer/VBoxContainer/QuitButton")
 @onready var options_button = get_node("HBoxContainer/VBoxContainer/OptionsButton")
 @onready var menu_button = get_node("HBoxContainer/VBoxContainer/MenuButton")
 
@@ -30,7 +30,7 @@ func _ready():
 	#print(id)
 	self.hide()
 	resume_button.pressed.connect(unpause)
-	quit_button.pressed.connect(get_tree().quit)
+	quit_button.pressed.connect(call_quit)
 	options_button.pressed.connect(options)
 	menu_button.pressed.connect(menu)
 
@@ -67,3 +67,7 @@ func menu():
 	get_tree().set_pause(false)
 	self.hide()
 	SceneManager.change_scene("StartMenu", fade_out_opts, fade_in_opts, general_opts)
+
+
+func call_quit():
+	get_tree().quit()

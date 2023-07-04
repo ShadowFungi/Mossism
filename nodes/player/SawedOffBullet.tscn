@@ -1,31 +1,26 @@
 [gd_scene load_steps=5 format=3 uid="uid://cimd1va2qm3l"]
 
 [ext_resource type="Script" path="res://scripts/player/bullet.gd" id="1_bpp6f"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5jwis"]
-bounce = 0.5
+[ext_resource type="PhysicsMaterial" uid="uid://d2nltka00g486" path="res://physics/bullet.tres" id="1_t8lct"]
+[ext_resource type="SphereMesh" uid="uid://blxgpqvac2dmf" path="res://assets/meshes/bullet.tres" id="3_rxemu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k2nd7"]
 custom_solver_bias = 0.2
 radius = 0.1
 
-[sub_resource type="SphereMesh" id="SphereMesh_63v4f"]
-radius = 0.1
-height = 0.2
-
-[node name="Bullet" type="RigidBody3D"]
+[node name="Bullet" type="RigidBody3D" groups=["bullet"]]
 collision_layer = 983040
-physics_material_override = SubResource("PhysicsMaterial_5jwis")
+physics_material_override = ExtResource("1_t8lct")
 continuous_cd = true
+contact_monitor = true
 script = ExtResource("1_bpp6f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_k2nd7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_63v4f")
+mesh = ExtResource("3_rxemu")
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

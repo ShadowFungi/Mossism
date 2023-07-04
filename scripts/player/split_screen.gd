@@ -11,7 +11,7 @@ func _on_joy_connection_changed(device_id, connected):
 	# Checks if a input device has been connected.
 	if connected:
 		# Print newly connected input device name.
-		print("connected " + Input.get_joy_name(device_id))
+		#print("connected " + Input.get_joy_name(device_id))
 		add_player(null, null, device_id)
 	# Checks if a input has been removed.
 	elif connected == false:
@@ -20,14 +20,14 @@ func _on_joy_connection_changed(device_id, connected):
 # Called to add a new player instance.
 func add_player(player_instance, world_instance, id):
 	Keyboard.total_players += 1
-	print(id)
+	#print(id)
 	# Sets the name of the new player instance
 	player_instance.set_name("SubViewport_" + String(id))
-	print("set_name attempted")
+	#print("set_name attempted")
 	
 	# Set instance_name variable to name of player_instance
 	var instance_name = player_instance.get_name()
-	print(instance_name)
+	#print(instance_name)
 	
 	# Add basic information to autoload
 	Keyboard.player_instances.append(instance_name)

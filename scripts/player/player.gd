@@ -77,6 +77,7 @@ var fire_res : bool = false
 
 
 func _ready() -> void:
+	sawed_off_bullet.instantiate()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 

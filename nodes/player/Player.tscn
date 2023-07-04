@@ -16,7 +16,7 @@ height = 5.82908
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_a0a5h"]
 auto_exposure_enabled = true
 auto_exposure_scale = 0.03
-auto_exposure_speed = 0.75
+auto_exposure_speed = 1.0
 auto_exposure_min_sensitivity = 10.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y8agc"]
@@ -51,7 +51,7 @@ current = true
 
 [node name="SawedOffBody" type="CharacterBody3D" parent="Pivot/Camera3D"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.758, -0.648, -1.456)
-collision_layer = 1048576
+collision_layer = 0
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("3_dhlh0")
@@ -99,7 +99,7 @@ visible = false
 
 [node name="SnapDetection" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86459, 0)
-target_position = Vector3(0, -2.25, 0)
+target_position = Vector3(0, -2, 0)
 
 [node name="StepDetection" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.00427, 0)

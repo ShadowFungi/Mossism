@@ -17,21 +17,26 @@ var final_transform: Transform3D
 
 var speed := 1.0
 
+var reversible : bool = false
+var reversible_property : bool = 0
 
 func update_properties() -> void:
 	if 'translation' in properties:
 		offset_transform.origin = properties.translation
-
+	
 	if 'rotation' in properties:
 		offset_transform.basis = offset_transform.basis.rotated(Vector3.RIGHT, properties.rotation.x)
 		offset_transform.basis = offset_transform.basis.rotated(Vector3.UP, properties.rotation.y)
 		offset_transform.basis = offset_transform.basis.rotated(Vector3.FORWARD, properties.rotation.z)
-
+	
 	if 'scale' in properties:
 		offset_transform.basis = offset_transform.basis.scaled(properties.scale)
-
+	
 	if 'speed' in properties:
 		speed = properties.speed
+	
+	if 'reversible' in properties:
+		reversible_property = properties.reversible
 
 
 func _process(delta: float) -> void:
@@ -53,7 +58,10 @@ func _ready() -> void:
 		navmeshi.connect("bake_finished", navmesh)
 
 func use() -> void:
-	play_motion()
+	if reversible == true:
+		reverse_motion()
+	else:
+		play_motion()
 
 
 func play_motion() -> void:
@@ -63,6 +71,8 @@ func play_motion() -> void:
 	target_transform.origin.z = snapped(temp_transform.origin.z, 0.1)
 	#print(target_transform)
 	Level.map_baked = false
+	if reversible_property == true:
+		reversible = true
 
 
 func reverse_motion() -> void:
@@ -70,6 +80,8 @@ func reverse_motion() -> void:
 	target_transform.origin.y = snapped(base_transform.origin.y, 0.1)
 	target_transform.origin.z = snapped(base_transform.origin.z, 0.1)
 	Level.map_baked = false
+	if reversible_property == true:
+		reversible = false
 
 
 func motion_ended() -> void:

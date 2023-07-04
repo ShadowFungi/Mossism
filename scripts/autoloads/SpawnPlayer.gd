@@ -16,12 +16,12 @@ func spawn_player(spawns : Array):
 	#print(spawns.pick_random())
 	if Keyboard.total_players > 1:
 		for player in Keyboard.ids:
-			print(Keyboard.ids[player])
-			print("player%s" % Keyboard.total_players)
+			#print(Keyboard.ids[player])
+			#print("player%s" % Keyboard.total_players)
 			get_node(Keyboard.player_nodes[player]).global_position = get_node('/root/Node3D').find_child(reg_r.get_string()).global_position + Vector3(0, 4, 0)
 			get_node(Keyboard.player_nodes[player]).rotate(Vector3.UP, deg_to_rad(get_node('/root/Node3D').find_child(reg_r.get_string()).properties.angle))
 	else:
-		print("node")
+		#print("node")
 		get_node(Keyboard.player_nodes[0]).global_position = get_node('/root/Node3D').find_child(reg_r.get_string()).global_position + Vector3(0, 4, 0)
 		get_node(Keyboard.player_nodes[0]).rotate(Vector3.UP, deg_to_rad(get_node('/root/Node3D').find_child(reg_r.get_string()).properties.angle))
 
@@ -30,7 +30,7 @@ func get_spawns() -> Array:
 	var spawns = get_tree().get_nodes_in_group("player_spawn")
 	var priority_spawn = get_tree().get_first_node_in_group("priority_player_spawner")
 	var spawner_primary : Array = [priority_spawn]
-	print(spawns)
+	#print(spawns)
 	
 	if Keyboard.total_players >= 1:
 		return spawns

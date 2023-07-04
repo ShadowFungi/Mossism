@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://b015n83o16lpn"]
+
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_e1rmd"]
+[ext_resource type="Script" path="res://scripts/entities/fgd/ground_elevator.gd" id="2_cp8it"]
+
+[resource]
+script = ExtResource("1_e1rmd")
+spawn = "----------------------------------------------------------------"
+spawn_type = 2
+visual_build = "----------------------------------------------------------------"
+build_visuals = true
+collision_build = "----------------------------------------------------------------"
+collision_shape_type = 1
+scripting = "----------------------------------------------------------------"
+script_class = ExtResource("2_cp8it")
+class_options = "----------------------------------------------------------------"
+classname = "ground_elevator"
+description = "Ground that moves, and is reversable with one signal which enemies can walk on"
+qodot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {
+"reversible": 0,
+"rotation": Vector3(0, 0, 0),
+"scale": Vector3(1, 1, 1),
+"speed": 1.0,
+"translation": Vector3(0, 0, 0)
+}
+class_property_descriptions = {
+"reversible": "Can object reverse in motion. integer boolean"
+}
+meta_properties = {}
+node_options = "----------------------------------------------------------------"
+node_class = "CharacterBody3D"
+transient_node = false
