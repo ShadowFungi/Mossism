@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0g2otvsh4qxm"]
+[gd_scene load_steps=12 format=3 uid="uid://d0g2otvsh4qxm"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_y4350"]
 [ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="2_sv3mq"]
@@ -6,12 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bhe4g8hhy6h80" path="res://nodes/menus/player/PauseMenu.tscn" id="4_ms8s8"]
 [ext_resource type="PackedScene" uid="uid://d3uacef8ml2pc" path="res://nodes/menus/player/GameOver.tscn" id="5_elqys"]
 [ext_resource type="PackedScene" uid="uid://yqh4nksms18t" path="res://nodes/player/HeadsUpDisplay.tscn" id="6_62xy7"]
-[ext_resource type="PackedScene" uid="uid://8g3p2sjmfj7e" path="res://assets/models/player/character/player.blend" id="9_2nelp"]
 [ext_resource type="PackedScene" uid="uid://b4ji8ko76a8y0" path="res://assets/models/player/tools/Sawed-off.blend" id="10_yxrsj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vwdr8"]
-radius = 1.1
-height = 5.82908
+radius = 0.950682
+height = 5.05567
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_a0a5h"]
 auto_exposure_enabled = true
@@ -26,8 +25,9 @@ height = 1.94818
 [sub_resource type="SphereShape3D" id="SphereShape3D_acydd"]
 radius = 0.8
 
-[node name="Character" type="CharacterBody3D" groups=["player"]]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.53102, 0)
 collision_layer = 1048576
 collision_mask = 3
 wall_min_slide_angle = 0.392699
@@ -43,14 +43,13 @@ shape = SubResource("CapsuleShape3D_vwdr8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -0.25)
 
 [node name="Camera3D" type="Camera3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.047, 0)
 environment = ExtResource("2_sv3mq")
 attributes = SubResource("CameraAttributesPractical_a0a5h")
 doppler_tracking = 1
 current = true
 
 [node name="SawedOffBody" type="CharacterBody3D" parent="Pivot/Camera3D"]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.758, -0.648, -1.456)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.758, -1.05902, -2.24919)
 collision_layer = 0
 collision_mask = 3
 motion_mode = 1
@@ -82,9 +81,6 @@ spot_range = 20.0
 spot_attenuation = 1.46409
 spot_angle = 18.0
 
-[node name="player" parent="Pivot" instance=ExtResource("9_2nelp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.5, 0.25)
-
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.095
 one_shot = true
@@ -98,8 +94,13 @@ visible = false
 visible = false
 
 [node name="SnapDetection" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86459, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.56031, 0)
 target_position = Vector3(0, -2, 0)
+collision_mask = 7
+hit_from_inside = true
+collide_with_areas = true
+debug_shape_custom_color = Color(0.811765, 0.560784, 0.701961, 1)
+debug_shape_thickness = 3
 
 [node name="StepDetection" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.00427, 0)
@@ -109,11 +110,11 @@ collision_mask = 3
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StepDetection"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.766727)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457255, -0.859723)
 shape = SubResource("SphereShape3D_acydd")
 
 [node name="StairTimer" type="Timer" parent="."]
-wait_time = 0.02
+wait_time = 0.015
 one_shot = true
 
 [connection signal="body_entered" from="StepDetection" to="." method="step_up"]

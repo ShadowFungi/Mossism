@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 
 
 func _init() -> void:
-	self.add_to_group("ground", true)
+	self.add_to_group("wall", true)
 	base_transform = transform
 	target_transform = base_transform
 	final_transform = base_transform * offset_transform

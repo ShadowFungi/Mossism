@@ -30,7 +30,7 @@ const MIN_SNAP_DISTANCE = 1.25
 ## Set variables for movement
 var dir : Vector3 = Vector3()
 var cur_speed = 14
-var gravity = 22.5
+var gravity = 24.5
 
 ## Set variables for health
 var cur_health : float = DEFAULT_HEALTH
@@ -195,7 +195,7 @@ func _physics_process(delta):
 	if was_on_floor and !is_on_floor():
 		timer.start()
 	
-	if !is_on_floor(): snap_down()
+	snap_down()
 
 
 func fire():
@@ -217,23 +217,27 @@ func fire():
 	shot2.apply_central_impulse(-camera.get_node("SawedOffBody/SawedOff/Muzzle").global_transform.basis.z * 80)
 
 func snap_down():
-	if can_snap_down == true:
-		can_step_up = false
-		if snap_detect.is_colliding() == true:
-			var body = snap_detect
-			if body.get_collider().get_child(0).get_aabb().size.y <= 1.25:
-				if global_position.distance_to(body.get_collision_point()) > 3.45 and global_position.distance_to(body.get_collision_point()) < 3.8:
-					global_position = global_position.move_toward(body.get_collision_point(), 0.15)
-		stair_timer.start()
-		timer_start_from = "down"
+	if !is_on_floor():
+		if can_snap_down == true:
+			can_step_up = false
+			if snap_detect.is_colliding() == true:
+				var body = snap_detect
+				if body.get_collider().is_in_group("ground") or body.get_collider().is_in_group("wall"):
+					print("group")
+					if body.get_collider().get_child(0).get_aabb().size.y <= 1.5:
+						if global_position.distance_to(body.get_collision_point()) > 3.25 and global_position.distance_to(body.get_collision_point()) < 3.9:
+							global_position = global_position.move_toward(body.get_collision_point(), 0.2)
+			stair_timer.start()
+			timer_start_from = "down"
 
 func step_up(body: Node3D) -> void:
 	if can_step_up == true:
 		can_snap_down = false
 		var step = body
 		#print(step.get_child(0).get_aabb().size.y)
-		if step.get_child(0).get_aabb().size.y <= 1.25:
-			global_position.y = global_position.move_toward(step.global_position, 0.2).y + 0.75
+		if body.is_in_group("ground") or body.is_in_group("wall"):
+			if step.get_child(0).get_aabb().size.y <= 1.25:
+				global_position.y = global_position.move_toward(step.global_position, 0.2).y + 0.75
 			#translate_object_local(Vector3(-step.global_transform.basis.z.x, -step.global_transform.basis.z.y, -step.global_transform.basis.z.z / 1.75))
 			## Might be useful // saving for later
 			#translate_object_local(Vector3(-step.global_transform.basis.z * 3)

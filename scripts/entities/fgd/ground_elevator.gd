@@ -53,6 +53,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	self.add_to_group("ground", true)
 	var navmesh = Callable(self, "_baked")
 	if navmeshi:
 		navmeshi.connect("bake_finished", navmesh)
