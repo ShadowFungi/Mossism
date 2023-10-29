@@ -19,8 +19,9 @@ const MIN_SNAP_DISTANCE = 1.25
 
 ## Set variables for movement
 var dir : Vector3 = Vector3()
-var cur_speed = 14
-var gravity = 24.5
+var gravity = 40
+var gravity_multiplier = 10
+var direction
 
 ## Set variables for health
 var cur_health : float = DEFAULT_HEALTH
@@ -37,23 +38,27 @@ var can_step_up : bool = true
 @onready var hud = get_node('HUD')
 var timer_start_from : String
 ## Get PauseMenu node
-@onready var pause_menu = self.get_node("PauseMenu")
-@onready var gameover = self.get_node("GameOver")
+@onready var pause_menu = self.get_node('PauseMenu')
+@onready var gameover = self.get_node('GameOver')
 
 ## Export the player ID so it can be changed when needed
 @export var id : int = 0
 
-## Variables used for camera movement 
-@onready var pivot := self.get_node("MetaRig/Pivot")
-@onready var camera := self.get_node("MetaRig/Pivot/Camera3D")
-@onready var metarig := self.get_node("MetaRig")
+## Variables used for camera movement
+@onready var pivot := self.get_node('MetaRig/Pivot')
+@onready var camera := self.get_node('MetaRig/Pivot/Camera3D')
+@onready var metarig := self.get_node('MetaRig')
 @onready var shape : CapsuleShape3D = self.get_node('CollisionShape3D').shape
-var mouse_pos = 0
+var mouse_pos : Vector2
 var mouse_sensitivity = 1.5
 var controller_sensitivity = 0.07
 
+## Variables used for character movement
+@onready var player_machine : FiniteStateMachine = get_node('PlayerStateMachine')
+@onready var jump_machine : FiniteStateMachine = get_node('JumpStateMachine')
+
 ## Variables used for actions
-@onready var timer = self.get_node("CoyoteTimer")
+@onready var timer = self.get_node('CoyoteTimer')
 var was_on_floor : bool
 var is_on_ground : bool
 
@@ -79,13 +84,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event.is_action_pressed('player-%s_pause' % id):
-		get_node("PauseMenu").pause()
+		get_node('PauseMenu').pause()
 		set_process_input(true)
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED && id == 0:
 		if event is InputEventMouseMotion:
-			metarig.rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
-			pivot.rotate_x(deg_to_rad(event.relative.y * mouse_sensitivity))
+			mouse_pos = (event.relative * mouse_sensitivity)
+			#metarig.rotate_y(deg_to_rad(-mouse_pos.x))
+			pivot.rotate_x(deg_to_rad(mouse_pos.y))
 			pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-80), deg_to_rad(75))
+			get_node('LookPivot').rotate_y(deg_to_rad(mouse_pos.x))
 
 func _physics_process(delta):
 	if cur_health <= 0:
@@ -97,7 +104,12 @@ func _physics_process(delta):
 		'player-%s_strafe_right' % id,
 		'player-%s_forward' % id,
 		'player-%s_back' % id
-		)
+	)
+	direction = (self.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	if direction:
+		print(direction)
+		player_machine.change_state('PlayerWalk')
 	
 	var rays : Array = Array()
 	var bottom = 0.1
@@ -143,15 +155,18 @@ func _physics_process(delta):
 			is_on_ground = true
 	if Input.is_action_just_pressed('player-%s_tool_mouse' % id) && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED or Input.is_action_just_pressed('player-%s_tool_key' % id):
 		## If so starts appropriate function
-		get_node("WeaponStateMachine").state.fire()
+		get_node('WeaponStateMachine').fire()
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
-	get_node("PlayerStateMachine")._integrate_forces(state)
+	player_machine._integrate_forces(self, state, direction)
+	if Input.is_action_just_pressed('player-%s_jump' % id) && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		jump_machine.change_state('PlayerJump')
+		jump_machine.state.jump(self, 200.5)
 
 func damage(type: String) -> void:
 	var fire_timer = Timer.new()
 	print(type)
-	if type == "lava":
+	if type == 'lava':
 		if fire_res != true:
 			cur_health -= 2
 			hud.update_health(cur_health, cur_max_health)

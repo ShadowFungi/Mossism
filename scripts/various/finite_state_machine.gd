@@ -21,14 +21,25 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	state.physics_update(delta)
 
-func _integrate_forces(forces_state):
-	state.forces(forces_state)
+func _integrate_forces(player : PlayerRigid, forces_state : PhysicsDirectBodyState3D, dir):
+	if state.has_method('forces'):
+		state.forces(player, forces_state, dir)
+
+func fire():
+	if state.has_method('fire'):
+		state.fire()
+
+func jump(player : PlayerRigid, jump_height : float):
+	if state.has_method('jump'):
+		state.jump()
 
 func change_state(new_state : String):
 	if not has_node(new_state):
+		print(new_state + "not found")
 		return
 	if state is State:
 		state._exit_state()
 	state = get_node(new_state)
 	state._enter_state()
-	emit_signal("transition", state.name)
+	emit_signal('transition', state.name)
+	print(state.name)

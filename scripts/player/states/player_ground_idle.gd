@@ -10,6 +10,7 @@ func _enter_state() -> void:
 func _exit_state() -> void:
 	set_physics_process(false)
 
-func forces(forces_state):
-	pass
+func forces(player : PlayerRigid, forces_state : PhysicsDirectBodyState3D, _dir):
+	#player.linear_velocity.y = -((player.gravity * forces_state.step) * player.gravity_multiplier)
+	look_follow(forces_state, get_parent().get_parent().global_transform, get_parent().get_parent().get_node('LookPivot/LookTarget').global_transform.origin)
 
