@@ -223,7 +223,7 @@ func snap_down():
 			if snap_detect.is_colliding() == true:
 				var body = snap_detect
 				if body.get_collider().is_in_group("ground") or body.get_collider().is_in_group("wall"):
-					print("group")
+					#print("group")
 					if body.get_collider().get_child(0).get_aabb().size.y <= 1.5:
 						if global_position.distance_to(body.get_collision_point()) > 3.25 and global_position.distance_to(body.get_collision_point()) < 3.9:
 							global_position = global_position.move_toward(body.get_collision_point(), 0.2)

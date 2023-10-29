@@ -8,7 +8,7 @@ var ids : Dictionary = {
 }
 var num : int
 var player_nodes : Array = [
-	"/root/Node3D/GridContainer/SubViewportContainer/SubViewport/Character"
+	"/root/Node3D/GridContainer/SubViewportContainer/SubViewport/RigidPlayer"
 ]
 
 # Setup input bindings for player 0

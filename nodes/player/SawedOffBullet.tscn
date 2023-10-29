@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cimd1va2qm3l"]
 
-[ext_resource type="Script" path="res://scripts/player/bullet.gd" id="1_bpp6f"]
+[ext_resource type="Script" path="res://scripts/player/weapons/bullet.gd" id="1_bpp6f"]
 [ext_resource type="PhysicsMaterial" uid="uid://d2nltka00g486" path="res://physics/bullet.tres" id="1_t8lct"]
 [ext_resource type="SphereMesh" uid="uid://blxgpqvac2dmf" path="res://assets/meshes/bullet.tres" id="3_rxemu"]
 
@@ -10,6 +10,7 @@ radius = 0.1
 
 [node name="Bullet" type="RigidBody3D" groups=["bullet"]]
 collision_layer = 983040
+collision_mask = 7
 physics_material_override = ExtResource("1_t8lct")
 continuous_cd = true
 contact_monitor = true

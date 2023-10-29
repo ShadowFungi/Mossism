@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_y4350"]
 [ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="2_sv3mq"]
-[ext_resource type="Script" path="res://scripts/player/SawedOffBody.gd" id="3_dhlh0"]
+[ext_resource type="Script" path="res://scripts/player/weapons/SawedOffBody.gd" id="3_pb7rw"]
 [ext_resource type="PackedScene" uid="uid://bhe4g8hhy6h80" path="res://nodes/menus/player/PauseMenu.tscn" id="4_ms8s8"]
 [ext_resource type="PackedScene" uid="uid://d3uacef8ml2pc" path="res://nodes/menus/player/GameOver.tscn" id="5_elqys"]
 [ext_resource type="PackedScene" uid="uid://yqh4nksms18t" path="res://nodes/player/HeadsUpDisplay.tscn" id="6_62xy7"]
@@ -53,7 +53,7 @@ transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.758, -
 collision_layer = 0
 collision_mask = 3
 motion_mode = 1
-script = ExtResource("3_dhlh0")
+script = ExtResource("3_pb7rw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/Camera3D/SawedOffBody"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.19209e-07, 1.19209e-07, -0.523513)
