@@ -29,9 +29,9 @@ func fire():
 	if state.has_method('fire'):
 		state.fire()
 
-func jump(player : PlayerRigid, jump_height : float):
+func jump(player : PlayerRigid, jump_height : float, force_state : PhysicsDirectBodyState3D):
 	if state.has_method('jump'):
-		state.jump()
+		state.jump(player, jump_height, force_state)
 
 func change_state(new_state : String):
 	if not has_node(new_state):
@@ -42,4 +42,4 @@ func change_state(new_state : String):
 	state = get_node(new_state)
 	state._enter_state()
 	emit_signal('transition', state.name)
-	print(state.name)
+	#print(state.name)

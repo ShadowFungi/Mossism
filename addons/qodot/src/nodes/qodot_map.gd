@@ -43,7 +43,7 @@ signal unwrap_uv2_complete()
 ## Base directory for textures. When building materials, Qodot will search this directory for texture files matching the textures assigned to Trenchbroom faces.
 @export_dir var base_texture_dir := "res://textures"
 ## File extensions to search for texture data.
-@export var texture_file_extensions := PackedStringArray(["png"])
+@export var texture_file_extensions := PackedStringArray(["png", "jpg", "jpeg", "bmp"])
 ## Optional. List of worldspawn layers.
 ## A worldspawn layer converts any brush of a certain texture to a certain kind of node. See example 1-2.
 @export var worldspawn_layers: Array[QodotWorldspawnLayer]
@@ -477,10 +477,15 @@ func build_entity_nodes() -> Array:
 		if 'origin' in properties:
 			var origin_comps = properties['origin'].split(' ')
 			var origin_vec = Vector3(origin_comps[1].to_float(), origin_comps[2].to_float(), origin_comps[0].to_float())
-			node.position = origin_vec / inverse_scale_factor
+			if "position" in node:
+				if node.position is Vector3:
+					node.position = origin_vec / inverse_scale_factor
+				elif node.position is Vector2:
+					node.position = Vector2(origin_vec.z, -origin_vec.y)
 		else:
-			if entity_idx != 0:
-				node.position = entity_dict['center'] / inverse_scale_factor
+			if entity_idx != 0 and "position" in node:
+				if node.position is Vector3:
+					node.position = entity_dict['center'] / inverse_scale_factor
 		
 		entity_nodes.append(node)
 		
@@ -527,7 +532,7 @@ func resolve_group_hierarchy() -> void:
 		
 		if not classname in entity_definitions: continue
 		var entity_definition = entity_definitions[classname]
-		
+		# TODO: Add clause on this line for point entities, which do not have a spawn type. Add as child of the current group owner.
 		if entity_definition.spawn_type == QodotFGDSolidClass.SpawnType.GROUP:
 			group_entities[node_idx] = node
 		else:
@@ -717,7 +722,10 @@ func build_entity_collision_shapes() -> void:
 	for entity_idx in range(0, entity_dicts.size()):
 		var entity_dict := entity_dicts[entity_idx] as Dictionary
 		var properties = entity_dict['properties']
-		var entity_position: Vector3 = Vector3.ZERO if entity_nodes[entity_idx] == null else entity_nodes[entity_idx].position
+		var entity_position: Vector3 = Vector3.ZERO
+		if entity_nodes[entity_idx] != null and entity_nodes[entity_idx].get("position"):
+			if entity_nodes[entity_idx].position is Vector3:
+				entity_position = entity_nodes[entity_idx].position
 		var entity_collision_shape = entity_collision_shapes[entity_idx]
 		
 		if entity_collision_shape == null:
@@ -760,11 +768,10 @@ func build_entity_collision_shapes() -> void:
 				var vertices := surface_verts[Mesh.ARRAY_VERTEX] as PackedVector3Array
 				var indices := surface_verts[Mesh.ARRAY_INDEX] as PackedInt32Array
 				for vert_idx in indices:
-					entity_verts.append(vertices[vert_idx] + entity_position)
+					entity_verts.append(vertices[vert_idx])
 			else:
 				var shape_points = PackedVector3Array()
 				for vertex in surface_verts[Mesh.ARRAY_VERTEX]:
-					vertex += entity_position
 					if not vertex in shape_points:
 						shape_points.append(vertex)
 				
@@ -917,7 +924,7 @@ func build_entity_mesh_instances() -> Dictionary:
 		if classname in entity_definitions:
 			var entity_definition = entity_definitions[classname] as QodotFGDSolidClass
 			if entity_definition:
-				if entity_definition.spawn_type == QodotFGDSolidClass.SpawnType.WORLDSPAWN:
+				if entity_definition.spawn_type == QodotFGDSolidClass.SpawnType.WORLDSPAWN or entity_definition.spawn_type == QodotFGDSolidClass.SpawnType.GROUP:
 					use_in_baked_light = true
 				elif '_shadow' in properties:
 					if properties['_shadow'] == "1":
@@ -1088,7 +1095,25 @@ func apply_properties() -> void:
 				# Assign properties not defined with defaults from the entity definition
 				for property in entity_definitions[classname].class_properties:
 					if not property in properties:
-						properties[property] = entity_definition.class_properties[property]
+						var prop_default = entity_definition.class_properties[property]
+						# Flags
+						if prop_default is Array:
+							var prop_flags_sum := 0
+							for prop_flag in prop_default:
+								if prop_flag is Array and prop_flag.size() == 3:
+									if prop_flag[2] and prop_flag[1] is int:
+										prop_flags_sum += prop_flag[1]
+							properties[property] = prop_flags_sum
+						# Choices
+						elif prop_default is Dictionary:
+							var prop_desc = entity_definition.class_property_descriptions[property]
+							if prop_desc is Array and prop_desc.size() > 1 and prop_desc[1] is int:
+								properties[property] = prop_desc[1]
+							else:
+								properties[property] = 0
+						# Everything else
+						else:
+							properties[property] = prop_default
 						
 		if 'properties' in entity_node:
 			entity_node.properties = properties

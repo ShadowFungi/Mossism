@@ -8,7 +8,7 @@ extends Marker3D
 var is_stepping := false
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !is_stepping && adjacent_target.is_stepping && abs(global_position.distance_to(step_target.global_position)) > step_distnace:
 		step()
 

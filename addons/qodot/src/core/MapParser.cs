@@ -56,7 +56,7 @@ namespace Qodot
 
 			scope = ParseScope.FILE;
 
-			FileAccess file = FileAccess.Open(filename, FileAccess.ModeFlags.Read);
+			using FileAccess file = FileAccess.Open(filename, FileAccess.ModeFlags.Read);
 			if (file == null)
 			{
 				GD.PrintErr("Error: Failed to open map file (" + filename + ")");
@@ -263,13 +263,13 @@ namespace Qodot
 					else
 					{
 						valveUVs = false;
-						currentFace.uvStandard.X = token.ToFloat();
+						currentFace.uvStandard.X = (float)Convert.ToDouble(token, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
 						scope = ParseScope.V;
 					}
 
 					break;
 				case ParseScope.V:
-					currentFace.uvStandard.Y = token.ToFloat();
+					currentFace.uvStandard.Y = (float)Convert.ToDouble(token, System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
 					scope = ParseScope.ROT;
 					break;
 				case ParseScope.VALVE_U:

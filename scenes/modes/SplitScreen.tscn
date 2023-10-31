@@ -13,6 +13,16 @@ camera_attributes = ExtResource("2_mfrh2")
 [sub_resource type="NavigationMesh" id="NavigationMesh_n2ieb"]
 geometry_source_geometry_mode = 1
 geometry_source_group_name = &"ground"
+agent_radius = 0.6
+agent_max_climb = 1.0
+agent_max_slope = 90.0
+region_min_size = 1.0
+region_merge_size = 30.0
+edge_max_length = 15.0
+vertices_per_polygon = 12.0
+detail_sample_distance = 7.0
+filter_ledge_spans = true
+filter_walkable_low_height_spans = true
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_dmid3")
@@ -40,8 +50,7 @@ stretch = true
 world_3d = SubResource("World3D_wecad")
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
-use_occlusion_culling = true
-size = Vector2i(640, 360)
+size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="RigidPlayer" parent="GridContainer/SubViewportContainer/SubViewport" instance=ExtResource("5_m0eua")]

@@ -5,20 +5,18 @@
 
 [resource]
 script = ExtResource("2_8gywo")
-spawn = "----------------------------------------------------------------"
 spawn_type = 2
-visual_build = "----------------------------------------------------------------"
 build_visuals = true
-collision_build = "----------------------------------------------------------------"
 collision_shape_type = 1
-scripting = "----------------------------------------------------------------"
 script_class = ExtResource("2_e76oc")
-class_options = "----------------------------------------------------------------"
 classname = "wall_moving"
 description = "A wall that moves"
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
+"collision_layers": Vector3(1, 1, 1),
+"collision_mask": Vector3(1, 1, 1),
+"render_layers": Vector3(1, 1, 1),
 "reversible": 0,
 "rotation": Vector3(0, 0, 0),
 "scale": Vector3(1, 1, 1),
@@ -29,6 +27,5 @@ class_property_descriptions = {
 "reversible": "Can object reverse in motion. integer boolean"
 }
 meta_properties = {}
-node_options = "----------------------------------------------------------------"
 node_class = "CharacterBody3D"
 transient_node = false

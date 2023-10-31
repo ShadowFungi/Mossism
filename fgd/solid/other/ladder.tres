@@ -5,31 +5,20 @@
 
 [resource]
 script = ExtResource("1_ikhnb")
-spawn = "----------------------------------------------------------------"
 spawn_type = 2
-visual_build = "----------------------------------------------------------------"
 build_visuals = false
-collision_build = "----------------------------------------------------------------"
 collision_shape_type = 1
-scripting = "----------------------------------------------------------------"
 script_class = ExtResource("2_yqnoe")
-class_options = "----------------------------------------------------------------"
 classname = "ladder"
 description = "A climbable ladder"
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"layer_eight": 0,
-"layer_five": 0,
-"layer_four": 0,
-"layer_one": 0,
-"layer_seven": 0,
-"layer_six": 0,
-"layer_three": 0,
-"layer_two": 0
+"collision_layers": Vector3i(1, 1, 1),
+"collision_mask": Vector3i(1, 1, 1),
+"render_layers": Vector3i(1, 1, 1)
 }
 class_property_descriptions = {}
 meta_properties = {}
-node_options = "----------------------------------------------------------------"
 node_class = "Area3D"
 transient_node = false

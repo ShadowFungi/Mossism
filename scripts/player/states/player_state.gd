@@ -1,8 +1,6 @@
 class_name PlayerState
 extends State
 
-var player : PlayerRigid
-
 func look_follow(state, current_transform, target_position):
 	var up_dir = Vector3(0, 1, 0)
 	var cur_dir = (current_transform.basis * Vector3(0, 1, 0))
@@ -13,6 +11,8 @@ func look_follow(state, current_transform, target_position):
 
 func _ready() -> void:
 	await owner.ready
+	
+	var player : PlayerRigid
 	
 	player = owner as PlayerRigid
 	

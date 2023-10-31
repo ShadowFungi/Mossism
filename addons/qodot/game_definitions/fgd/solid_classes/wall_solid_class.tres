@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=2 format=3 uid="uid://b1bcaxmo2py2s"]
+[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=2 format=3 uid="uid://bu2f3lupsjhfp"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1"]
 
@@ -20,5 +20,5 @@ class_properties = {}
 class_property_descriptions = {}
 meta_properties = {}
 node_options = "----------------------------------------------------------------"
-node_class = "StaticBody"
+node_class = "StaticBody3D"
 transient_node = false

@@ -5,10 +5,7 @@
 
 [resource]
 script = ExtResource("1_gvp6v")
-scene = "----------------------------------------------------------------"
-scripting = "----------------------------------------------------------------"
 script_class = ExtResource("2_8pa58")
-class_options = "----------------------------------------------------------------"
 classname = "spawner_player"
 description = "A Player spawn point"
 qodot_internal = false
@@ -22,6 +19,5 @@ meta_properties = {
 "color": Color(0.694118, 0.160784, 0.466667, 1),
 "size": AABB(-8, -8, -8, 8, 8, 8)
 }
-node_options = "----------------------------------------------------------------"
 node_class = "Area3D"
 transient_node = false

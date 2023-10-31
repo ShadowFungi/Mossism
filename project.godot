@@ -42,7 +42,7 @@ window/size/viewport_height=720
 window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-window/size/always_on_top.editor=true
+window/size/always_on_top.editor=false
 
 [dotnet]
 
@@ -50,7 +50,7 @@ project/assembly_name="Mossism-qodot"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/scene_manager/plugin.cfg", "res://addons/qodot/plugin.cfg")
+enabled=PackedStringArray("res://addons/qodot/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
 
 [gui]
 
@@ -58,17 +58,16 @@ fonts/canvas_textures/default_texture_filter=0
 
 [layer_names]
 
+3d_render/layer_1="solid_area"
+3d_render/layer_2="animate_area"
+3d_render/layer_18="enemies"
+3d_render/layer_19="weapons"
+3d_render/layer_20="players"
 3d_physics/layer_1="ground"
 3d_physics/layer_2="walls"
 3d_physics/layer_3="moving"
-3d_physics/layer_17="weapon-1"
-3d_physics/layer_18="weapon-2"
-3d_physics/layer_19="weapon-3"
-3d_physics/layer_20="weapon-4"
-3d_physics/layer_21="player-1"
-3d_physics/layer_22="player-2"
-3d_physics/layer_23="player-3"
-3d_physics/layer_24="player-4"
+3d_physics/layer_31="player_weapons"
+3d_physics/layer_32="players"
 
 [physics]
 
@@ -78,4 +77,3 @@ fonts/canvas_textures/default_texture_filter=0
 
 textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 0)
-occlusion_culling/use_occlusion_culling=true

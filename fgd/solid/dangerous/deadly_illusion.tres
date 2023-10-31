@@ -5,32 +5,21 @@
 
 [resource]
 script = ExtResource("1_5xrxg")
-spawn = "----------------------------------------------------------------"
 spawn_type = 2
-visual_build = "----------------------------------------------------------------"
 build_visuals = true
-collision_build = "----------------------------------------------------------------"
 collision_shape_type = 1
-scripting = "----------------------------------------------------------------"
 script_class = ExtResource("2_betrc")
-class_options = "----------------------------------------------------------------"
 classname = "dangerous_deadly_illusion"
 description = "the player will die if they touch this"
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"damage_type": "",
-"layer_eight": 0,
-"layer_five": 0,
-"layer_four": 0,
-"layer_one": 0,
-"layer_seven": 0,
-"layer_six": 0,
-"layer_three": 0,
-"layer_two": 0
+"collision_layers": Vector3(1, 1, 1),
+"collision_mask": Vector3(1, 1, 1),
+"damage_type": "lava",
+"render_layers": Vector3(1, 1, 1)
 }
 class_property_descriptions = {}
 meta_properties = {}
-node_options = "----------------------------------------------------------------"
 node_class = "Area3D"
 transient_node = false

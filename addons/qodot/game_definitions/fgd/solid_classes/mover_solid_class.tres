@@ -1,19 +1,14 @@
-[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://dxscibnqmygr5"]
+[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://b3yn012fy6782"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1"]
 [ext_resource type="Script" path="res://addons/qodot/game_definitions/fgd/solid_classes/mover.gd" id="2"]
 
 [resource]
 script = ExtResource("1")
-spawn = "----------------------------------------------------------------"
 spawn_type = 2
-visual_build = "----------------------------------------------------------------"
 build_visuals = true
-collision_build = "----------------------------------------------------------------"
 collision_shape_type = 1
-scripting = "----------------------------------------------------------------"
 script_class = ExtResource("2")
-class_options = "----------------------------------------------------------------"
 classname = "mover"
 description = "Moving brush."
 qodot_internal = false
@@ -22,10 +17,10 @@ class_properties = {
 "rotation": Vector3(0, 0, 0),
 "scale": Vector3(1, 1, 1),
 "speed": 1.0,
-"translation": Vector3(0, 0, 0)
+"translation": Vector3(0, 0, 0),
+"targetname": ""
 }
 class_property_descriptions = {}
 meta_properties = {}
-node_options = "----------------------------------------------------------------"
-node_class = "KinematicBody"
+node_class = "CharacterBody3D"
 transient_node = false

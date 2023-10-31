@@ -4,14 +4,9 @@
 
 [resource]
 script = ExtResource("1_05k2c")
-spawn = "----------------------------------------------------------------"
 spawn_type = 2
-visual_build = "----------------------------------------------------------------"
 build_visuals = true
-collision_build = "----------------------------------------------------------------"
 collision_shape_type = 0
-scripting = "----------------------------------------------------------------"
-class_options = "----------------------------------------------------------------"
 classname = "ground_illusion"
 description = "A purely visual ground piece "
 qodot_internal = false
@@ -19,6 +14,5 @@ base_classes = Array[Resource]([])
 class_properties = {}
 class_property_descriptions = {}
 meta_properties = {}
-node_options = "----------------------------------------------------------------"
 node_class = "Node3D"
 transient_node = false

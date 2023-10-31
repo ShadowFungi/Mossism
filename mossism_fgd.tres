@@ -20,7 +20,7 @@
 [resource]
 script = ExtResource("7_mvc8j")
 export_file = false
-target_folder = "/mnt/crucial/MISC/LinuxPrograms/TrenchBroom/share/TrenchBroom/games/mossism-qodot_4"
+target_folder = "/home/fungi/.TrenchBroom/games/mossism-qodot_4"
 fgd_name = "Mossism"
 base_fgd_files = Array[Resource]([])
 entity_definitions = Array[Resource]([ExtResource("10"), ExtResource("8"), ExtResource("3_jj3l0"), ExtResource("5_pcgeb"), ExtResource("6_dhxca"), ExtResource("6_pvtpb"), ExtResource("8_pe283"), ExtResource("9_4f8sj"), ExtResource("10_nj6wq"), ExtResource("11_dae1n"), ExtResource("11_2bvfe"), ExtResource("12_qu8m8"), ExtResource("13_02d1v"), ExtResource("14_7ystr"), ExtResource("15_bus11")])

@@ -37,6 +37,25 @@ func update_properties() -> void:
 	
 	if 'reversible' in properties:
 		reversible_property = properties.reversible
+	
+	if 'collision_mask' in properties:
+		for dimension in 3:
+			if properties.collision_mask[dimension] > int(0) and properties.collision_mask[dimension] < int(32):
+				set_collision_mask_value(properties.collision_mask[dimension], true)
+	
+	if 'collision_layers' in properties:
+		for dimension in 3:
+			if properties.collision_layers[dimension] > int(0) and properties.collision_layers[dimension] < int(32):
+				set_collision_layer_value(properties.collision_layers[dimension], true)
+	
+	if 'render_layers' in properties:
+		await self.ready
+		if find_child("*mesh_instance"):
+			find_child("*mesh_instance").set_layer_mask_value(1, false)
+			for dimension in 3:
+				if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
+					#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
+					find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
 
 
 func _process(delta: float) -> void:

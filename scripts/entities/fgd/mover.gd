@@ -49,8 +49,4 @@ func motion_ended() -> void:
 		or snappedf(transform.origin.y, 0.1) == target_transform.origin.y \
 		or snappedf(transform.origin.z, 0.1) == target_transform.origin.z:
 		if Level.bake_ended != false:
-			print("success")
-			self.add_to_group("ground", true)
-			# TODO: Implement navigation reloading
-			Level.map_baked = true
-			Level.bake_ended = false
+			Level.bake()

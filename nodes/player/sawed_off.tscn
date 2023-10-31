@@ -25,10 +25,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0985394, -1.35056)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, -0.893085)
-light_color = Color(1, 0.941176, 0.8, 1)
+light_color = Color(0.872754, 0.854209, 0.771797, 1)
 light_energy = 16.0
-light_indirect_energy = 4.0
-light_volumetric_fog_energy = 5.0
+light_indirect_energy = 5.0
+light_size = 0.02
+light_specular = 1.0
 shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 1.75
@@ -36,6 +37,6 @@ distance_fade_enabled = true
 distance_fade_begin = 45.0
 distance_fade_shadow = 55.0
 distance_fade_length = 12.0
-spot_range = 20.0
+spot_range = 31.2187
 spot_attenuation = 1.46409
-spot_angle = 18.0
+spot_angle = 13.7596

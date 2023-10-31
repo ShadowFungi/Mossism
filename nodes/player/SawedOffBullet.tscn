@@ -9,7 +9,7 @@ custom_solver_bias = 0.2
 radius = 0.1
 
 [node name="Bullet" type="RigidBody3D" groups=["bullet"]]
-collision_layer = 983040
+collision_layer = 1073741824
 collision_mask = 7
 physics_material_override = ExtResource("1_t8lct")
 continuous_cd = true
