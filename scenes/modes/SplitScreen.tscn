@@ -4,7 +4,7 @@
 [ext_resource type="CameraAttributesPractical" uid="uid://gkwjgf6vkw8d" path="res://styles/camera_attributes/player.tres" id="2_mfrh2"]
 [ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="3_jcn2s"]
 [ext_resource type="PackedScene" uid="uid://cmsdyakbquy16" path="res://scenes/levels/ThePit.tscn" id="5_fct7e"]
-[ext_resource type="PackedScene" uid="uid://b6vkshouucbu7" path="res://nodes/player/PlayerModelRigged.tscn" id="5_m0eua"]
+[ext_resource type="PackedScene" uid="uid://b6vkshouucbu7" path="res://nodes/player/PlayerRigid.tscn" id="5_m0eua"]
 
 [sub_resource type="World3D" id="World3D_wecad"]
 environment = ExtResource("3_jcn2s")
@@ -50,7 +50,8 @@ stretch = true
 world_3d = SubResource("World3D_wecad")
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
-size = Vector2i(1280, 720)
+snap_2d_vertices_to_pixel = true
+size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="RigidPlayer" parent="GridContainer/SubViewportContainer/SubViewport" instance=ExtResource("5_m0eua")]

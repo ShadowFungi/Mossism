@@ -970,11 +970,11 @@
 "_tb_group" "75"
 // brush 0
 {
-( 400 -48 -1328 ) ( 392 -40 -1328 ) ( 392 -40 -1200 ) StoneWall 8 0 0 1 1
-( 400 -48 -1200 ) ( 1064 -48 -1200 ) ( 1064 -48 -1328 ) StoneWall 0 0 0 1 1
-( 400 -48 -1328 ) ( 1064 -48 -1328 ) ( 1056 -40 -1328 ) StoneWall 0 0 0 1 1
-( 1056 -40 -1200 ) ( 1064 -48 -1200 ) ( 400 -48 -1200 ) StoneWall 0 0 0 1 1
-( 1056 -40 -1328 ) ( 1056 -40 -1200 ) ( 392 -40 -1200 ) StoneWall 8 0 0 1 1
+( 460 -40 -1200 ) ( 460 -48 -1200 ) ( 460 -48 -1328 ) StoneWall 8 0 0 1 1
+( 460 -48 -1200 ) ( 1064 -48 -1200 ) ( 1064 -48 -1328 ) StoneWall 0 0 0 1 1
+( 460 -48 -1328 ) ( 1064 -48 -1328 ) ( 1056 -40 -1328 ) StoneWall 0 0 0 1 1
+( 1056 -40 -1200 ) ( 1064 -48 -1200 ) ( 460 -48 -1200 ) StoneWall 0 0 0 1 1
+( 1056 -40 -1328 ) ( 1056 -40 -1200 ) ( 460 -40 -1200 ) StoneWall 8 0 0 1 1
 ( 1064 -48 -1328 ) ( 1064 -48 -1200 ) ( 1056 -40 -1200 ) StoneWall 0 0 0 1 1
 }
 }
@@ -999,11 +999,11 @@
 // brush 0
 {
 ( -276 -40 -1200 ) ( -300 -48 -1200 ) ( -300 -48 -1380 ) StoneWall 36 0 0 1 1
-( -300 -48 -1200 ) ( 304 -48 -1200 ) ( 304 -48 -1380 ) StoneWall 0 0 0 1 1
-( 304 -48 -1380 ) ( 312 -40 -1380 ) ( -276 -40 -1380 ) StoneWall 0 0 0 1 1
-( -276 -40 -1200 ) ( 312 -40 -1200 ) ( 304 -48 -1200 ) StoneWall 0 0 0 1 1
+( -300 -48 -1200 ) ( 312 -48 -1200 ) ( 312 -48 -1380 ) StoneWall 0 0 0 1 1
+( 312 -48 -1380 ) ( 312 -40 -1380 ) ( -276 -40 -1380 ) StoneWall 0 0 0 1 1
+( -276 -40 -1200 ) ( 312 -40 -1200 ) ( 312 -48 -1200 ) StoneWall 0 0 0 1 1
 ( 312 -40 -1380 ) ( 312 -40 -1200 ) ( -276 -40 -1200 ) StoneWall 8 0 0 1 1
-( 304 -48 -1200 ) ( 312 -40 -1200 ) ( 312 -40 -1380 ) StoneWall 8 0 0 1 1
+( 312 -48 -1200 ) ( 312 -40 -1200 ) ( 312 -40 -1380 ) StoneWall 8 0 0 1 1
 }
 }
 // entity 72
@@ -1040,12 +1040,12 @@
 "_tb_group" "75"
 // brush 0
 {
-( 752 352 -880 ) ( 752 264 -880 ) ( 752 264 -1636 ) StoneWall 0 0 0 1 1
-( 752 264 -880 ) ( 760 256 -880 ) ( 760 256 -1636 ) StoneWall 6 0 0 1 1
-( 760 256 -1636 ) ( 760 352 -1636 ) ( 752 352 -1636 ) StoneWall 8 0 0 1 1
+( 752 352 -880 ) ( 752 264 -880 ) ( 752 264 -1784 ) StoneWall 0 0 0 1 1
+( 752 264 -880 ) ( 760 256 -880 ) ( 760 256 -1784 ) StoneWall 6 0 0 1 1
+( 760 256 -1784 ) ( 760 352 -1784 ) ( 752 352 -1784 ) StoneWall 8 0 0 1 1
 ( 752 352 -880 ) ( 760 352 -880 ) ( 760 256 -880 ) StoneWall 8 0 0 1 1
-( 760 352 -1636 ) ( 760 352 -880 ) ( 752 352 -880 ) StoneWall 8 0 0 1 1
-( 760 256 -880 ) ( 760 352 -880 ) ( 760 352 -1636 ) StoneWall 0 0 0 1 1
+( 760 352 -1784 ) ( 760 352 -880 ) ( 752 352 -880 ) StoneWall 8 0 0 1 1
+( 760 256 -880 ) ( 760 352 -880 ) ( 760 352 -1784 ) StoneWall 0 0 0 1 1
 }
 }
 // entity 75
@@ -1055,7 +1055,7 @@
 // brush 0
 {
 ( 760 352 -880 ) ( 760 344 -880 ) ( 760 344 -1636 ) StoneWall 0 0 0 1 1
-( 760 344 -880 ) ( 840 344 -880 ) ( 840 344 -1636 ) StoneWall 8 0 0 1 1
+( 760 344 -880 ) ( 840 344 -880 ) ( 840 344 -1636 ) StoneWall 0 0 0 1 1
 ( 840 344 -1636 ) ( 840 352 -1636 ) ( 760 352 -1636 ) StoneWall 8 0 0 1 1
 ( 760 352 -880 ) ( 840 352 -880 ) ( 840 344 -880 ) StoneWall 8 0 0 1 1
 ( 840 352 -1636 ) ( 840 352 -880 ) ( 760 352 -880 ) StoneWall 8 0 0 1 1
@@ -1068,12 +1068,12 @@
 "_tb_group" "75"
 // brush 0
 {
-( 840 352 -880 ) ( 840 256 -880 ) ( 840 256 -1636 ) StoneWall 0 0 0 1 1
-( 848 264 -1636 ) ( 848 352 -1636 ) ( 840 352 -1636 ) StoneWall 8 0 0 1 1
+( 840 352 -880 ) ( 840 256 -880 ) ( 840 256 -1784 ) StoneWall 0 0 0 1 1
+( 848 264 -1784 ) ( 848 352 -1784 ) ( 840 352 -1784 ) StoneWall 8 0 0 1 1
 ( 840 352 -880 ) ( 848 352 -880 ) ( 848 264 -880 ) StoneWall 8 0 0 1 1
-( 848 352 -1636 ) ( 848 352 -880 ) ( 840 352 -880 ) StoneWall 8 0 0 1 1
-( 840 256 -880 ) ( 848 264 -880 ) ( 848 264 -1636 ) StoneWall 10 0 0 1 1
-( 848 264 -880 ) ( 848 352 -880 ) ( 848 352 -1636 ) StoneWall 0 0 0 1 1
+( 848 352 -1784 ) ( 848 352 -880 ) ( 840 352 -880 ) StoneWall 8 0 0 1 1
+( 840 256 -880 ) ( 848 264 -880 ) ( 848 264 -1784 ) StoneWall 10 0 0 1 1
+( 848 264 -880 ) ( 848 352 -880 ) ( 848 352 -1784 ) StoneWall 0 0 0 1 1
 }
 }
 // entity 77
@@ -1082,12 +1082,12 @@
 "_tb_group" "75"
 // brush 0
 {
-( 760 264 -1024 ) ( 760 256 -1024 ) ( 760 256 -1512 ) StoneWall 0 0 0 1 1
-( 760 256 -1024 ) ( 840 256 -1024 ) ( 840 256 -1512 ) StoneWall 8 0 0 1 1
-( 840 256 -1512 ) ( 840 264 -1512 ) ( 760 264 -1512 ) Roofing 0 0 0 1 1
+( 760 264 -1024 ) ( 760 256 -1024 ) ( 760 256 -1500 ) StoneWall 0 0 0 1 1
+( 760 256 -1024 ) ( 840 256 -1024 ) ( 840 256 -1500 ) StoneWall 8 0 0 1 1
+( 840 256 -1500 ) ( 840 264 -1500 ) ( 760 264 -1500 ) Roofing -32 -28 0 1 1
 ( 760 264 -1024 ) ( 840 264 -1024 ) ( 840 256 -1024 ) StoneWall 8 0 0 1 1
-( 840 264 -1512 ) ( 840 264 -1024 ) ( 760 264 -1024 ) StoneWall 8 0 0 1 1
-( 840 256 -1024 ) ( 840 264 -1024 ) ( 840 264 -1512 ) StoneWall 0 0 0 1 1
+( 840 264 -1500 ) ( 840 264 -1024 ) ( 760 264 -1024 ) StoneWall 0 0 0 1 1
+( 840 256 -1024 ) ( 840 264 -1024 ) ( 840 264 -1500 ) StoneWall 0 0 0 1 1
 }
 }
 // entity 78
@@ -1098,7 +1098,7 @@
 {
 ( 1056 40 -1024 ) ( 1056 -40 -1024 ) ( 1056 -40 -1200 ) StoneWall 0 0 0 1 1
 ( 1056 -40 -1024 ) ( 1064 -40 -1024 ) ( 1064 -40 -1200 ) StoneWall -8 0 0 1 1
-( 1064 -40 -1200 ) ( 1064 40 -1200 ) ( 1056 40 -1200 ) StoneWall 8 0 0 1 1
+( 1064 -40 -1200 ) ( 1064 40 -1200 ) ( 1056 40 -1200 ) Roofing 0 0 0 1 1
 ( 1056 40 -1024 ) ( 1064 40 -1024 ) ( 1064 -40 -1024 ) StoneWall 8 0 0 1 1
 ( 1064 40 -1200 ) ( 1064 40 -1024 ) ( 1056 40 -1024 ) StoneWall -8 0 0 1 1
 ( 1064 -40 -1024 ) ( 1064 40 -1024 ) ( 1064 40 -1200 ) StoneWall 8 0 0 1 1
@@ -1372,20 +1372,6 @@
 }
 // entity 98
 {
-"classname" "ground_solid"
-"_tb_group" "75"
-// brush 0
-{
-( 756 188 -1640 ) ( 756 189 -1640 ) ( 756 188 -1639 ) WoodFlooring 0 -16 0 1 1
-( 756 188 -1640 ) ( 756 188 -1639 ) ( 757 188 -1640 ) WoodFlooring 0 -16 0 1 1
-( 756 188 -1640 ) ( 757 188 -1640 ) ( 756 189 -1640 ) WoodFlooring 0 0 0 1 1
-( 844 348 -1636 ) ( 844 349 -1636 ) ( 845 348 -1636 ) WoodFlooring 0 0 0 1 1
-( 844 348 -1636 ) ( 845 348 -1636 ) ( 844 348 -1635 ) WoodFlooring 0 -16 0 1 1
-( 844 348 -1636 ) ( 844 348 -1635 ) ( 844 349 -1636 ) WoodFlooring 0 -16 0 1 1
-}
-}
-// entity 99
-{
 "classname" "wall_solid"
 "_tb_group" "75"
 // brush 0
@@ -1398,7 +1384,7 @@
 ( 840 -344 -1128 ) ( 840 -264 -1128 ) ( 840 -264 -1136 ) StoneWall 0 0 0 1 1
 }
 }
-// entity 100
+// entity 99
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -1412,21 +1398,21 @@
 ( 840 -264 -1024 ) ( 840 -256 -1024 ) ( 840 -256 -1136 ) StoneWall 0 0 0 1 1
 }
 }
-// entity 101
+// entity 100
 {
 "classname" "wall_solid"
 "_tb_group" "75"
 // brush 0
 {
-( -276 48 -1196 ) ( -276 -48 -1196 ) ( -276 -48 -1200 ) Roofing 0 0 0 1 1
-( -276 -48 -1196 ) ( 1056 -48 -1196 ) ( 1056 -48 -1200 ) Roofing 0 0 0 1 1
-( 1056 -48 -1200 ) ( 1056 48 -1200 ) ( -276 48 -1200 ) Roofing 0 0 0 1 1
-( -276 48 -1196 ) ( 1056 48 -1196 ) ( 1056 -48 -1196 ) Roofing 0 0 0 1 1
+( -276 48 -1196 ) ( -276 -376 -1196 ) ( -276 -376 -1200 ) Roofing 0 0 0 1 1
+( -276 -376 -1196 ) ( 1056 -376 -1196 ) ( 1056 -376 -1200 ) Roofing 0 0 0 1 1
+( 1056 -376 -1200 ) ( 1056 48 -1200 ) ( -276 48 -1200 ) Roofing 0 0 0 1 1
+( -276 48 -1196 ) ( 1056 48 -1196 ) ( 1056 -376 -1196 ) Roofing 0 0 0 1 1
 ( 1056 48 -1200 ) ( 1056 48 -1196 ) ( -276 48 -1196 ) Roofing 0 0 0 1 1
-( 1056 -48 -1196 ) ( 1056 48 -1196 ) ( 1056 48 -1200 ) Roofing 0 0 0 1 1
+( 1056 -376 -1196 ) ( 1056 48 -1196 ) ( 1056 48 -1200 ) Roofing 0 0 0 1 1
 }
 }
-// entity 102
+// entity 101
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -1440,7 +1426,7 @@
 ( -164 48 -1196 ) ( -164 228 -1196 ) ( -164 228 -1200 ) Roofing 0 0 0 1 1
 }
 }
-// entity 103
+// entity 102
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -1454,7 +1440,7 @@
 ( -164 228 -1196 ) ( -164 520 -1052 ) ( -164 520 -1056 ) Roofing 0 4 0 1 1
 }
 }
-// entity 104
+// entity 103
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -1489,7 +1475,7 @@
 ( 1060 32 -888 ) ( 1060 32 -887 ) ( 1060 33 -888 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 105
+// entity 104
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -1562,7 +1548,7 @@
 ( 712 -12 -684 ) ( 712 -13 -684 ) ( 712 -12 -683 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 106
+// entity 105
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1576,7 +1562,7 @@
 ( 1056 -204 -1004 ) ( 1056 -180 -1004 ) ( 1056 -180 -1012 ) WoodFlooring -1 -15 180 1 -1
 }
 }
-// entity 107
+// entity 106
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1590,7 +1576,7 @@
 ( 1056 -180 -992 ) ( 1056 -156 -992 ) ( 1056 -156 -1000 ) WoodFlooring -5 -12 180 1 -1
 }
 }
-// entity 108
+// entity 107
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1604,7 +1590,7 @@
 ( 1056 -156 -980 ) ( 1056 -132 -980 ) ( 1056 -132 -988 ) WoodFlooring -15 -9 180 1 -1
 }
 }
-// entity 109
+// entity 108
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1618,7 +1604,7 @@
 ( 1056 -132 -968 ) ( 1056 -108 -968 ) ( 1056 -108 -976 ) WoodFlooring -9 -6 180 1 -1
 }
 }
-// entity 110
+// entity 109
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1632,7 +1618,7 @@
 ( 1056 -108 -956 ) ( 1056 -84 -956 ) ( 1056 -84 -964 ) WoodFlooring -3 -3 180 1 -1
 }
 }
-// entity 111
+// entity 110
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1646,7 +1632,7 @@
 ( 1056 -84 -944 ) ( 1056 -60 -944 ) ( 1056 -60 -952 ) WoodFlooring -13 0 180 1 -1
 }
 }
-// entity 112
+// entity 111
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1660,7 +1646,7 @@
 ( 1056 -60 -932 ) ( 1056 -36 -932 ) ( 1056 -36 -940 ) WoodFlooring -7 3 180 1 -1
 }
 }
-// entity 113
+// entity 112
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1674,7 +1660,7 @@
 ( 1056 -36 -920 ) ( 1056 -12 -920 ) ( 1056 -12 -928 ) WoodFlooring -1 -10 180 1 -1
 }
 }
-// entity 114
+// entity 113
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1688,7 +1674,7 @@
 ( 1056 -12 -908 ) ( 1056 12 -908 ) ( 1056 12 -916 ) WoodFlooring -11 -7 180 1 -1
 }
 }
-// entity 115
+// entity 114
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1702,7 +1688,7 @@
 ( 1056 12 -896 ) ( 1056 36 -896 ) ( 1056 36 -904 ) WoodFlooring -5 -4 180 1 -1
 }
 }
-// entity 116
+// entity 115
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1716,7 +1702,7 @@
 ( 1056 36 -884 ) ( 1056 60 -884 ) ( 1056 60 -892 ) WoodFlooring 1 -1 180 1 -1
 }
 }
-// entity 117
+// entity 116
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1730,7 +1716,7 @@
 ( 1056 60 -872 ) ( 1056 256 -872 ) ( 1056 256 -880 ) WoodFlooring 0 -14 180 1 -1
 }
 }
-// entity 118
+// entity 117
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1744,7 +1730,7 @@
 ( 956 60 -860 ) ( 956 256 -860 ) ( 956 256 -868 ) WoodFlooring 0 -11 180 1 -1
 }
 }
-// entity 119
+// entity 118
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1758,7 +1744,7 @@
 ( 932 60 -848 ) ( 932 256 -848 ) ( 932 256 -856 ) WoodFlooring 0 -8 180 1 -1
 }
 }
-// entity 120
+// entity 119
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1772,7 +1758,7 @@
 ( 908 60 -836 ) ( 908 256 -836 ) ( 908 256 -844 ) WoodFlooring 0 -5 180 1 -1
 }
 }
-// entity 121
+// entity 120
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1794,7 +1780,7 @@
 ( 884 60 -824 ) ( 884 76 -824 ) ( 884 76 -832 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 122
+// entity 121
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1808,7 +1794,7 @@
 ( 860 76 -812 ) ( 860 256 -812 ) ( 860 256 -820 ) WoodFlooring 0 -15 180 1 -1
 }
 }
-// entity 123
+// entity 122
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1822,7 +1808,7 @@
 ( 836 76 -800 ) ( 836 256 -800 ) ( 836 256 -808 ) WoodFlooring 0 -12 180 1 -1
 }
 }
-// entity 124
+// entity 123
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1836,7 +1822,7 @@
 ( 812 12 -788 ) ( 812 256 -788 ) ( 812 256 -796 ) WoodFlooring 0 -9 180 1 -1
 }
 }
-// entity 125
+// entity 124
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1850,7 +1836,7 @@
 ( 788 180 -776 ) ( 788 256 -776 ) ( 788 256 -784 ) WoodFlooring 5 -6 180 1 -1
 }
 }
-// entity 126
+// entity 125
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1864,7 +1850,7 @@
 ( 788 156 -764 ) ( 788 180 -764 ) ( 788 180 -772 ) WoodFlooring 15 -3 180 1 -1
 }
 }
-// entity 127
+// entity 126
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1878,7 +1864,7 @@
 ( 788 132 -752 ) ( 788 156 -752 ) ( 788 156 -760 ) WoodFlooring 9 0 180 1 -1
 }
 }
-// entity 128
+// entity 127
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1892,7 +1878,7 @@
 ( 788 108 -740 ) ( 788 132 -740 ) ( 788 132 -748 ) WoodFlooring 3 -13 180 1 -1
 }
 }
-// entity 129
+// entity 128
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1906,7 +1892,7 @@
 ( 788 84 -728 ) ( 788 108 -728 ) ( 788 108 -736 ) WoodFlooring 13 -10 180 1 -1
 }
 }
-// entity 130
+// entity 129
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1920,7 +1906,7 @@
 ( 788 60 -716 ) ( 788 84 -716 ) ( 788 84 -724 ) WoodFlooring 7 -7 180 1 -1
 }
 }
-// entity 131
+// entity 130
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1934,7 +1920,7 @@
 ( 788 36 -704 ) ( 788 60 -704 ) ( 788 60 -712 ) WoodFlooring 1 -4 180 1 -1
 }
 }
-// entity 132
+// entity 131
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1948,7 +1934,7 @@
 ( 788 12 -692 ) ( 788 36 -692 ) ( 788 36 -700 ) WoodFlooring -5 -1 180 1 -1
 }
 }
-// entity 133
+// entity 132
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1962,7 +1948,7 @@
 ( 788 -12 -680 ) ( 788 12 -680 ) ( 788 12 -688 ) WoodFlooring -11 -14 180 1 -1
 }
 }
-// entity 134
+// entity 133
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1976,7 +1962,7 @@
 ( 692 -184 -668 ) ( 692 -12 -668 ) ( 692 -12 -676 ) WoodFlooring -6 -11 180 1 -1
 }
 }
-// entity 135
+// entity 134
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -1990,7 +1976,7 @@
 ( 716 -184 -656 ) ( 716 -12 -656 ) ( 716 -12 -664 ) WoodFlooring -6 -8 180 1 -1
 }
 }
-// entity 136
+// entity 135
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2004,7 +1990,7 @@
 ( 740 -184 -644 ) ( 740 -12 -644 ) ( 740 -12 -652 ) WoodFlooring -6 -5 180 1 -1
 }
 }
-// entity 137
+// entity 136
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2018,7 +2004,7 @@
 ( 764 -184 -632 ) ( 764 -12 -632 ) ( 764 -12 -640 ) WoodFlooring -6 -2 180 1 -1
 }
 }
-// entity 138
+// entity 137
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2032,7 +2018,7 @@
 ( 788 -184 -620 ) ( 788 -12 -620 ) ( 788 -12 -628 ) WoodFlooring -6 -15 180 1 -1
 }
 }
-// entity 139
+// entity 138
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2046,7 +2032,7 @@
 ( 812 -184 -608 ) ( 812 -12 -608 ) ( 812 -12 -616 ) WoodFlooring -6 -12 180 1 -1
 }
 }
-// entity 140
+// entity 139
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2060,7 +2046,7 @@
 ( 984 -184 -596 ) ( 984 -108 -596 ) ( 984 -108 -604 ) WoodFlooring -9 -9 180 1 -1
 }
 }
-// entity 141
+// entity 140
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2074,7 +2060,7 @@
 ( 984 -108 -584 ) ( 984 -84 -584 ) ( 984 -84 -592 ) WoodFlooring -3 -6 180 1 -1
 }
 }
-// entity 142
+// entity 141
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2088,7 +2074,7 @@
 ( 984 -84 -572 ) ( 984 -60 -572 ) ( 984 -60 -580 ) WoodFlooring 3 -3 180 1 -1
 }
 }
-// entity 143
+// entity 142
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2102,7 +2088,7 @@
 ( 984 -60 -560 ) ( 984 -36 -560 ) ( 984 -36 -568 ) WoodFlooring -7 0 180 1 -1
 }
 }
-// entity 144
+// entity 143
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2116,7 +2102,7 @@
 ( 984 -36 -548 ) ( 984 -12 -548 ) ( 984 -12 -556 ) WoodFlooring -1 -13 180 1 -1
 }
 }
-// entity 145
+// entity 144
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2130,7 +2116,7 @@
 ( 984 -12 -536 ) ( 984 12 -536 ) ( 984 12 -544 ) WoodFlooring -11 -10 180 1 -1
 }
 }
-// entity 146
+// entity 145
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2144,7 +2130,7 @@
 ( 984 12 -524 ) ( 984 184 -524 ) ( 984 184 -532 ) WoodFlooring 11 -7 180 1 -1
 }
 }
-// entity 147
+// entity 146
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2158,7 +2144,7 @@
 ( 908 12 -512 ) ( 908 184 -512 ) ( 908 184 -520 ) WoodFlooring 11 -4 180 1 -1
 }
 }
-// entity 148
+// entity 147
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2172,7 +2158,7 @@
 ( 884 12 -500 ) ( 884 184 -500 ) ( 884 184 -508 ) WoodFlooring 11 -1 180 1 -1
 }
 }
-// entity 149
+// entity 148
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2186,7 +2172,7 @@
 ( 860 12 -488 ) ( 860 184 -488 ) ( 860 184 -496 ) WoodFlooring 11 -14 180 1 -1
 }
 }
-// entity 150
+// entity 149
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2200,7 +2186,7 @@
 ( 836 12 -476 ) ( 836 184 -476 ) ( 836 184 -484 ) WoodFlooring 11 -11 180 1 -1
 }
 }
-// entity 151
+// entity 150
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2214,7 +2200,7 @@
 ( 812 12 -464 ) ( 812 184 -464 ) ( 812 184 -472 ) WoodFlooring 11 -8 180 1 -1
 }
 }
-// entity 152
+// entity 151
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2228,7 +2214,7 @@
 ( 788 108 -452 ) ( 788 184 -452 ) ( 788 184 -460 ) WoodFlooring 3 -5 180 1 -1
 }
 }
-// entity 153
+// entity 152
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2242,7 +2228,7 @@
 ( 788 84 -440 ) ( 788 108 -440 ) ( 788 108 -448 ) WoodFlooring 13 -2 180 1 -1
 }
 }
-// entity 154
+// entity 153
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2256,7 +2242,7 @@
 ( 788 60 -428 ) ( 788 84 -428 ) ( 788 84 -436 ) WoodFlooring 7 -15 180 1 -1
 }
 }
-// entity 155
+// entity 154
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2270,7 +2256,7 @@
 ( 788 36 -416 ) ( 788 60 -416 ) ( 788 60 -424 ) WoodFlooring 1 -12 180 1 -1
 }
 }
-// entity 156
+// entity 155
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2284,7 +2270,7 @@
 ( 788 12 -404 ) ( 788 36 -404 ) ( 788 36 -412 ) WoodFlooring 11 -9 180 1 -1
 }
 }
-// entity 157
+// entity 156
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2298,7 +2284,7 @@
 ( 788 -12 -392 ) ( 788 12 -392 ) ( 788 12 -400 ) WoodFlooring 5 -6 180 1 -1
 }
 }
-// entity 158
+// entity 157
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2312,7 +2298,7 @@
 ( 692 -184 -380 ) ( 692 -12 -380 ) ( 692 -12 -388 ) WoodFlooring -6 -3 180 1 -1
 }
 }
-// entity 159
+// entity 158
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2326,7 +2312,7 @@
 ( 716 -184 -368 ) ( 716 -12 -368 ) ( 716 -12 -376 ) WoodFlooring -6 0 180 1 -1
 }
 }
-// entity 160
+// entity 159
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2340,7 +2326,7 @@
 ( 740 -184 -356 ) ( 740 -12 -356 ) ( 740 -12 -364 ) WoodFlooring -6 -13 180 1 -1
 }
 }
-// entity 161
+// entity 160
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2354,7 +2340,7 @@
 ( 764 -184 -344 ) ( 764 -12 -344 ) ( 764 -12 -352 ) WoodFlooring -6 -10 180 1 -1
 }
 }
-// entity 162
+// entity 161
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2368,7 +2354,7 @@
 ( 788 -184 -332 ) ( 788 -12 -332 ) ( 788 -12 -340 ) WoodFlooring -6 -7 180 1 -1
 }
 }
-// entity 163
+// entity 162
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2382,7 +2368,7 @@
 ( 812 -184 -320 ) ( 812 -12 -320 ) ( 812 -12 -328 ) WoodFlooring -6 -4 180 1 -1
 }
 }
-// entity 164
+// entity 163
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2396,7 +2382,7 @@
 ( 984 -184 -308 ) ( 984 -108 -308 ) ( 984 -108 -316 ) WoodFlooring 1 -1 180 1 -1
 }
 }
-// entity 165
+// entity 164
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2410,7 +2396,7 @@
 ( 984 -108 -296 ) ( 984 -84 -296 ) ( 984 -84 -304 ) WoodFlooring -3 -14 180 1 -1
 }
 }
-// entity 166
+// entity 165
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2424,7 +2410,7 @@
 ( 984 -84 -284 ) ( 984 -60 -284 ) ( 984 -60 -292 ) WoodFlooring -13 -11 180 1 -1
 }
 }
-// entity 167
+// entity 166
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2438,7 +2424,7 @@
 ( 984 -60 -272 ) ( 984 -36 -272 ) ( 984 -36 -280 ) WoodFlooring -7 -8 180 1 -1
 }
 }
-// entity 168
+// entity 167
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2452,7 +2438,7 @@
 ( 984 -36 -260 ) ( 984 -12 -260 ) ( 984 -12 -268 ) WoodFlooring -1 -5 180 1 -1
 }
 }
-// entity 169
+// entity 168
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2466,7 +2452,7 @@
 ( 984 -12 -248 ) ( 984 12 -248 ) ( 984 12 -256 ) WoodFlooring -11 -2 180 1 -1
 }
 }
-// entity 170
+// entity 169
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2480,7 +2466,7 @@
 ( 984 12 -236 ) ( 984 184 -236 ) ( 984 184 -244 ) WoodFlooring 0 -15 180 1 -1
 }
 }
-// entity 171
+// entity 170
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2494,7 +2480,7 @@
 ( 908 12 -224 ) ( 908 184 -224 ) ( 908 184 -232 ) WoodFlooring 0 -12 180 1 -1
 }
 }
-// entity 172
+// entity 171
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2508,7 +2494,7 @@
 ( 884 12 -212 ) ( 884 184 -212 ) ( 884 184 -220 ) WoodFlooring 0 -9 180 1 -1
 }
 }
-// entity 173
+// entity 172
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2522,7 +2508,7 @@
 ( 860 12 -200 ) ( 860 184 -200 ) ( 860 184 -208 ) WoodFlooring 0 -6 180 1 -1
 }
 }
-// entity 174
+// entity 173
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2536,7 +2522,7 @@
 ( 812 16 -176 ) ( 812 184 -176 ) ( 812 184 -184 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 175
+// entity 174
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2550,7 +2536,7 @@
 ( 788 16 -164 ) ( 788 184 -164 ) ( 788 184 -172 ) WoodFlooring 0 3 180 1 -1
 }
 }
-// entity 176
+// entity 175
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -2564,7 +2550,7 @@
 ( 740 -24 -140 ) ( 740 184 -140 ) ( 740 184 -148 ) WoodFlooring 0 9 180 1 -1
 }
 }
-// entity 177
+// entity 176
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2578,7 +2564,7 @@
 ( 832 12 -196 ) ( 832 16 -196 ) ( 832 16 -252 ) WoodFlooring 7 15 180 1 -1
 }
 }
-// entity 178
+// entity 177
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2592,7 +2578,7 @@
 ( 856 12 -208 ) ( 856 16 -208 ) ( 856 16 -252 ) WoodFlooring 7 15 180 1 -1
 }
 }
-// entity 179
+// entity 178
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2606,7 +2592,7 @@
 ( 880 12 -220 ) ( 880 16 -220 ) ( 880 16 -252 ) WoodFlooring 7 15 180 1 -1
 }
 }
-// entity 180
+// entity 179
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2620,7 +2606,7 @@
 ( 904 16 -252 ) ( 904 15 -252 ) ( 904 16 -251 ) WoodFlooring 7 12 180 1 -1
 }
 }
-// entity 181
+// entity 180
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2634,7 +2620,7 @@
 ( 816 -16 -268 ) ( 816 -32 -324 ) ( 816 -32 -268 ) WoodFlooring 6 5 0 1 -1
 }
 }
-// entity 182
+// entity 181
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2648,7 +2634,7 @@
 ( 816 -40 -280 ) ( 816 -56 -324 ) ( 816 -56 -280 ) WoodFlooring 14 5 0 1 -1
 }
 }
-// entity 183
+// entity 182
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2662,7 +2648,7 @@
 ( 816 -64 -292 ) ( 816 -80 -324 ) ( 816 -80 -292 ) WoodFlooring 6 5 0 1 -1
 }
 }
-// entity 184
+// entity 183
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2676,7 +2662,7 @@
 ( 816 -88 -304 ) ( 816 -104 -324 ) ( 816 -104 -304 ) WoodFlooring 14 5 0 1 -1
 }
 }
-// entity 185
+// entity 184
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2690,7 +2676,7 @@
 ( 784 -16 -340 ) ( 784 -12 -340 ) ( 784 -12 -396 ) WoodFlooring 0 8 180 1 -1
 }
 }
-// entity 186
+// entity 185
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2704,7 +2690,7 @@
 ( 760 -16 -352 ) ( 760 -12 -352 ) ( 760 -12 -396 ) WoodFlooring 0 8 180 1 -1
 }
 }
-// entity 187
+// entity 186
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2718,7 +2704,7 @@
 ( 736 -16 -364 ) ( 736 -12 -364 ) ( 736 -12 -396 ) WoodFlooring 0 8 180 1 -1
 }
 }
-// entity 188
+// entity 187
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2732,7 +2718,7 @@
 ( 712 -12 -396 ) ( 712 -13 -396 ) ( 712 -12 -395 ) WoodFlooring 0 8 180 1 -1
 }
 }
-// entity 189
+// entity 188
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2746,7 +2732,7 @@
 ( 788 16 -412 ) ( 788 32 -412 ) ( 788 32 -468 ) WoodFlooring -10 1 180 1 -1
 }
 }
-// entity 190
+// entity 189
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2760,7 +2746,7 @@
 ( 788 40 -424 ) ( 788 56 -424 ) ( 788 56 -468 ) WoodFlooring -2 1 180 1 -1
 }
 }
-// entity 191
+// entity 190
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2774,7 +2760,7 @@
 ( 788 64 -436 ) ( 788 80 -436 ) ( 788 80 -468 ) WoodFlooring -10 1 180 1 -1
 }
 }
-// entity 192
+// entity 191
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2788,7 +2774,7 @@
 ( 788 88 -448 ) ( 788 104 -448 ) ( 788 104 -468 ) WoodFlooring -2 1 180 1 -1
 }
 }
-// entity 193
+// entity 192
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2802,7 +2788,7 @@
 ( 832 16 -484 ) ( 832 12 -540 ) ( 832 12 -484 ) WoodFlooring -9 4 180 1 -1
 }
 }
-// entity 194
+// entity 193
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2816,7 +2802,7 @@
 ( 856 16 -496 ) ( 856 12 -540 ) ( 856 12 -496 ) WoodFlooring -9 4 180 1 -1
 }
 }
-// entity 195
+// entity 194
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2830,7 +2816,7 @@
 ( 880 16 -508 ) ( 880 12 -540 ) ( 880 12 -508 ) WoodFlooring -9 4 180 1 -1
 }
 }
-// entity 196
+// entity 195
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2844,7 +2830,7 @@
 ( 904 12 -520 ) ( 904 11 -520 ) ( 904 12 -519 ) WoodFlooring -9 4 180 1 -1
 }
 }
-// entity 197
+// entity 196
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2858,7 +2844,7 @@
 ( 816 -16 -556 ) ( 816 -32 -612 ) ( 816 -32 -556 ) WoodFlooring 6 -3 0 1 -1
 }
 }
-// entity 198
+// entity 197
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2872,7 +2858,7 @@
 ( 816 -40 -568 ) ( 816 -56 -612 ) ( 816 -56 -568 ) WoodFlooring 14 -3 0 1 -1
 }
 }
-// entity 199
+// entity 198
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2886,7 +2872,7 @@
 ( 816 -64 -580 ) ( 816 -80 -612 ) ( 816 -80 -580 ) WoodFlooring 6 -3 0 1 -1
 }
 }
-// entity 200
+// entity 199
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2900,7 +2886,7 @@
 ( 816 -88 -592 ) ( 816 -104 -612 ) ( 816 -104 -592 ) WoodFlooring 14 -3 0 1 -1
 }
 }
-// entity 201
+// entity 200
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2914,7 +2900,7 @@
 ( 784 -16 -628 ) ( 784 -12 -628 ) ( 784 -12 -684 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 202
+// entity 201
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2928,7 +2914,7 @@
 ( 760 -16 -640 ) ( 760 -12 -640 ) ( 760 -12 -684 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 203
+// entity 202
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2942,7 +2928,7 @@
 ( 736 -16 -652 ) ( 736 -12 -652 ) ( 736 -12 -684 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 204
+// entity 203
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2956,7 +2942,7 @@
 ( 712 -12 -684 ) ( 712 -13 -684 ) ( 712 -12 -683 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 205
+// entity 204
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2970,7 +2956,7 @@
 ( 788 16 -700 ) ( 788 32 -700 ) ( 788 32 -792 ) WoodFlooring -16 0 180 1 -1
 }
 }
-// entity 206
+// entity 205
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2984,7 +2970,7 @@
 ( 788 40 -712 ) ( 788 56 -712 ) ( 788 56 -792 ) WoodFlooring -24 0 180 1 -1
 }
 }
-// entity 207
+// entity 206
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -2998,7 +2984,7 @@
 ( 788 64 -724 ) ( 788 80 -724 ) ( 788 80 -792 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 208
+// entity 207
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3012,7 +2998,7 @@
 ( 788 88 -736 ) ( 788 104 -736 ) ( 788 104 -792 ) WoodFlooring -8 0 180 1 -1
 }
 }
-// entity 209
+// entity 208
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3026,7 +3012,7 @@
 ( 788 112 -748 ) ( 788 128 -748 ) ( 788 128 -792 ) WoodFlooring -16 0 180 1 -1
 }
 }
-// entity 210
+// entity 209
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3040,7 +3026,7 @@
 ( 788 136 -760 ) ( 788 152 -760 ) ( 788 152 -792 ) WoodFlooring -24 0 180 1 -1
 }
 }
-// entity 211
+// entity 210
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3054,7 +3040,7 @@
 ( 788 160 -772 ) ( 788 176 -772 ) ( 788 176 -792 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 212
+// entity 211
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3068,7 +3054,7 @@
 ( 904 60 -844 ) ( 904 64 -844 ) ( 904 64 -888 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 213
+// entity 212
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3082,7 +3068,7 @@
 ( 928 60 -856 ) ( 928 64 -856 ) ( 928 64 -888 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 214
+// entity 213
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3096,7 +3082,7 @@
 ( 952 60 -868 ) ( 952 64 -868 ) ( 952 64 -888 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 215
+// entity 214
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3110,7 +3096,7 @@
 ( 880 -8 -916 ) ( 880 8 -916 ) ( 880 8 -1016 ) WoodFlooring 0 -9 0 1 -1
 }
 }
-// entity 216
+// entity 215
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3124,7 +3110,7 @@
 ( 880 -32 -928 ) ( 880 -16 -928 ) ( 880 -16 -1016 ) WoodFlooring -8 -9 0 1 -1
 }
 }
-// entity 217
+// entity 216
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3138,7 +3124,7 @@
 ( 880 -56 -940 ) ( 880 -40 -940 ) ( 880 -40 -1016 ) WoodFlooring 0 -9 0 1 -1
 }
 }
-// entity 218
+// entity 217
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3152,7 +3138,7 @@
 ( 880 -80 -952 ) ( 880 -64 -952 ) ( 880 -64 -1016 ) WoodFlooring -8 -9 0 1 -1
 }
 }
-// entity 219
+// entity 218
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3166,7 +3152,7 @@
 ( 880 -104 -964 ) ( 880 -88 -964 ) ( 880 -88 -1016 ) WoodFlooring 8 -9 0 1 -1
 }
 }
-// entity 220
+// entity 219
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3180,7 +3166,7 @@
 ( 880 -128 -976 ) ( 880 -112 -976 ) ( 880 -112 -1016 ) WoodFlooring 0 -9 0 1 -1
 }
 }
-// entity 221
+// entity 220
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3194,7 +3180,7 @@
 ( 880 -152 -988 ) ( 880 -136 -988 ) ( 880 -136 -1016 ) WoodFlooring 8 -9 0 1 -1
 }
 }
-// entity 222
+// entity 221
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3208,7 +3194,7 @@
 ( 880 -176 -1000 ) ( 880 -160 -1000 ) ( 880 -160 -1016 ) WoodFlooring 0 -9 0 1 -1
 }
 }
-// entity 223
+// entity 222
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3222,7 +3208,7 @@
 ( 616 232 -608 ) ( 616 248 -608 ) ( 616 248 -780 ) WoodFlooring 16 -40 180 1 -1
 }
 }
-// entity 224
+// entity 223
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3236,7 +3222,7 @@
 ( 616 208 -608 ) ( 616 224 -608 ) ( 616 224 -780 ) WoodFlooring 48 -40 180 1 -1
 }
 }
-// entity 225
+// entity 224
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3250,7 +3236,7 @@
 ( 616 184 -608 ) ( 616 200 -608 ) ( 616 200 -780 ) WoodFlooring 24 -40 180 1 -1
 }
 }
-// entity 226
+// entity 225
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3264,7 +3250,7 @@
 ( 616 160 -608 ) ( 616 176 -608 ) ( 616 176 -768 ) WoodFlooring 0 -36 180 1 -1
 }
 }
-// entity 227
+// entity 226
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3278,7 +3264,7 @@
 ( 616 136 -608 ) ( 616 152 -608 ) ( 616 152 -756 ) WoodFlooring 32 -36 180 1 -1
 }
 }
-// entity 228
+// entity 227
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3292,7 +3278,7 @@
 ( 784 -184 -624 ) ( 784 -185 -624 ) ( 784 -184 -623 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 229
+// entity 228
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3306,7 +3292,7 @@
 ( 760 -184 -636 ) ( 760 -185 -636 ) ( 760 -184 -635 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 230
+// entity 229
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3320,7 +3306,7 @@
 ( 736 -188 -608 ) ( 736 -184 -608 ) ( 736 -184 -648 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 231
+// entity 230
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3334,7 +3320,7 @@
 ( 712 -188 -608 ) ( 712 -184 -608 ) ( 712 -184 -660 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 232
+// entity 231
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3348,7 +3334,7 @@
 ( 688 -188 -608 ) ( 688 -184 -608 ) ( 688 -184 -672 ) WoodFlooring 0 -12 180 1 -1
 }
 }
-// entity 233
+// entity 232
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3362,7 +3348,7 @@
 ( 664 -188 -608 ) ( 664 -184 -608 ) ( 664 -184 -672 ) WoodFlooring 0 -12 180 1 -1
 }
 }
-// entity 234
+// entity 233
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3376,7 +3362,7 @@
 ( 640 -188 -608 ) ( 640 -184 -608 ) ( 640 -184 -672 ) WoodFlooring 0 -12 180 1 -1
 }
 }
-// entity 235
+// entity 234
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3390,7 +3376,7 @@
 ( 616 -176 -608 ) ( 616 -160 -608 ) ( 616 -160 -672 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 236
+// entity 235
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3404,7 +3390,7 @@
 ( 616 -152 -608 ) ( 616 -136 -608 ) ( 616 -136 -672 ) WoodFlooring 24 0 180 1 -1
 }
 }
-// entity 237
+// entity 236
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3418,7 +3404,7 @@
 ( 616 -128 -608 ) ( 616 -112 -608 ) ( 616 -112 -672 ) WoodFlooring 48 0 180 1 -1
 }
 }
-// entity 238
+// entity 237
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3432,7 +3418,7 @@
 ( 616 -104 -608 ) ( 616 -88 -608 ) ( 616 -88 -672 ) WoodFlooring 16 0 180 1 -1
 }
 }
-// entity 239
+// entity 238
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3446,7 +3432,7 @@
 ( 616 -80 -608 ) ( 616 -64 -608 ) ( 616 -64 -672 ) WoodFlooring 40 0 180 1 -1
 }
 }
-// entity 240
+// entity 239
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3460,7 +3446,7 @@
 ( 616 -56 -608 ) ( 616 -40 -608 ) ( 616 -40 -672 ) WoodFlooring 8 0 180 1 -1
 }
 }
-// entity 241
+// entity 240
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3474,7 +3460,7 @@
 ( 616 -32 -608 ) ( 616 -16 -608 ) ( 616 -16 -672 ) WoodFlooring 32 0 180 1 -1
 }
 }
-// entity 242
+// entity 241
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3488,7 +3474,7 @@
 ( 616 -8 -608 ) ( 616 8 -608 ) ( 616 8 -684 ) WoodFlooring 0 0 180 1 -1
 }
 }
-// entity 243
+// entity 242
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3502,7 +3488,7 @@
 ( 616 16 -608 ) ( 616 32 -608 ) ( 616 32 -696 ) WoodFlooring 24 -12 180 1 -1
 }
 }
-// entity 244
+// entity 243
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3516,7 +3502,7 @@
 ( 616 40 -608 ) ( 616 56 -608 ) ( 616 56 -708 ) WoodFlooring 48 -24 180 1 -1
 }
 }
-// entity 245
+// entity 244
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3530,7 +3516,7 @@
 ( 616 64 -608 ) ( 616 80 -608 ) ( 616 80 -720 ) WoodFlooring 16 -36 180 1 -1
 }
 }
-// entity 246
+// entity 245
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3544,7 +3530,7 @@
 ( 616 88 -608 ) ( 616 104 -608 ) ( 616 104 -732 ) WoodFlooring 40 -36 180 1 -1
 }
 }
-// entity 247
+// entity 246
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3558,7 +3544,7 @@
 ( 616 112 -608 ) ( 616 128 -608 ) ( 616 128 -744 ) WoodFlooring 8 -36 180 1 -1
 }
 }
-// entity 248
+// entity 247
 {
 "classname" "ground_solid"
 "_tb_group" "205"
@@ -3572,7 +3558,7 @@
 ( 836 12 -188 ) ( 836 184 -188 ) ( 836 184 -196 ) WoodFlooring 0 -3 180 1 -1
 }
 }
-// entity 249
+// entity 248
 {
 "classname" "wall_solid"
 "_tb_group" "205"
@@ -3586,7 +3572,7 @@
 ( 764 -24 -152 ) ( 764 184 -152 ) ( 764 184 -160 ) WoodFlooring 0 6 180 1 -1
 }
 }
-// entity 250
+// entity 249
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -3659,7 +3645,7 @@
 ( 904 16 -664 ) ( 904 16 -663 ) ( 904 17 -664 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 251
+// entity 250
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3673,7 +3659,7 @@
 ( 724 180 -1004 ) ( 724 204 -1004 ) ( 724 204 -1012 ) WoodFlooring -1 -15 0 1 1
 }
 }
-// entity 252
+// entity 251
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3687,7 +3673,7 @@
 ( 724 156 -992 ) ( 724 180 -992 ) ( 724 180 -1000 ) WoodFlooring -5 -12 0 1 1
 }
 }
-// entity 253
+// entity 252
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3701,7 +3687,7 @@
 ( 724 132 -980 ) ( 724 156 -980 ) ( 724 156 -988 ) WoodFlooring -15 -9 0 1 1
 }
 }
-// entity 254
+// entity 253
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3715,7 +3701,7 @@
 ( 724 108 -968 ) ( 724 132 -968 ) ( 724 132 -976 ) WoodFlooring -9 -6 0 1 1
 }
 }
-// entity 255
+// entity 254
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3729,7 +3715,7 @@
 ( 724 84 -956 ) ( 724 108 -956 ) ( 724 108 -964 ) WoodFlooring -3 -3 0 1 1
 }
 }
-// entity 256
+// entity 255
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3743,7 +3729,7 @@
 ( 724 60 -944 ) ( 724 84 -944 ) ( 724 84 -952 ) WoodFlooring -13 0 0 1 1
 }
 }
-// entity 257
+// entity 256
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3757,7 +3743,7 @@
 ( 724 36 -932 ) ( 724 60 -932 ) ( 724 60 -940 ) WoodFlooring -7 3 0 1 1
 }
 }
-// entity 258
+// entity 257
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3771,7 +3757,7 @@
 ( 724 12 -920 ) ( 724 36 -920 ) ( 724 36 -928 ) WoodFlooring -1 -10 0 1 1
 }
 }
-// entity 259
+// entity 258
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3785,7 +3771,7 @@
 ( 788 -12 -908 ) ( 788 12 -908 ) ( 788 12 -916 ) WoodFlooring -11 -7 0 1 1
 }
 }
-// entity 260
+// entity 259
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3799,7 +3785,7 @@
 ( 724 -36 -896 ) ( 724 -12 -896 ) ( 724 -12 -904 ) WoodFlooring -5 -4 0 1 1
 }
 }
-// entity 261
+// entity 260
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3813,7 +3799,7 @@
 ( 724 -60 -884 ) ( 724 -36 -884 ) ( 724 -36 -892 ) WoodFlooring 1 -1 0 1 1
 }
 }
-// entity 262
+// entity 261
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3827,7 +3813,7 @@
 ( 644 -256 -872 ) ( 644 -60 -872 ) ( 644 -60 -880 ) WoodFlooring 0 -14 0 1 1
 }
 }
-// entity 263
+// entity 262
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3841,7 +3827,7 @@
 ( 668 -256 -860 ) ( 668 -60 -860 ) ( 668 -60 -868 ) WoodFlooring 0 -11 0 1 1
 }
 }
-// entity 264
+// entity 263
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3855,7 +3841,7 @@
 ( 692 -256 -848 ) ( 692 -60 -848 ) ( 692 -60 -856 ) WoodFlooring 0 -8 0 1 1
 }
 }
-// entity 265
+// entity 264
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3869,7 +3855,7 @@
 ( 716 -256 -836 ) ( 716 -60 -836 ) ( 716 -60 -844 ) WoodFlooring 0 -5 0 1 1
 }
 }
-// entity 266
+// entity 265
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3891,7 +3877,7 @@
 ( 740 -76 -832 ) ( 740 -76 -824 ) ( 716 -60 -824 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 267
+// entity 266
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3905,7 +3891,7 @@
 ( 764 -256 -812 ) ( 764 -76 -812 ) ( 764 -76 -820 ) WoodFlooring 0 -15 0 1 1
 }
 }
-// entity 268
+// entity 267
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3919,7 +3905,7 @@
 ( 788 -256 -800 ) ( 788 -76 -800 ) ( 788 -76 -808 ) WoodFlooring 0 -12 0 1 1
 }
 }
-// entity 269
+// entity 268
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3933,7 +3919,7 @@
 ( 812 -256 -788 ) ( 812 -12 -788 ) ( 812 -12 -796 ) WoodFlooring 0 -9 0 1 1
 }
 }
-// entity 270
+// entity 269
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3947,7 +3933,7 @@
 ( 1056 -256 -776 ) ( 1056 -180 -776 ) ( 1056 -180 -784 ) WoodFlooring 5 -6 0 1 1
 }
 }
-// entity 271
+// entity 270
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3961,7 +3947,7 @@
 ( 984 -180 -764 ) ( 984 -156 -764 ) ( 984 -156 -772 ) WoodFlooring 15 -3 0 1 1
 }
 }
-// entity 272
+// entity 271
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3975,7 +3961,7 @@
 ( 984 -156 -752 ) ( 984 -132 -752 ) ( 984 -132 -760 ) WoodFlooring 9 0 0 1 1
 }
 }
-// entity 273
+// entity 272
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -3989,7 +3975,7 @@
 ( 984 -132 -740 ) ( 984 -108 -740 ) ( 984 -108 -748 ) WoodFlooring 3 -13 0 1 1
 }
 }
-// entity 274
+// entity 273
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4003,7 +3989,7 @@
 ( 984 -108 -728 ) ( 984 -84 -728 ) ( 984 -84 -736 ) WoodFlooring 13 -10 0 1 1
 }
 }
-// entity 275
+// entity 274
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4017,7 +4003,7 @@
 ( 984 -84 -716 ) ( 984 -60 -716 ) ( 984 -60 -724 ) WoodFlooring 7 -7 0 1 1
 }
 }
-// entity 276
+// entity 275
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4031,7 +4017,7 @@
 ( 984 -60 -704 ) ( 984 -36 -704 ) ( 984 -36 -712 ) WoodFlooring 1 -4 0 1 1
 }
 }
-// entity 277
+// entity 276
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4045,7 +4031,7 @@
 ( 984 -36 -692 ) ( 984 -12 -692 ) ( 984 -12 -700 ) WoodFlooring -5 -1 0 1 1
 }
 }
-// entity 278
+// entity 277
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4059,7 +4045,7 @@
 ( 984 -12 -680 ) ( 984 12 -680 ) ( 984 12 -688 ) WoodFlooring -11 -14 0 1 1
 }
 }
-// entity 279
+// entity 278
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4073,7 +4059,7 @@
 ( 984 12 -668 ) ( 984 184 -668 ) ( 984 184 -676 ) WoodFlooring -6 -11 0 1 1
 }
 }
-// entity 280
+// entity 279
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4087,7 +4073,7 @@
 ( 908 12 -656 ) ( 908 184 -656 ) ( 908 184 -664 ) WoodFlooring -6 -8 0 1 1
 }
 }
-// entity 281
+// entity 280
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4101,7 +4087,7 @@
 ( 884 12 -644 ) ( 884 184 -644 ) ( 884 184 -652 ) WoodFlooring -6 -5 0 1 1
 }
 }
-// entity 282
+// entity 281
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4115,7 +4101,7 @@
 ( 860 12 -632 ) ( 860 184 -632 ) ( 860 184 -640 ) WoodFlooring -6 -2 0 1 1
 }
 }
-// entity 283
+// entity 282
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4129,7 +4115,7 @@
 ( 836 12 -620 ) ( 836 184 -620 ) ( 836 184 -628 ) WoodFlooring -6 -15 0 1 1
 }
 }
-// entity 284
+// entity 283
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4143,7 +4129,7 @@
 ( 812 12 -608 ) ( 812 184 -608 ) ( 812 184 -616 ) WoodFlooring -6 -12 0 1 1
 }
 }
-// entity 285
+// entity 284
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4157,7 +4143,7 @@
 ( 788 108 -596 ) ( 788 184 -596 ) ( 788 184 -604 ) WoodFlooring -9 -9 0 1 1
 }
 }
-// entity 286
+// entity 285
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4171,7 +4157,7 @@
 ( 788 84 -584 ) ( 788 108 -584 ) ( 788 108 -592 ) WoodFlooring -3 -6 0 1 1
 }
 }
-// entity 287
+// entity 286
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4185,7 +4171,7 @@
 ( 788 60 -572 ) ( 788 84 -572 ) ( 788 84 -580 ) WoodFlooring 3 -3 0 1 1
 }
 }
-// entity 288
+// entity 287
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4199,7 +4185,7 @@
 ( 788 36 -560 ) ( 788 60 -560 ) ( 788 60 -568 ) WoodFlooring -7 0 0 1 1
 }
 }
-// entity 289
+// entity 288
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4213,7 +4199,7 @@
 ( 788 12 -548 ) ( 788 36 -548 ) ( 788 36 -556 ) WoodFlooring -1 -13 0 1 1
 }
 }
-// entity 290
+// entity 289
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4227,7 +4213,7 @@
 ( 788 -12 -536 ) ( 788 12 -536 ) ( 788 12 -544 ) WoodFlooring -11 -10 0 1 1
 }
 }
-// entity 291
+// entity 290
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4241,7 +4227,7 @@
 ( 692 -184 -524 ) ( 692 -12 -524 ) ( 692 -12 -532 ) WoodFlooring 11 -7 0 1 1
 }
 }
-// entity 292
+// entity 291
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4255,7 +4241,7 @@
 ( 716 -184 -512 ) ( 716 -12 -512 ) ( 716 -12 -520 ) WoodFlooring 11 -4 0 1 1
 }
 }
-// entity 293
+// entity 292
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4269,7 +4255,7 @@
 ( 740 -184 -500 ) ( 740 -12 -500 ) ( 740 -12 -508 ) WoodFlooring 11 -1 0 1 1
 }
 }
-// entity 294
+// entity 293
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4283,7 +4269,7 @@
 ( 764 -184 -488 ) ( 764 -12 -488 ) ( 764 -12 -496 ) WoodFlooring 11 -14 0 1 1
 }
 }
-// entity 295
+// entity 294
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4297,7 +4283,7 @@
 ( 788 -184 -476 ) ( 788 -12 -476 ) ( 788 -12 -484 ) WoodFlooring 11 -11 0 1 1
 }
 }
-// entity 296
+// entity 295
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4311,7 +4297,7 @@
 ( 812 -184 -464 ) ( 812 -12 -464 ) ( 812 -12 -472 ) WoodFlooring 11 -8 0 1 1
 }
 }
-// entity 297
+// entity 296
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4325,7 +4311,7 @@
 ( 984 -184 -452 ) ( 984 -108 -452 ) ( 984 -108 -460 ) WoodFlooring 3 -5 0 1 1
 }
 }
-// entity 298
+// entity 297
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4339,7 +4325,7 @@
 ( 984 -108 -440 ) ( 984 -84 -440 ) ( 984 -84 -448 ) WoodFlooring 13 -2 0 1 1
 }
 }
-// entity 299
+// entity 298
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4353,7 +4339,7 @@
 ( 984 -84 -428 ) ( 984 -60 -428 ) ( 984 -60 -436 ) WoodFlooring 7 -15 0 1 1
 }
 }
-// entity 300
+// entity 299
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4367,7 +4353,7 @@
 ( 984 -60 -416 ) ( 984 -36 -416 ) ( 984 -36 -424 ) WoodFlooring 1 -12 0 1 1
 }
 }
-// entity 301
+// entity 300
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4381,7 +4367,7 @@
 ( 984 -36 -404 ) ( 984 -12 -404 ) ( 984 -12 -412 ) WoodFlooring 11 -9 0 1 1
 }
 }
-// entity 302
+// entity 301
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4395,7 +4381,7 @@
 ( 984 -12 -392 ) ( 984 12 -392 ) ( 984 12 -400 ) WoodFlooring 5 -6 0 1 1
 }
 }
-// entity 303
+// entity 302
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4409,7 +4395,7 @@
 ( 984 12 -380 ) ( 984 184 -380 ) ( 984 184 -388 ) WoodFlooring -6 -3 0 1 1
 }
 }
-// entity 304
+// entity 303
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4423,7 +4409,7 @@
 ( 908 12 -368 ) ( 908 184 -368 ) ( 908 184 -376 ) WoodFlooring -6 0 0 1 1
 }
 }
-// entity 305
+// entity 304
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4437,7 +4423,7 @@
 ( 884 12 -356 ) ( 884 184 -356 ) ( 884 184 -364 ) WoodFlooring -6 -13 0 1 1
 }
 }
-// entity 306
+// entity 305
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4451,7 +4437,7 @@
 ( 860 12 -344 ) ( 860 184 -344 ) ( 860 184 -352 ) WoodFlooring -6 -10 0 1 1
 }
 }
-// entity 307
+// entity 306
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4465,7 +4451,7 @@
 ( 836 12 -332 ) ( 836 184 -332 ) ( 836 184 -340 ) WoodFlooring -6 -7 0 1 1
 }
 }
-// entity 308
+// entity 307
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4479,7 +4465,7 @@
 ( 812 12 -320 ) ( 812 184 -320 ) ( 812 184 -328 ) WoodFlooring -6 -4 0 1 1
 }
 }
-// entity 309
+// entity 308
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4493,7 +4479,7 @@
 ( 788 108 -308 ) ( 788 184 -308 ) ( 788 184 -316 ) WoodFlooring 1 -1 0 1 1
 }
 }
-// entity 310
+// entity 309
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4507,7 +4493,7 @@
 ( 788 84 -296 ) ( 788 108 -296 ) ( 788 108 -304 ) WoodFlooring -3 -14 0 1 1
 }
 }
-// entity 311
+// entity 310
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4521,7 +4507,7 @@
 ( 788 60 -284 ) ( 788 84 -284 ) ( 788 84 -292 ) WoodFlooring -13 -11 0 1 1
 }
 }
-// entity 312
+// entity 311
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4535,7 +4521,7 @@
 ( 788 36 -272 ) ( 788 60 -272 ) ( 788 60 -280 ) WoodFlooring -7 -8 0 1 1
 }
 }
-// entity 313
+// entity 312
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4549,7 +4535,7 @@
 ( 788 12 -260 ) ( 788 36 -260 ) ( 788 36 -268 ) WoodFlooring -1 -5 0 1 1
 }
 }
-// entity 314
+// entity 313
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4563,7 +4549,7 @@
 ( 788 -12 -248 ) ( 788 12 -248 ) ( 788 12 -256 ) WoodFlooring -11 -2 0 1 1
 }
 }
-// entity 315
+// entity 314
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4577,7 +4563,7 @@
 ( 692 -184 -236 ) ( 692 -12 -236 ) ( 692 -12 -244 ) WoodFlooring 0 -15 0 1 1
 }
 }
-// entity 316
+// entity 315
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4591,7 +4577,7 @@
 ( 716 -184 -224 ) ( 716 -12 -224 ) ( 716 -12 -232 ) WoodFlooring 0 -12 0 1 1
 }
 }
-// entity 317
+// entity 316
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4605,7 +4591,7 @@
 ( 740 -184 -212 ) ( 740 -12 -212 ) ( 740 -12 -220 ) WoodFlooring 0 -9 0 1 1
 }
 }
-// entity 318
+// entity 317
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4619,7 +4605,7 @@
 ( 764 -184 -200 ) ( 764 -12 -200 ) ( 764 -12 -208 ) WoodFlooring 0 -6 0 1 1
 }
 }
-// entity 319
+// entity 318
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4633,7 +4619,7 @@
 ( 812 -184 -176 ) ( 812 -16 -176 ) ( 812 -16 -184 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 320
+// entity 319
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4647,7 +4633,7 @@
 ( 836 -184 -164 ) ( 836 -16 -164 ) ( 836 -16 -172 ) WoodFlooring 0 3 0 1 1
 }
 }
-// entity 321
+// entity 320
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -4661,7 +4647,7 @@
 ( 888 -184 -140 ) ( 888 24 -140 ) ( 888 24 -148 ) WoodFlooring 0 9 0 1 1
 }
 }
-// entity 322
+// entity 321
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4675,7 +4661,7 @@
 ( 784 -16 -196 ) ( 784 -12 -196 ) ( 784 -12 -252 ) WoodFlooring 7 15 0 1 1
 }
 }
-// entity 323
+// entity 322
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4689,7 +4675,7 @@
 ( 760 -16 -208 ) ( 760 -12 -208 ) ( 760 -12 -252 ) WoodFlooring 7 15 0 1 1
 }
 }
-// entity 324
+// entity 323
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4703,7 +4689,7 @@
 ( 736 -16 -220 ) ( 736 -12 -220 ) ( 736 -12 -252 ) WoodFlooring 7 15 0 1 1
 }
 }
-// entity 325
+// entity 324
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4717,7 +4703,7 @@
 ( 712 -12 -232 ) ( 712 -12 -231 ) ( 712 -11 -232 ) WoodFlooring 7 12 0 1 1
 }
 }
-// entity 326
+// entity 325
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4731,7 +4717,7 @@
 ( 788 32 -268 ) ( 788 16 -324 ) ( 788 16 -268 ) WoodFlooring 6 5 180 1 1
 }
 }
-// entity 327
+// entity 326
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4745,7 +4731,7 @@
 ( 788 56 -280 ) ( 788 40 -324 ) ( 788 40 -280 ) WoodFlooring 14 5 180 1 1
 }
 }
-// entity 328
+// entity 327
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4759,7 +4745,7 @@
 ( 788 80 -292 ) ( 788 64 -324 ) ( 788 64 -292 ) WoodFlooring 6 5 180 1 1
 }
 }
-// entity 329
+// entity 328
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4773,7 +4759,7 @@
 ( 788 104 -304 ) ( 788 88 -324 ) ( 788 88 -304 ) WoodFlooring 14 5 180 1 1
 }
 }
-// entity 330
+// entity 329
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4787,7 +4773,7 @@
 ( 832 12 -340 ) ( 832 16 -340 ) ( 832 16 -396 ) WoodFlooring 0 8 0 1 1
 }
 }
-// entity 331
+// entity 330
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4801,7 +4787,7 @@
 ( 856 12 -352 ) ( 856 16 -352 ) ( 856 16 -396 ) WoodFlooring 0 8 0 1 1
 }
 }
-// entity 332
+// entity 331
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4815,7 +4801,7 @@
 ( 880 12 -364 ) ( 880 16 -364 ) ( 880 16 -396 ) WoodFlooring 0 8 0 1 1
 }
 }
-// entity 333
+// entity 332
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4829,7 +4815,7 @@
 ( 904 16 -376 ) ( 904 16 -375 ) ( 904 17 -376 ) WoodFlooring 0 8 0 1 1
 }
 }
-// entity 334
+// entity 333
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4843,7 +4829,7 @@
 ( 816 -32 -412 ) ( 816 -16 -412 ) ( 816 -16 -468 ) WoodFlooring -10 1 0 1 1
 }
 }
-// entity 335
+// entity 334
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4857,7 +4843,7 @@
 ( 816 -56 -424 ) ( 816 -40 -424 ) ( 816 -40 -468 ) WoodFlooring -2 1 0 1 1
 }
 }
-// entity 336
+// entity 335
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4871,7 +4857,7 @@
 ( 816 -80 -436 ) ( 816 -64 -436 ) ( 816 -64 -468 ) WoodFlooring -10 1 0 1 1
 }
 }
-// entity 337
+// entity 336
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4885,7 +4871,7 @@
 ( 816 -104 -448 ) ( 816 -88 -448 ) ( 816 -88 -468 ) WoodFlooring -2 1 0 1 1
 }
 }
-// entity 338
+// entity 337
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4899,7 +4885,7 @@
 ( 784 -12 -484 ) ( 784 -16 -540 ) ( 784 -16 -484 ) WoodFlooring -9 4 0 1 1
 }
 }
-// entity 339
+// entity 338
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4913,7 +4899,7 @@
 ( 760 -12 -496 ) ( 760 -16 -540 ) ( 760 -16 -496 ) WoodFlooring -9 4 0 1 1
 }
 }
-// entity 340
+// entity 339
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4927,7 +4913,7 @@
 ( 736 -12 -508 ) ( 736 -16 -540 ) ( 736 -16 -508 ) WoodFlooring -9 4 0 1 1
 }
 }
-// entity 341
+// entity 340
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4941,7 +4927,7 @@
 ( 712 -16 -540 ) ( 712 -16 -539 ) ( 712 -15 -540 ) WoodFlooring -9 4 0 1 1
 }
 }
-// entity 342
+// entity 341
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4955,7 +4941,7 @@
 ( 788 32 -556 ) ( 788 16 -612 ) ( 788 16 -556 ) WoodFlooring 6 -3 180 1 1
 }
 }
-// entity 343
+// entity 342
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4969,7 +4955,7 @@
 ( 788 56 -568 ) ( 788 40 -612 ) ( 788 40 -568 ) WoodFlooring 14 -3 180 1 1
 }
 }
-// entity 344
+// entity 343
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4983,7 +4969,7 @@
 ( 788 80 -580 ) ( 788 64 -612 ) ( 788 64 -580 ) WoodFlooring 6 -3 180 1 1
 }
 }
-// entity 345
+// entity 344
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -4997,7 +4983,7 @@
 ( 788 104 -592 ) ( 788 88 -612 ) ( 788 88 -592 ) WoodFlooring 14 -3 180 1 1
 }
 }
-// entity 346
+// entity 345
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5011,7 +4997,7 @@
 ( 832 12 -628 ) ( 832 16 -628 ) ( 832 16 -684 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 347
+// entity 346
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5025,7 +5011,7 @@
 ( 856 12 -640 ) ( 856 16 -640 ) ( 856 16 -684 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 348
+// entity 347
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5039,7 +5025,7 @@
 ( 880 12 -652 ) ( 880 16 -652 ) ( 880 16 -684 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 349
+// entity 348
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5053,7 +5039,7 @@
 ( 904 16 -664 ) ( 904 16 -663 ) ( 904 17 -664 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 350
+// entity 349
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5067,7 +5053,7 @@
 ( 816 -32 -700 ) ( 816 -16 -700 ) ( 816 -16 -792 ) WoodFlooring -16 0 0 1 1
 }
 }
-// entity 351
+// entity 350
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5081,7 +5067,7 @@
 ( 816 -56 -712 ) ( 816 -40 -712 ) ( 816 -40 -792 ) WoodFlooring -24 0 0 1 1
 }
 }
-// entity 352
+// entity 351
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5095,7 +5081,7 @@
 ( 816 -80 -724 ) ( 816 -64 -724 ) ( 816 -64 -792 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 353
+// entity 352
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5109,7 +5095,7 @@
 ( 816 -104 -736 ) ( 816 -88 -736 ) ( 816 -88 -792 ) WoodFlooring -8 0 0 1 1
 }
 }
-// entity 354
+// entity 353
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5123,7 +5109,7 @@
 ( 816 -128 -748 ) ( 816 -112 -748 ) ( 816 -112 -792 ) WoodFlooring -16 0 0 1 1
 }
 }
-// entity 355
+// entity 354
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5137,7 +5123,7 @@
 ( 816 -152 -760 ) ( 816 -136 -760 ) ( 816 -136 -792 ) WoodFlooring -24 0 0 1 1
 }
 }
-// entity 356
+// entity 355
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5151,7 +5137,7 @@
 ( 816 -176 -772 ) ( 816 -160 -772 ) ( 816 -160 -792 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 357
+// entity 356
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5165,7 +5151,7 @@
 ( 712 -64 -844 ) ( 712 -60 -844 ) ( 712 -60 -888 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 358
+// entity 357
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5179,7 +5165,7 @@
 ( 688 -64 -856 ) ( 688 -60 -856 ) ( 688 -60 -888 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 359
+// entity 358
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5193,7 +5179,7 @@
 ( 664 -64 -868 ) ( 664 -60 -868 ) ( 664 -60 -888 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 360
+// entity 359
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5207,7 +5193,7 @@
 ( 724 -8 -916 ) ( 724 8 -916 ) ( 724 8 -1016 ) WoodFlooring 0 -9 180 1 1
 }
 }
-// entity 361
+// entity 360
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5221,7 +5207,7 @@
 ( 724 16 -928 ) ( 724 32 -928 ) ( 724 32 -1016 ) WoodFlooring -8 -9 180 1 1
 }
 }
-// entity 362
+// entity 361
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5235,7 +5221,7 @@
 ( 724 40 -940 ) ( 724 56 -940 ) ( 724 56 -1016 ) WoodFlooring 0 -9 180 1 1
 }
 }
-// entity 363
+// entity 362
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5249,7 +5235,7 @@
 ( 724 64 -952 ) ( 724 80 -952 ) ( 724 80 -1016 ) WoodFlooring -8 -9 180 1 1
 }
 }
-// entity 364
+// entity 363
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5263,7 +5249,7 @@
 ( 724 88 -964 ) ( 724 104 -964 ) ( 724 104 -1016 ) WoodFlooring 8 -9 180 1 1
 }
 }
-// entity 365
+// entity 364
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5277,7 +5263,7 @@
 ( 724 112 -976 ) ( 724 128 -976 ) ( 724 128 -1016 ) WoodFlooring 0 -9 180 1 1
 }
 }
-// entity 366
+// entity 365
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5291,7 +5277,7 @@
 ( 724 136 -988 ) ( 724 152 -988 ) ( 724 152 -1016 ) WoodFlooring 8 -9 180 1 1
 }
 }
-// entity 367
+// entity 366
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5305,7 +5291,7 @@
 ( 724 160 -1000 ) ( 724 176 -1000 ) ( 724 176 -1016 ) WoodFlooring 0 -9 180 1 1
 }
 }
-// entity 368
+// entity 367
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5319,7 +5305,7 @@
 ( 988 -248 -608 ) ( 988 -232 -608 ) ( 988 -232 -780 ) WoodFlooring 16 -40 0 1 1
 }
 }
-// entity 369
+// entity 368
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5333,7 +5319,7 @@
 ( 988 -224 -608 ) ( 988 -208 -608 ) ( 988 -208 -780 ) WoodFlooring 48 -40 0 1 1
 }
 }
-// entity 370
+// entity 369
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5347,7 +5333,7 @@
 ( 988 -200 -608 ) ( 988 -184 -608 ) ( 988 -184 -780 ) WoodFlooring 24 -40 0 1 1
 }
 }
-// entity 371
+// entity 370
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5361,7 +5347,7 @@
 ( 988 -176 -608 ) ( 988 -160 -608 ) ( 988 -160 -768 ) WoodFlooring 0 -36 0 1 1
 }
 }
-// entity 372
+// entity 371
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5375,7 +5361,7 @@
 ( 988 -152 -608 ) ( 988 -136 -608 ) ( 988 -136 -756 ) WoodFlooring 32 -36 0 1 1
 }
 }
-// entity 373
+// entity 372
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5389,7 +5375,7 @@
 ( 832 188 -608 ) ( 832 188 -607 ) ( 832 189 -608 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 374
+// entity 373
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5403,7 +5389,7 @@
 ( 856 188 -608 ) ( 856 188 -607 ) ( 856 189 -608 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 375
+// entity 374
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5417,7 +5403,7 @@
 ( 880 184 -608 ) ( 880 188 -608 ) ( 880 188 -648 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 376
+// entity 375
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5431,7 +5417,7 @@
 ( 904 184 -608 ) ( 904 188 -608 ) ( 904 188 -660 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 377
+// entity 376
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5445,7 +5431,7 @@
 ( 928 184 -608 ) ( 928 188 -608 ) ( 928 188 -672 ) WoodFlooring 0 -12 0 1 1
 }
 }
-// entity 378
+// entity 377
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5459,7 +5445,7 @@
 ( 952 184 -608 ) ( 952 188 -608 ) ( 952 188 -672 ) WoodFlooring 0 -12 0 1 1
 }
 }
-// entity 379
+// entity 378
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5473,7 +5459,7 @@
 ( 976 184 -608 ) ( 976 188 -608 ) ( 976 188 -672 ) WoodFlooring 0 -12 0 1 1
 }
 }
-// entity 380
+// entity 379
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5487,7 +5473,7 @@
 ( 988 160 -608 ) ( 988 176 -608 ) ( 988 176 -672 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 381
+// entity 380
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5501,7 +5487,7 @@
 ( 988 136 -608 ) ( 988 152 -608 ) ( 988 152 -672 ) WoodFlooring 24 0 0 1 1
 }
 }
-// entity 382
+// entity 381
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5515,7 +5501,7 @@
 ( 988 112 -608 ) ( 988 128 -608 ) ( 988 128 -672 ) WoodFlooring 48 0 0 1 1
 }
 }
-// entity 383
+// entity 382
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5529,7 +5515,7 @@
 ( 988 88 -608 ) ( 988 104 -608 ) ( 988 104 -672 ) WoodFlooring 16 0 0 1 1
 }
 }
-// entity 384
+// entity 383
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5543,7 +5529,7 @@
 ( 988 64 -608 ) ( 988 80 -608 ) ( 988 80 -672 ) WoodFlooring 40 0 0 1 1
 }
 }
-// entity 385
+// entity 384
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5557,7 +5543,7 @@
 ( 988 40 -608 ) ( 988 56 -608 ) ( 988 56 -672 ) WoodFlooring 8 0 0 1 1
 }
 }
-// entity 386
+// entity 385
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5571,7 +5557,7 @@
 ( 988 16 -608 ) ( 988 32 -608 ) ( 988 32 -672 ) WoodFlooring 32 0 0 1 1
 }
 }
-// entity 387
+// entity 386
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5585,7 +5571,7 @@
 ( 988 -8 -608 ) ( 988 8 -608 ) ( 988 8 -684 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 388
+// entity 387
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5599,7 +5585,7 @@
 ( 988 -32 -608 ) ( 988 -16 -608 ) ( 988 -16 -696 ) WoodFlooring 24 -12 0 1 1
 }
 }
-// entity 389
+// entity 388
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5613,7 +5599,7 @@
 ( 988 -56 -608 ) ( 988 -40 -608 ) ( 988 -40 -708 ) WoodFlooring 48 -24 0 1 1
 }
 }
-// entity 390
+// entity 389
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5627,7 +5613,7 @@
 ( 988 -80 -608 ) ( 988 -64 -608 ) ( 988 -64 -720 ) WoodFlooring 16 -36 0 1 1
 }
 }
-// entity 391
+// entity 390
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5641,7 +5627,7 @@
 ( 988 -104 -608 ) ( 988 -88 -608 ) ( 988 -88 -732 ) WoodFlooring 40 -36 0 1 1
 }
 }
-// entity 392
+// entity 391
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5655,7 +5641,7 @@
 ( 988 -128 -608 ) ( 988 -112 -608 ) ( 988 -112 -744 ) WoodFlooring 8 -36 0 1 1
 }
 }
-// entity 393
+// entity 392
 {
 "classname" "ground_solid"
 "_tb_group" "208"
@@ -5669,7 +5655,7 @@
 ( 788 -184 -188 ) ( 788 -12 -188 ) ( 788 -12 -196 ) WoodFlooring 0 -3 0 1 1
 }
 }
-// entity 394
+// entity 393
 {
 "classname" "wall_solid"
 "_tb_group" "208"
@@ -5683,14 +5669,12 @@
 ( 860 -184 -152 ) ( 860 24 -152 ) ( 860 24 -160 ) WoodFlooring 0 6 0 1 1
 }
 }
-// entity 395
+// entity 394
 {
 "classname" "dangerous_deadly_illusion"
 "damage_type" "lava"
-"layer_four" "24"
-"layer_one" "21"
-"layer_two" "22"
-"layer_three" "23"
+"collision_mask" "32 0 0"
+"collision_layers" "2 0 0"
 "_tb_group" "75"
 // brush 0
 {
@@ -5702,7 +5686,7 @@
 ( 840 -344 -1068 ) ( 840 -264 -1068 ) ( 840 -264 -1128 ) Lava 0 0 0 1 1
 }
 }
-// entity 396
+// entity 395
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5716,7 +5700,7 @@
 ( 840 256 -888 ) ( 840 264 -888 ) ( 840 264 -1016 ) GreenBricks 0 0 0 1 1
 }
 }
-// entity 397
+// entity 396
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5730,7 +5714,7 @@
 ( 992 192 -600 ) ( 992 264 -600 ) ( 984 256 -608 ) Roofing -15 9 0 1 1
 }
 }
-// entity 398
+// entity 397
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5744,7 +5728,7 @@
 ( 1064 -264 -600 ) ( 1064 264 -600 ) ( 1056 256 -608 ) Roofing -8 2 0 1 1
 }
 }
-// entity 399
+// entity 398
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5758,7 +5742,7 @@
 ( 608 264 -600 ) ( 616 256 -608 ) ( 616 -256 -608 ) Roofing -10 2 0 1 1
 }
 }
-// entity 400
+// entity 399
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5772,7 +5756,7 @@
 ( 992 -264 -600 ) ( 992 -192 -600 ) ( 984 -184 -608 ) Roofing -12.5 11.5 0 1 1
 }
 }
-// entity 401
+// entity 400
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5822,7 +5806,7 @@
 ( 1152 -32 -1196 ) ( 1152 -32 -1020 ) ( 1152 32 -1196 ) StoneWall 32 0 0 1 1
 }
 }
-// entity 402
+// entity 401
 {
 "classname" "func_group"
 "_tb_type" "_tb_group"
@@ -5830,7 +5814,7 @@
 "_tb_id" "210"
 "_tb_group" "75"
 }
-// entity 403
+// entity 402
 {
 "classname" "button_any"
 "target" "Elevator"
@@ -5850,7 +5834,7 @@
 ( 1152 -32 -1196 ) ( 1152 32 -1196 ) ( 1152 32 -1324 ) HeartButton 32 -48 0 1 1
 }
 }
-// entity 404
+// entity 403
 {
 "classname" "ground_elevator"
 "targetname" "Elevator"
@@ -5870,7 +5854,7 @@
 ( 1142 -38 -1328 ) ( 1142 38 -1328 ) ( 1142 38 -1334 ) WoodFlooring 0 1 0 1 1
 }
 }
-// entity 405
+// entity 404
 {
 "classname" "button_any"
 "axis" "0 0 -1"
@@ -5890,7 +5874,7 @@
 ( 1152 -32 -892 ) ( 1152 32 -892 ) ( 1152 32 -1020 ) HeartButton 32 0 0 1 1
 }
 }
-// entity 406
+// entity 405
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5904,7 +5888,7 @@
 ( 1156 48 -1192 ) ( 1156 48 -1191 ) ( 1156 49 -1192 ) StoneWall 0 0 0 1 1
 }
 }
-// entity 407
+// entity 406
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5918,7 +5902,7 @@
 ( 1156 48 -888 ) ( 1156 48 -887 ) ( 1156 49 -888 ) StoneWall 0 16 0 1 1
 }
 }
-// entity 408
+// entity 407
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5932,7 +5916,7 @@
 ( 1152 48 -1340 ) ( 1152 44 -1340 ) ( 1152 48 -1328 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 409
+// entity 408
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5946,7 +5930,7 @@
 ( 1152 -48 -1328 ) ( 1152 -44 -1328 ) ( 1152 -48 -1340 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 410
+// entity 409
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5960,7 +5944,7 @@
 ( 1156 -48 -1328 ) ( 1156 48 -1328 ) ( 1156 -48 -1340 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 411
+// entity 410
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5974,7 +5958,7 @@
 ( 1064 -48 -1332 ) ( 1064 48 -1332 ) ( 1064 48 -1340 ) WoodFlooring 0 0 0 1 1
 }
 }
-// entity 412
+// entity 411
 {
 "classname" "wall_solid"
 "_tb_group" "75"
@@ -5988,18 +5972,32 @@
 ( 1152 -44 -1340 ) ( 1152 -44 -1336 ) ( 1152 44 -1340 ) WoodFlooring 0 0 0 1 1
 }
 }
+// entity 412
+{
+"classname" "ground_solid"
+"_tb_group" "75"
+// brush 0
+{
+( 324 -40 -1328 ) ( 324 -236 -1328 ) ( 324 -236 -1332 ) WoodFlooring 0 0 0 1 1
+( 324 -236 -1328 ) ( 448 -236 -1328 ) ( 448 -236 -1332 ) StoneWall 8 0 0 1 1
+( 448 -236 -1332 ) ( 448 -40 -1332 ) ( 324 -40 -1332 ) WoodFlooring 0 0 0 1 1
+( 324 -40 -1328 ) ( 448 -40 -1328 ) ( 448 -236 -1328 ) WoodFlooring 0 0 0 1 1
+( 448 -40 -1332 ) ( 448 -40 -1328 ) ( 324 -40 -1328 ) WoodFlooring 0 0 0 1 1
+( 448 -236 -1328 ) ( 448 -40 -1328 ) ( 448 -40 -1332 ) WoodFlooring 0 0 0 1 1
+}
+}
 // entity 413
 {
 "classname" "wall_solid"
 "_tb_group" "75"
 // brush 0
 {
-( 312 -136 -1200 ) ( 304 -144 -1200 ) ( 304 -144 -1508 ) StoneWall 14 -6 0 1 1
-( 304 -144 -1200 ) ( 400 -144 -1200 ) ( 400 -144 -1508 ) StoneWall 0 0 0 1 1
-( 304 -144 -1508 ) ( 400 -144 -1508 ) ( 392 -136 -1508 ) StoneWall 0 -20 0 1 1
-( 392 -136 -1200 ) ( 400 -144 -1200 ) ( 304 -144 -1200 ) StoneWall 0 -20 0 1 1
-( 392 -136 -1508 ) ( 392 -136 -1200 ) ( 312 -136 -1200 ) StoneWall 8 0 0 1 1
-( 400 -144 -1508 ) ( 400 -144 -1200 ) ( 392 -136 -1200 ) StoneWall 14 -6 0 1 1
+( 312 -40 -1200 ) ( 312 -372 -1200 ) ( 312 -372 -1492 ) StoneWall 0 0 0 1 1
+( 324 -360 -1492 ) ( 324 -40 -1492 ) ( 312 -40 -1492 ) StoneWall 0 0 0 1 1
+( 312 -40 -1200 ) ( 324 -40 -1200 ) ( 324 -360 -1200 ) StoneWall 0 0 0 1 1
+( 324 -40 -1492 ) ( 324 -40 -1200 ) ( 312 -40 -1200 ) StoneWall 8 0 0 1 1
+( 312 -372 -1200 ) ( 324 -360 -1200 ) ( 324 -360 -1492 ) StoneWall 12 0 0 1 1
+( 324 -360 -1200 ) ( 324 -40 -1200 ) ( 324 -40 -1492 ) StoneWall 8 0 0 1 1
 }
 }
 // entity 414
@@ -6008,12 +6006,12 @@
 "_tb_group" "75"
 // brush 0
 {
-( 392 -40 -1200 ) ( 392 -136 -1200 ) ( 392 -136 -1508 ) StoneWall 8 0 0 1 1
-( 392 -136 -1200 ) ( 400 -144 -1200 ) ( 400 -144 -1508 ) StoneWall -12 0 180 1 -1
-( 400 -144 -1508 ) ( 400 -48 -1508 ) ( 392 -40 -1508 ) StoneWall 32 0 180 1 -1
-( 392 -40 -1200 ) ( 400 -48 -1200 ) ( 400 -144 -1200 ) StoneWall 32 0 180 1 -1
-( 400 -48 -1508 ) ( 400 -48 -1200 ) ( 392 -40 -1200 ) StoneWall 16 0 0 1 1
-( 400 -144 -1200 ) ( 400 -48 -1200 ) ( 400 -48 -1508 ) StoneWall 0 0 0 1 1
+( 324 -360 -1200 ) ( 312 -372 -1200 ) ( 312 -372 -1492 ) StoneWall 0 0 0 1 1
+( 312 -372 -1200 ) ( 460 -372 -1200 ) ( 460 -372 -1492 ) StoneWall 0 0 0 1 1
+( 312 -372 -1492 ) ( 460 -372 -1492 ) ( 448 -360 -1492 ) StoneWall 0 0 0 1 1
+( 448 -360 -1200 ) ( 460 -372 -1200 ) ( 312 -372 -1200 ) StoneWall 0 0 0 1 1
+( 448 -360 -1492 ) ( 448 -360 -1200 ) ( 324 -360 -1200 ) StoneWall 8 0 0 1 1
+( 460 -372 -1492 ) ( 460 -372 -1200 ) ( 448 -360 -1200 ) StoneWall 0 0 0 1 1
 }
 }
 // entity 415
@@ -6022,12 +6020,12 @@
 "_tb_group" "75"
 // brush 0
 {
-( 312 -48 -1508 ) ( 312 -47 -1508 ) ( 312 -48 -1507 ) StoneWall 0 0 0 1 1
-( 312 -48 -1508 ) ( 312 -48 -1507 ) ( 313 -48 -1508 ) StoneWall 8 0 0 1 1
-( 312 -48 -1508 ) ( 313 -48 -1508 ) ( 312 -47 -1508 ) StoneWall 0 0 0 1 1
-( 404 -40 -1328 ) ( 404 -39 -1328 ) ( 405 -40 -1328 ) WoodFlooring 0 0 0 1 1
-( 404 -40 -1328 ) ( 405 -40 -1328 ) ( 404 -40 -1327 ) StoneWall 0 0 0 1 1
-( 404 -40 -1328 ) ( 404 -40 -1327 ) ( 404 -39 -1328 ) StoneWall 0 0 0 1 1
+( 448 -40 -1200 ) ( 448 -360 -1200 ) ( 448 -360 -1492 ) StoneWall 8 0 0 1 1
+( 448 -360 -1200 ) ( 460 -372 -1200 ) ( 460 -372 -1492 ) StoneWall 0 0 0 1 1
+( 460 -372 -1492 ) ( 460 -40 -1492 ) ( 448 -40 -1492 ) StoneWall -40 0 0 1 1
+( 448 -40 -1200 ) ( 460 -40 -1200 ) ( 460 -372 -1200 ) StoneWall -40 0 0 1 1
+( 460 -40 -1492 ) ( 460 -40 -1200 ) ( 448 -40 -1200 ) StoneWall 8 0 0 1 1
+( 460 -372 -1200 ) ( 460 -40 -1200 ) ( 460 -40 -1492 ) StoneWall 0 0 0 1 1
 }
 }
 // entity 416
@@ -6036,12 +6034,12 @@
 "_tb_group" "75"
 // brush 0
 {
-( 304 -48 -1200 ) ( 304 -144 -1200 ) ( 304 -144 -1508 ) StoneWall 0 0 0 1 1
-( 312 -40 -1508 ) ( 312 -40 -1200 ) ( 304 -48 -1200 ) StoneWall 16 0 0 1 1
-( 312 -136 -1508 ) ( 312 -40 -1508 ) ( 304 -48 -1508 ) StoneWall 0 0 0 1 1
-( 304 -48 -1200 ) ( 312 -40 -1200 ) ( 312 -136 -1200 ) StoneWall 0 0 0 1 1
-( 304 -144 -1200 ) ( 312 -136 -1200 ) ( 312 -136 -1508 ) StoneWall 44 0 0 1 1
-( 312 -136 -1200 ) ( 312 -40 -1200 ) ( 312 -40 -1508 ) StoneWall 8 0 0 1 1
+( 324 -224 -1332 ) ( 324 -236 -1332 ) ( 324 -236 -1492 ) StoneWall 8 0 0 1 1
+( 324 -236 -1332 ) ( 448 -236 -1332 ) ( 448 -236 -1492 ) StoneWall 8 0 0 1 1
+( 448 -236 -1492 ) ( 448 -224 -1492 ) ( 324 -224 -1492 ) StoneWall 0 -8 0 1 1
+( 324 -224 -1332 ) ( 448 -224 -1332 ) ( 448 -236 -1332 ) StoneWall 0 -8 0 1 1
+( 448 -224 -1492 ) ( 448 -224 -1332 ) ( 324 -224 -1332 ) StoneWall 8 0 0 1 1
+( 448 -236 -1332 ) ( 448 -224 -1332 ) ( 448 -224 -1492 ) StoneWall 8 0 0 1 1
 }
 }
 // entity 417
@@ -14760,6 +14758,7 @@
 // entity 957
 {
 "classname" "dangerous_deadly_illusion"
+"collision_mask" "32 31 0"
 "_tb_group" "196"
 // brush 0
 {
@@ -16112,71 +16111,6 @@
 }
 // entity 1044
 {
-"classname" "ground_solid"
-// brush 0
-{
-( 256 16 -1512 ) ( 256 -208 -1512 ) ( 256 -208 -1520 ) WoodFlooring 0 0 0 1 1
-( 256 -208 -1512 ) ( 416 -208 -1512 ) ( 416 -208 -1520 ) WoodFlooring 0 0 0 1 1
-( 416 -208 -1520 ) ( 416 16 -1520 ) ( 256 16 -1520 ) WoodFlooring 0 0 0 1 1
-( 256 16 -1512 ) ( 416 16 -1512 ) ( 416 -208 -1512 ) WoodFlooring 0 0 0 1 1
-( 416 16 -1520 ) ( 416 16 -1512 ) ( 256 16 -1512 ) WoodFlooring 0 0 0 1 1
-( 416 -208 -1512 ) ( 416 16 -1512 ) ( 416 16 -1520 ) WoodFlooring 0 0 0 1 1
-}
-}
-// entity 1045
-{
-"classname" "wall_solid"
-// brush 0
-{
-( 392 256 -1508 ) ( 392 -392 -1508 ) ( 392 -392 -1512 ) StoneWall 8 0 0 1 1
-( 392 -392 -1508 ) ( 932 -392 -1508 ) ( 932 -392 -1512 ) Roofing 0 0 0 1 1
-( 932 -392 -1512 ) ( 932 256 -1512 ) ( 392 256 -1512 ) Roofing 0 0 0 1 1
-( 392 256 -1508 ) ( 932 256 -1508 ) ( 932 -392 -1508 ) Roofing 0 0 0 1 1
-( 932 256 -1512 ) ( 932 256 -1508 ) ( 392 256 -1508 ) Roofing 0 0 0 1 1
-( 932 -392 -1508 ) ( 932 256 -1508 ) ( 932 256 -1512 ) Roofing 0 0 0 1 1
-}
-}
-// entity 1046
-{
-"classname" "wall_solid"
-// brush 0
-{
-( 312 -392 -1512 ) ( 312 -136 -1512 ) ( 312 -392 -1508 ) Roofing 0 -4 0 1 1
-( 392 -392 -1512 ) ( 312 -392 -1512 ) ( 392 -392 -1508 ) Roofing 0 0 0 1 1
-( 392 -392 -1512 ) ( 392 -136 -1512 ) ( 312 -392 -1512 ) Roofing 0 0 0 1 1
-( 312 -392 -1508 ) ( 312 -136 -1508 ) ( 392 -392 -1508 ) Roofing 0 0 0 1 1
-( 312 -136 -1512 ) ( 392 -136 -1512 ) ( 312 -136 -1508 ) StoneWall 8 0 0 1 1
-( 392 -392 -1508 ) ( 392 -136 -1508 ) ( 392 -392 -1512 ) Roofing 0 -4 0 1 1
-}
-}
-// entity 1047
-{
-"classname" "wall_solid"
-// brush 0
-{
-( 312 256 -1508 ) ( 312 -48 -1508 ) ( 312 -48 -1512 ) Roofing 0 -4 0 1 1
-( 312 -48 -1508 ) ( 392 -48 -1508 ) ( 392 -48 -1512 ) StoneWall 8 0 0 1 1
-( 392 -48 -1512 ) ( 392 256 -1512 ) ( 312 256 -1512 ) Roofing 0 0 0 1 1
-( 312 256 -1508 ) ( 392 256 -1508 ) ( 392 -48 -1508 ) Roofing 0 0 0 1 1
-( 392 256 -1512 ) ( 392 256 -1508 ) ( 312 256 -1508 ) Roofing 0 0 0 1 1
-( 392 -48 -1508 ) ( 392 256 -1508 ) ( 392 256 -1512 ) Roofing 0 -4 0 1 1
-}
-}
-// entity 1048
-{
-"classname" "wall_solid"
-// brush 0
-{
-( 84 256 -1508 ) ( 84 -392 -1508 ) ( 84 -392 -1512 ) Roofing 0 0 0 1 1
-( 84 -392 -1508 ) ( 312 -392 -1508 ) ( 312 -392 -1512 ) Roofing 0 0 0 1 1
-( 312 -392 -1512 ) ( 312 256 -1512 ) ( 84 256 -1512 ) Roofing 0 0 0 1 1
-( 84 256 -1508 ) ( 312 256 -1508 ) ( 312 -392 -1508 ) Roofing 0 0 0 1 1
-( 312 256 -1512 ) ( 312 256 -1508 ) ( 84 256 -1508 ) Roofing 0 0 0 1 1
-( 312 -392 -1508 ) ( 312 256 -1508 ) ( 312 256 -1512 ) StoneWall 8 0 0 1 1
-}
-}
-// entity 1049
-{
 "classname" "wall_solid"
 // brush 0
 {
@@ -16186,5 +16120,225 @@
 ( -1192 568 600 ) ( -1184 568 600 ) ( -1184 288 600 ) __TB_empty 0 0 0 1 1
 ( -1184 568 544 ) ( -1184 568 600 ) ( -1192 568 600 ) __TB_empty 0 0 0 1 1
 ( -1184 288 600 ) ( -1184 568 600 ) ( -1184 568 544 ) __TB_empty 0 0 0 1 1
+}
+}
+// entity 1045
+{
+"classname" "func_group"
+"_tb_type" "_tb_group"
+"_tb_name" "BigChamber"
+"_tb_id" "211"
+// brush 0
+{
+( 840 256 -1500 ) ( 840 -752 -1500 ) ( 840 -752 -1832 ) StoneWall 0 0 0 1 1
+( 840 -752 -1500 ) ( 848 -760 -1500 ) ( 848 -760 -1832 ) StoneWall 2 -46 0 1 1
+( 848 264 -1832 ) ( 848 264 -1500 ) ( 840 256 -1500 ) StoneWall 10 -46 0 1 1
+( 848 -760 -1832 ) ( 848 264 -1832 ) ( 840 256 -1832 ) StoneWall 2 -46 0 1 1
+( 840 256 -1500 ) ( 848 264 -1500 ) ( 848 -760 -1500 ) StoneWall 2 -46 0 1 1
+( 848 -760 -1500 ) ( 848 264 -1500 ) ( 848 264 -1832 ) StoneWall 2 -46 0 1 1
+}
+// brush 1
+{
+( 752 264 -1500 ) ( 752 160 -1500 ) ( 752 160 -1832 ) StoneWall 2 -46 0 1 1
+( 752 160 -1500 ) ( 760 152 -1500 ) ( 760 152 -1832 ) StoneWall 32 0 0 1 1
+( 760 152 -1832 ) ( 760 256 -1832 ) ( 752 264 -1832 ) StoneWall 0 0 0 1 1
+( 752 264 -1500 ) ( 760 256 -1500 ) ( 760 152 -1500 ) StoneWall 0 0 0 1 1
+( 760 256 -1832 ) ( 760 256 -1500 ) ( 752 264 -1500 ) StoneWall 8 0 0 1 1
+( 760 152 -1500 ) ( 760 256 -1500 ) ( 760 256 -1832 ) StoneWall 0 0 0 1 1
+}
+// brush 2
+{
+( -64 152 -1832 ) ( -72 160 -1832 ) ( -72 160 -1500 ) StoneWall 0 0 0 1 1
+( -64 152 -1500 ) ( 760 152 -1500 ) ( 760 152 -1832 ) StoneWall 0 0 0 1 1
+( -64 152 -1832 ) ( 760 152 -1832 ) ( 752 160 -1832 ) StoneWall 0 0 0 1 1
+( 752 160 -1500 ) ( 760 152 -1500 ) ( -64 152 -1500 ) StoneWall 0 0 0 1 1
+( 752 160 -1832 ) ( 752 160 -1500 ) ( -72 160 -1500 ) StoneWall 0 0 0 1 1
+( 760 152 -1832 ) ( 760 152 -1500 ) ( 752 160 -1500 ) StoneWall 0 0 0 1 1
+}
+// brush 3
+{
+( -72 160 -1500 ) ( -72 -760 -1500 ) ( -72 -760 -1832 ) StoneWall 0 0 0 1 1
+( -64 -752 -1832 ) ( -64 152 -1832 ) ( -72 160 -1832 ) StoneWall 0 0 0 1 1
+( -72 160 -1500 ) ( -64 152 -1500 ) ( -64 -752 -1500 ) StoneWall 0 0 0 1 1
+( -72 -760 -1500 ) ( -64 -752 -1500 ) ( -64 -752 -1832 ) StoneWall 20 0 0 1 1
+( -64 152 -1832 ) ( -64 152 -1500 ) ( -72 160 -1500 ) StoneWall -48 0 0 1 1
+( -64 -752 -1500 ) ( -64 152 -1500 ) ( -64 152 -1832 ) StoneWall 0 0 0 1 1
+}
+// brush 4
+{
+( -64 -752 -1500 ) ( -72 -760 -1500 ) ( -72 -760 -1832 ) StoneWall 0 0 0 1 1
+( -72 -760 -1500 ) ( 848 -760 -1500 ) ( 848 -760 -1832 ) StoneWall 0 0 0 1 1
+( -72 -760 -1832 ) ( 848 -760 -1832 ) ( 840 -752 -1832 ) StoneWall 0 0 0 1 1
+( 840 -752 -1500 ) ( 848 -760 -1500 ) ( -72 -760 -1500 ) StoneWall 0 0 0 1 1
+( 840 -752 -1832 ) ( 840 -752 -1500 ) ( -64 -752 -1500 ) StoneWall 0 0 0 1 1
+( 840 -752 -1500 ) ( 840 -752 -1832 ) ( 848 -760 -1832 ) StoneWall 0 0 0 1 1
+}
+}
+// entity 1046
+{
+"classname" "ground_solid"
+"_tb_group" "211"
+// brush 0
+{
+( 756 344 -1632 ) ( 756 152 -1820 ) ( 756 152 -1824 ) WoodFlooring 40 -48 0 1 1
+( 756 152 -1820 ) ( 844 152 -1820 ) ( 844 152 -1824 ) WoodFlooring 0 -48 0 1 1
+( 756 344 -1632 ) ( 844 344 -1632 ) ( 844 152 -1820 ) WoodFlooring -48 -40 0 1 1
+( 844 152 -1824 ) ( 844 344 -1636 ) ( 756 344 -1636 ) WoodFlooring 0 -40 0 1 1
+( 844 344 -1636 ) ( 844 344 -1632 ) ( 756 344 -1632 ) WoodFlooring 0 -48 0 1 1
+( 844 152 -1820 ) ( 844 344 -1632 ) ( 844 344 -1636 ) WoodFlooring 40 -48 0 1 1
+}
+}
+// entity 1047
+{
+"classname" "ground_solid"
+"_tb_group" "211"
+// brush 0
+{
+( -64 -364 -1820 ) ( -64 -752 -1820 ) ( -64 -752 -1828 ) WoodFlooring 32 28 0 1 1
+( -64 -752 -1820 ) ( 448 -752 -1820 ) ( 448 -752 -1828 ) WoodFlooring -28 28 0 1 1
+( 448 -752 -1828 ) ( 448 -364 -1828 ) ( -64 -364 -1828 ) WoodFlooring -28 -32 0 1 1
+( -64 -364 -1820 ) ( 448 -364 -1820 ) ( 448 -752 -1820 ) WoodFlooring -48 -40 0 1 1
+( 448 -364 -1828 ) ( 448 -364 -1820 ) ( -64 -364 -1820 ) WoodFlooring -28 28 0 1 1
+( 448 -752 -1820 ) ( 448 -364 -1820 ) ( 448 -364 -1828 ) WoodFlooring 32 28 0 1 1
+}
+}
+// entity 1048
+{
+"classname" "ground_solid"
+"_tb_group" "211"
+// brush 0
+{
+( 448 -236 -1820 ) ( 448 -752 -1820 ) ( 448 -752 -1828 ) WoodFlooring 32 28 0 1 1
+( 448 -752 -1820 ) ( 840 -752 -1820 ) ( 840 -752 -1828 ) WoodFlooring -32 28 0 1 1
+( 840 -752 -1828 ) ( 840 -236 -1828 ) ( 448 -236 -1828 ) WoodFlooring -32 -32 0 1 1
+( 448 -236 -1820 ) ( 840 -236 -1820 ) ( 840 -752 -1820 ) WoodFlooring -48 -40 0 1 1
+( 840 -236 -1828 ) ( 840 -236 -1820 ) ( 448 -236 -1820 ) WoodFlooring -32 28 0 1 1
+( 840 -752 -1820 ) ( 840 -236 -1820 ) ( 840 -236 -1828 ) WoodFlooring 32 28 0 1 1
+}
+}
+// entity 1049
+{
+"classname" "ground_solid"
+"_tb_group" "211"
+// brush 0
+{
+( 324 152 -1820 ) ( 324 -236 -1820 ) ( 324 -236 -1828 ) WoodFlooring 28 28 0 1 1
+( 324 -236 -1820 ) ( 840 -236 -1820 ) ( 840 -236 -1828 ) WoodFlooring -32 28 0 1 1
+( 840 -236 -1828 ) ( 840 152 -1828 ) ( 324 152 -1828 ) WoodFlooring -32 -28 0 1 1
+( 324 152 -1820 ) ( 840 152 -1820 ) ( 840 -236 -1820 ) WoodFlooring -48 -40 0 1 1
+( 840 152 -1828 ) ( 840 152 -1820 ) ( 324 152 -1820 ) WoodFlooring -32 28 0 1 1
+( 840 -236 -1820 ) ( 840 152 -1820 ) ( 840 152 -1828 ) WoodFlooring 28 28 0 1 1
+}
+}
+// entity 1050
+{
+"classname" "ground_solid"
+"_tb_group" "211"
+// brush 0
+{
+( -64 152 -1820 ) ( -64 -364 -1820 ) ( -64 -364 -1828 ) WoodFlooring 28 28 0 1 1
+( -64 -364 -1820 ) ( 324 -364 -1820 ) ( 324 -364 -1828 ) WoodFlooring -28 28 0 1 1
+( 324 -364 -1828 ) ( 324 152 -1828 ) ( -64 152 -1828 ) WoodFlooring -28 -28 0 1 1
+( -64 152 -1820 ) ( 324 152 -1820 ) ( 324 -364 -1820 ) WoodFlooring -48 -40 0 1 1
+( 324 152 -1828 ) ( 324 152 -1820 ) ( -64 152 -1820 ) WoodFlooring -28 28 0 1 1
+( 324 -364 -1820 ) ( 324 152 -1820 ) ( 324 152 -1828 ) WoodFlooring 28 28 0 1 1
+}
+}
+// entity 1051
+{
+"classname" "ground_elevator"
+"reversible" "1"
+"collision_mask" "32 0 0"
+"translation" "0 -30 0"
+"speed" "1.75"
+"collision_layers" "2 0 0"
+"targetname" "BigChamberEle"
+"target" "BigChamberEle"
+"_tb_group" "211"
+// brush 0
+{
+( 324 -236 -1328 ) ( 324 -360 -1328 ) ( 324 -360 -1828 ) Wood -4 28 0 1 1
+( 324 -360 -1328 ) ( 448 -360 -1328 ) ( 448 -360 -1828 ) Wood 0 28 0 1 1
+( 448 -360 -1828 ) ( 448 -236 -1828 ) ( 324 -236 -1828 ) WoodFlooring 0 4 0 1 1
+( 324 -236 -1328 ) ( 448 -236 -1328 ) ( 448 -360 -1328 ) WoodFlooring 0 0 0 1 1
+( 448 -236 -1828 ) ( 448 -236 -1328 ) ( 324 -236 -1328 ) Wood 0 28 0 1 1
+( 448 -360 -1328 ) ( 448 -236 -1328 ) ( 448 -236 -1828 ) Wood -4 28 0 1 1
+}
+}
+// entity 1052
+{
+"classname" "wall_solid"
+"_tb_group" "211"
+// brush 0
+{
+( 448 -236 -1492 ) ( 448 -760 -1492 ) ( 448 -760 -1500 ) Roofing 32 20 0 1 1
+( 448 -760 -1492 ) ( 848 -760 -1492 ) ( 848 -760 -1500 ) Roofing -32 20 0 1 1
+( 848 -760 -1500 ) ( 848 -236 -1500 ) ( 448 -236 -1500 ) Roofing -32 -28 0 1 1
+( 448 -236 -1492 ) ( 848 -236 -1492 ) ( 848 -760 -1492 ) Roofing -48 -40 0 1 1
+( 848 -236 -1500 ) ( 848 -236 -1492 ) ( 448 -236 -1492 ) Roofing -32 20 0 1 1
+( 848 -760 -1492 ) ( 848 -236 -1492 ) ( 848 -236 -1500 ) Roofing 32 20 0 1 1
+}
+}
+// entity 1053
+{
+"classname" "wall_solid"
+"_tb_group" "211"
+// brush 0
+{
+( 324 256 -1492 ) ( 324 -236 -1492 ) ( 324 -236 -1500 ) Roofing 28 20 0 1 1
+( 324 -236 -1492 ) ( 848 -236 -1492 ) ( 848 -236 -1500 ) Roofing -32 20 0 1 1
+( 848 -236 -1500 ) ( 848 256 -1500 ) ( 324 256 -1500 ) Roofing -32 -28 0 1 1
+( 324 256 -1492 ) ( 848 256 -1492 ) ( 848 -236 -1492 ) Roofing -48 -40 0 1 1
+( 848 256 -1500 ) ( 848 256 -1492 ) ( 324 256 -1492 ) Roofing -32 20 0 1 1
+( 848 -236 -1492 ) ( 848 256 -1492 ) ( 848 256 -1500 ) Roofing 28 20 0 1 1
+}
+}
+// entity 1054
+{
+"classname" "wall_solid"
+"_tb_group" "211"
+// brush 0
+{
+( -72 160 -1492 ) ( -72 -364 -1492 ) ( -72 -364 -1500 ) Roofing 28 20 0 1 1
+( -72 -364 -1492 ) ( 324 -364 -1492 ) ( 324 -364 -1500 ) Roofing -28 20 0 1 1
+( 324 -364 -1500 ) ( 324 160 -1500 ) ( -72 160 -1500 ) Roofing -32 -28 0 1 1
+( -72 160 -1492 ) ( 324 160 -1492 ) ( 324 -364 -1492 ) Roofing -48 -40 0 1 1
+( 324 160 -1500 ) ( 324 160 -1492 ) ( -72 160 -1492 ) Roofing -28 20 0 1 1
+( 324 -364 -1492 ) ( 324 160 -1492 ) ( 324 160 -1500 ) Roofing 28 20 0 1 1
+}
+}
+// entity 1055
+{
+"classname" "wall_solid"
+"_tb_group" "211"
+// brush 0
+{
+( -72 -364 -1492 ) ( -72 -760 -1492 ) ( -72 -760 -1500 ) Roofing 32 20 0 1 1
+( -72 -760 -1492 ) ( 448 -760 -1492 ) ( 448 -760 -1500 ) Roofing -28 20 0 1 1
+( 448 -760 -1500 ) ( 448 -364 -1500 ) ( -72 -364 -1500 ) Roofing -32 -28 0 1 1
+( -72 -364 -1492 ) ( 448 -364 -1492 ) ( 448 -760 -1492 ) Roofing -48 -40 0 1 1
+( 448 -364 -1500 ) ( 448 -364 -1492 ) ( -72 -364 -1492 ) Roofing -28 20 0 1 1
+( 448 -760 -1492 ) ( 448 -364 -1492 ) ( 448 -364 -1500 ) Roofing 32 20 0 1 1
+}
+}
+// entity 1056
+{
+"classname" "button_movable"
+"collision_mask" "32 0 0"
+"collision_layers" "2 0 0"
+"translation" "0 -30 0"
+"reversible" "1"
+"target" "BigChamberEle"
+"targetname" "BigChamberEle"
+"movement_speed" "1.75"
+"_tb_group" "211"
+// brush 0
+{
+( 352 -264 -1324 ) ( 352 -332 -1324 ) ( 352 -332 -1328 ) WoodFlooring 0 0 0 1 1
+( 352 -332 -1324 ) ( 420 -332 -1324 ) ( 420 -332 -1328 ) WoodFlooring 0 0 0 1 1
+( 420 -332 -1328 ) ( 420 -264 -1328 ) ( 352 -264 -1328 ) HeartButton 0 0 0 1 1
+( 352 -264 -1324 ) ( 420 -264 -1324 ) ( 420 -332 -1324 ) Wood 0 0 0 1 1
+( 420 -264 -1328 ) ( 420 -264 -1324 ) ( 352 -264 -1324 ) WoodFlooring 0 0 0 1 1
+( 420 -332 -1324 ) ( 420 -264 -1324 ) ( 420 -264 -1328 ) WoodFlooring 0 0 0 1 1
 }
 }

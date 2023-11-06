@@ -62,7 +62,7 @@ func update_properties() -> void:
 
 
 func _process(delta: float) -> void:
-	transform = transform.interpolate_with(target_transform, speed * delta)
+	transform.origin = transform.origin.move_toward(target_transform.origin, speed * delta)
 	if Level.map_baked == false and Level.map_bake_ended == true:
 		motion_ended()
 
@@ -94,7 +94,7 @@ func play_motion() -> void:
 		target_transform.origin.z = snapped(temp_transform.origin.z, 0.1)
 	if target_transform.origin.y > temp_transform.origin.y:
 		print("2.1")
-		if test_move(transform, offset_transform.origin) == false:
+		if test_move(Transform3D(temp_transform.basis, Vector3(temp_transform.origin.x, temp_transform.origin.y - 0.2, temp_transform.origin.z)), -Vector3(0, offset_transform.origin.y, 0)) == false:
 			target_transform.origin.x = snapped(temp_transform.origin.x, 0.1)
 			target_transform.origin.y = snapped(temp_transform.origin.y, 0.1)
 			target_transform.origin.z = snapped(temp_transform.origin.z, 0.1)
