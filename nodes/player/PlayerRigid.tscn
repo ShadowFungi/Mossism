@@ -1,11 +1,10 @@
-[gd_scene load_steps=82 format=3 uid="uid://b6vkshouucbu7"]
+[gd_scene load_steps=80 format=3 uid="uid://b6vkshouucbu7"]
 
 [ext_resource type="Script" path="res://scripts/player/player_rigid.gd" id="1_glqgx"]
 [ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="2_87t07"]
 [ext_resource type="Script" path="res://scripts/player/start_ik.gd" id="2_p1kbw"]
 [ext_resource type="Texture2D" uid="uid://bfh1512qxg81b" path="res://assets/models/player/character/textures/PlayerColor.png" id="3_5mu56"]
 [ext_resource type="Script" path="res://scripts/player/player_ragdoll.gd" id="3_an567"]
-[ext_resource type="CameraAttributesPractical" uid="uid://gkwjgf6vkw8d" path="res://styles/camera_attributes/player.tres" id="3_sye50"]
 [ext_resource type="Texture2D" uid="uid://blyv0yhdxt218" path="res://assets/models/player/character/textures/PlayerRough.png" id="4_ocwkk"]
 [ext_resource type="Script" path="res://scripts/player/step_target.gd" id="5_0c4ib"]
 [ext_resource type="Script" path="res://scripts/player/ik_target.gd" id="5_1v0eb"]
@@ -903,9 +902,6 @@ radius = 0.706416
 height = 0.75
 radius = 0.675
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6tce1"]
-states/Start/position = Vector2(86, 108)
-
 [node name="RigidPlayer" type="RigidBody3D" groups=["player"]]
 process_mode = 1
 collision_layer = 2147483648
@@ -927,8 +923,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.57122, 0.197617)
 [node name="Camera3D" type="Camera3D" parent="MetaRig/Pivot"]
 transform = Transform3D(-1, 1.69879e-13, 8.74214e-08, 1.90722e-13, 1, 2.38419e-07, -8.74214e-08, 2.38419e-07, -1, 0, 0, 0)
 environment = ExtResource("2_87t07")
-attributes = ExtResource("3_sye50")
-doppler_tracking = 1
 current = true
 
 [node name="Weapons" type="Node3D" parent="MetaRig/Pivot/Camera3D"]
@@ -2214,12 +2208,6 @@ shape = SubResource("CylinderShape3D_g2how")
 target_position = Vector3(0, -0.55, 0)
 max_results = 1
 collision_mask = 7
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_6tce1")
-anim_player = NodePath("../AnimationPlayer")
 
 [node name="RagdollTimer" type="Timer" parent="."]
 wait_time = 5.0

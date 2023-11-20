@@ -3,7 +3,7 @@
 An Open Source Quake-esque FPS Made In The Godot Engine
 
 <div>
-       <img src="logo.svg" alt="Mossism Logo" width="100"/>
+	   <img src="logo.svg" alt="Mossism Logo" width="100"/>
 </div>
 
 ## Gameplay:
@@ -11,7 +11,7 @@ An Open Source Quake-esque FPS Made In The Godot Engine
 Movement and the capability of dying.
 
 <div>
-    <img src="assets/screenshots/mossism_start.png" alt="Mossism Screenshot" width="700"/>
+	<img src="assets/screenshots/mossism_start.png" alt="Mossism Screenshot" width="700"/>
 </div>
 
 ## To Do:
@@ -21,31 +21,31 @@ Movement and the capability of dying.
 - [x] Bouncy bullets {partial}
 - [ ] Add items
   - [ ] Add more weapons
-    - [x] Bouncy bullet sawed-off
-    - [ ] Melee weapon
-      - [ ] Aloe frond
-      - [ ] Crowbar
-    - [ ] 4 dimensional flame thrower like thing
-    - [ ] Mossling weapons {may or may not be usable by player, have yet to decide}
-    - [ ] Electro-gun (It will shock you!)
-    - [ ] Defense Orbiter(s) (Temporary defense orb item)
-      - [ ] Light
-      - [ ] Electric
-      - [ ] Fire
-      - [ ] Water (Only usable by monsters)
-    - [ ] Boomarang like gun
-    - [ ] Mind control fungus gun
-    - [ ] Chainsaw
-      - [ ] Resizeable (the chainsaw can length at the users will, but gets slower the longer it is, oh and it still colides with walls)
-      - [ ] Rocket powered (can be thrown, but needs to be picked up after thrown)
-    - [ ] Fungicide spray
-    - [ ] Acid kunai (leaves a trail of acid behind when thrown)
-    - [ ] Babydoll bazooka
-    - [ ] Ectoplasm waterballoon launcher
-    - [ ] Landmine which is a carpet (Carpet bomb)
-    - [ ] Egg dropper (drops rotten eggs which can distract enemies)
-    - [ ] Bottle pop (one time use cork launch)
-    - [ ] Psychic spoon
+	- [x] Bouncy bullet sawed-off
+	- [ ] Melee weapon
+	  - [ ] Aloe frond
+	  - [ ] Crowbar
+	- [ ] 4 dimensional flame thrower like thing
+	- [ ] Mossling weapons {may or may not be usable by player, have yet to decide}
+	- [ ] Electro-gun (It will shock you!)
+	- [ ] Defense Orbiter(s) (Temporary defense orb item)
+	  - [ ] Light
+	  - [ ] Electric
+	  - [ ] Fire
+	  - [ ] Water (Only usable by monsters)
+	- [ ] Boomarang like gun
+	- [ ] Mind control fungus gun
+	- [ ] Chainsaw
+	  - [ ] Resizeable (the chainsaw can length at the users will, but gets slower the longer it is, oh and it still colides with walls)
+	  - [ ] Rocket powered (can be thrown, but needs to be picked up after thrown)
+	- [ ] Fungicide spray
+	- [ ] Acid kunai (leaves a trail of acid behind when thrown)
+	- [ ] Babydoll bazooka
+	- [ ] Ectoplasm waterballoon launcher
+	- [ ] Landmine which is a carpet (Carpet bomb)
+	- [ ] Egg dropper (drops rotten eggs which can distract enemies)
+	- [ ] Bottle pop (one time use cork launch)
+	- [ ] Psychic spoon
 - [ ] Enemies
   - [ ] Mossling
   - [ ] Moss Mage
@@ -66,15 +66,15 @@ Movement and the capability of dying.
   - [ ] You're not my friend (savior mode but with your friends... but not actually)
 - [ ] Single player gamemodes (for those who are all alone) {not final}
   - [ ] Savior (normal single player campaign)
-    - [ ] Already (for kids and grandmas)
-    - [ ] Maybe (for noobs)
-    - [ ] Probably not... (for most people)
-    - [ ] Not a chance... (for GAMERS)
+	- [ ] Already (for kids and grandmas)
+	- [ ] Maybe (for noobs)
+	- [ ] Probably not... (for most people)
+	- [ ] Not a chance... (for GAMERS)
   - [ ] Feeling Mossy? (for those who are all alone... and hate society) (like saviour but the opposite)
-    - [ ] Too late... (for GAMERS)
-    - [ ] It's possible (for most people)
-    - [ ] Maybe (for noobs)
-    - [ ] Done early (for kids and grandmas)
+	- [ ] Too late... (for GAMERS)
+	- [ ] It's possible (for most people)
+	- [ ] Maybe (for noobs)
+	- [ ] Done early (for kids and grandmas)
   - [ ] 
 - [ ] Menus
 - [ ] Everything else...
@@ -102,5 +102,5 @@ Movement and the capability of dying.
 
 ## Credits:
 
-- [Scene Manager](https://github.com/maktoobgar/scene_manager) [maktoobgar](https://github.com/maktoobgar)
-- [Qodot](https://github.com/QodotPlugin/Qodot) [Varoius](https://github.com/QodotPlugin/Qodot/graphs/contributors)
+- [Godot-Jolt](https://github.com/godot-jolt/godot-jolt) [Various (mostly mihe)](https://github.com/godot-jolt/godot-jolt/graphs/contributors)
+- [Qodot](https://github.com/QodotPlugin/Qodot) [Various](https://github.com/QodotPlugin/Qodot/graphs/contributors)

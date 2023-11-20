@@ -29,19 +29,26 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
-"nodes": {
-"PATH:Light": {
-"import/skip_import": true
+"materials": {
+"BloodyMoss": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/enemies/Mossling/textures/BloodyMoss.tres"
 },
-"PATH:Light001": {
-"import/skip_import": true
+"LessBloodyMoss": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/enemies/Mossling/textures/LessBloodyMoss.tres"
 },
-"PATH:Light002": {
-"import/skip_import": true
+"Moss": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/enemies/Mossling/textures/Moss.tres"
+},
+"Tooth": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/enemies/Mossling/textures/Tooth.tres"
 }
 }
 }
-gltf/embedded_image_handling=1
+gltf/embedded_image_handling=3
 blender/nodes/visible=0
 blender/nodes/punctual_lights=false
 blender/nodes/cameras=false

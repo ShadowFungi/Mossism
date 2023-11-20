@@ -19,14 +19,8 @@ extends Control
 @export var clickable : bool = true
 @export var add_to_back : bool = true
 
-@onready var fade_out_opts = SceneManager.create_options(fade_speed, fade_pattern, fade_smoothness, fade_out_invert)
-@onready var fade_in_opts = SceneManager.create_options(fade_speed, fade_pattern, fade_smoothness, fade_in_invert)
-@onready var general_opts = SceneManager.create_general_options(color, timeout, clickable, add_to_back)
-
-
 
 func _ready():
-	SceneManager.validate_pattern(fade_pattern)
 	#print(id)
 	self.hide()
 	resume_button.pressed.connect(unpause)
@@ -64,9 +58,9 @@ func options():
 
 
 func menu():
+	SceneSwap.restore_previous_scene(get_node('/root/Node3D'), false)
 	get_tree().set_pause(false)
 	self.hide()
-	SceneManager.change_scene("StartMenu", fade_out_opts, fade_in_opts, general_opts)
 
 
 func call_quit():

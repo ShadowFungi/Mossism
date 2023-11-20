@@ -74,8 +74,16 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	var player_detect = Area3D.new()
+	var sig : StringName = "area_entered"
+	add_child(player_detect)
 	self.add_to_group("ground", true)
-
+	var detect_col := self.get_child(1).duplicate()
+	player_detect.add_child(detect_col)
+	player_detect.position.y -= 0.5
+	player_detect.connect("body_entered", entered)
+	player_detect.set_collision_mask_value(32, true)
+	player_detect.set_collision_mask_value(1, false)
 
 func use() -> void:
 	#print(reversible)
@@ -132,3 +140,7 @@ func motion_ended() -> void:
 	if snapped(transform.origin.z, 0.1) == target_transform.origin.z or snapped(transform.origin.y, 0.1) == target_transform.origin.y or snapped(transform.origin.x, 0.1) == target_transform.origin.x:
 		if Level.map_bake_ended != false:
 			Level.bake()
+
+func entered(body) -> void:
+	print("entered")
+	use()

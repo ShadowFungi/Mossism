@@ -59,7 +59,7 @@ func update_properties() -> void:
 
 
 func _process(delta: float) -> void:
-	transform = transform.interpolate_with(target_transform, speed * delta)
+	transform.origin = transform.origin.move_toward(target_transform.origin, speed * delta)
 	if Level.map_baked == false and Level.map_bake_ended == true:
 		motion_ended()
 

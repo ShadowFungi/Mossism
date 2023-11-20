@@ -15,6 +15,7 @@ run/main_scene="res://nodes/menus/StartMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Mossism/"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+run/max_fps=60
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 0)
 boot_splash/image="res://assets/menus/BootSplash.png"
 boot_splash/use_filter=false
@@ -22,18 +23,19 @@ config/icon="res://logo.svg"
 
 [audio]
 
+general/3d_panning_strength=0.75
 driver/mix_rate.web=44100
+buses/channel_disable_time=3.0
 
 [autoload]
 
 Level="*res://scripts/autoloads/level.gd"
 Keyboard="*res://scripts/autoloads/keyboard.gd"
 Controller="*res://scripts/autoloads/controller.gd"
-SceneManager="*res://addons/scene_manager/scene_manager.tscn"
-Scenes="*res://addons/scene_manager/scenes.gd"
 InputRemapper="*res://scripts/autoloads/InputRemapper.gd"
 Keycodes="*res://scripts/autoloads/keycodes.gd"
 SpawnPlayer="*res://scripts/autoloads/SpawnPlayer.gd"
+SceneSwap="*res://scripts/autoloads/scene_swap.gd"
 
 [display]
 
@@ -50,7 +52,7 @@ project/assembly_name="Mossism-qodot"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/qodot/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/qodot/plugin.cfg")
 
 [gui]
 
@@ -77,3 +79,4 @@ fonts/canvas_textures/default_texture_filter=0
 
 textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 0)
+occlusion_culling/use_occlusion_culling=true

@@ -294,8 +294,8 @@ shortcut = SubResource("Shortcut_qmjsv")
 text = "BACK"
 
 [node name="ImportKeyMap" type="FileDialog" parent="."]
-initial_position = 1
 title = "Open a File"
+initial_position = 1
 size = Vector2i(628, 400)
 ok_button_text = "Open"
 file_mode = 0
@@ -303,8 +303,8 @@ access = 2
 filters = PackedStringArray("*.cfg")
 
 [node name="SaveKeyMap" type="FileDialog" parent="."]
-initial_position = 1
 title = "Save a KeyMap to be used later"
+initial_position = 1
 size = Vector2i(628, 400)
 ok_button_text = "Save KeyMap"
 access = 2

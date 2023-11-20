@@ -13,6 +13,8 @@ var offset_transform: Transform3D
 var target_transform: Transform3D
 var final_transform: Transform3D
 
+@onready var sound = preload('res://nodes/entities/sfxr_slide.tscn').instantiate()
+
 @onready var navmeshi = get_tree().root.get_node("/root/Node3D/GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D")
 
 var speed := 1.0
@@ -52,7 +54,7 @@ func update_properties() -> void:
 
 
 func _process(delta: float) -> void:
-	transform = transform.interpolate_with(target_transform, speed * delta)
+	transform.origin = transform.origin.move_toward(target_transform.origin, speed * delta)
 	if Level.map_baked == false and Level.map_bake_ended == true:
 		motion_ended()
 
@@ -68,9 +70,11 @@ func _ready() -> void:
 	var navmesh = Callable(self, "_baked")
 	if navmeshi:
 		navmeshi.connect("bake_finished", navmesh)
+	add_child(sound)
 
 func use() -> void:
 	play_motion()
+	sound.play()
 
 
 func play_motion() -> void:

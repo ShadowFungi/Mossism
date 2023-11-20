@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://rmyrp0rpg0pp"]
+[gd_scene load_steps=5 format=3 uid="uid://rmyrp0rpg0pp"]
 
 [ext_resource type="Script" path="res://scripts/player/weapons/SawedOffBody.gd" id="1_4l8f6"]
 [ext_resource type="PackedScene" uid="uid://b4ji8ko76a8y0" path="res://assets/models/player/tools/Sawed-off.blend" id="2_ra774"]
+[ext_resource type="AudioStream" uid="uid://6d3q0w8fpxkl" path="res://assets/sounds/effects/slide.tres" id="3_1f7wj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oyten"]
 radius = 0.181096
@@ -22,6 +23,16 @@ shape = SubResource("CapsuleShape3D_oyten")
 
 [node name="Muzzle" type="Node3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0985394, -1.35056)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Model/Muzzle"]
+transform = Transform3D(1, 2.37169e-20, 0, 6.21474e-34, 1, 5.92401e-28, 0, 0, 1, 0, 0, 0)
+rotation_edit_mode = 1
+stream = ExtResource("3_1f7wj")
+volume_db = -2.0
+max_distance = 5.0
+max_polyphony = 2
+emission_angle_enabled = true
+emission_angle_degrees = 58.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, -0.893085)

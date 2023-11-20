@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
-@onready var character : Transform3D = self.get_parent().get_parent().get_parent().global_transform
+#@onready var character : Transform3D = self.get_parent().get_parent().get_parent().global_transform
 @onready var walled : bool = false
 @onready var pos = position
-@onready var bas = character.basis
+#@onready var bas = character.basis
 
 func _ready() -> void:
 	pos = position

@@ -11,13 +11,8 @@ extends Control
 @export var clickable : bool = false
 @export var add_to_back : bool = true
 
-@onready var fade_out_opts = SceneManager.create_options(fade_speed, fade_pattern, fade_smoothness, fade_out_invert)
-@onready var fade_in_opts = SceneManager.create_options(fade_speed, fade_pattern, fade_smoothness, fade_in_invert)
-@onready var general_opts = SceneManager.create_general_options(color, timeout, clickable, add_to_back)
-
 
 func _ready() -> void:
-	SceneManager.validate_pattern(fade_pattern)
 	js_select_define()
 
 func _on_import_key_map_button_pressed() -> void:

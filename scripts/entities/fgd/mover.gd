@@ -25,7 +25,7 @@ func _ready() -> void:
 # The process function
 func _process(delta) -> void:
 	if target_transform != void_transform:
-		transform = transform.interpolate_with(target_transform, speed * delta)
+		transform.origin = transform.origin.move_toward(target_transform.origin, speed * delta)
 
 # Function used to move object to new position
 func play_motion() -> void:

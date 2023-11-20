@@ -22,6 +22,7 @@ func _exit_state() -> void:
 		weapon_pivot.get_child(0, false)
 
 func fire() -> void:
+	weapon_instance.get_node('Model/Muzzle/AudioStreamPlayer3D').play()
 	## Prepare sawed_off_bullet instances
 	var shot1 = sawed_off_bullet.instantiate()
 	var shot2 = sawed_off_bullet.instantiate()
@@ -33,7 +34,6 @@ func fire() -> void:
 	## Set sawed_off_bullets to appropriate position1
 	shot1.transform = weapon_pivot.get_node('SawedOff/Model/Muzzle').global_transform.translated_local(Vector3(0.2, 0, 0))
 	shot2.transform = weapon_pivot.get_node('SawedOff/Model/Muzzle').global_transform.translated_local(Vector3(-0.2, 0, 0))
-	
 	## FIRE!
 	## Launch sawed_off_bullets through a central impulse
 	shot1.apply_central_impulse(-weapon_pivot.get_node('SawedOff/Model/Muzzle').global_transform.basis.z * 80)
