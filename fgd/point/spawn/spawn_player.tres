@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_gvp6v")
 script_class = ExtResource("2_8pa58")
+apply_rotation_on_map_build = true
 classname = "spawner_player"
 description = "A Player spawn point"
 qodot_internal = false

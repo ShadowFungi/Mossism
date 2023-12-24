@@ -38,27 +38,6 @@ func update_properties() -> void:
 	
 	if 'reversible' in properties:
 		reversible_property = properties.reversible
-	
-	if 'collision_mask' in properties:
-		set_collision_mask_value(1, false)
-		for dimension in 3:
-			if properties.collision_mask[dimension] > int(0) and properties.collision_mask[dimension] < int(33):
-				set_collision_mask_value(properties.collision_mask[dimension], true)
-	
-	if 'collision_layers' in properties:
-		set_collision_layer_value(1, false)
-		for dimension in 3:
-			if properties.collision_layers[dimension] > int(0) and properties.collision_layers[dimension] < int(33):
-				set_collision_layer_value(properties.collision_layers[dimension], true)
-	
-	if 'render_layers' in properties:
-		await self.ready
-		if find_child("*mesh_instance"):
-			find_child("*mesh_instance").set_layer_mask_value(1, false)
-			for dimension in 3:
-				if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
-						#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
-						find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
 
 
 func _process(delta: float) -> void:
@@ -66,12 +45,10 @@ func _process(delta: float) -> void:
 	if Level.map_baked == false and Level.map_bake_ended == true:
 		motion_ended()
 
-
 func _init() -> void:
 	base_transform = transform
 	target_transform = base_transform
 	final_transform = base_transform * offset_transform
-
 
 func _ready() -> void:
 	var player_detect = Area3D.new()
@@ -92,7 +69,6 @@ func use() -> void:
 	else:
 		play_motion()
 
-
 func play_motion() -> void:
 	temp_transform = base_transform * offset_transform
 	if target_transform.origin.y < temp_transform.origin.y:
@@ -110,7 +86,6 @@ func play_motion() -> void:
 	Level.map_baked = false
 	if reversible_property == true:
 		reversible = true
-
 
 func reverse_motion() -> void:
 	print(temp_transform.origin, ' temp')
@@ -134,7 +109,6 @@ func reverse_motion() -> void:
 		Level.map_baked = false
 		if reversible_property == true:
 			reversible = false
-
 
 func motion_ended() -> void:
 	if snapped(transform.origin.z, 0.1) == target_transform.origin.z or snapped(transform.origin.y, 0.1) == target_transform.origin.y or snapped(transform.origin.x, 0.1) == target_transform.origin.x:

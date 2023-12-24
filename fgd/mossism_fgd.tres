@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=19 format=3 uid="uid://ckqih8tkk28k"]
+
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="1_2qkf7"]
+[ext_resource type="Resource" uid="uid://2utlowtag63b" path="res://fgd/point/light/lantern.tres" id="1_rhtbg"]
+[ext_resource type="Resource" uid="uid://d4an230vux6yl" path="res://fgd/point/light/omni.tres" id="2_6bs40"]
+[ext_resource type="Resource" uid="uid://rbexii4bcriq" path="res://fgd/point/logic/reciever.tres" id="3_d2ic6"]
+[ext_resource type="Resource" uid="uid://cxquaj3pk21cf" path="res://fgd/point/logic/signal.tres" id="4_28231"]
+[ext_resource type="Resource" uid="uid://vreailcesc6u" path="res://fgd/solid/button/button_movable.tres" id="5_an7qo"]
+[ext_resource type="Resource" uid="uid://c0wc3cl8jepqi" path="res://fgd/point/spawn/spawn_player.tres" id="5_ybhll"]
+[ext_resource type="Resource" uid="uid://dhscvf6wr1ecd" path="res://fgd/solid/dangerous/deadly_illusion.tres" id="6_hgun5"]
+[ext_resource type="Resource" uid="uid://bvp3tghwr8nnq" path="res://fgd/solid/ground/ground_elevator.tres" id="7_tyi1g"]
+[ext_resource type="Resource" uid="uid://i0ngepmytqsa" path="res://fgd/solid/button/button_solid.tres" id="7_xgjkc"]
+[ext_resource type="Resource" uid="uid://dxdkyn3o8qam5" path="res://fgd/solid/ground/ground_moving.tres" id="8_wecx8"]
+[ext_resource type="Resource" uid="uid://cuo8ykwaijqh5" path="res://fgd/solid/ground/ground_solid.tres" id="9_b7oov"]
+[ext_resource type="Resource" uid="uid://dx2h8a3kj7bxr" path="res://fgd/solid/ground/ground_illusion.tres" id="10_04w1c"]
+[ext_resource type="Resource" uid="uid://cvx6v1oorgsf2" path="res://fgd/solid/trigger/trigger.tres" id="13_o3mhm"]
+[ext_resource type="Resource" uid="uid://glnb7js62mct" path="res://fgd/solid/wall/wall_illusion.tres" id="16_4qtda"]
+[ext_resource type="Resource" uid="uid://b6yvp6xxpt2yu" path="res://fgd/solid/wall/wall_transparent.tres" id="17_7kfqu"]
+[ext_resource type="Resource" uid="uid://di4yokaommi4d" path="res://fgd/solid/wall/wall_moving.tres" id="17_gf8qo"]
+[ext_resource type="Resource" uid="uid://e82lx418iiig" path="res://fgd/solid/wall/wall_solid.tres" id="18_10q62"]
+
+[resource]
+script = ExtResource("1_2qkf7")
+export_file = false
+target_folder = "/home/fungi/.TrenchBroom/games/mossism-qodot_4"
+fgd_name = "Mossism"
+base_fgd_files = Array[Resource]([])
+entity_definitions = Array[Resource]([ExtResource("1_rhtbg"), ExtResource("2_6bs40"), ExtResource("3_d2ic6"), ExtResource("4_28231"), ExtResource("5_ybhll"), ExtResource("5_an7qo"), ExtResource("7_xgjkc"), ExtResource("6_hgun5"), ExtResource("7_tyi1g"), ExtResource("10_04w1c"), ExtResource("8_wecx8"), ExtResource("9_b7oov"), ExtResource("13_o3mhm"), ExtResource("16_4qtda"), ExtResource("17_gf8qo"), ExtResource("18_10q62"), ExtResource("17_7kfqu")])

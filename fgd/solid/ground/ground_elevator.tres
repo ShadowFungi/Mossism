@@ -1,31 +1,37 @@
-[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://b015n83o16lpn"]
+[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://bvp3tghwr8nnq"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_e1rmd"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_wsjb4"]
 [ext_resource type="Script" path="res://scripts/entities/fgd/ground_elevator.gd" id="2_cp8it"]
 
 [resource]
-script = ExtResource("1_e1rmd")
+script = ExtResource("1_wsjb4")
 spawn_type = 2
 build_visuals = true
+use_in_baked_light = true
+shadow_casting_setting = 1
+build_occlusion = false
+render_layers = 2
 collision_shape_type = 1
+collision_layer = 8
+collision_mask = 0
+collision_priority = 1.0
+collision_shape_margin = 0.04
 script_class = ExtResource("2_cp8it")
 classname = "ground_elevator"
-description = "Ground that moves, and is reversable with one signal which enemies can walk on"
+description = "A moving impassable wall"
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"collision_layers": Vector3(1, 1, 1),
-"collision_mask": Vector3(1, 1, 1),
-"render_layers": Vector3(1, 1, 1),
-"reversible": 0,
+"reversible": 0.0,
 "rotation": Vector3(0, 0, 0),
 "scale": Vector3(1, 1, 1),
-"speed": 1.0,
+"speed": 0.0,
 "translation": Vector3(0, 0, 0)
 }
-class_property_descriptions = {
-"reversible": "Can object reverse in motion. integer boolean"
+class_property_descriptions = {}
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
 }
-meta_properties = {}
 node_class = "CharacterBody3D"
 transient_node = false

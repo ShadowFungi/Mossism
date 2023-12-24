@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://clqtr5dowgebh"
+path="res://.godot/imported/occ_test.map-6352be4730d8a212347c069ae147ef57.tres"
+
+[deps]
+
+source_file="res://assets/models/maps/occ_test.map"
+dest_files=["res://.godot/imported/occ_test.map-6352be4730d8a212347c069ae147ef57.tres"]
+
+[params]
+

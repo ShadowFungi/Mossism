@@ -1,25 +1,35 @@
-[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://fyy3l1ycptgy"]
+[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://dhscvf6wr1ecd"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_5xrxg"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_lsr2c"]
 [ext_resource type="Script" path="res://scripts/entities/fgd/deadly_illusion.gd" id="2_betrc"]
 
 [resource]
-script = ExtResource("1_5xrxg")
+script = ExtResource("1_lsr2c")
 spawn_type = 2
 build_visuals = true
+use_in_baked_light = true
+shadow_casting_setting = 1
+build_occlusion = false
+render_layers = 1
 collision_shape_type = 1
+collision_layer = 1
+collision_mask = 1
+collision_priority = 1.0
+collision_shape_margin = 0.04
 script_class = ExtResource("2_betrc")
 classname = "dangerous_deadly_illusion"
-description = "the player will die if they touch this"
+description = ""
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"collision_layers": Vector3(1, 1, 1),
-"collision_mask": Vector3(1, 1, 1),
-"damage_type": "lava",
-"render_layers": Vector3(1, 1, 1)
+"collision_layers": Vector3(0, 0, 0),
+"collision_mask": Vector3(0, 0, 0),
+"damage_type": ""
 }
 class_property_descriptions = {}
-meta_properties = {}
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
 node_class = "Area3D"
 transient_node = false

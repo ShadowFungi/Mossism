@@ -6,11 +6,9 @@
 
 [resource]
 script = ExtResource("1")
-scene = "----------------------------------------------------------------"
 scene_file = ExtResource("2")
-scripting = "----------------------------------------------------------------"
 script_class = ExtResource("3_bpq0c")
-class_options = "----------------------------------------------------------------"
+apply_rotation_on_map_build = true
 classname = "physics_ball"
 description = "Physics Ball"
 qodot_internal = false
@@ -26,6 +24,5 @@ class_property_descriptions = {
 meta_properties = {
 "size": AABB(-8, -8, -8, 8, 8, 8)
 }
-node_options = "----------------------------------------------------------------"
 node_class = ""
 transient_node = false

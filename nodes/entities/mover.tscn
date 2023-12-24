@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw4q2uvk2nx7a"]
-
-[ext_resource type="Script" path="res://scripts/entities/fgd/mover.gd" id="1_q8qsv"]
-[ext_resource type="PackedScene" uid="uid://cul3rs8wmjx03" path="res://nodes/entities/sfxr_slide.tscn" id="2_uxj6i"]
-
-[node name="mover" type="CharacterBody3D"]
-script = ExtResource("1_q8qsv")
-
-[node name="SFXRSlide" parent="." instance=ExtResource("2_uxj6i")]

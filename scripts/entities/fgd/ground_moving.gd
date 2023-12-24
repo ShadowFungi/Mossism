@@ -15,7 +15,7 @@ var final_transform: Transform3D
 
 @onready var sound = preload('res://nodes/entities/sfxr_slide.tscn').instantiate()
 
-@onready var navmeshi = get_tree().root.get_node("/root/Node3D/GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D")
+@onready var navmeshi = get_tree().root.get_node("/root/SplitScreen/GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D")
 
 var speed := 1.0
 
@@ -34,23 +34,6 @@ func update_properties() -> void:
 	
 	if 'speed' in properties:
 		speed = properties.speed
-	
-	if 'collision_mask' in properties:
-		for dimension in 3:
-			if properties.collision_mask[dimension] > int(0) and properties.collision_mask[dimension] < int(33):
-				set_collision_mask_value(properties.collision_mask[dimension], true)
-	
-	if 'collision_layers' in properties:
-		for dimension in 3:
-			if properties.collision_layers[dimension] > int(0) and properties.collision_layers[dimension] < int(33):
-				set_collision_layer_value(properties.collision_layers[dimension], true)
-	
-	if 'render_layers' in properties:
-		await self.ready
-		for dimension in 3:
-			if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
-				#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
-				find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
 
 
 func _process(delta: float) -> void:
@@ -58,12 +41,10 @@ func _process(delta: float) -> void:
 	if Level.map_baked == false and Level.map_bake_ended == true:
 		motion_ended()
 
-
 func _init() -> void:
 	base_transform = transform
 	target_transform = base_transform
 	final_transform = base_transform * offset_transform
-
 
 func _ready() -> void:
 	self.add_to_group("ground", true)
@@ -76,7 +57,6 @@ func use() -> void:
 	play_motion()
 	sound.play()
 
-
 func play_motion() -> void:
 	var temp_transform = base_transform * offset_transform
 	target_transform.origin.x = snapped(temp_transform.origin.x, 0.1)
@@ -85,13 +65,11 @@ func play_motion() -> void:
 	#print(target_transform)
 	Level.map_baked = false
 
-
 func reverse_motion() -> void:
 	target_transform.origin.x = snapped(base_transform.origin.x, 0.1)
 	target_transform.origin.y = snapped(base_transform.origin.y, 0.1)
 	target_transform.origin.z = snapped(base_transform.origin.z, 0.1)
 	Level.map_baked = false
-
 
 func motion_ended() -> void:
 	if snapped(transform.origin.z, 0.1) == target_transform.origin.z or snapped(transform.origin.y, 0.1) == target_transform.origin.y or snapped(transform.origin.x, 0.1) == target_transform.origin.x:
@@ -101,7 +79,6 @@ func motion_ended() -> void:
 			navmeshi.bake_navigation_mesh(true)
 			Level.map_baked = true
 			Level.map_bake_ended = false
-
 
 func _baked():
 	Level.map_bake_ended = true

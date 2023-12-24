@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("3")
+apply_rotation_on_map_build = true
 classname = "signal"
 description = "Name of signal to call target."
 qodot_internal = false

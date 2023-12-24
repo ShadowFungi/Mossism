@@ -13,6 +13,8 @@ radius = 0.1
 lifetime_randomness = 0.03
 particle_flag_align_y = true
 particle_flag_rotate_y = true
+angle_min = -120.0
+angle_max = 120.0
 direction = Vector3(1, 2, 1)
 spread = 75.0
 initial_velocity_min = 1.0
@@ -23,8 +25,6 @@ linear_accel_min = 3.0
 linear_accel_max = 15.0
 radial_accel_min = 3.0
 radial_accel_max = 15.0
-angle_min = -120.0
-angle_max = 120.0
 scale_min = 0.3
 scale_max = 1.4
 collision_mode = 2
@@ -38,7 +38,7 @@ rings = 5
 
 [node name="Bullet" type="RigidBody3D" groups=["bullet"]]
 collision_layer = 1073741824
-collision_mask = 7
+collision_mask = 15
 input_ray_pickable = false
 physics_material_override = ExtResource("1_t8lct")
 continuous_cd = true

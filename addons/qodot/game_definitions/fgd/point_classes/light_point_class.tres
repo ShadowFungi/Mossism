@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1")
 script_class = ExtResource("2")
+apply_rotation_on_map_build = true
 classname = "light"
 description = "Invisible light source"
 qodot_internal = false

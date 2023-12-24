@@ -1,24 +1,16 @@
 extends Control
 
-#@onready var id = get_parent().id
+
+
+@export var pause_machine: FiniteStateMachine
+@export var look_state: State
+
 @onready var resume_button = get_node("HBoxContainer/VBoxContainer/ResumeButton")
 @onready var quit_button = self.get_node("HBoxContainer/VBoxContainer/QuitButton")
 @onready var options_button = get_node("HBoxContainer/VBoxContainer/OptionsButton")
 @onready var menu_button = get_node("HBoxContainer/VBoxContainer/MenuButton")
 
 @onready var timed = get_node("Timer")
-
-## Scene_manager options
-@export var fade_speed : float = 1.0
-@export var fade_pattern : String = "fade"
-@export var fade_smoothness = 0.1
-@export var fade_out_invert : bool = true
-@export var fade_in_invert : bool = false
-@export var color : Color = Color(0, 0, 0)
-@export var timeout : float = 0.0
-@export var clickable : bool = true
-@export var add_to_back : bool = true
-
 
 func _ready():
 	#print(id)
@@ -47,6 +39,7 @@ func unpause():
 	timed.set_wait_time(0.00025)
 	timed.set_one_shot(true)
 	timed.start()
+	pause_machine.change_state(look_state)
 	self.hide()
 	await timed.timeout
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -58,7 +51,7 @@ func options():
 
 
 func menu():
-	SceneSwap.restore_previous_scene(get_node('/root/Node3D'), false)
+	SceneSwap.restore_previous_scene(get_node('/root/SplitScreen'), false)
 	get_tree().set_pause(false)
 	self.hide()
 

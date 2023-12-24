@@ -1,26 +1,36 @@
-[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://jdyg8dcavnlt"]
+[gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://dxdkyn3o8qam5"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_7lebb"]
 [ext_resource type="Script" path="res://scripts/entities/fgd/ground_moving.gd" id="3"]
 
 [resource]
-script = ExtResource("1")
+script = ExtResource("1_7lebb")
 spawn_type = 2
 build_visuals = true
+use_in_baked_light = true
+shadow_casting_setting = 1
+build_occlusion = false
+render_layers = 2
 collision_shape_type = 1
+collision_layer = 4
+collision_mask = 0
+collision_priority = 1.0
+collision_shape_margin = 0.04
 script_class = ExtResource("3")
 classname = "ground_moving"
-description = "Ground that moves which enemies can walk on"
+description = "A moving impassable wall"
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"collision_mask": Vector3(1, 1, 1),
 "rotation": Vector3(0, 0, 0),
 "scale": Vector3(1, 1, 1),
-"speed": 1.0,
+"speed": 0.0,
 "translation": Vector3(0, 0, 0)
 }
 class_property_descriptions = {}
-meta_properties = {}
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
 node_class = "CharacterBody3D"
 transient_node = false

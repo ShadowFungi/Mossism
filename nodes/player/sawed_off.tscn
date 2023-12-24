@@ -1,23 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://rmyrp0rpg0pp"]
+[gd_scene load_steps=8 format=3 uid="uid://rmyrp0rpg0pp"]
 
 [ext_resource type="Script" path="res://scripts/player/weapons/SawedOffBody.gd" id="1_4l8f6"]
 [ext_resource type="PackedScene" uid="uid://b4ji8ko76a8y0" path="res://assets/models/player/tools/Sawed-off.blend" id="2_ra774"]
 [ext_resource type="AudioStream" uid="uid://6d3q0w8fpxkl" path="res://assets/sounds/effects/slide.tres" id="3_1f7wj"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oyten"]
-radius = 0.181096
-height = 1.94818
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rqxfb"]
+radius = 0.12
+height = 1.011
 
-[node name="SawedOff" type="CharacterBody3D"]
-transform = Transform3D(1, -3.38813e-21, 1.74846e-07, -2.03288e-20, 1, 0, -1.74846e-07, 0, 1, 0.758, -1.05902, -2.24919)
-collision_layer = 0
-collision_mask = 3
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_orj2w"]
+radius = 0.129
+height = 0.576
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oyten"]
+radius = 0.195
+height = 1.95
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bwijp"]
+radius = 0.207243
+height = 0.808818
+
+[node name="SawedOff" type="CharacterBody3D" node_paths=PackedStringArray("ray", "area")]
+transform = Transform3D(1, -3.38813e-21, 1.74846e-07, -2.03288e-20, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+collision_layer = 1073741824
+collision_mask = 15
+input_ray_pickable = false
 motion_mode = 1
+wall_min_slide_angle = 3.14159
+platform_floor_layers = 5
+platform_wall_layers = 10
 script = ExtResource("1_4l8f6")
+ray = NodePath("RayCast3D")
+area = NodePath("Area3D")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 6.21474e-34, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 0
+collision_mask = 15
+monitorable = false
+priority = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 6.21474e-34, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.26669e-07, 1.19209e-07, -0.480847)
+shape = SubResource("CapsuleShape3D_rqxfb")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, -1.54074e-33, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 1.00221e-08, 1.19209e-07, -1.26263)
+shape = SubResource("CapsuleShape3D_orj2w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.19209e-07, 1.19209e-07, -0.523513)
+transform = Transform3D(1, 0, 0, 6.21474e-34, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.26669e-07, 1.19209e-07, -0.480847)
 shape = SubResource("CapsuleShape3D_oyten")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, -1.54074e-33, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 1.00221e-08, 1.19209e-07, -1.26263)
+shape = SubResource("CapsuleShape3D_bwijp")
 
 [node name="Model" parent="." instance=ExtResource("2_ra774")]
 
@@ -51,3 +88,13 @@ distance_fade_length = 12.0
 spot_range = 31.2187
 spot_attenuation = 1.46409
 spot_angle = 13.7596
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 6.21474e-34, 1, 0, 0, 0, 1, 2.47512e-07, 5.03162e-27, -1.4156)
+target_position = Vector3(0, 0, 2.5)
+collision_mask = 15
+hit_from_inside = true
+debug_shape_thickness = 4
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -21,31 +21,35 @@ Movement and the capability of dying.
 - [x] Bouncy bullets {partial}
 - [ ] Add items
   - [ ] Add more weapons
-	- [x] Bouncy bullet sawed-off
-	- [ ] Melee weapon
+	- [ ] Ranged weapons
+	  - [x] Bouncy bullet sawed-off
+	  - [ ] 4 dimensional flame thrower like thing
+	  - [ ] Electro-gun (It will shock you!)
+	  - [ ] Boomarang like gun
+	  - [ ] Mind control fungus gun
+	  - [ ] Fungicide spray
+	  - [ ] Acid kunai (leaves a trail of acid behind when thrown)
+	  - [ ] Babydoll bazooka
+	  - [ ] Ectoplasm waterballoon launcher
+	  - [ ] Psychic spoon
+	- [ ] Melee weapons
 	  - [ ] Aloe frond
 	  - [ ] Crowbar
-	- [ ] 4 dimensional flame thrower like thing
+	  - [ ] Axe
+	  - [ ] Vine whip
 	- [ ] Mossling weapons {may or may not be usable by player, have yet to decide}
-	- [ ] Electro-gun (It will shock you!)
 	- [ ] Defense Orbiter(s) (Temporary defense orb item)
 	  - [ ] Light
 	  - [ ] Electric
 	  - [ ] Fire
 	  - [ ] Water (Only usable by monsters)
-	- [ ] Boomarang like gun
-	- [ ] Mind control fungus gun
-	- [ ] Chainsaw
-	  - [ ] Resizeable (the chainsaw can length at the users will, but gets slower the longer it is, oh and it still colides with walls)
-	  - [ ] Rocket powered (can be thrown, but needs to be picked up after thrown)
-	- [ ] Fungicide spray
-	- [ ] Acid kunai (leaves a trail of acid behind when thrown)
-	- [ ] Babydoll bazooka
-	- [ ] Ectoplasm waterballoon launcher
-	- [ ] Landmine which is a carpet (Carpet bomb)
-	- [ ] Egg dropper (drops rotten eggs which can distract enemies)
-	- [ ] Bottle pop (one time use cork launch)
-	- [ ] Psychic spoon
+	- [ ] Weird/Miscellaneous
+	  - [ ] Landmine which is a carpet (Carpet bomb)
+	  - [ ] Egg dropper (drops rotten eggs which can distract enemies)
+	  - [ ] Bottle pop (one time use cork launch)
+	  - [ ] Chainsaw
+		- [ ] Resizeable (the chainsaw can length at the users will, but gets slower the longer it is, oh and it still colides with walls)
+		- [ ] Rocket powered (can be thrown, but needs to be picked up after thrown)
 - [ ] Enemies
   - [ ] Mossling
   - [ ] Moss Mage
@@ -76,7 +80,7 @@ Movement and the capability of dying.
 	- [ ] Maybe (for noobs)
 	- [ ] Done early (for kids and grandmas)
   - [ ] 
-- [ ] Menus
+- [x] Menus (partial)
 - [ ] Everything else...
 
 ## Contributing:
@@ -90,6 +94,7 @@ Movement and the capability of dying.
 - ## For Non-Developers:
   
   - Create a discussion asking for the feature you want, and why you think it would improve the game, along with providing any implications it may have
+  - Report any bugs you run into if they don't already have issues
 
 ## FAQ:
 

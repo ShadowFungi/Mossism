@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2")
+apply_rotation_on_map_build = true
 classname = "light_hanging_lantern"
 description = ""
 qodot_internal = false

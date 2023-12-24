@@ -59,13 +59,6 @@ func update_properties() -> void:
 		for dimension in 3:
 			if properties.collision_layers[dimension] > int(0) and properties.collision_layers[dimension] < int(33):
 				set_collision_layer_value(properties.collision_layers[dimension], true)
-	
-	if 'render_layers' in properties:
-		await self.ready
-		for dimension in 3:
-			if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
-				#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
-				find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
 
 func _init() -> void:
 	connect('body_shape_entered', body_shape_entered)
@@ -84,16 +77,16 @@ func body_shape_entered(_body_id, body: Node, _body_shape_idx: int, _self_shape_
 	
 	if body is StaticBody3D:
 		return
-
+	
 	if overlaps == 0:
 		press()
-
+	
 	overlaps += 1
 
 func body_shape_exited(_body_id, body: Node, _body_shape_idx: int, _self_shape_idx: int) -> void:
 	if body is StaticBody3D:
 		return
-
+	
 	overlaps -= 1
 	if overlaps == 0:
 		if release_delay == 0:
@@ -105,9 +98,9 @@ func body_shape_exited(_body_id, body: Node, _body_shape_idx: int, _self_shape_i
 func press() -> void:
 	if is_pressed:
 		return
-
+	
 	is_pressed = true
-
+	
 	emit_trigger()
 	emit_pressed()
 
@@ -122,8 +115,8 @@ func emit_pressed() -> void:
 func release() -> void:
 	if not is_pressed:
 		return
-
+	
 	is_pressed = false
-
+	
 	await get_tree().create_timer(release_delay).timeout
 	released.emit()

@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/levels/the_pit.gd" id="1_dmid3"]
 [ext_resource type="CameraAttributesPractical" uid="uid://gkwjgf6vkw8d" path="res://styles/camera_attributes/player.tres" id="2_mfrh2"]
 [ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="3_jcn2s"]
+[ext_resource type="PackedScene" uid="uid://ddngeqxc6kw0n" path="res://nodes/player/player_rigged.tscn" id="4_2dwqv"]
 [ext_resource type="PackedScene" uid="uid://cmsdyakbquy16" path="res://scenes/levels/ThePit.tscn" id="5_fct7e"]
-[ext_resource type="PackedScene" uid="uid://b6vkshouucbu7" path="res://nodes/player/PlayerRigid.tscn" id="5_m0eua"]
 
 [sub_resource type="World3D" id="World3D_wecad"]
 environment = ExtResource("3_jcn2s")
@@ -24,7 +24,7 @@ detail_sample_distance = 7.0
 filter_ledge_spans = true
 filter_walkable_low_height_spans = true
 
-[node name="Node3D" type="Node3D"]
+[node name="SplitScreen" type="Node3D"]
 script = ExtResource("1_dmid3")
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -51,12 +51,14 @@ world_3d = SubResource("World3D_wecad")
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
+use_occlusion_culling = true
+scaling_3d_mode = 0
 audio_listener_enable_2d = true
 audio_listener_enable_3d = true
-size = Vector2i(640, 360)
+size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
-[node name="RigidPlayer" parent="GridContainer/SubViewportContainer/SubViewport" instance=ExtResource("5_m0eua")]
+[node name="Player" parent="GridContainer/SubViewportContainer/SubViewport" instance=ExtResource("4_2dwqv")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="GridContainer/SubViewportContainer/SubViewport"]
 process_mode = 1

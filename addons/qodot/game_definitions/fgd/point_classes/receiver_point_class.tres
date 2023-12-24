@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1")
+apply_rotation_on_map_build = true
 classname = "receiver"
 description = "Calls methods on target."
 qodot_internal = false

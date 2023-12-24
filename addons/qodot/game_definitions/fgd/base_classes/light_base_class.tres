@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1")
-class_options = "----------------------------------------------------------------"
 classname = "Light"
 description = ""
 qodot_internal = false
@@ -33,6 +32,5 @@ class_property_descriptions = {
 meta_properties = {
 "color": Color(1, 1, 0.156863, 1)
 }
-node_options = "----------------------------------------------------------------"
 node_class = ""
 transient_node = false

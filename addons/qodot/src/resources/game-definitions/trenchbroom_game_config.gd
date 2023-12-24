@@ -23,10 +23,24 @@ extends Resource
 ## Icon for Trenchbroom's game list.
 @export var icon : Texture2D
 
+## Available map formats when creating a new map in Trenchbroom. The order of elements in the array is respected by Trenchbroom. The `initialmap` key value is optional.
+@export var map_formats: Array[Dictionary] = [
+	{ "format": "Valve", "initialmap": "initial_valve.map" },
+	{ "format": "Standard", "initialmap": "initial_standard.map" },
+	{ "format": "Quake2", "initialmap": "initial_quake2.map" },
+	{ "format": "Quake3" }
+]
+
 ## Array of FGD resources to include with this game.
 @export var fgd_files : Array[Resource] = [
 	preload("res://addons/qodot/game_definitions/fgd/qodot_fgd.tres")
 ]
+
+## Scale expression that modifies the default display scale of entities in Trenchbroom. See the [**Trenchbroom Documentation**](https://trenchbroom.github.io/manual/latest/#game_configuration_files_entities) for more information.
+@export var entity_scale: String = "1"
+
+## Scale of textures on new brushes.
+@export var default_uv_scale : Vector2 = Vector2(1, 1)
 
 ## Arrays containing the TrenchbroomTag resource type.
 @export_category("Editor hint tags")
@@ -54,15 +68,9 @@ var _fgd_filenames : Array = []
 var _base_text: String = """{
 	version: 3,
 	name: "%s",
-	icon: "Icon.png",
+	icon: "icon.png",
 	"fileformats": [
-		{ "format": "Standard", "initialmap": "initial_standard.map" },
-		{ "format": "Valve", "initialmap": "initial_valve.map" },
-		{ "format": "Quake2", "initialmap": "initial_quake2.map" },
-		{ "format": "Quake3" },
-		{ "format": "Quake3 (legacy)" },
-		{ "format": "Hexen2" },
-		{ "format": "Daikatana" }
+		%s
 	],
 	"filesystem": {
 		"searchpath": ".",
@@ -76,7 +84,8 @@ var _base_text: String = """{
 	"entities": {
 		"definitions": [ %s ],
 		"defaultcolor": "0.6 0.6 0.6 1.0",
-		"modelformats": [ "mdl", "md2", "md3", "bsp", "dkm" ]
+		"modelformats": [ "mdl", "md2", "md3", "bsp", "dkm" ],
+		"scale": %s
 	},
 	"tags": {
 		"brush": [
@@ -86,7 +95,10 @@ var _base_text: String = """{
 			%s
 		]
 	},
-	"faceattribs": {
+	"faceattribs": { 
+		"defaults": {
+			%s
+		},
 		"surfaceflags": [
 			%s
 		],
@@ -115,6 +127,16 @@ static func get_match_key(tag_match_type: int) -> String:
 
 ## Generates completed text for a .cfg file.
 func build_class_text() -> String:
+	var map_formats_str := ""
+	for map_format in map_formats:
+		map_formats_str += "{ \"format\": \"" + map_format.format + "\""
+		if map_format.has("initialmap"):
+			map_formats_str += ", \"initialmap\": \"" + map_format.initialmap + "\""
+		if map_format != map_formats[-1]:
+			map_formats_str += " },\n\t\t"
+		else:
+			map_formats_str += " }"
+	
 	var fgd_filename_str := ""
 	for fgd_filename in _fgd_filenames:
 		fgd_filename_str += "\"%s\"" % fgd_filename
@@ -125,12 +147,15 @@ func build_class_text() -> String:
 	var face_tags_str = parse_tags(face_tags)
 	var surface_flags_str = parse_flags(face_attrib_surface_flags)
 	var content_flags_str = parse_flags(face_attrib_content_flags)
-
+	var uv_scale_str = parse_default_uv_scale(default_uv_scale)
 	return _base_text % [
 		game_name,
+		map_formats_str,
 		fgd_filename_str,
+		entity_scale,
 		brush_tags_str,
 		face_tags_str,
+		uv_scale_str,
 		surface_flags_str,
 		content_flags_str
 	]
@@ -170,13 +195,24 @@ func parse_flags(flags: Array) -> String:
 			flags_str += ","
 	return flags_str
 
+## Converts default uv scale vector to .cfg String.
+func parse_default_uv_scale(texture_scale : Vector2) -> String:
+	var entry_str = "\"scale\": [{x}, {y}]"
+	return entry_str.format({
+		"x": texture_scale.x,
+		"y": texture_scale.y
+	})
+
 ## Exports or updates a folder in the /games directory, with an icon, .cfg, and all accompanying FGDs.
 func do_export_file():
-	if trenchbroom_games_folder.is_empty():
+	var folder = trenchbroom_games_folder
+	if folder.is_empty():
+		folder = QodotProjectConfig.get_setting(QodotProjectConfig.PROPERTY.TRENCHBROOM_GAMES_FOLDER)
+	if folder.is_empty():
 		print("Skipping export: No TrenchBroom games folder")
 		return
 	# Create config folder name by combining games folder with the game name as a directory
-	var config_folder = trenchbroom_games_folder + "/" + game_name
+	var config_folder = folder + "/" + game_name
 	var config_dir := DirAccess.open(config_folder)
 	if config_dir == null:
 		print("Couldn't open directory, creating...")

@@ -32,10 +32,12 @@ var target_transform: Transform3D
 var final_transform: Transform3D
 var temp_transform: Transform3D
 
-var movement_speed := 1.0
+var movement_speed: float = 1.0
 
-var reversible : bool = false
-var reversible_property : bool = 0
+var reversible: bool = false
+var reversible_property: bool = 0
+
+var can_move_self: bool = 1
 
 func update_properties() -> void:
 	if 'axis' in properties:
@@ -79,6 +81,9 @@ func update_properties() -> void:
 	if 'reversible' in properties:
 		reversible_property = properties.reversible
 	
+	if 'can_move_self' in properties:
+		can_move_self = properties.can_move_self
+	
 	if 'collision_mask' in properties:
 		set_collision_mask_value(1, false)
 		for dimension in 3:
@@ -90,15 +95,6 @@ func update_properties() -> void:
 		for dimension in 3:
 			if properties.collision_layers[dimension] > int(0) and properties.collision_layers[dimension] < int(33):
 				set_collision_layer_value(properties.collision_layers[dimension], true)
-	
-	if 'render_layers' in properties:
-		await self.ready
-		if find_child("*mesh_instance"):
-			find_child("*mesh_instance").set_layer_mask_value(1, false)
-			for dimension in 3:
-				if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
-						#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
-						find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
 
 func _init() -> void:
 	connect('body_shape_entered', body_shape_entered)
@@ -143,13 +139,16 @@ func press() -> void:
 	
 	is_pressed = true
 	
+	if can_move_self:
+		use()
+	
 	emit_trigger()
 	emit_pressed()
-	
+
+func use() -> void:
 	if reversible == true:
 		reverse_motion()
-	else:
-		play_motion()
+	else: play_motion()
 
 func emit_trigger() -> void:
 	await get_tree().create_timer(trigger_signal_delay).timeout

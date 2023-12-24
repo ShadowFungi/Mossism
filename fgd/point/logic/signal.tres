@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_high3")
+apply_rotation_on_map_build = true
 classname = "signal"
 description = "Signal"
 qodot_internal = false
@@ -20,4 +21,4 @@ meta_properties = {
 "size": AABB(-8, -8, -8, 8, 8, 8)
 }
 node_class = ""
-transient_node = false
+transient_node = true

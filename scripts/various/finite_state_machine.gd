@@ -3,43 +3,48 @@ extends Node
 
 signal transition(state_name)
 
-@export var state : State
+var current_state: State
+@export var parent: CharacterBody3D
+@export_category('States')
 
-@onready var parent : RigidBody3D = self.get_parent()
+@export_group('General')
+@export var start_state: State
 
-func _ready() -> void:
+@export_category('State Machines')
+@export var machines: Array[FiniteStateMachine]
+@export_category('Animation')
+@export var anim_player: AnimationPlayer
+
+func init(parent: CharacterBody3D, player_id : int = 1):
 	for child in get_children():
-		child.state_machine = false
-	change_state(state.to_string())
+		if "parent" in child:
+			child.parent = parent
+		if "player_id" in child:
+			child.player_id = player_id
+	change_state(start_state)
 
-func _unhandled_input(event: InputEvent) -> void:
-	state.handle_input(event)
+func handle_input(event: InputEvent) -> void:
+	var new_state = current_state.handle_input(event)
+	if new_state:
+		change_state(new_state)
 
-func _process(delta: float) -> void:
-	state.update(delta)
+func frame_update(delta: float) -> void:
+	var new_state = current_state.frame_update(delta)
+	if new_state:
+		change_state(new_state)
 
-func _physics_process(delta: float) -> void:
-	state.physics_update(delta)
+func physics_update(delta: float) -> void:
+	var new_state = current_state.physics_update(delta)
+	if new_state:
+		change_state(new_state)
 
-func _integrate_forces(player : PlayerRigid, forces_state : PhysicsDirectBodyState3D, dir):
-	if state.has_method('forces'):
-		state.forces(player, forces_state, dir)
-
-func fire():
-	if state.has_method('fire'):
-		state.fire()
-
-func jump(player : PlayerRigid, jump_height : float, force_state : PhysicsDirectBodyState3D):
-	if state.has_method('jump'):
-		state.jump(player, jump_height, force_state)
-
-func change_state(new_state : String):
-	if not has_node(new_state):
-		print(new_state + "not found")
+func change_state(new_state : State):
+	if not has_node(str(new_state)):
+		print(str(new_state) + "not found")
 		return
-	if state is State:
-		state._exit_state()
-	state = get_node(new_state)
-	state._enter_state()
-	emit_signal('transition', state.name)
-	#print(state.name)
+	if current_state is State:
+		current_state.exit_state()
+	current_state = new_state
+	current_state.enter_state()
+	emit_signal('transition', current_state.name)
+	#print(current_state.name)

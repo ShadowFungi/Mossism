@@ -33,13 +33,6 @@ func update_properties() -> void:
 		for dimension in 3:
 			if properties.collision_layers[dimension] > int(0) and properties.collision_layers[dimension] < int(33):
 				set_collision_layer_value(properties.collision_layers[dimension], true)
-	
-	if 'render_layers' in properties:
-		await self.ready
-		for dimension in 3:
-			if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
-				#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
-				find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
 
 
 func _ready() -> void:
@@ -50,12 +43,14 @@ func _ready() -> void:
 func body_has_entered(body: Node):
 	if body.is_in_group("player") == true:
 		player = body
+	if body.has_method('damage'):
 		damagable = true
 
 
 func body_has_exited(body: Node):
 	if body.is_in_group("player") == true:
 		player = null
+	if body.has_method('damage'):
 		damagable = false
 
 

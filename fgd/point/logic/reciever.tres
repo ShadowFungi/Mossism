@@ -2,13 +2,11 @@
 
 [ext_resource type="Resource" uid="uid://ccdjpf5j25aua" path="res://addons/qodot/game_definitions/fgd/base_classes/targetname_base_class.tres" id="1_4ibps"]
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_ba1ml"]
-[ext_resource type="Resource" path="res://addons/qodot/game_definitions/fgd/base_classes/target_base_class.tres" id="2_6nmho"]
+[ext_resource type="Resource" uid="uid://dgm276g7bw8q5" path="res://addons/qodot/game_definitions/fgd/base_classes/target_base_class.tres" id="2_6nmho"]
 
 [resource]
 script = ExtResource("1_ba1ml")
-scene = "----------------------------------------------------------------"
-scripting = "----------------------------------------------------------------"
-class_options = "----------------------------------------------------------------"
+apply_rotation_on_map_build = true
 classname = "receiver"
 description = "Receiver"
 qodot_internal = false
@@ -22,6 +20,5 @@ class_property_descriptions = {
 meta_properties = {
 "size": AABB(-8, -8, -8, 8, 8, 8)
 }
-node_options = "----------------------------------------------------------------"
 node_class = ""
-transient_node = false
+transient_node = true

@@ -1,21 +1,24 @@
 class_name PlayerJump
-extends PlayerState
+extends AirState
 
 
 var gravity_scale_old
 
+@export_category('Jump Options')
+@export var jump_height: float = 35
+@export var coyote_timer: Timer
 
-func jump(player : PlayerRigid, jump_height : float, state : PhysicsDirectBodyState3D):
-	player.linear_velocity.y = jump_height
-	get_node('../../JumpTime').start()
-	await get_node('../../JumpTime').timeout
-	get_node('../../JumpStateMachine').change_state('PlayerGroundIdle')
+func enter_state():
+	super()
+	parent.velocity.y += jump_height
+	parent.can_jump = false
 
-func _ready() -> void:
-	set_physics_process(false)
-
-func _enter_state() -> void:
-	set_physics_process(true)
-
-func _exit_state() -> void:
-	set_physics_process(false)
+func physics_update(delta: float) -> State:
+	parent.velocity.y -= (gravity * parent.mass) * delta
+	
+	if parent.velocity.y < 0:
+		return fall_state
+	
+	parent.move_and_slide()
+	
+	return null

@@ -31,10 +31,10 @@ func add_player(player_instance, world_instance, id):
 	
 	# Add basic information to autoload
 	Keyboard.player_instances.append(instance_name)
-	get_tree().root.get_node("Node3D/SubViewportContainer").add_child(player_instance)
-	get_tree().root.get_node("Node3D/SubViewportContainer/%s/Viewport" % String(instance_name))
-	get_tree().root.get_node("Node3D/SubViewportContainer/%s/Viewport/Character" % String(instance_name)).id = id
-	Keyboard.player_nodes.append(get_tree().root.get_node("Node3D/SubViewportContainer/%s/Viewport/Character" % String(instance_name)))
+	get_tree().root.get_node("SplitScreen/SubViewportContainer").add_child(player_instance)
+	get_tree().root.get_node("SplitScreen/SubViewportContainer/%s/Viewport" % String(instance_name))
+	get_tree().root.get_node("SplitScreen/SubViewportContainer/%s/Viewport/Character" % String(instance_name)).id = id
+	Keyboard.player_nodes.append(get_tree().root.get_node("SplitScreen/SubViewportContainer/%s/Viewport/Character" % String(instance_name)))
 	
 	Keyboard.player_id[Keyboard.total_players]
 	# Run function to add key/controller bindings, if the id is not present.

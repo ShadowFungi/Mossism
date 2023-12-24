@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://dbuqcgi5tb6fr"
+path="res://.godot/imported/pit.map-01f4eb328efddf122a35f19fa501b0b7.tres"
+
+[deps]
+
+source_file="res://assets/models/maps/pit.map"
+dest_files=["res://.godot/imported/pit.map-01f4eb328efddf122a35f19fa501b0b7.tres"]
+
+[params]
+

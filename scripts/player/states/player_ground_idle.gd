@@ -1,16 +1,31 @@
 class_name PlayerGroundIdle
-extends PlayerState
+extends AirState
+
+
+@export_category('Jump Options')
+@export var coyote_timer: Timer
 
 func _ready() -> void:
-	set_physics_process(false)
+	coyote_timer.timeout.connect(timeout)
 
-func _enter_state() -> void:
-	set_physics_process(true)
+func enter_state() -> void:
+	super()
+	coyote_timer.start()
 
-func _exit_state() -> void:
-	set_physics_process(false)
+func handle_input(event: InputEvent) -> State:
+	if Input.is_action_just_pressed('player-%s_jump' % parent.id):
+		if parent.is_on_floor() or parent.can_jump:
+			parent.can_jump = false
+			return jump_state
+	return null
 
-func forces(player : PlayerRigid, forces_state : PhysicsDirectBodyState3D, _dir):
-	#player.linear_velocity.y = -((player.gravity * forces_state.step) * player.gravity_multiplier)
-	look_follow(forces_state, get_parent().get_parent().global_transform, get_parent().get_parent().get_node('LookPivot/LookTarget').global_transform.origin)
+func physics_update(delta: float):
+	parent.velocity.y -= (gravity * parent.mass) * delta
+	parent.move_and_slide()
+	if parent.is_on_floor():
+		parent.can_jump = true
+		coyote_timer.start()
 
+func timeout() -> void:
+	if parent.is_on_floor() == false:
+		parent.can_jump = false

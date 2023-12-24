@@ -14,7 +14,7 @@ func _ready():
 
 
 func bake(nav_region : NavigationRegion3D = nav_instance) -> void:
-	nav_instance = get_tree().root.get_node("/root/Node3D/GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D")
+	nav_instance = get_tree().root.get_node("/root/SplitScreen/GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D")
 	nav_region.bake_navigation_mesh(true)
 	#print("platform move successful")
 	map_baked = true
