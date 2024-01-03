@@ -10,19 +10,9 @@
 environment = ExtResource("3_jcn2s")
 camera_attributes = ExtResource("2_mfrh2")
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_n2ieb"]
-geometry_source_geometry_mode = 1
-geometry_source_group_name = &"ground"
-agent_radius = 0.6
+[sub_resource type="NavigationMesh" id="NavigationMesh_6177i"]
+cell_height = 1.0
 agent_max_climb = 1.0
-agent_max_slope = 90.0
-region_min_size = 1.0
-region_merge_size = 30.0
-edge_max_length = 15.0
-vertices_per_polygon = 12.0
-detail_sample_distance = 7.0
-filter_ledge_spans = true
-filter_walkable_low_height_spans = true
 
 [node name="SplitScreen" type="Node3D"]
 script = ExtResource("1_dmid3")
@@ -61,7 +51,6 @@ render_target_update_mode = 4
 [node name="Player" parent="GridContainer/SubViewportContainer/SubViewport" instance=ExtResource("4_2dwqv")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="GridContainer/SubViewportContainer/SubViewport"]
-process_mode = 1
-navigation_mesh = SubResource("NavigationMesh_n2ieb")
+navigation_mesh = SubResource("NavigationMesh_6177i")
 
 [node name="ThePit" parent="GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D" instance=ExtResource("5_fct7e")]

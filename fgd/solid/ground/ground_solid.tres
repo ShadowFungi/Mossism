@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://cuo8ykwaijqh5"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_vai4m"]
-[ext_resource type="Script" path="res://scripts/entities/fgd/wall_solid.gd" id="2_lni1w"]
+[ext_resource type="Script" path="res://scripts/entities/fgd/ground_solid.gd" id="2_4cf6a"]
 
 [resource]
 script = ExtResource("1_vai4m")
@@ -16,7 +16,7 @@ collision_layer = 1
 collision_mask = 0
 collision_priority = 1.0
 collision_shape_margin = 0.04
-script_class = ExtResource("2_lni1w")
+script_class = ExtResource("2_4cf6a")
 classname = "ground_solid"
 description = "A solid impassable wall"
 qodot_internal = false

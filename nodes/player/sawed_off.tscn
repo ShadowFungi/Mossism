@@ -22,7 +22,7 @@ height = 0.808818
 
 [node name="SawedOff" type="CharacterBody3D" node_paths=PackedStringArray("ray", "area")]
 transform = Transform3D(1, -3.38813e-21, 1.74846e-07, -2.03288e-20, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
-collision_layer = 1073741824
+collision_layer = 536870912
 collision_mask = 15
 input_ray_pickable = false
 motion_mode = 1

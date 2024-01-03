@@ -1,0 +1,6 @@
+[gd_resource type="NavigationMesh" format=3 uid="uid://c3ob6o44qcuhk"]
+
+[resource]
+sample_partition_type = 1
+region_min_size = 0.1
+vertices_per_polygon = 12.0

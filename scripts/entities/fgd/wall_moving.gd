@@ -13,8 +13,6 @@ var offset_transform: Transform3D
 var target_transform: Transform3D
 var final_transform: Transform3D
 
-@onready var navmeshi = get_tree().root.get_node("/root/SplitScreen/GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D")
-
 var speed := 1.0
 
 var reversible : bool = false
@@ -56,9 +54,7 @@ func _init() -> void:
 	final_transform = base_transform * offset_transform
 
 func _ready() -> void:
-	var navmesh = Callable(self, "_baked")
-	if navmeshi:
-		navmeshi.connect("bake_finished", navmesh)
+	var bake_call = Callable(self, "_baked")
 
 func use() -> void:
 	if reversible == true:
@@ -81,19 +77,16 @@ func reverse_motion() -> void:
 	target_transform.origin.y = snapped(base_transform.origin.y, 0.1)
 	target_transform.origin.z = snapped(base_transform.origin.z, 0.1)
 	Level.map_baked = false
-	if collision is PhysicsBody3D:
-		collision.set_physics_process(true)
+	#if collision is PhysicsBody3D:
+		#collision.set_physics_process(true)
 	if reversible_property == true:
 		reversible = false
 
 func motion_ended() -> void:
-	if snapped(transform.origin.z, 0.1) == target_transform.origin.z or snapped(transform.origin.y, 0.1) == target_transform.origin.y or snapped(transform.origin.x, 0.1) == target_transform.origin.x:
-		if Level.map_bake_ended != false:
-			#print("success")
-			self.add_to_group("ground", true)
-			navmeshi.bake_navigation_mesh(true)
-			Level.map_baked = true
-			Level.map_bake_ended = false
+	self.add_to_group("ground", true)
+	#navmeshi.bake_navigation_mesh(true)
+	Level.map_baked = true
+	Level.map_bake_ended = false
 
 func _baked():
 	Level.map_bake_ended = true

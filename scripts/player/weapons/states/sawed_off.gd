@@ -33,8 +33,8 @@ func fire() -> void:
 	var shot2 = sawed_off_bullet.instantiate()
 	
 	## Add sawed_off_bullet instances to the world
-	get_tree().root.get_node('/root/SplitScreen/GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D').add_child(shot1)
-	get_tree().root.get_node('/root/SplitScreen/GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D').add_child(shot2)
+	get_tree().root.get_node('/root/SplitScreen/GridContainer/SubViewportContainer/SubViewport/').add_child(shot1)
+	get_tree().root.get_node('/root/SplitScreen/GridContainer/SubViewportContainer/SubViewport/').add_child(shot2)
 	
 	## Set sawed_off_bullets to appropriate position1
 	shot1.transform = weapon_pivot.get_node('SawedOff/Model/Muzzle').global_transform.translated_local(Vector3(0.2, 0, 0))

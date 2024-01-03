@@ -19,6 +19,7 @@ var speed := 1.0
 
 var reversible : bool = false
 var reversible_property : bool = 0
+var did_motion_start: bool = false
 
 
 func update_properties() -> void:
@@ -39,10 +40,9 @@ func update_properties() -> void:
 	if 'reversible' in properties:
 		reversible_property = properties.reversible
 
-
 func _process(delta: float) -> void:
 	transform.origin = transform.origin.move_toward(target_transform.origin, speed * delta)
-	if Level.map_baked == false and Level.map_bake_ended == true:
+	if transform.origin.is_equal_approx(target_transform.origin) and did_motion_start:
 		motion_ended()
 
 func _init() -> void:
@@ -63,7 +63,6 @@ func _ready() -> void:
 	player_detect.set_collision_mask_value(1, false)
 
 func use() -> void:
-	#print(reversible)
 	if reversible == true:
 		reverse_motion()
 	else:
@@ -76,16 +75,18 @@ func play_motion() -> void:
 		target_transform.origin.x = snapped(temp_transform.origin.x, 0.1)
 		target_transform.origin.y = snapped(temp_transform.origin.y, 0.1)
 		target_transform.origin.z = snapped(temp_transform.origin.z, 0.1)
+		did_motion_start = true
+		if reversible_property == true:
+			reversible = true
 	if target_transform.origin.y > temp_transform.origin.y:
 		print("2.1")
 		if test_move(Transform3D(temp_transform.basis, Vector3(temp_transform.origin.x, temp_transform.origin.y - 0.2, temp_transform.origin.z)), -Vector3(0, offset_transform.origin.y, 0)) == false:
 			target_transform.origin.x = snapped(temp_transform.origin.x, 0.1)
 			target_transform.origin.y = snapped(temp_transform.origin.y, 0.1)
 			target_transform.origin.z = snapped(temp_transform.origin.z, 0.1)
-	#print(target_transform)
-	Level.map_baked = false
-	if reversible_property == true:
-		reversible = true
+			did_motion_start = true
+			if reversible_property == true:
+				reversible = true
 
 func reverse_motion() -> void:
 	print(temp_transform.origin, ' temp')
@@ -98,7 +99,7 @@ func reverse_motion() -> void:
 			target_transform.origin.x = snapped(base_transform.origin.x, 0.1)
 			target_transform.origin.y = snapped(base_transform.origin.y, 0.1)
 			target_transform.origin.z = snapped(base_transform.origin.z, 0.1)
-			Level.map_baked = false
+			did_motion_start = true
 			if reversible_property == true:
 				reversible = false
 	elif temp_transform.origin.y < base_transform.origin.y:
@@ -106,14 +107,13 @@ func reverse_motion() -> void:
 		target_transform.origin.x = snapped(base_transform.origin.x, 0.1)
 		target_transform.origin.y = snapped(base_transform.origin.y, 0.1)
 		target_transform.origin.z = snapped(base_transform.origin.z, 0.1)
-		Level.map_baked = false
+		did_motion_start = true
 		if reversible_property == true:
 			reversible = false
 
 func motion_ended() -> void:
-	if snapped(transform.origin.z, 0.1) == target_transform.origin.z or snapped(transform.origin.y, 0.1) == target_transform.origin.y or snapped(transform.origin.x, 0.1) == target_transform.origin.x:
-		if Level.map_bake_ended != false:
-			Level.bake()
+	did_motion_start = false
+	#Level.bake(nav_reg)
 
 func entered(body) -> void:
 	print("entered")

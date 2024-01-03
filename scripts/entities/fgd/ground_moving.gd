@@ -13,9 +13,9 @@ var offset_transform: Transform3D
 var target_transform: Transform3D
 var final_transform: Transform3D
 
-@onready var sound = preload('res://nodes/entities/sfxr_slide.tscn').instantiate()
+var did_motion_start: bool = false
 
-@onready var navmeshi = get_tree().root.get_node("/root/SplitScreen/GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D")
+@onready var sound = preload('res://nodes/entities/sfxr_slide.tscn').instantiate()
 
 var speed := 1.0
 
@@ -38,7 +38,7 @@ func update_properties() -> void:
 
 func _process(delta: float) -> void:
 	transform.origin = transform.origin.move_toward(target_transform.origin, speed * delta)
-	if Level.map_baked == false and Level.map_bake_ended == true:
+	if transform.origin.is_equal_approx(target_transform.origin) and did_motion_start:
 		motion_ended()
 
 func _init() -> void:
@@ -48,9 +48,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	self.add_to_group("ground", true)
-	var navmesh = Callable(self, "_baked")
-	if navmeshi:
-		navmeshi.connect("bake_finished", navmesh)
+	var bake_call = Callable(self, "_baked")
 	add_child(sound)
 
 func use() -> void:
@@ -62,23 +60,19 @@ func play_motion() -> void:
 	target_transform.origin.x = snapped(temp_transform.origin.x, 0.1)
 	target_transform.origin.y = snapped(temp_transform.origin.y, 0.1)
 	target_transform.origin.z = snapped(temp_transform.origin.z, 0.1)
-	#print(target_transform)
-	Level.map_baked = false
+	did_motion_start = true
 
 func reverse_motion() -> void:
 	target_transform.origin.x = snapped(base_transform.origin.x, 0.1)
 	target_transform.origin.y = snapped(base_transform.origin.y, 0.1)
 	target_transform.origin.z = snapped(base_transform.origin.z, 0.1)
 	Level.map_baked = false
+	did_motion_start = true
 
 func motion_ended() -> void:
-	if snapped(transform.origin.z, 0.1) == target_transform.origin.z or snapped(transform.origin.y, 0.1) == target_transform.origin.y or snapped(transform.origin.x, 0.1) == target_transform.origin.x:
-		if Level.map_bake_ended != false:
-			#print("success")
-			self.add_to_group("ground", true)
-			navmeshi.bake_navigation_mesh(true)
-			Level.map_baked = true
-			Level.map_bake_ended = false
+	self.add_to_group("ground", true)
+	did_motion_start = false
+	#Level.bake(nav_reg)
 
 func _baked():
-	Level.map_bake_ended = true
+	pass
