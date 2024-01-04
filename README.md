@@ -111,7 +111,7 @@ Movement and the capability of dying.
 
 ## License:
 
-The majority of the code in this repository is under the ZLib license.
+The majority of the code in this repository is under the [ZLib license](/LICENSE).
 However the contents of directories under the [addons](/addons) directory are under various licenses depending on the project.
 - Godot-Jolt license
 	- [Main repository](https://github.com/godot-jolt/godot-jolt/blob/master/LICENSE.txt)
