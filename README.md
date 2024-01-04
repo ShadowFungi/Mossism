@@ -79,7 +79,6 @@ Movement and the capability of dying.
 	- [ ] It's possible (for most people)
 	- [ ] Maybe (for noobs)
 	- [ ] Done early (for kids and grandmas)
-	- [ ] 
 - [x] Menus (partial)
 - [ ] Everything else...
 
