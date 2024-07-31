@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbceyy600jouo"]
+[gd_scene load_steps=10 format=3 uid="uid://cbceyy600jouo"]
 
 [ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_4y5vp"]
 [ext_resource type="Script" path="res://scripts/menus/OptionsMenu.gd" id="1_74say"]
 [ext_resource type="Script" path="res://scripts/menus/KeymapGUI.gd" id="3_otn8f"]
+[ext_resource type="Script" path="res://nodes/menus/audio.gd" id="4_ddvi5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egh6j"]
 
@@ -43,6 +44,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_egh6j")
 theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_2as51")
 tab_alignment = 1
+all_tabs_in_front = true
 
 [node name="KEYMAPS" type="HBoxContainer" parent="MarginContainer/TabContainer"]
 layout_mode = 2
@@ -102,7 +104,6 @@ alignment = 1
 
 [node name="Forward" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
@@ -123,18 +124,17 @@ text = "FORWARD"
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Forward/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.61
 theme_override_constants/separation = 52
 theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
 
 [node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Forward/PanelContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
+size_flags_horizontal = 11
 text = "W"
 
 [node name="Backward" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
@@ -154,16 +154,18 @@ text = "BACKWARD"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Backward/PanelContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.61
 theme_override_constants/separation = 43
 theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
 
 [node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Backward/PanelContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 11
 text = "S"
 
 [node name="Left" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
@@ -184,18 +186,18 @@ text = "LEFT"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Left/PanelContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.61
 theme_override_constants/separation = 106
 theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
 
 [node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Left/PanelContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
+size_flags_horizontal = 11
 text = "A"
 
 [node name="Right" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
@@ -216,16 +218,18 @@ text = "RIGHT"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Right/PanelContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.61
 theme_override_constants/separation = 96
 theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
 
 [node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Right/PanelContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 11
 text = "D"
 
 [node name="ShootKey" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
@@ -245,16 +249,18 @@ text = "SHOOT KEY"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootKey/PanelContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.61
 theme_override_constants/separation = 43
 theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
 
 [node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/ShootKey/PanelContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 11
 text = "Q"
 
 [node name="Jump" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
@@ -274,12 +280,121 @@ text = "JUMP"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Jump/PanelContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 51
 theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
 
 [node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Jump/PanelContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 11
 text = "SPACE"
+
+[node name="Sprint" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Sprint"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Sprint/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Sprint/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SPRINT"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Sprint/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 51
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Sprint/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 11
+text = "TAB"
+
+[node name="Crouch" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Crouch"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Crouch/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Crouch/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CROUCH"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Crouch/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 51
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vvsfi")
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/KEYMAPS/ScrollContainer/VBoxContainer2/Crouch/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 11
+text = "SHIFT"
+
+[node name="AUDIO" type="HBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+script = ExtResource("4_ddvi5")
+
+[node name="MasterContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/AUDIO"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="VSlider" type="VSlider" parent="MarginContainer/TabContainer/AUDIO/MasterContainer"]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+min_value = -80.0
+max_value = 6.0
+rounded = true
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/AUDIO/MasterContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "MASTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EffectsContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/AUDIO"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="VSlider" type="VSlider" parent="MarginContainer/TabContainer/AUDIO/EffectsContainer"]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+min_value = -80.0
+max_value = 6.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/AUDIO/EffectsContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Effects"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(138, 53)
@@ -314,6 +429,8 @@ filters = PackedStringArray("*.cfg")
 [connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer/ImportKeyMapButton" to="." method="_on_import_key_map_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer4/SaveKeyMapButton" to="." method="_on_save_key_map_button_pressed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer2/Button" to="." method="_on_remap_keys_toggled"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/AUDIO/MasterContainer/VSlider" to="MarginContainer/TabContainer/AUDIO" method="_on_master_value_changed"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/AUDIO/EffectsContainer/VSlider" to="MarginContainer/TabContainer/AUDIO" method="_on_effects_value_changed"]
 [connection signal="pressed" from="MarginContainer2/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="file_selected" from="ImportKeyMap" to="." method="_on_import_key_map_file_selected"]
 [connection signal="file_selected" from="SaveKeyMap" to="." method="_on_save_key_map_file_selected"]

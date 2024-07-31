@@ -19,6 +19,12 @@ Movement and the capability of dying.
 - [ ] Controller support
 - [ ] Functioning health system
 - [x] Bouncy bullets {partial}
+- [ ] Skill tree
+	- [ ] Decisions matter (only one or two will be implemented)
+		- [ ] Some skills will block other paths
+		- [ ] Limited skill slots
+		- [ ] Limited total skill points
+		- [ ] Growth system
 - [ ] Add items
 	- [ ] Add more weapons
 	- [ ] Ranged weapons
@@ -48,8 +54,8 @@ Movement and the capability of dying.
 		- [ ] Egg dropper (drops rotten eggs which can distract enemies)
 		- [ ] Bottle pop (one time use cork launch)
 		- [ ] Chainsaw
-		- [ ] Resizeable (the chainsaw can change length at the users will, but gets slower the longer it is, oh and it still colides with walls)
-		- [ ] Rocket powered (can be thrown, but needs to be picked up after thrown)
+			- [ ] Resizeable (the chainsaw can change length at the users will, but gets slower the longer it is, oh and it still colides with walls)
+			- [ ] Rocket powered (can be thrown, but needs to be picked up after thrown)
 - [ ] Enemies
 	- [ ] Mossling
 	- [ ] Moss Mage
@@ -65,9 +71,13 @@ Movement and the capability of dying.
 - [ ] Tutorial map
 - [x] Story maps {partial}
 - [ ] Multiplayer gamemodes (for people who have friend... unlike you) {not final}
-	- [ ] Moss or die (kind of like 3V3)
+	- [ ] Moss or die (DeathMatch)
 	- [ ] Capture the obelisk (like capture the flag)
 	- [ ] You're not my friend (savior mode but with your friends... but not actually)
+		- [ ] Player controllable enemies
+		- [ ] Similar to the game CRAWL
+		- [ ] Advancement tree for enemies
+	- [ ] Wimps (hah you thouhght it was hard with one person!)
 - [ ] Single player gamemodes (for those who are all alone) {not final}
 	- [ ] Savior (normal single player campaign)
 	- [ ] Already (for kids and grandmas)

@@ -36,6 +36,7 @@ InputRemapper="*res://scripts/autoloads/InputRemapper.gd"
 Keycodes="*res://scripts/autoloads/keycodes.gd"
 SpawnPlayer="*res://scripts/autoloads/SpawnPlayer.gd"
 SceneSwap="*res://scripts/autoloads/scene_swap.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
@@ -52,10 +53,11 @@ project/assembly_name="Mossism-qodot"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/qodot/plugin.cfg")
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/qodot/plugin.cfg")
 
 [gui]
 
+theme/custom="res://styles/StartMenu.tres"
 fonts/canvas_textures/default_texture_filter=0
 
 [layer_names]
@@ -74,7 +76,8 @@ fonts/canvas_textures/default_texture_filter=0
 
 [navigation]
 
-3d/default_cell_height=1.0
+3d/default_cell_size=1.0
+3d/default_cell_height=1.75
 
 [physics]
 
@@ -83,6 +86,5 @@ fonts/canvas_textures/default_texture_filter=0
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-scaling_3d/mode=2
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 0)
 occlusion_culling/use_occlusion_culling=true

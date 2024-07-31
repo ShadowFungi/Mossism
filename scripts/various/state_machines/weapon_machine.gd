@@ -10,8 +10,9 @@ extends FiniteStateMachine
 
 
 func _ready() -> void:
-	right_arm_ik.target_node = start_state.weapon_instance.get_path()
+	pass
+	#right_arm_ik.target_node = start_state.weapon_instance.get_path()
 
 func change_state(new_state: State):
 	super(new_state)
-	right_arm_ik.target_node = new_state.weapon_instance.get_path()
+	#right_arm_ik.target_node = new_state.weapon_instance.get_path()

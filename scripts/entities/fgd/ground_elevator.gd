@@ -41,7 +41,8 @@ func update_properties() -> void:
 		reversible_property = properties.reversible
 
 func _process(delta: float) -> void:
-	transform.origin = transform.origin.move_toward(target_transform.origin, speed * delta)
+	if transform.origin != target_transform.origin:
+		transform.origin = -transform.origin.move_toward(target_transform.origin, speed * delta).normalized()
 	if transform.origin.is_equal_approx(target_transform.origin) and did_motion_start:
 		motion_ended()
 

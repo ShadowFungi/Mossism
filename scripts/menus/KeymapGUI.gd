@@ -114,6 +114,8 @@ func remap_key(event):
 		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, event)
 		buttons[wanted_text].set_text(event.as_text())
+		set_process_unhandled_key_input(false)
 		remap_wanted = false
+		return
 	elif event.keycode == KEY_ESCAPE:
 		return

@@ -37,8 +37,9 @@ func update_properties() -> void:
 
 
 func _process(delta: float) -> void:
-	transform.origin = transform.origin.move_toward(target_transform.origin, speed * delta)
-	if transform.origin.is_equal_approx(target_transform.origin) and did_motion_start:
+	if transform.origin != target_transform.origin:
+		transform.origin = transform.origin.move_toward(target_transform.origin, speed * delta)
+	if transform.origin.round() == target_transform.origin.round() and did_motion_start:
 		motion_ended()
 
 func _init() -> void:
@@ -61,16 +62,16 @@ func play_motion() -> void:
 	target_transform.origin.y = snapped(temp_transform.origin.y, 0.1)
 	target_transform.origin.z = snapped(temp_transform.origin.z, 0.1)
 	did_motion_start = true
+	print(did_motion_start)
 
 func reverse_motion() -> void:
 	target_transform.origin.x = snapped(base_transform.origin.x, 0.1)
 	target_transform.origin.y = snapped(base_transform.origin.y, 0.1)
 	target_transform.origin.z = snapped(base_transform.origin.z, 0.1)
-	Level.map_baked = false
 	did_motion_start = true
 
 func motion_ended() -> void:
-	self.add_to_group("ground", true)
+	Level.bake_map = true
 	did_motion_start = false
 	#Level.bake(nav_reg)
 
