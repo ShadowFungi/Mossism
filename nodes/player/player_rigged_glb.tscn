@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cnodtarbivm5o"]
+[gd_scene load_steps=33 format=3 uid="uid://cnodtarbivm5o"]
 
 [ext_resource type="PackedScene" uid="uid://bot0f53hv0v3k" path="res://assets/models/player/character/player.rigged.glb" id="1_0p53u"]
 [ext_resource type="Script" path="res://scripts/player/player_rigged_glb.gd" id="2_286ef"]
@@ -11,12 +11,19 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_scoul"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_c8ei0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="7_patk7"]
+[ext_resource type="PackedScene" uid="uid://rmyrp0rpg0pp" path="res://nodes/player/sawed_off.tscn" id="9_pbu7e"]
 [ext_resource type="Script" path="res://scripts/player/limbo/PlayerIdleState.gd" id="12_ja7e4"]
+[ext_resource type="PackedScene" uid="uid://yqh4nksms18t" path="res://nodes/player/HeadsUpDisplay.tscn" id="12_u8euv"]
 [ext_resource type="Script" path="res://scripts/player/limbo/PlayerWalkingState.gd" id="13_2i242"]
+[ext_resource type="PackedScene" uid="uid://bhe4g8hhy6h80" path="res://nodes/menus/player/PauseMenu.tscn" id="13_ar6u3"]
 [ext_resource type="Script" path="res://scripts/player/limbo/PlayerRunningState.gd" id="14_mauql"]
+[ext_resource type="PackedScene" uid="uid://d3uacef8ml2pc" path="res://nodes/menus/player/GameOver.tscn" id="14_t7cgc"]
 [ext_resource type="Script" path="res://scripts/player/limbo/PlayerGroundedState.gd" id="15_qktjg"]
 [ext_resource type="Script" path="res://scripts/player/limbo/PlayerJumpState.gd" id="16_dph4f"]
 [ext_resource type="Script" path="res://scripts/player/limbo/PlayerFallState.gd" id="17_mffo8"]
+[ext_resource type="Script" path="res://scripts/player/limbo/PlayerCrouchingState.gd" id="18_8eiil"]
+[ext_resource type="Script" path="res://scripts/player/limbo/PlayerCoyoteState.gd" id="21_yvpr0"]
+[ext_resource type="Script" path="res://scripts/player/limbo/PlayerStandingState.gd" id="23_ybnns"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqatk"]
 resource_name = "Scales.001"
@@ -73,15 +80,29 @@ far = 4000.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k8dup"]
 radius = 0.640472
-height = 6.2671
+height = 5.2
 
-[node name="Player" instance=ExtResource("1_0p53u")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_dd55p"]
+size = Vector3(0.925, 0.975, 0.55)
+
+[node name="Player" node_paths=PackedStringArray("pcam", "pivot", "look_pivot", "sawed_off", "step_detect", "ground_ray", "step_shape", "hud", "gameover") groups=["player"] instance=ExtResource("1_0p53u")]
+process_mode = 1
 collision_layer = 2147483648
-collision_mask = 15
+collision_mask = 2147483663
 floor_stop_on_slope = false
+floor_max_angle = 0.663225
 platform_floor_layers = 5
 platform_wall_layers = 10
 script = ExtResource("2_286ef")
+pcam = NodePath("PhantomCamera3D")
+pivot = NodePath("metarig/Skeleton3D/Head")
+look_pivot = NodePath(".")
+sawed_off = NodePath("PhantomCamera3D/SawedOff")
+step_detect = NodePath("StepRay3D")
+ground_ray = NodePath("GroundRay3D")
+step_shape = NodePath("ShapeCast3D")
+hud = NodePath("HUD")
+gameover = NodePath("GameOver")
 
 [node name="Skeleton3D" parent="metarig" index="0"]
 bones/1/rotation = Quaternion(-0.0658784, 2.40058e-07, 2.13122e-09, 0.997828)
@@ -216,155 +237,155 @@ bones/96/rotation = Quaternion(0.0143585, 7.93346e-09, -5.52108e-07, 0.999897)
 bones/97/rotation = Quaternion(7.64894e-08, 0.997416, -0.0718356, -1.14765e-07)
 
 [node name="Head" parent="metarig/Skeleton3D" index="0"]
-transform = Transform3D(-1, 1.74846e-07, -9.09495e-13, 1.74846e-07, 1, 1.04308e-07, 9.37916e-13, 1.19209e-07, -1, -5.01821e-14, 3.43187, 0.02606)
+transform = Transform3D(-1, 1.74846e-07, -9.09495e-13, 1.74846e-07, 1, 1.04308e-07, 9.37916e-13, 1.19209e-07, -1, -4.17444e-14, 2.8599, 0.0217167)
 
 [node name="Head" parent="metarig/Skeleton3D/Head" index="0"]
 layers = 524288
 surface_material_override/0 = SubResource("StandardMaterial3D_lqatk")
 
 [node name="MiddleFinger_003_R" parent="metarig/Skeleton3D" index="1"]
-transform = Transform3D(-3.25381e-08, 1, -4.51226e-07, -1, -1.66183e-07, -1.84774e-06, 1.87755e-06, -6.06291e-07, -1, 2.34902, 2.91175, 0.0162406)
+transform = Transform3D(-3.25381e-08, 1, -4.51226e-07, -1, -1.66183e-07, -1.84774e-06, 1.87755e-06, -6.06291e-07, -1, 1.95752, 2.42646, 0.0135339)
 
 [node name="MiddleFinger_002_R" parent="metarig/Skeleton3D" index="2"]
-transform = Transform3D(-3.81842e-08, 1, -4.88944e-07, -1, -1.71829e-07, -1.90735e-06, 1.95205e-06, -6.47269e-07, -1, 2.27457, 2.9127, 0.0162201)
+transform = Transform3D(-3.81842e-08, 1, -4.88944e-07, -1, -1.71829e-07, -1.90735e-06, 1.95205e-06, -6.47269e-07, -1, 1.89547, 2.42725, 0.0135167)
 
 [node name="MiddleFinger_001_R" parent="metarig/Skeleton3D" index="3"]
-transform = Transform3D(-3.85335e-08, 1, -4.42378e-07, -1, -1.72178e-07, -1.81794e-06, 1.83284e-06, -5.96046e-07, -1, 2.18532, 2.9127, 0.01622)
+transform = Transform3D(-3.85335e-08, 1, -4.42378e-07, -1, -1.72178e-07, -1.81794e-06, 1.83284e-06, -5.96046e-07, -1, 1.8211, 2.42725, 0.0135167)
 
 [node name="PointerFinger_003_R" parent="metarig/Skeleton3D" index="4"]
-transform = Transform3D(-3.4449e-08, 1, -4.907e-07, -1, -1.68149e-07, -1.87755e-06, 1.90735e-06, -6.48489e-07, -1, 2.33616, 2.91177, 0.0712816)
+transform = Transform3D(-3.4449e-08, 1, -4.907e-07, -1, -1.68149e-07, -1.87755e-06, 1.90735e-06, -6.48489e-07, -1, 1.9468, 2.42648, 0.0594014)
 
 [node name="PointerFinger_002_R" parent="metarig/Skeleton3D" index="5"]
-transform = Transform3D(-3.44489e-08, 1, -4.907e-07, -1, -1.68149e-07, -1.87755e-06, 1.90735e-06, -6.48489e-07, -1, 2.26445, 2.91272, 0.0712609)
+transform = Transform3D(-3.44489e-08, 1, -4.907e-07, -1, -1.68149e-07, -1.87755e-06, 1.90735e-06, -6.48489e-07, -1, 1.88704, 2.42727, 0.0593841)
 
 [node name="PointerFinger_001_R" parent="metarig/Skeleton3D" index="6"]
-transform = Transform3D(-3.43996e-08, 1, -4.91611e-07, -1, -1.681e-07, -1.86265e-06, 1.87755e-06, -6.494e-07, -1, 2.18194, 2.91272, 0.071261)
+transform = Transform3D(-3.43996e-08, 1, -4.91611e-07, -1, -1.681e-07, -1.86265e-06, 1.87755e-06, -6.494e-07, -1, 1.81829, 2.42727, 0.0593842)
 
 [node name="Thumb_002_R" parent="metarig/Skeleton3D" index="7"]
-transform = Transform3D(-2.83954e-08, 1, -2.52281e-07, -1, -1.62095e-07, -1.86265e-06, 1.87755e-06, -4.10071e-07, -1, 2.07749, 2.89415, 0.139071)
+transform = Transform3D(-2.83954e-08, 1, -2.52281e-07, -1, -1.62095e-07, -1.86265e-06, 1.87755e-06, -4.10071e-07, -1, 1.73124, 2.41179, 0.115893)
 
 [node name="Thumb_003_R" parent="metarig/Skeleton3D" index="8"]
-transform = Transform3D(-2.83953e-08, 1, -4.90701e-07, -1, -1.62096e-07, -1.86265e-06, 1.87755e-06, -6.48491e-07, -1, 2.15787, 2.89459, 0.159959)
+transform = Transform3D(-2.83953e-08, 1, -4.90701e-07, -1, -1.62096e-07, -1.86265e-06, 1.87755e-06, -6.48491e-07, -1, 1.79822, 2.41216, 0.133299)
 
 [node name="PinkyFinger_003_R" parent="metarig/Skeleton3D" index="9"]
-transform = Transform3D(-3.4449e-08, 1, -4.907e-07, -1, -1.68149e-07, -1.89245e-06, 1.92225e-06, -6.48489e-07, -1, 2.30605, 2.91178, -0.093841)
+transform = Transform3D(-3.4449e-08, 1, -4.907e-07, -1, -1.68149e-07, -1.89245e-06, 1.92225e-06, -6.48489e-07, -1, 1.92171, 2.42648, -0.0782008)
 
 [node name="RingFinger_003_R" parent="metarig/Skeleton3D" index="10"]
-transform = Transform3D(-3.4449e-08, 1, -4.907e-07, -1, -1.68149e-07, -1.89245e-06, 1.92225e-06, -6.48489e-07, -1, 2.31965, 2.91178, -0.0388002)
+transform = Transform3D(-3.4449e-08, 1, -4.907e-07, -1, -1.68149e-07, -1.89245e-06, 1.92225e-06, -6.48489e-07, -1, 1.93304, 2.42648, -0.0323335)
 
 [node name="PinkyFinger_002_R" parent="metarig/Skeleton3D" index="11"]
-transform = Transform3D(-3.44489e-08, 1, -4.907e-07, -1, -1.68149e-07, -1.87755e-06, 1.90735e-06, -6.48489e-07, -1, 2.2452, 2.91273, -0.0938618)
+transform = Transform3D(-3.44489e-08, 1, -4.907e-07, -1, -1.68149e-07, -1.87755e-06, 1.90735e-06, -6.48489e-07, -1, 1.871, 2.42727, -0.0782181)
 
 [node name="RingFinger_002_R" parent="metarig/Skeleton3D" index="12"]
-transform = Transform3D(-3.44489e-08, 1, -4.907e-07, -1, -1.68149e-07, -1.87755e-06, 1.90735e-06, -6.48489e-07, -1, 2.25508, 2.91273, -0.038821)
+transform = Transform3D(-3.44489e-08, 1, -4.907e-07, -1, -1.68149e-07, -1.87755e-06, 1.90735e-06, -6.48489e-07, -1, 1.87924, 2.42727, -0.0323508)
 
 [node name="PinkyFinger_001_R" parent="metarig/Skeleton3D" index="13"]
-transform = Transform3D(-2.83953e-08, 1, -4.90701e-07, -1, -1.62096e-07, -1.86265e-06, 1.87755e-06, -6.48491e-07, -1, 2.1751, 2.91273, -0.0938616)
+transform = Transform3D(-2.83953e-08, 1, -4.90701e-07, -1, -1.62096e-07, -1.86265e-06, 1.87755e-06, -6.48491e-07, -1, 1.81258, 2.42727, -0.078218)
 
 [node name="RingFinger_001_R" parent="metarig/Skeleton3D" index="14"]
-transform = Transform3D(-2.83953e-08, 1, -4.90701e-07, -1, -1.62096e-07, -1.86265e-06, 1.87755e-06, -6.48491e-07, -1, 2.18053, 2.91273, -0.0388208)
+transform = Transform3D(-2.83953e-08, 1, -4.90701e-07, -1, -1.62096e-07, -1.86265e-06, 1.87755e-06, -6.48491e-07, -1, 1.8171, 2.42727, -0.0323507)
 
 [node name="Palm_R" parent="metarig/Skeleton3D" index="15"]
-transform = Transform3D(-2.83954e-08, 0.999999, -4.90701e-07, -1, -1.62095e-07, -1.83284e-06, 1.86265e-06, -6.4849e-07, -1, 2.09834, 2.90665, -0.00919136)
+transform = Transform3D(-2.83954e-08, 0.999999, -4.90701e-07, -1, -1.62095e-07, -1.83284e-06, 1.86265e-06, -6.4849e-07, -1, 1.74862, 2.42221, -0.00765946)
 
 [node name="HandBase_R" parent="metarig/Skeleton3D" index="16"]
-transform = Transform3D(-0.000216597, 1, 0.000138886, -1, -0.000216709, -1.65403e-06, 1.65403e-06, 0.000138732, -1, 1.97477, 2.89393, -0.00908168)
+transform = Transform3D(-0.000216597, 1, 0.000138886, -1, -0.000216709, -1.65403e-06, 1.65403e-06, 0.000138732, -1, 1.64564, 2.41161, -0.00756806)
 
 [node name="Thumb_001_R" parent="metarig/Skeleton3D" index="17"]
-transform = Transform3D(1.94181e-07, 0.793382, 0.608724, -1, 1.2368e-06, -1.51992e-06, 1.99676e-06, 0.608724, -0.793382, 2.01222, 2.89285, 0.0902632)
+transform = Transform3D(1.94181e-07, 0.793382, 0.608724, -1, 1.2368e-06, -1.51992e-06, 1.99676e-06, 0.608724, -0.793382, 1.67685, 2.41071, 0.0752193)
 
 [node name="ForeArm_R" parent="metarig/Skeleton3D" index="18"]
-transform = Transform3D(4.37722e-08, 1, -4.39584e-07, -1, -8.44011e-08, -1.69687e-06, 1.70432e-06, -5.81145e-07, -1, 1.52545, 2.88713, -0.00816476)
+transform = Transform3D(4.37722e-08, 1, -4.39584e-07, -1, -8.44011e-08, -1.69687e-06, 1.70432e-06, -5.81145e-07, -1, 1.27121, 2.40594, -0.00680396)
 
 [node name="UpperArm_R" parent="metarig/Skeleton3D" index="19"]
-transform = Transform3D(9.31323e-10, 1, -3.02491e-07, -1, -1.33179e-07, -8.50298e-07, 9.31323e-07, -4.53263e-07, -1, 0.776388, 2.8801, -0.00815855)
+transform = Transform3D(9.31323e-10, 1, -3.02491e-07, -1, -1.33179e-07, -8.50298e-07, 9.31323e-07, -4.53263e-07, -1, 0.64699, 2.40008, -0.00679879)
 
 [node name="MiddleFinger_003_L" parent="metarig/Skeleton3D" index="20"]
-transform = Transform3D(-7.97445e-09, -1, 4.95929e-07, -1, -1.27475e-07, -1.74344e-06, 1.75834e-06, -5.59259e-07, -1, -2.34902, 2.9283, 0.016242)
+transform = Transform3D(-7.97445e-09, -1, 4.95929e-07, -1, -1.27475e-07, -1.74344e-06, 1.75834e-06, -5.59259e-07, -1, -1.95752, 2.44025, 0.013535)
 
 [node name="MiddleFinger_002_L" parent="metarig/Skeleton3D" index="21"]
-transform = Transform3D(-2.21189e-08, -1, 5.10365e-07, -1, -1.13156e-07, -1.59442e-06, 1.59442e-06, -5.7742e-07, -1, -2.27457, 2.92925, 0.0162214)
+transform = Transform3D(-2.21189e-08, -1, 5.10365e-07, -1, -1.13156e-07, -1.59442e-06, 1.59442e-06, -5.7742e-07, -1, -1.89547, 2.44104, 0.0135178)
 
 [node name="MiddleFinger_001_L" parent="metarig/Skeleton3D" index="22"]
-transform = Transform3D(-2.31666e-08, -1, 4.76837e-07, -1, -1.11526e-07, -1.66893e-06, 1.68383e-06, -5.43892e-07, -1, -2.18532, 2.92925, 0.0162214)
+transform = Transform3D(-2.31666e-08, -1, 4.76837e-07, -1, -1.11526e-07, -1.66893e-06, 1.68383e-06, -5.43892e-07, -1, -1.8211, 2.44104, 0.0135178)
 
 [node name="PointerFinger_003_L" parent="metarig/Skeleton3D" index="23"]
-transform = Transform3D(-2.44216e-08, -1, 5.11213e-07, -1, -1.10204e-07, -1.72853e-06, 1.72853e-06, -5.7918e-07, -1, -2.33616, 2.9283, 0.0712831)
+transform = Transform3D(-2.44216e-08, -1, 5.11213e-07, -1, -1.10204e-07, -1.72853e-06, 1.72853e-06, -5.7918e-07, -1, -1.9468, 2.44025, 0.0594026)
 
 [node name="PointerFinger_002_L" parent="metarig/Skeleton3D" index="24"]
-transform = Transform3D(-2.44217e-08, -1, 5.18663e-07, -1, -1.10204e-07, -1.71363e-06, 1.72853e-06, -5.8663e-07, -1, -2.26445, 2.92925, 0.0712623)
+transform = Transform3D(-2.44217e-08, -1, 5.18663e-07, -1, -1.10204e-07, -1.71363e-06, 1.72853e-06, -5.8663e-07, -1, -1.88704, 2.44104, 0.0593852)
 
 [node name="PointerFinger_001_L" parent="metarig/Skeleton3D" index="25"]
-transform = Transform3D(-2.50212e-08, -1, 5.15912e-07, -1, -1.09605e-07, -1.71363e-06, 1.72853e-06, -5.8388e-07, -1, -2.18194, 2.92925, 0.0712623)
+transform = Transform3D(-2.50212e-08, -1, 5.15912e-07, -1, -1.09605e-07, -1.71363e-06, 1.72853e-06, -5.8388e-07, -1, -1.81829, 2.44104, 0.0593853)
 
 [node name="Thumb_002_L" parent="metarig/Skeleton3D" index="26"]
-transform = Transform3D(-2.51432e-07, -1, 2.60086e-07, -1, 1.16807e-07, -1.71363e-06, 1.72853e-06, -3.28054e-07, -1, -2.07749, 2.89415, 0.139072)
+transform = Transform3D(-2.51432e-07, -1, 2.60086e-07, -1, 1.16807e-07, -1.71363e-06, 1.72853e-06, -3.28054e-07, -1, -1.73124, 2.41179, 0.115893)
 
 [node name="Thumb_003_L" parent="metarig/Skeleton3D" index="27"]
-transform = Transform3D(-1.30129e-08, -1, 3.93132e-07, -1, -1.21613e-07, -1.71363e-06, 1.72853e-06, -4.61099e-07, -1, -2.15787, 2.8946, 0.15996)
+transform = Transform3D(-1.30129e-08, -1, 3.93132e-07, -1, -1.21613e-07, -1.71363e-06, 1.72853e-06, -4.61099e-07, -1, -1.79822, 2.41216, 0.1333)
 
 [node name="PinkyFinger_003_L" parent="metarig/Skeleton3D" index="28"]
-transform = Transform3D(-2.44216e-08, -1, 5.19096e-07, -1, -1.10204e-07, -1.72853e-06, 1.74344e-06, -5.87063e-07, -1, -2.30605, 2.92779, -0.0938397)
+transform = Transform3D(-2.44216e-08, -1, 5.19096e-07, -1, -1.10204e-07, -1.72853e-06, 1.74344e-06, -5.87063e-07, -1, -1.92171, 2.43983, -0.0781997)
 
 [node name="RingFinger_003_L" parent="metarig/Skeleton3D" index="29"]
-transform = Transform3D(-2.44216e-08, -1, 5.19096e-07, -1, -1.10204e-07, -1.72853e-06, 1.74344e-06, -5.87063e-07, -1, -2.31965, 2.92779, -0.0387987)
+transform = Transform3D(-2.44216e-08, -1, 5.19096e-07, -1, -1.10204e-07, -1.72853e-06, 1.74344e-06, -5.87063e-07, -1, -1.93304, 2.43983, -0.0323323)
 
 [node name="PinkyFinger_002_L" parent="metarig/Skeleton3D" index="30"]
-transform = Transform3D(-2.44216e-08, -1, 5.19096e-07, -1, -1.10204e-07, -1.72853e-06, 1.72853e-06, -5.87063e-07, -1, -2.2452, 2.92874, -0.0938604)
+transform = Transform3D(-2.44216e-08, -1, 5.19096e-07, -1, -1.10204e-07, -1.72853e-06, 1.72853e-06, -5.87063e-07, -1, -1.871, 2.44062, -0.078217)
 
 [node name="RingFinger_002_L" parent="metarig/Skeleton3D" index="31"]
-transform = Transform3D(-2.44216e-08, -1, 5.19096e-07, -1, -1.10204e-07, -1.72853e-06, 1.72853e-06, -5.87063e-07, -1, -2.25508, 2.92874, -0.0388195)
+transform = Transform3D(-2.44216e-08, -1, 5.19096e-07, -1, -1.10204e-07, -1.72853e-06, 1.72853e-06, -5.87063e-07, -1, -1.87924, 2.44062, -0.0323496)
 
 [node name="PinkyFinger_001_L" parent="metarig/Skeleton3D" index="32"]
-transform = Transform3D(-2.44753e-08, -1, 5.3784e-07, -1, -1.10151e-07, -1.71363e-06, 1.72853e-06, -6.05807e-07, -1, -2.1751, 2.92874, -0.0938603)
+transform = Transform3D(-2.44753e-08, -1, 5.3784e-07, -1, -1.10151e-07, -1.71363e-06, 1.72853e-06, -6.05807e-07, -1, -1.81258, 2.44062, -0.078217)
 
 [node name="RingFinger_001_L" parent="metarig/Skeleton3D" index="33"]
-transform = Transform3D(-2.44753e-08, -1, 5.3784e-07, -1, -1.10151e-07, -1.71363e-06, 1.72853e-06, -6.05807e-07, -1, -2.18053, 2.92874, -0.0388194)
+transform = Transform3D(-2.44753e-08, -1, 5.3784e-07, -1, -1.10151e-07, -1.71363e-06, 1.72853e-06, -6.05807e-07, -1, -1.8171, 2.44062, -0.0323495)
 
 [node name="Palm_L" parent="metarig/Skeleton3D" index="34"]
-transform = Transform3D(-1.3013e-08, -0.999999, 5.10311e-07, -1, -1.21613e-07, -1.71363e-06, 1.72853e-06, -5.78277e-07, -1, -2.09834, 2.92322, -0.0091901)
+transform = Transform3D(-1.3013e-08, -0.999999, 5.10311e-07, -1, -1.21613e-07, -1.71363e-06, 1.72853e-06, -5.78277e-07, -1, -1.74862, 2.43602, -0.00765843)
 
 [node name="HandBase_L" parent="metarig/Skeleton3D" index="35"]
-transform = Transform3D(-0.0848269, -0.996396, -9.08971e-07, -0.996396, 0.0848268, -1.57952e-06, 1.63913e-06, 7.02334e-07, -1, -1.97485, 2.90301, -0.00908067)
+transform = Transform3D(-0.0848269, -0.996396, -9.08971e-07, -0.996396, 0.0848268, -1.57952e-06, 1.63913e-06, 7.02334e-07, -1, -1.64571, 2.41918, -0.00756724)
 
 [node name="Thumb_001_L" parent="metarig/Skeleton3D" index="36"]
-transform = Transform3D(-2.20491e-07, -0.793381, -0.608725, -1, 1.03563e-06, -1.16229e-06, 1.57952e-06, 0.608725, -0.793381, -2.01222, 2.89285, 0.0902641)
+transform = Transform3D(-2.20491e-07, -0.793381, -0.608725, -1, 1.03563e-06, -1.16229e-06, 1.57952e-06, 0.608725, -0.793381, -1.67685, 2.41071, 0.0752201)
 
 [node name="ForeArm_L" parent="metarig/Skeleton3D" index="37"]
-transform = Transform3D(3.14321e-09, -1, 4.09782e-07, -1, -1.29221e-07, -1.67266e-06, 1.68569e-06, -4.73112e-07, -1, -1.52545, 2.88713, -0.00816401)
+transform = Transform3D(3.14321e-09, -1, 4.09782e-07, -1, -1.29221e-07, -1.67266e-06, 1.68569e-06, -4.73112e-07, -1, -1.27121, 2.40594, -0.00680335)
 
 [node name="UpperArm_L" parent="metarig/Skeleton3D" index="38"]
-transform = Transform3D(1.95578e-08, -1, 4.40181e-07, -1, -1.49943e-07, -8.36328e-07, 9.10833e-07, -5.12999e-07, -1, -0.776388, 2.8801, -0.0081582)
+transform = Transform3D(1.95578e-08, -1, 4.40181e-07, -1, -1.49943e-07, -8.36328e-07, 9.10833e-07, -5.12999e-07, -1, -0.64699, 2.40008, -0.00679851)
 
 [node name="BodyUpper" parent="metarig/Skeleton3D" index="39"]
-transform = Transform3D(-1, 1.74846e-07, -1.10845e-12, 1.74846e-07, 1, 3.72529e-08, 1.13687e-12, 3.72529e-08, -1, 5.77316e-15, 2.60944, 0.0193857)
+transform = Transform3D(-1, 1.74846e-07, -1.10845e-12, 1.74846e-07, 1, 3.72529e-08, 1.13687e-12, 3.72529e-08, -1, 4.55191e-15, 2.17453, 0.0161547)
 
 [node name="Foot_L" parent="metarig/Skeleton3D" index="40"]
-transform = Transform3D(0.595238, 3.97904e-13, 1.33871e-12, -4.12115e-13, 0.595238, 5.86733e-08, 1.28786e-12, -1.50874e-07, -0.595231, 0.209915, 0.0894288, -0.0432236)
+transform = Transform3D(0.595238, 3.97904e-13, 1.33871e-12, -4.12115e-13, 0.595238, 5.86733e-08, 1.28786e-12, -1.50874e-07, -0.595231, 0.174929, 0.074524, -0.0360197)
 
 [node name="LowerLeg_R" parent="metarig/Skeleton3D" index="41"]
-transform = Transform3D(-1, -1.0411e-06, -3.25839e-07, 1.0411e-06, -1, 7.71135e-07, 3.2584e-07, -4.09782e-07, -0.999989, 0.203273, 0.484746, -0.0190919)
+transform = Transform3D(-1, -1.0411e-06, -3.25839e-07, 1.0411e-06, -1, 7.71135e-07, 3.2584e-07, -4.09782e-07, -0.999989, 0.169394, 0.403955, -0.0159099)
 
 [node name="UpperLeg_R" parent="metarig/Skeleton3D" index="42"]
-transform = Transform3D(-1, -1.0411e-06, 3.25841e-07, 1.0411e-06, -1, 1.63913e-07, -3.2584e-07, 1.73226e-07, -0.999992, 0.200388, 1.26659, -0.00241651)
+transform = Transform3D(-1, -1.0411e-06, 3.25841e-07, 1.0411e-06, -1, 1.63913e-07, -3.2584e-07, 1.73226e-07, -0.999992, 0.16699, 1.05549, -0.00201376)
 
 [node name="Foot_R" parent="metarig/Skeleton3D" index="43"]
-transform = Transform3D(-0.595238, 3.69482e-13, 1.21503e-12, 3.55271e-13, 0.595238, -1.82539e-07, -1.18927e-12, -3.8743e-07, -0.595231, -0.209915, 0.0894291, -0.0432233)
+transform = Transform3D(-0.595238, 3.69482e-13, 1.21503e-12, 3.55271e-13, 0.595238, -1.82539e-07, -1.18927e-12, -3.8743e-07, -0.595231, -0.174929, 0.0745243, -0.0360194)
 
 [node name="LowerLeg_L" parent="metarig/Skeleton3D" index="44"]
-transform = Transform3D(1, 1.10467e-06, 1.82467e-12, 1.10467e-06, -1, -2.38419e-07, 1.13332e-12, 5.88596e-07, -0.99999, -0.203273, 0.484746, -0.0190916)
+transform = Transform3D(1, 1.10467e-06, 1.82467e-12, 1.10467e-06, -1, -2.38419e-07, 1.13332e-12, 5.88596e-07, -0.99999, -0.169395, 0.403955, -0.0159097)
 
 [node name="UpperLeg_L" parent="metarig/Skeleton3D" index="45"]
-transform = Transform3D(1, 1.10467e-06, 4.07861e-13, 1.10467e-06, -1, -6.37025e-07, -7.0699e-13, 9.72301e-07, -0.999992, -0.200388, 1.26659, -0.00241644)
+transform = Transform3D(1, 1.10467e-06, 4.07861e-13, 1.10467e-06, -1, -6.37025e-07, -7.0699e-13, 9.72301e-07, -0.999992, -0.16699, 1.05549, -0.0020137)
 
 [node name="BodyLower" parent="metarig/Skeleton3D" index="46"]
-transform = Transform3D(-1, 1.74846e-07, 6.53699e-13, 1.74846e-07, 1, -2.98023e-08, -5.96856e-13, -2.98023e-08, -1, -9.57567e-15, 1.93747, 0.0201936)
+transform = Transform3D(-1, 1.74846e-07, 6.53699e-13, 1.74846e-07, 1, -2.98023e-08, -5.96856e-13, -2.98023e-08, -1, -9.74221e-15, 1.61456, 0.016828)
 
 [node name="Pivot" type="Node3D" parent="metarig" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.45505, 0.121101)
 
 [node name="Camera3D" type="Camera3D" parent="." index="1"]
-transform = Transform3D(0.999998, 0, 0, 0, 0.999997, 0, 0, 0, 0.999995, 8.43059e-14, 5.76555, 5.08619)
+transform = Transform3D(1, -1.74846e-07, 9.09495e-13, 1.74846e-07, 1, 1.75238e-07, -9.40134e-13, -1.75238e-07, 1, 7.01306e-14, 4.80462, -0.0364841)
 environment = ExtResource("2_it7u6")
 attributes = ExtResource("3_asf4d")
 doppler_tracking = 2
@@ -373,34 +394,45 @@ current = true
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" index="0"]
 script = ExtResource("4_ontbl")
 
-[node name="PhantomCamera3D" type="Node3D" parent="." index="2" node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.43059e-14, 5.76555, -0.0437809)
-script = ExtResource("5_scoul")
-priority = 1
-follow_mode = 1
-follow_target = NodePath("../metarig/Skeleton3D/Head")
-tween_resource = SubResource("Resource_rq4v1")
-camera_3d_resource = SubResource("Resource_mb26w")
-
-[node name="TPPhantomCamera3D" type="Node3D" parent="." index="3" node_paths=PackedStringArray("follow_target", "look_at_target")]
-transform = Transform3D(0.999998, 0, 0, 0, 0.999997, 0, 0, 0, 0.999995, 8.43059e-14, 5.76555, 5.08619)
+[node name="PhantomCamera3D" type="Node3D" parent="." index="2" node_paths=PackedStringArray("follow_target", "look_at_target")]
+transform = Transform3D(1, -1.74846e-07, 9.09495e-13, 1.74846e-07, 1, 1.75238e-07, -9.40134e-13, -1.75238e-07, 1, 7.01306e-14, 4.80462, -0.0364841)
 script = ExtResource("5_scoul")
 priority = 2
+follow_mode = 2
+follow_target = NodePath("../metarig/Skeleton3D/Head")
+look_at_mode = 1
+look_at_target = NodePath("../metarig/Skeleton3D/Head")
+tween_resource = SubResource("Resource_rq4v1")
+tween_on_load = false
+camera_3d_resource = SubResource("Resource_mb26w")
+
+[node name="SawedOff" parent="PhantomCamera3D" index="0" instance=ExtResource("9_pbu7e")]
+transform = Transform3D(1, 1.74846e-07, 1.74845e-07, -1.74846e-07, 1, -1.75238e-07, -1.74845e-07, 1.75238e-07, 1, 0.724795, -0.721606, -1.61847)
+
+[node name="Marker3D" type="Marker3D" parent="PhantomCamera3D" index="1"]
+transform = Transform3D(1, 1.64747e-19, 0, 1.64747e-19, 1, 0, 0, 0, 1, 0.725, -0.623, -3.187)
+
+[node name="TPPhantomCamera3D" type="Node3D" parent="." index="3" node_paths=PackedStringArray("follow_target", "look_at_target")]
+transform = Transform3D(1, -1.74846e-07, 9.09495e-13, 1.74846e-07, 1, 1.75238e-07, -9.40134e-13, -1.75238e-07, 1, 7.34609e-12, 4.80463, 7.96352)
+visible = false
+script = ExtResource("5_scoul")
+priority = 3
 follow_mode = 6
-follow_target = NodePath("../metarig/Skeleton3D/Head/Head")
-look_at_target = NodePath("../metarig/Skeleton3D")
+follow_target = NodePath("../metarig/Skeleton3D/Head")
+look_at_target = NodePath("../metarig/Skeleton3D/Head")
 tween_resource = SubResource("Resource_mwyx2")
 tween_on_load = false
 camera_3d_resource = SubResource("Resource_wofpd")
-follow_distance = 5.13
+follow_damping = true
+follow_distance = 8.0
 dead_zone_width = 0.342
 dead_zone_height = 0.72
-spring_length = 5.13
+spring_length = 8.0
 collision_mask = 15
 shape = SubResource("SeparationRayShape3D_2bi55")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.13351, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.599, 0)
 shape = SubResource("CapsuleShape3D_k8dup")
 
 [node name="Targets" type="Node3D" parent="." index="5"]
@@ -408,24 +440,78 @@ shape = SubResource("CapsuleShape3D_k8dup")
 [node name="LegLTarget" type="Marker3D" parent="Targets" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0, 0)
 
-[node name="LimboHSM" type="LimboHSM" parent="." index="6"]
+[node name="GroundRay3D" type="RayCast3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.347926, 0)
+target_position = Vector3(0, -1.355, 0)
+collision_mask = 15
+hit_from_inside = true
+debug_shape_custom_color = Color(0.72549, 0, 0.886275, 1)
 
-[node name="LimboState" type="LimboState" parent="LimboHSM" index="0"]
+[node name="StepRay3D" type="RayCast3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.556186, 0)
+visible = false
+target_position = Vector3(0, 0, -1.02)
+collision_mask = 5
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.801767, 0)
+shape = SubResource("BoxShape3D_dd55p")
+target_position = Vector3(0, 0, -0.6)
+collision_mask = 5
+
+[node name="HUD" parent="." index="9" instance=ExtResource("12_u8euv")]
+
+[node name="PauseMenu" parent="." index="10" node_paths=PackedStringArray("player") instance=ExtResource("13_ar6u3")]
+visible = false
+player = NodePath("..")
+
+[node name="GameOver" parent="." index="11" instance=ExtResource("14_t7cgc")]
+visible = false
+
+[node name="MovementHSM" type="LimboHSM" parent="." index="12"]
+
+[node name="PlayerIdleState" type="LimboState" parent="MovementHSM" index="0" node_paths=PackedStringArray("player")]
 script = ExtResource("12_ja7e4")
+player = NodePath("../..")
 
-[node name="LimboState2" type="LimboState" parent="LimboHSM" index="1"]
+[node name="PlayerWalkingState" type="LimboState" parent="MovementHSM" index="1" node_paths=PackedStringArray("player")]
 script = ExtResource("13_2i242")
+player = NodePath("../..")
 
-[node name="LimboState3" type="LimboState" parent="LimboHSM" index="2"]
+[node name="PlayerRunningState" type="LimboState" parent="MovementHSM" index="2" node_paths=PackedStringArray("player")]
 script = ExtResource("14_mauql")
+player = NodePath("../..")
 
-[node name="LimboHSM2" type="LimboHSM" parent="." index="7"]
+[node name="ElevationHSM" type="LimboHSM" parent="." index="13"]
 
-[node name="LimboState" type="LimboState" parent="LimboHSM2" index="0"]
+[node name="PlayerGroundedState" type="LimboState" parent="ElevationHSM" index="0" node_paths=PackedStringArray("player", "ground_ray")]
 script = ExtResource("15_qktjg")
+player = NodePath("../..")
+ground_ray = NodePath("../../GroundRay3D")
 
-[node name="LimboState2" type="LimboState" parent="LimboHSM2" index="1"]
+[node name="PlayerJumpState" type="LimboState" parent="ElevationHSM" index="1" node_paths=PackedStringArray("player")]
 script = ExtResource("16_dph4f")
+player = NodePath("../..")
 
-[node name="LimboState3" type="LimboState" parent="LimboHSM2" index="2"]
+[node name="PlayerCoyoteState" type="LimboState" parent="ElevationHSM" index="2" node_paths=PackedStringArray("player", "ground_ray")]
+script = ExtResource("21_yvpr0")
+player = NodePath("../..")
+ground_ray = NodePath("../../GroundRay3D")
+
+[node name="PlayerFallState" type="LimboState" parent="ElevationHSM" index="3" node_paths=PackedStringArray("player", "ground_ray")]
 script = ExtResource("17_mffo8")
+player = NodePath("../..")
+ground_ray = NodePath("../../GroundRay3D")
+
+[node name="HeightHSM" type="LimboHSM" parent="." index="14"]
+
+[node name="PlayerStandingState" type="LimboState" parent="HeightHSM" index="0" node_paths=PackedStringArray("player", "col_shape")]
+script = ExtResource("23_ybnns")
+player = NodePath("../..")
+col_shape = NodePath("../../CollisionShape3D")
+
+[node name="PlayerCrouchingState" type="LimboState" parent="HeightHSM" index="1" node_paths=PackedStringArray("player", "col_shape")]
+script = ExtResource("18_8eiil")
+crouch_size = 4.298
+player = NodePath("../..")
+col_shape = NodePath("../../CollisionShape3D")

@@ -20,18 +20,21 @@ height = 1.95
 radius = 0.207243
 height = 0.808818
 
-[node name="SawedOff" type="CharacterBody3D" node_paths=PackedStringArray("ray", "area")]
+[node name="SawedOff" type="CharacterBody3D" node_paths=PackedStringArray("ray", "area", "muzzle_1", "muzzle_2")]
 transform = Transform3D(1, -3.38813e-21, 1.74846e-07, -2.03288e-20, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
 collision_layer = 536870912
 collision_mask = 15
 input_ray_pickable = false
 motion_mode = 1
-wall_min_slide_angle = 3.14159
+wall_min_slide_angle = 0.0
 platform_floor_layers = 5
 platform_wall_layers = 10
 script = ExtResource("1_4l8f6")
 ray = NodePath("RayCast3D")
 area = NodePath("Area3D")
+muzzle_1 = NodePath("Model/Muzzle")
+muzzle_2 = NodePath("Model/Muzzle2")
+bullet_path = "res://nodes/player/SawedOffBullet.tscn"
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 6.21474e-34, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -58,14 +61,29 @@ shape = SubResource("CapsuleShape3D_bwijp")
 
 [node name="Model" parent="." instance=ExtResource("2_ra774")]
 
-[node name="Muzzle" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0985394, -1.35056)
+[node name="Muzzle" type="Marker3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 6.21474e-34, 1, 0, 0, 0, 1, -0.1, 0.099, -1.26678)
+rotation_edit_mode = 1
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Model/Muzzle"]
 transform = Transform3D(1, 2.37169e-20, 0, 6.21474e-34, 1, 5.92401e-28, 0, 0, 1, 0, 0, 0)
 rotation_edit_mode = 1
 stream = ExtResource("3_1f7wj")
-volume_db = -12.0
+volume_db = -13.0
+max_distance = 5.0
+max_polyphony = 2
+emission_angle_enabled = true
+emission_angle_degrees = 58.0
+
+[node name="Muzzle2" type="Marker3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 6.21474e-34, 1, 0, 0, 0, 1, 0.1, 0.099, -1.26678)
+rotation_edit_mode = 1
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Model/Muzzle2"]
+transform = Transform3D(1, 2.37169e-20, 0, 6.21474e-34, 1, 5.92401e-28, 0, 0, 1, 0, 0, 0)
+rotation_edit_mode = 1
+stream = ExtResource("3_1f7wj")
+volume_db = -13.0
 max_distance = 5.0
 max_polyphony = 2
 emission_angle_enabled = true

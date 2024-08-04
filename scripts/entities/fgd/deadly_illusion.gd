@@ -57,4 +57,6 @@ func body_has_exited(body: Node):
 func _physics_process(_delta: float) -> void:
 	if damagable == true:
 		print(player)
-		player.damage(type)
+		if player != null:
+			if player.has_method('damage'):
+				player.damage(type)

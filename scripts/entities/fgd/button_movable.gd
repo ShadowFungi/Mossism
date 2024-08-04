@@ -177,9 +177,9 @@ func play_motion() -> void:
 		reversible = true
 
 func reverse_motion() -> void:
-	print(temp_transform.origin, ' temp')
-	print(base_transform.origin, ' base')
-	print(offset_transform.origin, ' offset')
+	#print(temp_transform.origin, ' temp')
+	#print(base_transform.origin, ' base')
+	#print(offset_transform.origin, ' offset')
 	target_transform.origin.x = snapped(base_transform.origin.x, 0.1)
 	target_transform.origin.y = snapped(base_transform.origin.y, 0.1)
 	target_transform.origin.z = snapped(base_transform.origin.z, 0.1)

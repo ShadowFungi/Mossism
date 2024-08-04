@@ -40,9 +40,8 @@ rings = 5
 collision_layer = 1073741824
 collision_mask = 15
 input_ray_pickable = false
+mass = 2.0
 physics_material_override = ExtResource("1_t8lct")
-continuous_cd = true
-contact_monitor = true
 script = ExtResource("1_bpp6f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -53,11 +52,12 @@ layers = 262144
 mesh = ExtResource("3_rxemu")
 
 [node name="Timer" type="Timer" parent="."]
+process_mode = 1
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_1or1a")
 attenuation_model = 2
-volume_db = -6.0
+volume_db = -10.0
 unit_size = 8.0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]

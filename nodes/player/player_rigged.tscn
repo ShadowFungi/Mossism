@@ -151,21 +151,8 @@ states/idle/node = SubResource("AnimationNodeAnimation_qm3g4")
 states/idle/position = Vector2(316, 117)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_acksb")]
 
-[node name="Player" node_paths=PackedStringArray("camera", "pivot", "ragdoll_timer", "coyote_timer", "jump_timer", "heads_up_display", "animator", "player_machine", "weapon_machine", "look_machine", "health_machine", "damage_machine", "jump_machine") groups=["player"] instance=ExtResource("1_v3c62")]
+[node name="Player" groups=["player"] instance=ExtResource("1_v3c62")]
 process_mode = 1
-camera = NodePath("metarig/Pivot/Camera3D")
-pivot = NodePath("metarig/Pivot")
-ragdoll_timer = NodePath("RagdollTimer")
-coyote_timer = NodePath("CoyoteTimer")
-jump_timer = NodePath("FallTime")
-heads_up_display = NodePath("HUD")
-animator = NodePath("AnimationPlayer")
-player_machine = NodePath("PlayerStateMachine")
-weapon_machine = NodePath("WeaponStateMachine")
-look_machine = NodePath("LookStateMachine")
-health_machine = NodePath("HealthStateMachine")
-damage_machine = NodePath("DamageStateMachine")
-jump_machine = NodePath("JumpMachine")
 
 [node name="Pivot" type="Node3D" parent="metarig" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.191, 0.0870321)
@@ -275,7 +262,6 @@ bones/73/scale = Vector3(-1, -1, -1)
 bones/75/scale = Vector3(-1, -0.999999, -1)
 bones/76/rotation = Quaternion(0.440815, 0.0283473, 0.0381778, 0.896338)
 bones/77/rotation = Quaternion(-0.259994, 1.064e-08, -0.0731373, 0.962836)
-bones/77/scale = Vector3(1, 1, 1)
 bones/78/rotation = Quaternion(-0.0949738, -2.00046e-08, -0.0267165, 0.995121)
 bones/79/scale = Vector3(-1, -1, -1)
 bones/80/rotation = Quaternion(-0.134437, 0.178709, 0.974362, 0.0246573)
@@ -306,155 +292,147 @@ bones/95/rotation = Quaternion(0.0732008, 1.19322e-07, 1.46175e-08, 0.997317)
 bones/95/scale = Vector3(1, 1, 1)
 bones/96/rotation = Quaternion(-0.714979, 1.08348e-06, -1.27848e-06, 0.699146)
 bones/97/rotation = Quaternion(-0.0268012, -4.36989e-08, -8.82872e-08, 0.999641)
-bones/98/rotation = Quaternion(0.687901, -1.21217e-06, 1.14693e-06, 0.725804)
-bones/98/scale = Vector3(-1, -1, -0.999996)
-bones/99/rotation = Quaternion(0.999278, 5.1564e-07, 9.93473e-08, 0.0379909)
-bones/99/scale = Vector3(-1, -1, -0.999996)
-bones/100/rotation = Quaternion(0.999378, 5.26128e-07, 1.81451e-08, -0.035259)
-bones/100/scale = Vector3(-1, -1, -0.999996)
-bones/101/rotation = Quaternion(1.18336e-07, 0.0722518, 0.997386, 3.23874e-08)
-bones/101/scale = Vector3(-1, -1, -1)
 
 [node name="Head" parent="metarig/GeneralSkeleton" index="0"]
-transform = Transform3D(1, 8.64564e-08, -8.37829e-10, -8.64571e-08, 1, -0.000834696, -7.65596e-10, -0.000834703, -1, -1.17638e-09, 2.25923, 0.0293237)
+transform = Transform3D(1, 8.64564e-08, -8.38625e-10, -8.64571e-08, 1, -0.000834763, -7.66505e-10, -0.000834748, -1, -1.17088e-09, 2.25924, 0.0359897)
 
-[node name="MiddleFinger_003_L" parent="metarig/GeneralSkeleton" index="1"]
-transform = Transform3D(-2.62197e-07, -1, 8.5099e-07, -0.955362, 1.26589e-08, -0.295437, -0.295437, 9.65596e-07, 0.955362, -1.73818, 1.37744, 0.536257)
+[node name="MiddleFinger_003_R" parent="metarig/GeneralSkeleton" index="1"]
+transform = Transform3D(-3.94718e-07, -0.999986, -0.00522601, -0.955363, 0.00154435, -0.295433, -0.295437, -0.00499245, 0.955349, -1.7374, 1.36276, 0.537626)
 
-[node name="MiddleFinger_002_L" parent="metarig/GeneralSkeleton" index="2"]
-transform = Transform3D(2.47383e-08, -0.999993, -0.00360926, 0.999999, -2.97956e-06, 0.000836119, -0.000836119, -0.00360919, 0.999993, -1.66375, 1.37834, 0.536701)
+[node name="MiddleFinger_002_R" parent="metarig/GeneralSkeleton" index="2"]
+transform = Transform3D(2.99769e-08, -0.999993, -0.0036093, 1, -2.97735e-06, 0.000836074, -0.000836059, -0.00360913, 0.999993, -1.66301, 1.36379, 0.537642)
 
-[node name="MiddleFinger_001_L" parent="metarig/GeneralSkeleton" index="3"]
-transform = Transform3D(3.17161e-08, -1, 8.137e-07, 0.999999, 4.6014e-08, 0.000836134, -0.000836119, 8.87909e-07, 0.999999, -1.57446, 1.37839, 0.536675)
+[node name="MiddleFinger_001_R" parent="metarig/GeneralSkeleton" index="3"]
+transform = Transform3D(3.69801e-08, -1, 7.78703e-07, 1, 4.81095e-08, 0.000836089, -0.000836045, 9.45651e-07, 0.999999, -1.57376, 1.36416, 0.536581)
 
-[node name="RingFinger_003_L" parent="metarig/GeneralSkeleton" index="4"]
-transform = Transform3D(-0.121383, -0.992338, -0.0230325, 0.981351, -0.123459, 0.147333, 0.149048, 0.00471927, -0.988819, -1.70284, 1.29893, 0.577048)
+[node name="PointerFinger_003_R" parent="metarig/GeneralSkeleton" index="4"]
+transform = Transform3D(-0.121383, -0.992338, -0.0230328, 0.981351, -0.123459, 0.147333, 0.149048, 0.0047197, -0.988819, -1.71775, 1.29509, 0.705265)
 
-[node name="RingFinger_002_L" parent="metarig/GeneralSkeleton" index="5"]
-transform = Transform3D(0.122758, -0.992338, 0.0139593, -0.980949, -0.123459, -0.149991, 0.150566, 0.00471935, -0.988588, -1.63866, 1.30598, 0.576582)
+[node name="PointerFinger_002_R" parent="metarig/GeneralSkeleton" index="5"]
+transform = Transform3D(0.122758, -0.992338, 0.0139593, -0.980949, -0.123459, -0.149991, 0.150566, 0.0047194, -0.988589, -1.64648, 1.30301, 0.704764)
 
-[node name="RingFinger_001_L" parent="metarig/GeneralSkeleton" index="6"]
-transform = Transform3D(0.122758, -0.992338, 0.0139593, -0.980949, -0.123459, -0.149991, 0.150566, 0.00471935, -0.988588, -1.56467, 1.31518, 0.57623)
+[node name="PointerFinger_001_R" parent="metarig/GeneralSkeleton" index="6"]
+transform = Transform3D(0.122758, -0.992338, 0.0139593, -0.980949, -0.123459, -0.149991, 0.150566, 0.0047194, -0.988589, -1.5646, 1.3132, 0.704375)
 
-[node name="PinkyFinger_003_L" parent="metarig/GeneralSkeleton" index="7"]
-transform = Transform3D(-0.12192, -0.992348, -0.0194905, 0.981284, -0.123463, 0.147774, 0.14905, 0.00110921, -0.988829, -1.68721, 1.28395, 0.631262)
+[node name="Thumb_002_R" parent="metarig/GeneralSkeleton" index="7"]
+transform = Transform3D(-0.12192, -0.992349, -0.0194911, 0.981285, -0.123463, 0.147774, 0.14905, 0.00110987, -0.988829, -1.45909, 1.30946, 0.883234)
 
-[node name="PinkyFinger_002_L" parent="metarig/GeneralSkeleton" index="8"]
-transform = Transform3D(0.122221, -0.992348, 0.0175013, -0.981015, -0.123463, -0.149551, 0.150567, 0.00110929, -0.988599, -1.62671, 1.29054, 0.631033)
+[node name="Thumb_003_R" parent="metarig/GeneralSkeleton" index="8"]
+transform = Transform3D(0.122221, -0.992348, 0.0175013, -0.981015, -0.123463, -0.149551, 0.150567, 0.00110934, -0.988599, -1.53839, 1.29601, 0.903911)
 
-[node name="PinkyFinger_001_L" parent="metarig/GeneralSkeleton" index="9"]
-transform = Transform3D(0.122221, -0.992348, 0.0175013, -0.981015, -0.123463, -0.149551, 0.150567, 0.00110929, -0.988599, -1.55714, 1.29919, 0.630955)
+[node name="PinkyFinger_003_R" parent="metarig/GeneralSkeleton" index="9"]
+transform = Transform3D(-0.122221, 0.992349, -0.0175013, 0.981016, 0.123463, 0.149551, -0.150567, -0.00110934, 0.988599, -1.69557, 1.35686, 0.646748)
 
-[node name="PointerFinger_003_L" parent="metarig/GeneralSkeleton" index="10"]
-transform = Transform3D(-0.12192, -0.992348, -0.0194905, 0.981284, -0.123463, 0.147774, 0.14905, 0.00110921, -0.988828, -1.72322, 1.3281, 0.473616)
+[node name="RingFinger_003_R" parent="metarig/GeneralSkeleton" index="10"]
+transform = Transform3D(0.123464, -0.992348, 0.00100557, -0.992349, -0.123463, 0.000898436, 0.000767335, 0.00110896, 0.999999, -1.70912, 1.35513, 0.591722)
 
-[node name="PointerFinger_002_L" parent="metarig/GeneralSkeleton" index="11"]
-transform = Transform3D(0.122221, -0.992348, 0.0175013, -0.981015, -0.123463, -0.149551, 0.150567, 0.00110929, -0.988599, -1.65194, 1.33603, 0.473374)
+[node name="PinkyFinger_002_R" parent="metarig/GeneralSkeleton" index="11"]
+transform = Transform3D(-0.11822, -0.992348, -0.0356136, 0.947541, -0.123463, 0.294827, -0.296968, 0.00110928, 0.954886, -1.63531, 1.36531, 0.6467)
 
-[node name="PointerFinger_001_L" parent="metarig/GeneralSkeleton" index="12"]
-transform = Transform3D(0.122221, -0.992348, 0.0175013, -0.981015, -0.123463, -0.149551, 0.150567, 0.00110929, -0.988599, -1.57006, 1.34621, 0.473283)
+[node name="RingFinger_002_R" parent="metarig/GeneralSkeleton" index="12"]
+transform = Transform3D(-0.11822, -0.992348, -0.0356136, 0.947541, -0.123463, 0.294827, -0.296968, 0.00110928, 0.954886, -1.64517, 1.36404, 0.59167)
 
-[node name="Palm_L" parent="metarig/GeneralSkeleton" index="13"]
-transform = Transform3D(-0.123464, -0.992347, 0.00100591, 0.992348, -0.123463, 0.000898466, -0.00076738, 0.00110922, 0.999999, -1.4887, 1.37012, 0.556862)
+[node name="PinkyFinger_001_R" parent="metarig/GeneralSkeleton" index="13"]
+transform = Transform3D(-0.122221, 0.992349, -0.0175013, 0.981016, 0.123463, 0.149551, -0.150567, -0.00110934, 0.988599, -1.56764, 1.38636, 0.329359)
 
-[node name="Thumb_003_L" parent="metarig/GeneralSkeleton" index="14"]
-transform = Transform3D(0.141094, -0.988662, -0.0513621, 0.983522, 0.134059, 0.121296, -0.113035, -0.0676296, 0.991285, -1.53714, 1.37805, 0.374005)
+[node name="RingFinger_001_R" parent="metarig/GeneralSkeleton" index="14"]
+transform = Transform3D(0.123464, 0.992349, -0.00100588, -0.992349, 0.123463, -0.000898421, 0.000767305, -0.00110927, -0.999999, -1.57195, 1.37756, 0.383791)
 
-[node name="Thumb_002_L" parent="metarig/GeneralSkeleton" index="15"]
-transform = Transform3D(0.141094, -0.988662, -0.0513621, 0.983522, 0.134059, 0.121295, -0.113035, -0.0676294, 0.991285, -1.45748, 1.36953, 0.400435)
+[node name="Palm_R" parent="metarig/GeneralSkeleton" index="15"]
+transform = Transform3D(-0.123464, -0.992347, 0.00100588, 0.992349, -0.123463, 0.000898421, -0.000767305, 0.00110927, 0.999999, -1.48619, 1.35547, 0.558394)
 
-[node name="Thumb_001_L" parent="metarig/GeneralSkeleton" index="16"]
-transform = Transform3D(0.141093, -0.753121, -0.642574, 0.983522, 0.0325242, 0.177838, -0.113034, -0.657077, 0.7453, -1.39231, 1.36584, 0.455345)
+[node name="HandBase_R" parent="metarig/GeneralSkeleton" index="16"]
+transform = Transform3D(0.0240305, -0.992834, 0.117057, 0.96998, 0.0514989, 0.237668, -0.241993, 0.107832, 0.964267, -1.36234, 1.35389, 0.562045)
 
-[node name="HandBase_L" parent="metarig/GeneralSkeleton" index="17"]
-transform = Transform3D(0.141094, -0.988663, -0.051362, 0.983522, 0.134059, 0.121295, -0.113035, -0.0676296, 0.991286, -1.36442, 1.36558, 0.557907)
+[node name="Thumb_001_R" parent="metarig/GeneralSkeleton" index="17"]
+transform = Transform3D(0.0240304, -0.950521, 0.309728, 0.969981, 0.097164, 0.222928, -0.241993, 0.295074, 0.924321, -1.39411, 1.36783, 0.461698)
 
-[node name="ForeArm_L" parent="metarig/GeneralSkeleton" index="18"]
-transform = Transform3D(0.00338806, -0.994829, 0.101507, 0.999132, -0.000847647, -0.041656, 0.0415267, 0.10156, 0.993961, -0.914594, 1.35339, 0.525172)
+[node name="ForeArm_R" parent="metarig/GeneralSkeleton" index="18"]
+transform = Transform3D(0.0027122, -0.953241, 0.3022, 0.979407, 0.0635398, 0.191636, -0.201877, 0.295457, 0.933783, -0.915247, 1.35103, 0.529898)
 
-[node name="UpperArm_L" parent="metarig/GeneralSkeleton" index="19"]
-transform = Transform3D(-0.517012, -0.852341, -0.0788256, -0.0727374, -0.0480084, 0.996195, -0.852881, 0.520779, -0.0371761, -0.209352, 1.3374, 0.333313)
+[node name="UpperArm_R" parent="metarig/GeneralSkeleton" index="19"]
+transform = Transform3D(-0.391208, -0.91713, -0.0763419, -0.149357, -0.0185824, 0.988609, -0.908102, 0.398154, -0.12971, -0.209076, 1.35617, 0.343976)
 
-[node name="MiddleFinger_003_R" parent="metarig/GeneralSkeleton" index="20"]
-transform = Transform3D(-0.258873, 0.503036, 0.824584, -0.955033, -0.00553539, -0.296449, 0.14456, 0.864248, -0.481849, -1.33502, 1.72412, -1.70715)
+[node name="MiddleFinger_003_L" parent="metarig/GeneralSkeleton" index="20"]
+transform = Transform3D(0.964592, -0.0653746, 0.255517, 0.166105, 0.903104, -0.395996, -0.20487, 0.424417, 0.881985, -0.0522566, 4.00257, 0.193672)
 
-[node name="MiddleFinger_002_R" parent="metarig/GeneralSkeleton" index="21"]
-transform = Transform3D(-0.258873, 0.48571, 0.834907, -0.955033, 0.000655471, -0.2965, 0.14456, 0.87412, -0.463699, -1.29855, 1.72306, -1.6423)
+[node name="MiddleFinger_002_L" parent="metarig/GeneralSkeleton" index="21"]
+transform = Transform3D(-0.915428, -0.0715832, -0.396066, -0.223554, 0.908732, 0.352462, 0.334687, 0.411195, -0.847881, -0.0463702, 3.93549, 0.162028)
 
-[node name="MiddleFinger_001_R" parent="metarig/GeneralSkeleton" index="22"]
-transform = Transform3D(7.63983e-05, -0.48571, -0.87412, -1, -0.000655468, 0.00027667, 0.00070744, -0.87412, 0.48571, -1.2552, 1.72306, -1.56428)
+[node name="MiddleFinger_001_L" parent="metarig/GeneralSkeleton" index="22"]
+transform = Transform3D(0.900501, 0.1925, 0.389925, 0.329041, -0.887879, -0.321562, -0.284306, -0.417868, 0.862876, -0.0343672, 3.85788, 0.12618)
 
-[node name="RingFinger_003_R" parent="metarig/GeneralSkeleton" index="23"]
-transform = Transform3D(7.62343e-05, -0.48571, -0.87412, -1, -0.000655485, 0.000276804, 0.000707544, -0.874119, 0.48571, -1.36432, 1.73946, -1.65732)
+[node name="PointerFinger_003_L" parent="metarig/GeneralSkeleton" index="23"]
+transform = Transform3D(0.986174, 0.0479343, 0.158631, -0.0323929, -0.883026, 0.468207, 0.162518, -0.466872, -0.869263, -0.0914018, 3.59836, 0.061362)
 
-[node name="RingFinger_002_R" parent="metarig/GeneralSkeleton" index="24"]
-transform = Transform3D(7.62492e-05, -0.48571, -0.87412, -1, -0.000655485, 0.000276804, 0.000707529, -0.874119, 0.48571, -1.33322, 1.7386, -1.60073)
+[node name="PointerFinger_002_L" parent="metarig/GeneralSkeleton" index="24"]
+transform = Transform3D(0.986174, 0.0479343, 0.158631, -0.0323929, -0.883026, 0.468207, 0.162518, -0.466872, -0.869263, -0.0957695, 3.66171, 0.0946677)
 
-[node name="RingFinger_001_R" parent="metarig/GeneralSkeleton" index="25"]
-transform = Transform3D(7.6279e-05, -0.48571, -0.87412, -1, -0.000655484, 0.000276804, 0.000707515, -0.874119, 0.48571, -1.29701, 1.73865, -1.53556)
+[node name="PointerFinger_001_L" parent="metarig/GeneralSkeleton" index="25"]
+transform = Transform3D(-0.998809, 0.0479669, -0.00893052, -0.0381142, -0.88133, -0.470961, -0.0304612, -0.470059, 0.882108, -0.113855, 3.83402, -0.0555549)
 
-[node name="PinkyFinger_003_R" parent="metarig/GeneralSkeleton" index="26"]
-transform = Transform3D(7.62343e-05, -0.48571, -0.87412, -1, -0.000655485, 0.000276789, 0.000707544, -0.874119, 0.48571, -1.40367, 1.75579, -1.61991)
+[node name="Thumb_002_L" parent="metarig/GeneralSkeleton" index="26"]
+transform = Transform3D(-0.9862, -0.0479666, -0.15846, 0.0328702, 0.881331, -0.471356, -0.162265, 0.470059, 0.867591, -0.050517, 3.91847, -0.223746)
 
-[node name="PinkyFinger_002_R" parent="metarig/GeneralSkeleton" index="27"]
-transform = Transform3D(7.62492e-05, -0.48571, -0.87412, -1, -0.000655485, 0.000276804, 0.000707537, -0.874119, 0.48571, -1.37437, 1.75493, -1.56657)
+[node name="Thumb_003_L" parent="metarig/GeneralSkeleton" index="27"]
+transform = Transform3D(0.998809, -0.047967, 0.00893051, 0.0381142, 0.881331, 0.470961, 0.0304612, 0.470059, -0.882108, -0.05062, 3.99914, -0.204013)
 
-[node name="PinkyFinger_001_R" parent="metarig/GeneralSkeleton" index="28"]
-transform = Transform3D(7.6279e-05, -0.48571, -0.87412, -1, -0.000655493, 0.000276804, 0.000707529, -0.874119, 0.48571, -1.34033, 1.75498, -1.50529)
+[node name="PinkyFinger_003_L" parent="metarig/GeneralSkeleton" index="28"]
+transform = Transform3D(-0.986199, -0.0479668, -0.15846, 0.03287, 0.88133, -0.471356, -0.162265, 0.470059, 0.86759, -0.0439302, 3.85885, 0.374963)
 
-[node name="PointerFinger_003_R" parent="metarig/GeneralSkeleton" index="29"]
-transform = Transform3D(7.62343e-05, -0.48571, -0.87412, -1, -0.000655485, 0.000276789, 0.000707537, -0.874119, 0.48571, -1.28043, 1.70682, -1.7228)
+[node name="RingFinger_003_L" parent="metarig/GeneralSkeleton" index="29"]
+transform = Transform3D(-0.986199, -0.0479668, -0.15846, 0.03287, 0.88133, -0.471356, -0.162265, 0.470059, 0.86759, -0.0358605, 3.89677, 0.3336)
 
-[node name="PointerFinger_002_R" parent="metarig/GeneralSkeleton" index="30"]
-transform = Transform3D(7.62492e-05, -0.48571, -0.87412, -1, -0.000655485, 0.000276804, 0.000707529, -0.874119, 0.48571, -1.24586, 1.70597, -1.65997)
+[node name="PinkyFinger_002_L" parent="metarig/GeneralSkeleton" index="30"]
+transform = Transform3D(0.988875, -0.0479669, 0.1408, 0.108238, 0.88133, -0.459936, -0.10203, 0.470059, 0.876717, -0.0612268, 3.95445, 0.0644945)
 
-[node name="PointerFinger_001_R" parent="metarig/GeneralSkeleton" index="31"]
-transform = Transform3D(7.6279e-05, -0.48571, -0.87412, -1, -0.000655489, 0.000276804, 0.000707522, -0.874119, 0.48571, -1.20579, 1.70602, -1.58785)
+[node name="RingFinger_002_L" parent="metarig/GeneralSkeleton" index="31"]
+transform = Transform3D(0.998809, -0.0479668, 0.00893052, 0.0381141, 0.88133, 0.470961, 0.0304611, 0.470059, -0.882108, -0.0458847, 3.93902, 0.116009)
 
-[node name="Palm_R" parent="metarig/GeneralSkeleton" index="32"]
-transform = Transform3D(-0.190494, 0.395003, 0.898712, -0.981688, -0.0763677, -0.174516, -0.000301867, -0.915498, 0.402318, -1.23078, 1.73573, -1.47834)
+[node name="PinkyFinger_001_L" parent="metarig/GeneralSkeleton" index="32"]
+transform = Transform3D(0.988875, -0.0479669, 0.1408, 0.108238, 0.88133, -0.459936, -0.10203, 0.470059, 0.876717, -0.036718, 3.74339, 0.313579)
 
-[node name="Thumb_003_R" parent="metarig/GeneralSkeleton" index="33"]
-transform = Transform3D(0.05157, 0.976739, -0.208139, 0.980389, -0.00981965, 0.196827, 0.190204, -0.214208, -0.95809, -1.24505, 1.68816, -1.46932)
+[node name="RingFinger_001_L" parent="metarig/GeneralSkeleton" index="33"]
+transform = Transform3D(0.988875, -0.0479669, 0.1408, 0.108238, 0.88133, -0.459936, -0.10203, 0.470059, 0.876717, -0.0282565, 3.77412, 0.268377)
 
-[node name="Thumb_002_R" parent="metarig/GeneralSkeleton" index="34"]
-transform = Transform3D(0.0484292, -0.996632, -0.0661749, -0.984856, -0.0366046, -0.169468, -0.166475, -0.0733799, 0.983311, -1.24656, 1.71503, -1.47156)
+[node name="Palm_L" parent="metarig/GeneralSkeleton" index="34"]
+transform = Transform3D(-0.956623, -0.0479669, -0.287353, -0.175919, 0.88133, 0.438531, 0.232218, 0.470059, -0.851539, -0.0351301, 3.78692, 0.0688427)
 
-[node name="Thumb_001_R" parent="metarig/GeneralSkeleton" index="35"]
-transform = Transform3D(0.0203492, -0.866536, -0.498699, -0.998962, 0.00271169, -0.0454741, -0.0407572, -0.499107, 0.865581, -1.1684, 1.71374, -1.43734)
+[node name="HandBase_L" parent="metarig/GeneralSkeleton" index="35"]
+transform = Transform3D(0.985248, -0.0376624, 0.166935, 0.0681992, 0.981085, -0.181167, -0.156954, 0.189879, 0.96918, -0.040626, 3.67201, 0.0216039)
 
-[node name="HandBase_R" parent="metarig/GeneralSkeleton" index="36"]
-transform = Transform3D(-0.170368, -0.525111, -0.833806, -0.98367, 0.14046, 0.112531, -0.0580255, -0.839362, 0.540466, -1.16977, 1.72677, -1.36994)
+[node name="Thumb_001_L" parent="metarig/GeneralSkeleton" index="36"]
+transform = Transform3D(0.93683, -0.0860181, 0.339042, 0.250832, -0.510351, -0.822572, -0.243787, -0.855653, 0.456536, -0.0233829, 3.66932, 0.12679)
 
-[node name="ForeArm_R" parent="metarig/GeneralSkeleton" index="37"]
-transform = Transform3D(0.0376677, -0.39447, -0.918136, -0.999108, 0.00270814, -0.0421533, -0.0191146, -0.918905, 0.394016, -0.952996, 1.71758, -0.977334)
+[node name="ForeArm_L" parent="metarig/GeneralSkeleton" index="37"]
+transform = Transform3D(-0.210767, 0.241271, 0.947294, 0.0671111, 0.970347, -0.232211, 0.975229, -0.0146316, 0.220709, -0.0177387, 3.22991, 0.0188852)
 
-[node name="UpperArm_R" parent="metarig/GeneralSkeleton" index="38"]
-transform = Transform3D(0.0542448, 0.538909, 0.840615, 0.997281, 0.0128184, -0.072572, -0.0498851, 0.842266, -0.536748, -0.587311, 1.74279, -0.32425)
+[node name="UpperArm_L" parent="metarig/GeneralSkeleton" index="38"]
+transform = Transform3D(0.985204, 0.0355991, 0.167648, 0.0231161, 0.94165, -0.335799, 0.169819, -0.334706, -0.926893, 0.025702, 2.48498, 0.0846711)
 
 [node name="BodyUpper" parent="metarig/GeneralSkeleton" index="39"]
-transform = Transform3D(1, 1.20618e-07, -4.70872e-07, 2.26971e-08, -0.979253, -0.202642, -4.85545e-07, 0.202642, -0.979253, -3.87064e-10, 1.43679, 0.0233761)
+transform = Transform3D(0.987974, 0.0380374, 0.14987, -0.0402848, 0.999116, 0.0119874, 0.149282, 0.0178807, -0.988633, -3.81496e-10, 1.4368, 0.030002)
 
 [node name="Foot_L" parent="metarig/GeneralSkeleton" index="40"]
-transform = Transform3D(-1, -3.00983e-06, -8.23222e-08, -2.96973e-06, 0.990448, -0.137887, -4.96549e-07, 0.137886, 0.990446, 0.202274, 1.49488, -0.755937)
+transform = Transform3D(0.594555, -0.0186932, -0.0215391, 0.0160456, 0.590901, -0.0699105, -0.0235778, -0.06925, -0.590722, 0.173775, 2.09823, 0.0445184)
 
-[node name="LowerLeg_L" parent="metarig/GeneralSkeleton" index="41"]
-transform = Transform3D(-1, -1.34393e-06, 3.11001e-06, -2.79654e-06, -0.19076, -0.981633, -1.91252e-06, 0.981638, -0.190759, 0.203273, 1.35932, -0.172102)
+[node name="LowerLeg_R" parent="metarig/GeneralSkeleton" index="41"]
+transform = Transform3D(-0.998852, 0.0401121, 0.0262084, -0.0269601, -0.0183109, -0.999464, 0.0396109, 0.999027, -0.0193712, 0.18517, 1.65512, 0.0638058)
 
-[node name="UpperLeg_L" parent="metarig/GeneralSkeleton" index="42"]
-transform = Transform3D(1, 7.77669e-07, -4.72602e-07, -8.94448e-07, 0.935593, -0.353078, 1.67586e-07, 0.353079, 0.93559, 0.200387, 0.858743, 0.098716)
+[node name="UpperLeg_R" parent="metarig/GeneralSkeleton" index="42"]
+transform = Transform3D(-0.99949, 0.0118069, -0.0296596, -0.00739585, -0.989455, -0.144652, -0.0310548, -0.144359, 0.989036, 0.195876, 0.87391, 0.0327542)
 
 [node name="Foot_R" parent="metarig/GeneralSkeleton" index="43"]
-transform = Transform3D(-1, -1.42563e-09, 3.63274e-09, -1.42313e-09, 1, 0.000835948, 3.63355e-09, -0.000835966, 0.999996, -0.202274, -1.13715, 0.137452)
+transform = Transform3D(1, -1.85902e-06, 2.63448e-06, 1.06777e-06, 0.961882, 0.273447, -3.04242e-06, -0.273449, 0.961887, -0.209917, -0.270217, -0.765164)
 
-[node name="LowerLeg_R" parent="metarig/GeneralSkeleton" index="44"]
-transform = Transform3D(-1, -1.04012e-06, -8.41297e-10, 1.04012e-06, -1, -0.000835061, -2.73559e-11, 0.000835076, -0.999996, -0.203273, -0.687932, -0.0144528)
+[node name="LowerLeg_L" parent="metarig/GeneralSkeleton" index="44"]
+transform = Transform3D(1, -3.62711e-07, -3.22265e-06, 1.57679e-07, -0.987108, 0.160027, -3.23916e-06, -0.160027, -0.987113, -0.203276, 0.159723, -0.796261)
 
-[node name="UpperLeg_R" parent="metarig/GeneralSkeleton" index="45"]
-transform = Transform3D(-1, -1.04013e-06, -8.40208e-10, 1.04013e-06, -1, -0.000835031, -2.83649e-11, 0.000835039, -0.999996, -0.200388, 0.0939271, 0.00157022)
+[node name="UpperLeg_L" parent="metarig/GeneralSkeleton" index="45"]
+transform = Transform3D(1, 4.69389e-07, 2.56962e-07, 4.50903e-07, -0.997698, 0.0677422, 2.88169e-07, -0.0677417, -0.997701, -0.200389, 0.503491, -0.411685)
 
 [node name="BodyLower" parent="metarig/GeneralSkeleton" index="46"]
-transform = Transform3D(1, 8.64562e-08, -8.39066e-10, -8.64569e-08, 1, -0.000834629, -7.66846e-10, -0.000834614, -1, 2.62408e-10, 0.764826, 0.0239371)
+transform = Transform3D(1, 1.95837e-07, -3.25075e-07, -2.24319e-07, 0.995936, -0.0900641, 3.06116e-07, 0.0900641, 0.995936, 5.58442e-14, 0.76479, 0.0311754)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09104, 0)
@@ -480,10 +458,9 @@ look_state = NodePath("../PlayerLook")
 pause_menu = NodePath("../../PauseMenu")
 parent_machine = NodePath("..")
 
-[node name="WeaponStateMachine" type="Node" parent="." index="3" node_paths=PackedStringArray("weapon_one", "right_arm_ik", "parent", "start_state")]
+[node name="WeaponStateMachine" type="Node" parent="." index="3" node_paths=PackedStringArray("weapon_one", "parent", "start_state")]
 script = ExtResource("9_y8rgp")
 weapon_one = NodePath("SawedOff")
-right_arm_ik = NodePath("")
 parent = NodePath("..")
 start_state = NodePath("SawedOff")
 
@@ -668,8 +645,5 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="18"]
 callback_mode_process = 0
-libraries = {
-"": SubResource("AnimationLibrary_as1kq")
-}
 tree_root = SubResource("AnimationNodeStateMachine_l47sr")
 anim_player = NodePath("../AnimationPlayer")

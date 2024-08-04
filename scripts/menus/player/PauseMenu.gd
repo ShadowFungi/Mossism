@@ -5,6 +5,8 @@ extends Control
 @export var pause_machine: FiniteStateMachine
 @export var look_state: State
 
+@export var player: CharacterBody3D
+
 @onready var resume_button = get_node("HBoxContainer/VBoxContainer/ResumeButton")
 @onready var quit_button = self.get_node("HBoxContainer/VBoxContainer/QuitButton")
 @onready var options_button = get_node("HBoxContainer/VBoxContainer/OptionsButton")
@@ -31,7 +33,7 @@ func pause():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().set_pause(true)
 	self.show()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	player.toggle_mouse_lock(true, false)
 
 
 func unpause():
@@ -39,10 +41,10 @@ func unpause():
 	timed.set_wait_time(0.00025)
 	timed.set_one_shot(true)
 	timed.start()
-	pause_machine.change_state(look_state)
+	#pause_machine.change_state(look_state)
 	self.hide()
 	await timed.timeout
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	player.toggle_mouse_lock(true, true)
 
 
 func options():

@@ -9,6 +9,8 @@ extends CharacterBody3D
 			properties = new_properties
 			update_properties()
 
+var base_translation = Vector3.ZERO
+
 var base_transform: Transform3D
 var offset_transform: Transform3D
 var target_transform: Transform3D
@@ -40,28 +42,38 @@ func update_properties() -> void:
 	if 'reversible' in properties:
 		reversible_property = properties.reversible
 
+
 func _process(delta: float) -> void:
 	if transform.origin != target_transform.origin:
-		transform.origin = -transform.origin.move_toward(target_transform.origin, speed * delta).normalized()
+		transform.origin = transform.origin.move_toward(target_transform.origin, speed * delta)
 	if transform.origin.is_equal_approx(target_transform.origin) and did_motion_start:
 		motion_ended()
+
 
 func _init() -> void:
 	base_transform = transform
 	target_transform = base_transform
 	final_transform = base_transform * offset_transform
 
+
+func _enter_tree() -> void:
+	base_translation = position
+
+
 func _ready() -> void:
+	var mesh: ArrayMesh = get_child(0).mesh
 	var player_detect = Area3D.new()
-	var sig : StringName = "area_entered"
+	player_detect.set_collision_mask_value(32, true)
+	player_detect.set_collision_mask_value(1, false)
+	player_detect.set_collision_layer_value(1, false)
+	var sig: StringName = "area_entered"
 	add_child(player_detect)
 	self.add_to_group("ground", true)
 	var detect_col := self.get_child(1).duplicate()
 	player_detect.add_child(detect_col)
-	player_detect.position.y -= 0.5
+	player_detect.position.y -= mesh.get_aabb().size.y
 	player_detect.connect("body_entered", entered)
-	player_detect.set_collision_mask_value(32, true)
-	player_detect.set_collision_mask_value(1, false)
+
 
 func use() -> void:
 	if reversible == true:
@@ -69,34 +81,38 @@ func use() -> void:
 	else:
 		play_motion()
 
+
 func play_motion() -> void:
 	temp_transform = base_transform * offset_transform
-	if target_transform.origin.y < temp_transform.origin.y:
-		print("1.2")
+	if base_transform.origin.y < temp_transform.origin.y:
+		#print("1.2")
 		target_transform.origin.x = snapped(temp_transform.origin.x, 0.1)
 		target_transform.origin.y = snapped(temp_transform.origin.y, 0.1)
 		target_transform.origin.z = snapped(temp_transform.origin.z, 0.1)
 		did_motion_start = true
 		if reversible_property == true:
 			reversible = true
-	if target_transform.origin.y > temp_transform.origin.y:
-		print("2.1")
-		if test_move(Transform3D(temp_transform.basis, Vector3(temp_transform.origin.x, temp_transform.origin.y - 0.2, temp_transform.origin.z)), -Vector3(0, offset_transform.origin.y, 0)) == false:
-			target_transform.origin.x = snapped(temp_transform.origin.x, 0.1)
-			target_transform.origin.y = snapped(temp_transform.origin.y, 0.1)
-			target_transform.origin.z = snapped(temp_transform.origin.z, 0.1)
+	if base_transform.origin.y > temp_transform.origin.y:
+		#print("2.1")
+		if test_move(Transform3D(temp_transform.basis, Vector3(temp_transform.origin.x, temp_transform.origin.y - 0.2, temp_transform.origin.z)), Vector3(0, offset_transform.origin.y, 0)) == false:
+			target_transform.origin.x = temp_transform.origin.x
+			target_transform.origin.y = temp_transform.origin.y
+			target_transform.origin.z = temp_transform.origin.z
 			did_motion_start = true
 			if reversible_property == true:
 				reversible = true
+	#print(target_transform)
+
 
 func reverse_motion() -> void:
 	print(temp_transform.origin, ' temp')
-	print(base_transform.origin, ' base')
-	print(offset_transform.origin, ' offset')
-	print(test_move(temp_transform, -Vector3(0, offset_transform.origin.y, 0), null, 0))
+	#print(base_transform.origin, ' base')
+	#print(offset_transform.origin, ' offset')
+	#print(test_move(temp_transform, -Vector3(0, offset_transform.origin.y, 0), null, 0))
 	if temp_transform.origin.y > base_transform.origin.y:
 		print("2.3")
-		if test_move(Transform3D(temp_transform.basis, Vector3(temp_transform.origin.x, temp_transform.origin.y - 0.2, temp_transform.origin.z)), -Vector3(0, offset_transform.origin.y, 0)) == false:
+		if test_move(Transform3D(base_transform.basis, Vector3(base_transform.origin.x, base_transform.origin.y - 0.2, base_transform.origin.z)), Vector3(0, offset_transform.origin.y, 0)) == false:
+			print('move')
 			target_transform.origin.x = snapped(base_transform.origin.x, 0.1)
 			target_transform.origin.y = snapped(base_transform.origin.y, 0.1)
 			target_transform.origin.z = snapped(base_transform.origin.z, 0.1)
@@ -112,9 +128,11 @@ func reverse_motion() -> void:
 		if reversible_property == true:
 			reversible = false
 
+
 func motion_ended() -> void:
 	did_motion_start = false
 	#Level.bake(nav_reg)
+
 
 func entered(body) -> void:
 	print("entered")

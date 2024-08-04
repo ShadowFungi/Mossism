@@ -37,6 +37,8 @@ Keycodes="*res://scripts/autoloads/keycodes.gd"
 SpawnPlayer="*res://scripts/autoloads/SpawnPlayer.gd"
 SceneSwap="*res://scripts/autoloads/scene_swap.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+SFInputKeycodes="*res://addons/fungi_input_remapper/Keycodes.gd"
+SFInputRemapper="*res://addons/fungi_input_remapper/InputRemapper.gd"
 
 [display]
 
@@ -53,7 +55,7 @@ project/assembly_name="Mossism-qodot"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/qodot/plugin.cfg")
+enabled=PackedStringArray("res://addons/fungi_input_remapper/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/qodot/plugin.cfg")
 
 [gui]
 
@@ -81,7 +83,9 @@ fonts/canvas_textures/default_texture_filter=0
 
 [physics]
 
+common/physics_jitter_fix=0.0
 3d/physics_engine="JoltPhysics3D"
+3d/default_gravity=14.8
 
 [rendering]
 

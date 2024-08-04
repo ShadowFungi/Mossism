@@ -11,7 +11,12 @@ extends LimboState
 func _enter() -> void:
 	pass
 
+
 func _update(delta: float) -> void:
-	player.velocity.y -= 5 * delta
-	if ground_ray.is_colliding() == true:
+	player.velocity.y -= (player.gravity * 2) * delta
+	if player.is_on_floor() == true:
 		dispatch(&'grounded')
+
+
+func _exit() -> void:
+	player.can_step_up = true

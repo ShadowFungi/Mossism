@@ -6,7 +6,7 @@ signal exploded
 
 func _ready():
 	randomize()
-	$Timer.start(randf_range(5.5, 7.0))
+	$Timer.start(randf_range(6.5, 7.0))
 
 func body_entered(_body):
 	emit_signal("exploded", transform.origin)
