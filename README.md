@@ -118,6 +118,8 @@ Movement and the capability of dying.
 
 - [Godot-Jolt](https://github.com/godot-jolt/godot-jolt) [Various (mostly mihe)](https://github.com/godot-jolt/godot-jolt/graphs/contributors)
 - [Qodot](https://github.com/QodotPlugin/Qodot) [Various](https://github.com/QodotPlugin/Qodot/graphs/contributors)
+- [LimboAI](https://github.com/limbonaut/limboai) [Various](https://github.com/limbonaut/limboai/graphs/contributors)
+- [Phantom Camera](https://github.com/ramokz/phantom-camera) [Various](https://github.com/ramokz/phantom-camera/graphs/contributors)
 
 ## License:
 
@@ -129,3 +131,10 @@ However the contents of directories under the [addons](/addons) directory are un
 - Qodot license
 	- [Main repository](https://raw.githubusercontent.com/QodotPlugin/Qodot/main/LICENSE)
 	- [Local](/addons/qodot/LICENSE)
+- LimboAI license
+	- [Main repository](https://github.com/limbonaut/limboai/blob/master/LICENSE.md)
+	- [Local](/addons/limboai/LICENSE.md)
+	- [Logo Local](/addons/limboai/LOGO_LICENSE.md)
+- Phantom Camera
+	- [Main repository](https://github.com/ramokz/phantom-camera/blob/main/LICENSE)
+	- [Local](/addons/phantom_camera/LICENSE)
