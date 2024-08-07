@@ -120,6 +120,7 @@ Movement and the capability of dying.
 - [Qodot](https://github.com/QodotPlugin/Qodot) [Various](https://github.com/QodotPlugin/Qodot/graphs/contributors)
 - [LimboAI](https://github.com/limbonaut/limboai) [Various](https://github.com/limbonaut/limboai/graphs/contributors)
 - [Phantom Camera](https://github.com/ramokz/phantom-camera) [Various](https://github.com/ramokz/phantom-camera/graphs/contributors)
+- [Rapier Physics](https://github.com/appsinacup/godot-rapier-physics) [Various]()
 
 ## License:
 
@@ -138,3 +139,6 @@ However the contents of directories under the [addons](/addons) directory are un
 - Phantom Camera
 	- [Main repository](https://github.com/ramokz/phantom-camera/blob/main/LICENSE)
 	- [Local](/addons/phantom_camera/LICENSE)
+- Rapier Physics
+	- [Main repository](https://github.com/appsinacup/godot-rapier-physics/blob/main/LICENSE)
+	- [Local](/addons/godot-rapier3d/LICENSE)

@@ -1,10 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://cnodtarbivm5o"]
+[gd_scene load_steps=37 format=3 uid="uid://cnodtarbivm5o"]
 
 [ext_resource type="PackedScene" uid="uid://bot0f53hv0v3k" path="res://assets/models/player/character/player.rigged.glb" id="1_0p53u"]
 [ext_resource type="Script" path="res://scripts/player/player_rigged_glb.gd" id="2_286ef"]
 [ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="2_it7u6"]
 [ext_resource type="Texture2D" uid="uid://qx660etfmteb" path="res://assets/models/player/character/player_PlayerColor.png" id="2_xawhl"]
-[ext_resource type="CameraAttributesPractical" uid="uid://gkwjgf6vkw8d" path="res://styles/camera_attributes/player.tres" id="3_asf4d"]
 [ext_resource type="Texture2D" uid="uid://dyhwwp0r5yfie" path="res://assets/models/player/character/player_PlayerRough.png" id="3_j5u5f"]
 [ext_resource type="Texture2D" uid="uid://3sruupmucmyo" path="res://assets/models/player/character/player_PlayerNormal.png" id="4_ne3u0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_ontbl"]
@@ -40,6 +39,47 @@ normal_texture = ExtResource("4_ne3u0")
 texture_filter = 2
 texture_repeat = false
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xlcq8"]
+
+[sub_resource type="Sky" id="Sky_6tkic"]
+sky_material = SubResource("ProceduralSkyMaterial_xlcq8")
+
+[sub_resource type="Environment" id="Environment_kvu8p"]
+background_color = Color(0.247059, 0.337255, 0.231373, 1)
+sky = SubResource("Sky_6tkic")
+ambient_light_source = 2
+ambient_light_color = Color(0.823529, 0.831373, 0.678431, 1)
+ambient_light_sky_contribution = 0.75
+reflected_light_source = 1
+tonemap_mode = 3
+ssr_enabled = true
+ssr_max_steps = 32
+ssao_enabled = true
+ssao_light_affect = 0.15
+ssao_ao_channel_affect = 0.5
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.08
+glow_blend_mode = 0
+fog_light_color = Color(0.337255, 0.572549, 0.0941176, 1)
+fog_density = 0.025
+fog_sky_affect = 0.75
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.407843, 0.533333, 0.384314, 1)
+volumetric_fog_emission = Color(0.133333, 0.192157, 0.12549, 1)
+volumetric_fog_gi_inject = 0.5
+volumetric_fog_anisotropy = 0.02
+volumetric_fog_length = 40.0
+volumetric_fog_detail_spread = 1.10957
+volumetric_fog_ambient_inject = 1.0
+volumetric_fog_sky_affect = 0.45
+adjustment_brightness = 0.9
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_4h5jg"]
+exposure_multiplier = 0.75
+auto_exposure_enabled = true
+auto_exposure_scale = 0.05
+
 [sub_resource type="Resource" id="Resource_rq4v1"]
 script = ExtResource("6_c8ei0")
 duration = 1.0
@@ -57,6 +97,11 @@ size = 1.0
 frustum_offset = Vector2(0, 0)
 near = 0.05
 far = 4000.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_04yy3"]
+exposure_multiplier = 0.75
+auto_exposure_enabled = true
+auto_exposure_scale = 0.05
 
 [sub_resource type="Resource" id="Resource_mwyx2"]
 script = ExtResource("6_c8ei0")
@@ -88,7 +133,7 @@ size = Vector3(0.925, 0.975, 0.55)
 [node name="Player" node_paths=PackedStringArray("pcam", "pivot", "look_pivot", "sawed_off", "step_detect", "ground_ray", "step_shape", "hud", "gameover") groups=["player"] instance=ExtResource("1_0p53u")]
 process_mode = 1
 collision_layer = 2147483648
-collision_mask = 2147483663
+collision_mask = 2281701391
 floor_stop_on_slope = false
 floor_max_angle = 0.663225
 platform_floor_layers = 5
@@ -386,8 +431,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.45505, 0.121101)
 
 [node name="Camera3D" type="Camera3D" parent="." index="1"]
 transform = Transform3D(1, -1.74846e-07, 9.09495e-13, 1.74846e-07, 1, 1.75238e-07, -9.40134e-13, -1.75238e-07, 1, 7.01306e-14, 4.80462, -0.0364841)
-environment = ExtResource("2_it7u6")
-attributes = ExtResource("3_asf4d")
+environment = SubResource("Environment_kvu8p")
+attributes = SubResource("CameraAttributesPractical_4h5jg")
 doppler_tracking = 2
 current = true
 
@@ -405,6 +450,8 @@ look_at_target = NodePath("../metarig/Skeleton3D/Head")
 tween_resource = SubResource("Resource_rq4v1")
 tween_on_load = false
 camera_3d_resource = SubResource("Resource_mb26w")
+environment = ExtResource("2_it7u6")
+attributes = SubResource("CameraAttributesPractical_04yy3")
 
 [node name="SawedOff" parent="PhantomCamera3D" index="0" instance=ExtResource("9_pbu7e")]
 transform = Transform3D(1, 1.74846e-07, 1.74845e-07, -1.74846e-07, 1, -1.75238e-07, -1.74845e-07, 1.75238e-07, 1, 0.724795, -0.721606, -1.61847)

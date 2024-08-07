@@ -2,5 +2,14 @@
 
 [resource]
 sample_partition_type = 1
-region_min_size = 0.1
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"ground"
+cell_size = 1.0
+cell_height = 1.75
+agent_height = 14.0
+agent_radius = 0.97
+agent_max_climb = 2.0
+agent_max_slope = 65.0
+region_min_size = 0.25
+region_merge_size = 22.0
 vertices_per_polygon = 12.0

@@ -3,7 +3,7 @@ extends Node
 var rand = RandomNumberGenerator.new()
 var reg = RegEx.new()
 
-func spawn_player(spawns : Array):
+func spawn_player(spawns : Array = get_spawns()):
 	randomize()
 	reg.compile(".+(?<=player)")
 	var reg_r

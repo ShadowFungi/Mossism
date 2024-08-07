@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 
@@ -82,6 +83,7 @@ func _timeline_ended():
 	toggle_mouse_lock()
 	elevation_hsm.set_active(true)
 	movement_hsm.set_active(true)
+	height_hsm.set_active(true)
 
 
 func _ready() -> void:
@@ -162,7 +164,7 @@ func _init_elevation_hsm() -> void:
 	elevation_hsm.add_transition(grounded_state, coyote_state, &'ground_lost')
 	elevation_hsm.add_transition(coyote_state, fall_state, &'coyote_ended')
 	elevation_hsm.add_transition(coyote_state, jump_state, &'jump_started')
-	elevation_hsm.initial_state = jump_state
+	elevation_hsm.initial_state = fall_state
 	elevation_hsm.initialize(self)
 	elevation_hsm.set_active(true)
 

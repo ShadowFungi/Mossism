@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	elif player_found:
 		ray.look_at(player.global_position)
 	
-	if ray.is_colliding() and ray.get_collider() is Player:
+	if ray.is_colliding() and ray.get_collider().is_in_group('player'):
 			update_target_location(ray.get_collider().global_position)
 	#new_vel.y -= ProjectSettings.get_setting('physics/3d/default_gravity')
 	
@@ -91,10 +91,13 @@ func _on_area_exited(body: Node3D) -> void:
 
 func _on_target_reached() -> void:
 	print("reached")
-	if path_target >= path.size() -1:
+	if path_target >= path.size() -1 and player_found == false:
 		path_target = 0
-	elif path_target < path.size():
+	elif path_target < path.size() and player_found == false:
 		path_target += 1
+	#elif player_found == true:
+		#pass
+		
 
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.25)
