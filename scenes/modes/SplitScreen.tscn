@@ -4,8 +4,8 @@
 [ext_resource type="CameraAttributesPractical" uid="uid://gkwjgf6vkw8d" path="res://styles/camera_attributes/player.tres" id="2_mfrh2"]
 [ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="3_jcn2s"]
 [ext_resource type="NavigationMesh" uid="uid://c3ob6o44qcuhk" path="res://assets/nav_mesh/SplitScreen.tres" id="4_criqv"]
-[ext_resource type="PackedScene" uid="uid://cnodtarbivm5o" path="res://nodes/player/player_rigged_glb.tscn" id="5_07jtm"]
 [ext_resource type="PackedScene" uid="uid://cmsdyakbquy16" path="res://scenes/levels/ThePit.tscn" id="5_fct7e"]
+[ext_resource type="PackedScene" uid="uid://dqj64b3y24pyv" path="res://nodes/player/player.tscn" id="6_1f3y6"]
 
 [sub_resource type="World3D" id="World3D_wecad"]
 environment = ExtResource("3_jcn2s")
@@ -57,4 +57,4 @@ navigation_mesh = ExtResource("4_criqv")
 
 [node name="ThePit" parent="GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D" instance=ExtResource("5_fct7e")]
 
-[node name="Player" parent="GridContainer/SubViewportContainer/SubViewport" instance=ExtResource("5_07jtm")]
+[node name="Player" parent="GridContainer/SubViewportContainer/SubViewport" instance=ExtResource("6_1f3y6")]

@@ -32,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 			#position = parent.global_position.direction_to(global_position)
 		#can_reset = false
 	
-	elif position.distance_to(pos) > 5 and can_reset:
+	elif position.distance_to(pos) > 3 and can_reset:
 		position = pos
 	
 	#if position.distance_to(character.origin) > 10:

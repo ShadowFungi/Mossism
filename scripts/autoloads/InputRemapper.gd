@@ -7,8 +7,10 @@ var keycode = InputEventKey.new()
 @export var back : Key = KEY_S
 @export var strafe_left : Key = KEY_A
 @export var strafe_right : Key = KEY_D
-@export var sprint : Key = KEY_TAB
-@export var crouch : Key = KEY_CTRL
+@export var sprint_native : Key = KEY_TAB
+@export var sprint_web : Key = KEY_SHIFT
+@export var crouch_native : Key = KEY_CTRL
+@export var crouch_web : Key = KEY_ALT
 @export var jump : Key = KEY_SPACE
 @export var ui_cancel : Key = KEY_X
 @export var pause_native : Key = KEY_ESCAPE
@@ -26,8 +28,10 @@ func set_default_map():
 	back = KEY_S
 	strafe_left = KEY_A
 	strafe_right = KEY_D
-	sprint = KEY_TAB
-	crouch = KEY_CTRL
+	sprint_native = KEY_TAB
+	sprint_web = KEY_SHIFT
+	crouch_native = KEY_CTRL
+	crouch_web = KEY_ALT
 	jump = KEY_SPACE
 	ui_cancel = KEY_X
 	pause_native = KEY_ESCAPE
@@ -44,8 +48,10 @@ func save_map(path: String):
 	conf.set_value("controls", "back", back)
 	conf.set_value("controls", "strafe_left", strafe_left)
 	conf.set_value("controls", "strafe_right", strafe_right)
-	conf.set_value("controls", "sprint", sprint)
-	conf.set_value("controls", "crouch", crouch)
+	conf.set_value("controls", "crouch_native", crouch_native)
+	conf.set_value("controls", "sprint_web", sprint_web)
+	conf.set_value("controls", "crouch_native", crouch_native)
+	conf.set_value("controls", "crouch_web", crouch_web)
 	conf.set_value("controls", "jump", jump)
 	conf.set_value("controls", "ui_cancel", ui_cancel)
 	conf.set_value("controls", "pause_native", pause_native)
@@ -69,8 +75,10 @@ func load_map(map):
 			back = conf.get_value(control, "back")
 			strafe_left = conf.get_value(control, "strafe_left")
 			strafe_right = conf.get_value(control, "strafe_right")
-			sprint = conf.get_value(control, "sprint")
-			crouch = conf.get_value(control, "crouch")
+			sprint_native = conf.get_value(control, "sprint_native")
+			sprint_web = conf.get_value(control, "sprint_web")
+			crouch_native = conf.get_value(control, "crouch_native")
+			crouch_web = conf.get_value(control, "crouch_web")
 			jump = conf.get_value(control, "jump")
 			ui_cancel = conf.get_value(control, "ui_cancel")
 			pause_native = conf.get_value(control, "pause_native")
@@ -96,8 +104,10 @@ func import_map_web(map: String):
 	back = Keycodes.keys[String(split_map[3]).to_int()]
 	strafe_left = Keycodes.keys[String(split_map[4]).to_int()]
 	strafe_right = Keycodes.keys[String(split_map[5]).to_int()]
-	sprint = Keycodes.keys[String(split_map[5]).to_int()]
-	crouch = Keycodes.keys[String(split_map[5]).to_int()]
+	sprint_native = Keycodes.keys[String(split_map[5]).to_int()]
+	sprint_web = Keycodes.keys[String(split_map[5]).to_int()]
+	crouch_native = Keycodes.keys[String(split_map[5]).to_int()]
+	crouch_web = Keycodes.keys[String(split_map[5]).to_int()]
 	jump = Keycodes.keys[String(split_map[6]).to_int()]
 	pause_native = Keycodes.keys[String(split_map[7]).to_int()]
 	pause_web =Keycodes.keys[String(split_map[8]).to_int()]

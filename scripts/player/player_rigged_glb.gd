@@ -16,7 +16,7 @@ const MIN_HEALTH = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var min_pitch: float = -25.0
+var min_pitch: float = -35.0
 var max_pitch: float = 75.0
 
 var min_yaw: float = 0
@@ -61,6 +61,7 @@ var fire_res: bool = false
 @export var interact_label: Label
 @export var id: int = 1
 @export var pivot: Node3D
+@export var skel: Skeleton3D
 @export var look_pivot: Node3D
 @export var sawed_off: Node3D
 @export var step_detect: RayCast3D
@@ -87,6 +88,7 @@ func _timeline_ended():
 
 
 func _ready() -> void:
+	#skel.set_bone_enabled(3, true)
 	SFInputRemapper.mouse_sensitivity = 0.15
 	SFInputRemapper.load_example_map()
 	toggle_mouse_lock()
@@ -105,9 +107,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event is InputEventMouseMotion:
 			mouse_pos = (event.relative * SFInputRemapper.mouse_sensitivity)
 			#metarig.rotate_y(deg_to_rad(-mouse_pos.x))
-			pivot.rotate_x(deg_to_rad(mouse_pos.y))
+			pivot.rotate_x(-deg_to_rad(mouse_pos.y))
+			#skel.set_bone_pose_rotation(3, Quaternion(Vector3(1, 0, 0), deg_to_rad(mouse_pos.y)))
 			pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
-			look_pivot.rotate_y(deg_to_rad(-mouse_pos.x))
+			rotate_y(deg_to_rad(-mouse_pos.x))
 
 
 func _physics_process(delta):

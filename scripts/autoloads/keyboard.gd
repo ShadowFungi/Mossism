@@ -91,14 +91,20 @@ func _ready() -> void:
 	var sprint_action : String = "player-{n}_sprint".format({"n":1})
 	var sprint_action_event : InputEventKey
 	sprint_action_event = InputEventKey.new()
-	sprint_action_event.keycode = InputRemapper.sprint
+	if OS.has_feature('web'):
+		sprint_action_event.keycode = InputRemapper.sprint_web
+	else:
+		sprint_action_event.keycode = InputRemapper.sprint_native
 	InputMap.add_action(sprint_action)
 	InputMap.action_add_event(sprint_action, sprint_action_event)
 	
 	var crouch_action : String = "player-{n}_crouch".format({"n":1})
 	var crouch_action_event : InputEventKey
 	crouch_action_event = InputEventKey.new()
-	crouch_action_event.keycode = InputRemapper.crouch
+	if OS.has_feature('web'):
+		crouch_action_event.keycode = InputRemapper.crouch_web
+	else:
+		crouch_action_event.keycode = InputRemapper.crouch_native
 	InputMap.add_action(crouch_action)
 	InputMap.action_add_event(crouch_action, crouch_action_event)
 	
@@ -166,7 +172,7 @@ func load_new_map():
 	var pause_action : String = "player-{n}_pause".format({"n":1})
 	var pause_action_event : InputEventKey
 	pause_action_event = InputEventKey.new()
-	if OS.get_name() == "HTML5":
+	if OS.has_feature('web'):
 		pause_action_event.keycode = InputRemapper.pause_web
 	else:
 		pause_action_event.keycode = InputRemapper.pause_native

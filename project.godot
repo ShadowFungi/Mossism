@@ -85,15 +85,15 @@ fonts/canvas_textures/default_texture_filter=0
 
 [physics]
 
-3d/run_on_separate_thread=true
-common/physics_jitter_fix=0.0
-3d/physics_engine="JoltPhysics3D"
+3d/physics_engine="GodotPhysics3D"
 3d/default_gravity=14.8
 
 [rendering]
 
-occlusion_culling/bvh_build_quality=1
 textures/canvas_textures/default_texture_filter=0
-occlusion_culling/occlusion_rays_per_thread=1024
+global_illumination/gi/use_half_resolution=true
+shading/overrides/force_lambert_over_burley=true
+environment/ssao/quality=1
+environment/ssil/quality=1
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 0)
 occlusion_culling/use_occlusion_culling=true
