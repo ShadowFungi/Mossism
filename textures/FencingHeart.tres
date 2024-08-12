@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bgmteci7v07q4"]
+
+[ext_resource type="Texture2D" uid="uid://0wjqumemhw0r" path="res://textures/FencingHeart.png" id="1_xml5f"]
+[ext_resource type="Texture2D" uid="uid://b6801wc2u0awa" path="res://textures/maps/FencingHeart_occ.png" id="2_pl3h4"]
+[ext_resource type="Texture2D" uid="uid://ds81dqlxu4fpx" path="res://textures/maps/FencingHeart_spec.png" id="3_8wgjr"]
+[ext_resource type="Texture2D" uid="uid://sos5i1240vob" path="res://textures/maps/FencingHeart_nor.png" id="3_ay7u1"]
+
+[resource]
+transparency = 4
+specular_mode = 1
+albedo_texture = ExtResource("1_xml5f")
+metallic = 1.0
+metallic_texture = ExtResource("3_8wgjr")
+metallic_texture_channel = 3
+normal_enabled = true
+normal_scale = 4.5
+normal_texture = ExtResource("3_ay7u1")
+ao_enabled = true
+ao_light_affect = 0.19
+ao_texture = ExtResource("2_pl3h4")
+ao_texture_channel = 3
+texture_filter = 0

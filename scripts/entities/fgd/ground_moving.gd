@@ -49,7 +49,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	self.add_to_group("ground", true)
-	var bake_call = Callable(self, "_baked")
+	var _bake_call = Callable(self, "_baked")
 	add_child(sound)
 
 func use() -> void:

@@ -1,8 +1,12 @@
 extends CharacterBody3D
 
 
+@export_subgroup('Dependencies')
+@export var player: CharacterBody3D
+
 @onready var pos = position
 #@onready var bas = character.basis
+@export_subgroup('Ignore These')
 @export var ray: RayCast3D
 @export var area: Area3D
 @export var muzzle_1: Node3D
@@ -15,6 +19,7 @@ var bullet
 
 func _ready() -> void:
 	bullet = load(bullet_path).instantiate()
+	bullet.host_player_id = player.id
 	pos = position
 
 func _physics_process(_delta: float) -> void:
@@ -64,9 +69,9 @@ func fire():
 
 
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
+func _on_area_3d_body_entered(_body: Node3D) -> void:
 	area_collides = true
 
 
-func _on_area_3d_body_exited(body: Node3D) -> void:
+func _on_area_3d_body_exited(_body: Node3D) -> void:
 	area_collides = false

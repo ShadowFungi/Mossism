@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/StoneWall_nor.png-d57fd0903045a53af0804ba1001
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

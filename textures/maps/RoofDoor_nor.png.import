@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://m5a07hd1saax"
-path.s3tc="res://.godot/imported/RoofDoor_nor.png-e1ecfb5255b5026a37432f3caaad731d.s3tc.ctex"
+path="res://.godot/imported/RoofDoor_nor.png-e1ecfb5255b5026a37432f3caaad731d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/maps/RoofDoor_nor.png"
-dest_files=["res://.godot/imported/RoofDoor_nor.png-e1ecfb5255b5026a37432f3caaad731d.s3tc.ctex"]
+dest_files=["res://.godot/imported/RoofDoor_nor.png-e1ecfb5255b5026a37432f3caaad731d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

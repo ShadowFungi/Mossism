@@ -73,6 +73,7 @@ fonts/canvas_textures/default_texture_filter=0
 3d_physics/layer_2="walls"
 3d_physics/layer_3="moving_ground"
 3d_physics/layer_4="moving_walls"
+3d_physics/layer_27="enemy_attack"
 3d_physics/layer_28="enemies"
 3d_physics/layer_31="player_weapons"
 3d_physics/layer_32="players"

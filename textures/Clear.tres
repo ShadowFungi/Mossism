@@ -4,5 +4,10 @@
 
 [resource]
 transparency = 1
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 1, 1, 0)
 albedo_texture = ExtResource("1_7s36m")
 texture_filter = 0

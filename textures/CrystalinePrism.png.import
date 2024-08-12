@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7jxt27idtnt8"
-path="res://.godot/imported/Fencing.png-18a9cf9f25796056ec96a86682ec6870.ctex"
+uid="uid://dp0pqewug0yi0"
+path.s3tc="res://.godot/imported/CrystalinePrism.png-71c870a5b1c72a3b1e487b81e495069e.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://textures/Fencing.png"
-dest_files=["res://.godot/imported/Fencing.png-18a9cf9f25796056ec96a86682ec6870.ctex"]
+source_file="res://textures/CrystalinePrism.png"
+dest_files=["res://.godot/imported/CrystalinePrism.png-71c870a5b1c72a3b1e487b81e495069e.s3tc.ctex"]
 
 [params]
 
-compress/mode=3
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

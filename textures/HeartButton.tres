@@ -1,17 +1,21 @@
-[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bunugwqujq1np"]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bunugwqujq1np"]
 
 [ext_resource type="Texture2D" uid="uid://dx5gjnggm5ahj" path="res://textures/HeartButton.png" id="1_7w022"]
 [ext_resource type="Texture2D" uid="uid://dtlci7r301a7e" path="res://textures/maps/HeartButton_nor.png" id="2_5vkeo"]
 [ext_resource type="Texture2D" uid="uid://dqjcrmiuyqb0c" path="res://textures/maps/HeartButton_occ.png" id="2_f7p27"]
+[ext_resource type="Texture2D" uid="uid://gubgi0ojfc76" path="res://textures/maps/HeartButton_spec.png" id="3_m4s37"]
 
 [resource]
 diffuse_mode = 2
 specular_mode = 2
 albedo_texture = ExtResource("1_7w022")
+metallic = 0.77
+metallic_texture = ExtResource("3_m4s37")
 normal_enabled = true
 normal_scale = 4.5
 normal_texture = ExtResource("2_5vkeo")
 ao_enabled = true
+ao_light_affect = 0.13
 ao_texture = ExtResource("2_f7p27")
-ao_texture_channel = 3
+ao_texture_channel = 4
 texture_filter = 0

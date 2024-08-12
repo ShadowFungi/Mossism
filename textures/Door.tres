@@ -6,10 +6,10 @@
 
 [resource]
 diffuse_mode = 2
-specular_mode = 2
+specular_mode = 1
 albedo_texture = ExtResource("1_isqsg")
 normal_enabled = true
-normal_scale = 4.5
+normal_scale = 16.0
 normal_texture = ExtResource("2_vk75h")
 ao_enabled = true
 ao_texture = ExtResource("2_db5wg")

@@ -92,6 +92,9 @@ emission_angle_degrees = 58.0
 [node name="SpotLight3D" type="SpotLight3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, -0.893085)
 light_color = Color(0.872754, 0.854209, 0.771797, 1)
+light_energy = 2.0
+light_volumetric_fog_energy = 0.5
+shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 1.75
 distance_fade_enabled = true
@@ -99,7 +102,9 @@ distance_fade_begin = 18.0
 distance_fade_shadow = 30.0
 distance_fade_length = 23.0
 spot_range = 14.0
+spot_attenuation = 0.15
 spot_angle = 20.0
+spot_angle_attenuation = 0.15
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 6.21474e-34, 1, 0, 0, 0, 1, 2.47512e-07, 5.03162e-27, -1.4156)

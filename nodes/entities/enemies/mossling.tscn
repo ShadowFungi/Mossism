@@ -1,17 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnt5650g5rqjd"]
+[gd_scene load_steps=7 format=3 uid="uid://cnt5650g5rqjd"]
 
 [ext_resource type="PackedScene" uid="uid://bh8pwec5ry6d3" path="res://assets/models/enemies/Mossling/Mossling.glb" id="1_b65re"]
 [ext_resource type="Script" path="res://scripts/enemy/mossling.gd" id="2_jjtwu"]
+[ext_resource type="Script" path="res://scripts/enemy/stab.gd" id="3_u70bt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rufnw"]
 radius = 1.94
 height = 13.5
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hxyr0"]
-points = PackedVector3Array(0, 0, 0, 20, 8, -20, 25, 0, -20, 20, -10, -20, 0, -15, -20, -20, 8, -20, 0, 13, -20, -25, 0, -20, -20, -10, -20, -13, -10, -2, 13, -10, -2, -13, 5, -2, 13, 5, -2)
+points = PackedVector3Array(0, 0, 0, 18, 5, -24, 20, 0, -24, 18, -10, -24, 0, -15, -24, -18, 5, -24, 0, 8, -24, -20, 0, -24, -18, -10, -24, -8, -8, -1, 8, -8, -1, -10, 3, -5, 10, 3, -5)
 
-[node name="Mossling" instance=ExtResource("1_b65re")]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ejftg"]
+radius = 0.625118
+height = 2.9126
+
+[node name="Mossling" node_paths=PackedStringArray("ray") instance=ExtResource("1_b65re")]
+collision_layer = 134217728
+collision_mask = 2281701391
 script = ExtResource("2_jjtwu")
+speed = 35
+ray = NodePath("RayCast3D")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/1/rotation = Quaternion(-0.219353, -0.639501, 0.0481058, 0.735261)
@@ -344,7 +353,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.088, -1.311)
 target_position = Vector3(0, 0, -28)
 collision_mask = 2147483648
 
+[node name="HitBox3D" type="Area3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 0.734713, -0.678378, 0, 0.678378, 0.734713, 3.05726, 6.46416, -0.879726)
+collision_layer = 67108864
+collision_mask = 2147483648
+script = ExtResource("3_u70bt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox3D" index="0"]
+shape = SubResource("CapsuleShape3D_ejftg")
+
+[node name="HitBox3D2" type="Area3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 0.734713, -0.678378, 0, 0.678378, 0.734713, -3.057, 6.464, -0.88)
+collision_layer = 67108864
+collision_mask = 2147483648
+script = ExtResource("3_u70bt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox3D2" index="0"]
+shape = SubResource("CapsuleShape3D_ejftg")
+
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_velocity_computed"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_exited"]
+[connection signal="body_entered" from="HitBox3D" to="HitBox3D" method="body_entered"]
+[connection signal="area_entered" from="HitBox3D2" to="HitBox3D2" method="body_entered"]

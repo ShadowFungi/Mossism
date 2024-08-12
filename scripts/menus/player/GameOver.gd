@@ -19,6 +19,11 @@ func continue_from_save() -> void:
 	get_tree().reload_current_scene()
 
 
+func died() -> void:
+	self.show()
+	get_tree().set_pause(true)
+
+
 func main_menu() -> void:
 	get_tree().set_pause(false)
 	self.hide()

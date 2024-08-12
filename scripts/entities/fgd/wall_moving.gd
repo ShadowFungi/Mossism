@@ -54,7 +54,7 @@ func _init() -> void:
 	final_transform = base_transform * offset_transform
 
 func _ready() -> void:
-	var bake_call = Callable(self, "_baked")
+	var _bake_call = Callable(self, "_baked")
 
 func use() -> void:
 	if reversible == true:

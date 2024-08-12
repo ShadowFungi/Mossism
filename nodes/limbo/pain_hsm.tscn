@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpu0ofolmn50r"]
+
+[ext_resource type="Script" path="res://scripts/various/limbo/PainHSM.gd" id="1_afoby"]
+[ext_resource type="Script" path="res://scripts/various/limbo/SafeState.gd" id="2_c5hnw"]
+[ext_resource type="Script" path="res://scripts/various/limbo/FireState.gd" id="3_sdir0"]
+[ext_resource type="Script" path="res://scripts/various/limbo/MeleeState.gd" id="4_gfbyx"]
+[ext_resource type="Script" path="res://scripts/various/limbo/ExplosionState.gd" id="4_sdhm6"]
+[ext_resource type="Script" path="res://scripts/various/limbo/BleedState.gd" id="6_l4x4v"]
+
+[node name="PainHSM" type="LimboHSM"]
+process_mode = 1
+script = ExtResource("1_afoby")
+
+[node name="SafeState" type="LimboState" parent="."]
+script = ExtResource("2_c5hnw")
+
+[node name="FireState" type="LimboState" parent="."]
+script = ExtResource("3_sdir0")
+
+[node name="ExplosionState" type="LimboState" parent="."]
+script = ExtResource("4_sdhm6")
+
+[node name="BulletState" type="LimboState" parent="."]
+
+[node name="MeleeState" type="LimboState" parent="."]
+script = ExtResource("4_gfbyx")
+
+[node name="PoisonState" type="LimboState" parent="."]
+
+[node name="BleedState" type="LimboState" parent="."]
+script = ExtResource("6_l4x4v")

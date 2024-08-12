@@ -1,7 +1,7 @@
 extends Area3D
 
 
-@export var properties : Dictionary :
+@export var properties: Dictionary:
 	get:
 		return properties
 	set(new_properties):
@@ -9,19 +9,19 @@ extends Area3D
 			properties = new_properties
 			update_properties()
 
-var layers : Dictionary
-var layer_collection : int
+var layers: Dictionary
+var layer_collection: int
 
-var player : Node
-var damagable : bool = false
-var type : String = ""
+var player: Node
+var damagable: bool = false
+var type: String = ''
 
 
 func update_properties() -> void:
-	if "damage_type" in properties:
-		if properties.damage_type == "lava":
+	if 'damage_type' in properties:
+		if properties.damage_type == 'fire':
 			type = properties.damage_type
-		if properties.damage_type == "poison":
+		if properties.damage_type == 'poison':
 			type = properties.damage_type
 	
 	if 'collision_mask' in properties:
@@ -41,22 +41,24 @@ func _ready() -> void:
 
 
 func body_has_entered(body: Node):
-	if body.is_in_group("player") == true:
-		player = body
+	#if body.is_in_group('player') == true:
+	#	player = body
 	if body.has_method('damage'):
-		damagable = true
+		#damagable = true
+		body.damage(type)
 
 
 func body_has_exited(body: Node):
-	if body.is_in_group("player") == true:
-		player = null
+	#if body.is_in_group('player') == true:
+	#	player = null
 	if body.has_method('damage'):
-		damagable = false
+		#damagable = false
+		body.damage('none')
 
 
-func _physics_process(_delta: float) -> void:
-	if damagable == true:
-		print(player)
-		if player != null:
-			if player.has_method('damage'):
-				player.damage(type)
+#func _physics_process(_delta: float) -> void:
+	#if damagable == true:
+		#print(player)
+		#if player != null:
+			#if player.has_method('damage'):
+				#player.damage(type)

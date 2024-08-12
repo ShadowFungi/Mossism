@@ -15,7 +15,7 @@ var current_state: State
 @export_category('Animation')
 @export var anim_player: AnimationPlayer
 
-func init(parent: CharacterBody3D, player_id : int = 1):
+func init(_parent: CharacterBody3D, player_id : int = 1):
 	for child in get_children():
 		if "parent" in child:
 			child.parent = parent

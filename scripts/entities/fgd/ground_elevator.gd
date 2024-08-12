@@ -66,7 +66,7 @@ func _ready() -> void:
 	player_detect.set_collision_mask_value(32, true)
 	player_detect.set_collision_mask_value(1, false)
 	player_detect.set_collision_layer_value(1, false)
-	var sig: StringName = "area_entered"
+	var _sig: StringName = "area_entered"
 	add_child(player_detect)
 	self.add_to_group("ground", true)
 	var detect_col := self.get_child(1).duplicate()
@@ -134,6 +134,6 @@ func motion_ended() -> void:
 	#Level.bake(nav_reg)
 
 
-func entered(body) -> void:
+func entered(_body) -> void:
 	print("entered")
 	use()

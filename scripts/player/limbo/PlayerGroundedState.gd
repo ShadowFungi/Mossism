@@ -7,7 +7,7 @@ extends LimboState
 func _enter() -> void:
 	player.velocity.y = 0
 
-func _update(delta: float) -> void:
+func _update(_delta: float) -> void:
 	if Input.is_action_just_pressed("player-{n}_jump".format({"n":1})):
 		dispatch(&'jump_started')
 	if player.is_on_floor() == false:

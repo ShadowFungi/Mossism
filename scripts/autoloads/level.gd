@@ -42,7 +42,7 @@ func prepare(nav_instance: NavigationRegion3D):
 		#await nav_region.bake_finished
 		#map_baked = true
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if bake_map == true and map_bake_ended == true:
 		while bake_map == true:
 			rebake_map()

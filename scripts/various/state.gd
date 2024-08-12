@@ -25,10 +25,10 @@ func exit_state() -> void:
 func handle_input(_event: InputEvent) -> State:
 	return null
 
-func frame_update(delta: float) -> State:
+func frame_update(_delta: float) -> State:
 	return null
 
-func physics_update(delta: float) -> State:
+func physics_update(_delta: float) -> State:
 	return null
 
 func find_state_machine(state_machine_name: StringName):

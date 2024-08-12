@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Fencing_nor.png-24237dd0938963dce209aa76fa41d
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

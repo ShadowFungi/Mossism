@@ -33,7 +33,7 @@ func add_queued_scene_to_tree(scene_name: String, root_node: Node, packed_queue:
 
 func replace_node_with_queued_scene(scene_name: String, free_children: bool, replace_node: Node, store_replaced_node: bool = false, packed_queue: Dictionary = packed_scene_queue, file_queue: Dictionary = scene_file_queue):
 	if store_replaced_node == true:
-		var result = packer.pack(replace_node)
+		var _result = packer.pack(replace_node)
 	if file_queue.has(scene_name):
 		if free_children == true:
 			for child in replace_node.get_children():
@@ -50,7 +50,7 @@ func replace_node_with_queued_scene(scene_name: String, free_children: bool, rep
 		print('scene not in either queue')
 		return
 
-func restore_previous_scene(replace_node: Node, store_replaced_node: bool):
+func restore_previous_scene(replace_node: Node, _store_replaced_node: bool):
 	for child in replace_node.get_children():
 		child.queue_free()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

@@ -1,0 +1,142 @@
+[gd_resource type="Shader" format=3 uid="uid://n4c6x31n5egn"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_disabled, diffuse_lambert_wrap, specular_toon;
+
+uniform sampler2D albedo_texture : source_color,filter_nearest,repeat_enable;
+uniform float albedo_amount = 1.0;
+uniform sampler2D normal_texture : source_color,filter_nearest,repeat_enable;
+uniform float normal_amount = 1.0;
+uniform sampler2D roughness_texture : source_color,filter_nearest,repeat_enable;
+uniform float roughness_amount = 1.0;
+uniform sampler2D ao_texture : source_color,filter_nearest,repeat_enable;
+uniform float ao_amount = 1.0;
+uniform sampler2D metal_texture : source_color,filter_nearest,repeat_enable;
+uniform float metal_amount = 1.0;
+uniform float specular_amount = 1.0;
+
+uniform sampler2D overlay_texture_01;
+uniform float overlay_amount_01 = 1.0;
+uniform float overlay_slide_speed_x_01 = 1.0;
+uniform float overlay_slide_speed_y_01 = 1.0;
+
+uniform sampler2D overlay_texture_02;
+uniform float overlay_amount_02 = 1.0;
+uniform float overlay_slide_speed_x_02 = 1.0;
+uniform float overlay_slide_speed_y_02 = 1.0;
+
+uniform sampler2D overlay_texture_03;
+uniform float overlay_amount_03 = 1.0;
+uniform float overlay_slide_speed_x_03 = 1.0;
+uniform float overlay_slide_speed_y_03 = 1.0;
+
+uniform sampler2D height_texture;
+uniform float height_amount = 1.0;
+
+uniform sampler2D normal_texture_02;
+uniform float normal_amount_02 = 1.0;
+uniform float normal_slide_speed_x_02 = 1.0;
+uniform float normal_slide_speed_y_02 = 1.0;
+
+uniform vec2 texture_scale = vec2(1.0, 1.0);
+uniform float slide_speed_x = 1.0;
+uniform float slide_speed_y = 1.0;
+uniform float wave_amplitude_x = 0.1;
+uniform float wave_frequency_x = 2.0;
+uniform float wave_speed_x = 1.0;
+uniform bool wave_direction_x = true; // true = upward, false = downward
+uniform float wave_amplitude_z = 0.1;
+uniform float wave_frequency_z = 2.0;
+uniform float wave_speed_z = 1.0;
+uniform bool wave_direction_z = true; // true = upward, false = downward
+uniform float overall_opacity = 1.0;
+
+uniform float emit : hint_range(0.0, 1.0, 0.05);
+uniform float rim : hint_range(0.0, 1.0, 0.05);
+uniform float rim_tint : hint_range(0.0, 1.0, 0.05);
+uniform sampler2D emit_texture : source_color,filter_nearest,repeat_enable;
+
+
+void vertex() {
+    float wave_x = sin(VERTEX.x * wave_frequency_x + TIME * wave_speed_x) * wave_amplitude_x;
+    float wave_z = sin(VERTEX.z * wave_frequency_z + TIME * wave_speed_z) * wave_amplitude_z;
+
+    if (!wave_direction_x) {
+        wave_x = -wave_x;
+    }
+
+    if (!wave_direction_z) {
+        wave_z = -wave_z;
+    }
+
+    float height_value = texture(height_texture, UV).r * height_amount;
+    VERTEX.y += wave_x + wave_z + height_value;
+    VERTEX = vec3(VERTEX.x, VERTEX.y, VERTEX.z);
+}
+
+void fragment() {
+    vec2 uv = UV;
+
+    uv.x += TIME * slide_speed_x;
+    uv.y += TIME * slide_speed_y;
+
+    vec2 overlay_uv_01 = UV;
+    overlay_uv_01.x += TIME * overlay_slide_speed_x_01;
+    overlay_uv_01.y += TIME * overlay_slide_speed_y_01;
+
+    vec2 overlay_uv_02 = UV;
+    overlay_uv_02.x += TIME * overlay_slide_speed_x_02;
+    overlay_uv_02.y += TIME * overlay_slide_speed_y_02;
+
+    vec2 overlay_uv_03 = UV;
+    overlay_uv_03.x += TIME * overlay_slide_speed_x_03;
+    overlay_uv_03.y += TIME * overlay_slide_speed_y_03;
+
+    vec2 normal_uv_02 = UV;
+    normal_uv_02.x += TIME * normal_slide_speed_x_02;
+    normal_uv_02.y += TIME * normal_slide_speed_y_02;
+
+    uv *= texture_scale;
+    overlay_uv_01 *= texture_scale;
+    overlay_uv_02 *= texture_scale;
+    overlay_uv_03 *= texture_scale;
+    normal_uv_02 *= texture_scale;
+
+    // Load and sample the textures
+    vec4 albedo_color = texture(albedo_texture, uv);
+    vec3 normal_color = texture(normal_texture, uv).rgb;
+    vec3 normal_color_02 = texture(normal_texture_02, normal_uv_02).rgb;
+    float roughness_value = texture(roughness_texture, uv).r;
+    float ao_value = texture(ao_texture, uv).r;
+    float metal_value = texture(metal_texture, uv).r;
+    vec4 overlay_color_01 = texture(overlay_texture_01, overlay_uv_01);
+    vec4 overlay_color_02 = texture(overlay_texture_02, overlay_uv_02);
+    vec4 overlay_color_03 = texture(overlay_texture_03, overlay_uv_03);
+    vec3 emit_value = texture(emit_texture, uv).rgb;
+
+    // Apply the textures
+    ALBEDO = mix(vec3(1.0), albedo_color.rgb, albedo_amount);
+    NORMAL = normalize(mix(vec3(0.5, 0.5, 1.0), normal_color * 2.0 - 1.0, normal_amount));
+    NORMAL = normalize(mix(NORMAL, normal_color_02 * 2.0 - 1.0, normal_amount_02));
+    ROUGHNESS = mix(0.5, roughness_value, roughness_amount);
+    AO = mix(1.0, ao_value, ao_amount);
+    METALLIC = mix(0.0, metal_value, metal_amount);
+    SPECULAR = specular_amount;
+    ALPHA = albedo_color.a * overall_opacity;
+	RIM = rim;
+	RIM_TINT = rim_tint;
+	EMISSION = mix(vec3(0.1), emit_value, emit);
+	RADIANCE = vec4(emit_value, 1.0);
+
+
+    // Apply the overlay textures
+    ALBEDO = mix(ALBEDO, overlay_color_01.rgb, overlay_color_01.a * overlay_amount_01);
+    ALBEDO = mix(ALBEDO, overlay_color_02.rgb, overlay_color_02.a * overlay_amount_02);
+    ALBEDO = mix(ALBEDO, overlay_color_03.rgb, overlay_color_03.a * overlay_amount_03);
+}
+
+//void light() {
+//    DIFFUSE_LIGHT += clamp(dot(NORMAL, LIGHT), 0.0, 1.0) * ATTENUATION * LIGHT_COLOR;
+//}
+"

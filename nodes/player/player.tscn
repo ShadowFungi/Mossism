@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dqj64b3y24pyv"]
+[gd_scene load_steps=35 format=3 uid="uid://dqj64b3y24pyv"]
 
 [ext_resource type="PackedScene" uid="uid://bot0f53hv0v3k" path="res://assets/models/player/character/player.rigged.glb" id="1_88fmg"]
 [ext_resource type="Script" path="res://scripts/player/player_rigged_glb.gd" id="2_l0nax"]
@@ -21,13 +21,14 @@
 [ext_resource type="Script" path="res://scripts/player/limbo/PlayerFallState.gd" id="18_wkc1q"]
 [ext_resource type="Script" path="res://scripts/player/limbo/PlayerStandingState.gd" id="19_b3koa"]
 [ext_resource type="Script" path="res://scripts/player/limbo/PlayerCrouchingState.gd" id="20_uo0ao"]
+[ext_resource type="PackedScene" uid="uid://bpu0ofolmn50r" path="res://nodes/limbo/pain_hsm.tscn" id="22_85xb5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i6h3a"]
 
 [sub_resource type="Sky" id="Sky_6tkic"]
 sky_material = SubResource("ProceduralSkyMaterial_i6h3a")
 
-[sub_resource type="Environment" id="Environment_mkria"]
+[sub_resource type="Environment" id="Environment_s8y5i"]
 background_color = Color(0.247059, 0.337255, 0.231373, 1)
 sky = SubResource("Sky_6tkic")
 ambient_light_source = 2
@@ -47,25 +48,30 @@ sdfgi_min_cell_size = 0.0195312
 sdfgi_cascade0_distance = 1.24999
 sdfgi_max_distance = 19.9999
 sdfgi_y_scale = 0
-glow_intensity = 1.0
-glow_bloom = 0.08
-glow_blend_mode = 0
+glow_enabled = true
+glow_intensity = 3.85
+glow_strength = 1.5
+glow_bloom = 0.5
+glow_hdr_threshold = 0.5
+glow_hdr_scale = 4.0
 fog_enabled = true
 fog_light_color = Color(0.259416, 0.42423, 0.212468, 1)
-fog_density = 0.03
+fog_density = 0.025
 fog_sky_affect = 0.35
 fog_height = -1024.0
-volumetric_fog_density = 0.075
+volumetric_fog_density = 0.085
 volumetric_fog_albedo = Color(0.407843, 0.533333, 0.384314, 1)
 volumetric_fog_emission = Color(0.133333, 0.192157, 0.12549, 1)
 volumetric_fog_length = 32.0
 volumetric_fog_temporal_reprojection_enabled = false
 adjustment_brightness = 0.9
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_5amrf"]
-exposure_multiplier = 0.75
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_uaoje"]
+exposure_multiplier = 0.65
 auto_exposure_enabled = true
-auto_exposure_scale = 0.05
+auto_exposure_scale = 0.03
+auto_exposure_speed = 1.0
+auto_exposure_max_sensitivity = 750.0
 
 [sub_resource type="Resource" id="Resource_myjsg"]
 script = ExtResource("5_rj1tq")
@@ -86,9 +92,11 @@ near = 0.175
 far = 4000.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hc01b"]
-exposure_multiplier = 0.75
+exposure_multiplier = 0.65
 auto_exposure_enabled = true
-auto_exposure_scale = 0.05
+auto_exposure_scale = 0.03
+auto_exposure_speed = 1.0
+auto_exposure_max_sensitivity = 750.0
 
 [sub_resource type="Resource" id="Resource_1886p"]
 script = ExtResource("5_rj1tq")
@@ -118,8 +126,9 @@ height = 5.2
 size = Vector3(0.925, 0.975, 0.55)
 
 [node name="Player" node_paths=PackedStringArray("pcam", "pivot", "skel", "look_pivot", "sawed_off", "ground_ray", "step_shape", "hud", "gameover") groups=["player"] instance=ExtResource("1_88fmg")]
+process_mode = 1
 collision_layer = 2147483648
-collision_mask = 2147483663
+collision_mask = 2281701391
 floor_max_angle = 0.698132
 script = ExtResource("2_l0nax")
 pcam = NodePath("PhantomCamera3D")
@@ -332,8 +341,8 @@ script = ExtResource("3_hjwlr")
 
 [node name="Camera3D" type="Camera3D" parent="." index="1"]
 transform = Transform3D(1, -1.74845e-07, 8.74226e-08, 1.74845e-07, 1, -1.2517e-08, -8.74226e-08, 1.2517e-08, 1, -3.18943e-09, 4.80462, -0.0364842)
-environment = SubResource("Environment_mkria")
-attributes = SubResource("CameraAttributesPractical_5amrf")
+environment = SubResource("Environment_s8y5i")
+attributes = SubResource("CameraAttributesPractical_uaoje")
 doppler_tracking = 2
 current = true
 near = 0.175
@@ -361,8 +370,9 @@ camera_3d_resource = SubResource("Resource_40cjh")
 environment = ExtResource("7_driho")
 attributes = SubResource("CameraAttributesPractical_hc01b")
 
-[node name="SawedOff" parent="PhantomCamera3D" index="0" instance=ExtResource("8_en11i")]
+[node name="SawedOff" parent="PhantomCamera3D" index="0" node_paths=PackedStringArray("player") instance=ExtResource("8_en11i")]
 transform = Transform3D(1, 1.74846e-07, 1.74845e-07, -1.74846e-07, 1, -1.75238e-07, -1.74845e-07, 1.75238e-07, 1, 0.724795, -0.721606, -1.61847)
+player = NodePath("../..")
 
 [node name="Marker3D" type="Marker3D" parent="PhantomCamera3D/SawedOff" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.495)
@@ -405,9 +415,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0, 0)
 
 [node name="GroundRay3D" type="RayCast3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.347926, 0)
-target_position = Vector3(0, -1.355, 0)
-collision_mask = 15
-hit_from_inside = true
+target_position = Vector3(0, -2, 0)
+collision_mask = 5
 debug_shape_custom_color = Color(0.72549, 0, 0.886275, 1)
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="." index="8"]
@@ -476,3 +485,11 @@ player = NodePath("../..")
 col_shape = NodePath("../../CollisionShape3D")
 head_target = NodePath("../../HeadLoc3D")
 meta_rig = NodePath("../../metarig")
+
+[node name="PainHSM" parent="." index="15" node_paths=PackedStringArray("holder", "health_bar") instance=ExtResource("22_85xb5")]
+update_mode = 0
+holder = NodePath("..")
+health_bar = NodePath("../HUD/PanelContainer/HBoxContainer/MarginContainer2/Label2")
+fire_damage_multiplier = 4.0
+
+[editable path="HUD"]

@@ -1,0 +1,45 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://doqqnvoyhxwoo"]
+
+[ext_resource type="Texture2D" uid="uid://dp0pqewug0yi0" path="res://textures/CrystalinePrism.png" id="1_xjdil"]
+[ext_resource type="Texture2D" uid="uid://cc5o74jf3gfkw" path="res://textures/maps/Lava_occ.png" id="2_d8qhn"]
+[ext_resource type="Texture2D" uid="uid://mb3nb5u6eeqn" path="res://textures/maps/CrystalinePrism_spec.png" id="3_8e5tb"]
+[ext_resource type="Texture2D" uid="uid://d2asysj3n0vn5" path="res://textures/maps/CrystalinePrism_nor.png" id="4_ldymy"]
+[ext_resource type="Texture2D" uid="uid://bhhpw0f072cie" path="res://textures/maps/CrystalinePrism_occ.png" id="5_7qtjc"]
+
+[resource]
+diffuse_mode = 2
+specular_mode = 1
+disable_ambient_light = true
+disable_fog = true
+albedo_texture = ExtResource("1_xjdil")
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = ExtResource("3_8e5tb")
+metallic_texture_channel = 4
+roughness = 0.66
+roughness_texture = ExtResource("5_7qtjc")
+roughness_texture_channel = 4
+emission_enabled = true
+emission = Color(0.670588, 0.00392157, 0.933333, 1)
+emission_energy_multiplier = 1.84
+emission_operator = 1
+emission_texture = ExtResource("3_8e5tb")
+normal_enabled = true
+normal_scale = 16.0
+normal_texture = ExtResource("4_ldymy")
+rim_enabled = true
+rim = 0.7
+rim_tint = 0.75
+rim_texture = ExtResource("3_8e5tb")
+clearcoat_enabled = true
+anisotropy = 0.4
+ao_light_affect = 0.75
+ao_texture = ExtResource("2_d8qhn")
+ao_texture_channel = 3
+backlight_enabled = true
+backlight = Color(0.687725, 0.245773, 0.956308, 1)
+backlight_texture = ExtResource("3_8e5tb")
+refraction_texture = ExtResource("3_8e5tb")
+refraction_texture_channel = 4
+texture_filter = 0
+disable_receive_shadows = true

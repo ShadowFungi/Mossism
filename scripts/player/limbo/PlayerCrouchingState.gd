@@ -22,7 +22,7 @@ func _enter() -> void:
 	meta_rig.global_position.y = meta_rig.global_position.y - 0.835
 	og_size = shape.height
 	shape.height = crouch_size
-	print(shape.height)
+	#print(shape.height)
 	col_shape.position = (col_shape.position / 1.3)
 
 

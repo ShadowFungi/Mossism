@@ -56,6 +56,9 @@ var fire_res: bool = false
 @onready var standing_state: LimboState = get_node('HeightHSM/PlayerStandingState')
 @onready var crouch_state: LimboState = get_node('HeightHSM/PlayerCrouchingState')
 
+## Pain HSM
+@onready var pain_hsm: LimboHSM = get_node('PainHSM')
+
 #@onready var state_chart: StateChart = get_node('StateChart')
 @export var pcam: PhantomCamera3D
 @export var interact_label: Label
@@ -95,6 +98,8 @@ func _ready() -> void:
 	_init_movement_hsm()
 	_init_elevation_hsm()
 	_init_height_hsm()
+#	pain_hsm._init_hsm()
+#	pain_hsm.set_active(true)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -113,10 +118,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			rotate_y(deg_to_rad(-mouse_pos.x))
 
 
-func _physics_process(delta):
-	if cur_health <= 0:
-		gameover.show()
-		get_tree().set_pause(true)
+func _physics_process(_delta):
+	if pain_hsm.current_health <= 0:
+		gameover.died()
 		toggle_mouse_lock(true, false)
 	if velocity.x == 0 or velocity.z == 0:
 		step_shape.enabled = false
@@ -125,7 +129,7 @@ func _physics_process(delta):
 	step_shape.look_at(Vector3(global_transform.origin.x + velocity.x, global_transform.origin.y, global_transform.origin.z + velocity.z), Vector3(0, 0, 1))
 	move_and_slide()
 	if !is_on_floor():
-		can_snap_down == true
+		can_snap_down = true
 	if Input.is_action_just_pressed('analog--tool'.format({'n':1})):
 		toggle_mouse_lock()
 	if Input.is_action_just_pressed('player-%s_tool_mouse' % id) and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -167,7 +171,7 @@ func _init_elevation_hsm() -> void:
 	elevation_hsm.add_transition(grounded_state, coyote_state, &'ground_lost')
 	elevation_hsm.add_transition(coyote_state, fall_state, &'coyote_ended')
 	elevation_hsm.add_transition(coyote_state, jump_state, &'jump_started')
-	elevation_hsm.initial_state = fall_state
+	elevation_hsm.initial_state = grounded_state
 	elevation_hsm.initialize(self)
 	elevation_hsm.set_active(true)
 
@@ -193,18 +197,9 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 
 
 func damage(type: String) -> void:
-	var fire_timer = Timer.new()
-	print(type)
-	if type == "lava":
-		if fire_res != true:
-			cur_health -= 2
-			hud.update_health(cur_health, cur_max_health)
-			print(cur_health)
-		elif fire_res == true:
-			fire_timer.set_wait_time(7.5)
-			fire_timer.one_shot = true
-			fire_timer.start()
-			await fire_timer.timeout
-			fire_res = false
-	else: return
+	pain_hsm.damage_type = type
 
+
+func update_health(new_health: int, max_health: int) -> void:
+	#hud.update_health(new_health, max_health)
+	pass

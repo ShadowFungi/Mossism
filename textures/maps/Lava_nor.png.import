@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Lava_nor.png-e9cc1ed0496e073ed10a32dacb60b337
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -38,11 +38,14 @@ rings = 5
 
 [node name="Bullet" type="RigidBody3D" groups=["bullet"]]
 collision_layer = 1073741824
-collision_mask = 15
+collision_mask = 2281701391
 input_ray_pickable = false
 mass = 2.0
 physics_material_override = ExtResource("1_t8lct")
+max_contacts_reported = 3
+contact_monitor = true
 script = ExtResource("1_bpp6f")
+explodes = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_k2nd7")
@@ -74,5 +77,6 @@ visibility_aabb = AABB(-1.91628, -1.93849, -1.91117, 3.83255, 3.87698, 3.82235)
 process_material = SubResource("ParticleProcessMaterial_je4sx")
 draw_pass_1 = SubResource("SphereMesh_4632c")
 
+[connection signal="body_entered" from="." to="." method="body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_sound_finished"]
