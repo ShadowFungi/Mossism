@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxfhu3rpvxcas"]
+
+[ext_resource type="Script" path="res://scripts/enemy/health_bar.gd" id="1_jk2b7"]
+[ext_resource type="StyleBox" uid="uid://wb18m4p0tho4" path="res://styles/health_bar.tres" id="2_vbfcr"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hn10p"]
+size = Vector2(10, 1.5)
+orientation = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_shg3r"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oroo5"]
+resource_local_to_scene = true
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_shg3r")
+texture_filter = 0
+texture_repeat = false
+billboard_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ovr68"]
+size = Vector3(10, 1.5, 0.13)
+
+[node name="HealthBar" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.6881, 0)
+script = ExtResource("1_jk2b7")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1000, 150)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="PanelContainer" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_vbfcr")
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/Control/Panel"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="SubViewport/Control/Panel/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 115
+text = "1500/1500"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 131072
+cast_shadow = 0
+ignore_occlusion_culling = true
+gi_mode = 0
+mesh = SubResource("PlaneMesh_hn10p")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_oroo5")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+shape = SubResource("BoxShape3D_ovr68")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://w5b1u8f35fmo"]
+
+[ext_resource type="PackedScene" uid="uid://b4ji8ko76a8y0" path="res://assets/models/player/tools/Sawed-off.blend" id="1_mx18r"]
+
+[node name="SawedOffModel" instance=ExtResource("1_mx18r")]
+
+[node name="Sawed-off" parent="." index="0"]
+layers = 262144

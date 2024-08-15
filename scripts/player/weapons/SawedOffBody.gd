@@ -16,6 +16,7 @@ var can_reset: bool = true
 var area_collides: bool = false
 var parent: Node3D
 var bullet
+var can_fire: bool = true
 
 func _ready() -> void:
 	bullet = load(bullet_path).instantiate()
@@ -47,6 +48,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func fire():
+	if can_fire == false:
+		return
+	can_fire = false
 	## Prepare sawed_off_bullet instances
 	var shot1 = bullet.duplicate()
 	var shot2 = bullet.duplicate()
@@ -64,8 +68,10 @@ func fire():
 	
 	## FIRE!
 	## Launch sawed_off_bullets through a central impulse
-	shot1.apply_central_impulse(-muzzle_1.global_transform.basis.z * 80)
-	shot2.apply_central_impulse(-muzzle_2.global_transform.basis.z * 80)
+	shot1.apply_central_impulse(-muzzle_1.global_transform.basis.z * 60)
+	shot2.apply_central_impulse(-muzzle_2.global_transform.basis.z * 60)
+	await get_tree().create_timer(0.25, false).timeout
+	can_fire = true
 
 
 

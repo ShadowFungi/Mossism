@@ -4,8 +4,9 @@ extends CharacterBody3D
 
 const BASE_SPEED = 10.0
 const WALKING_MODIFIER = 1.45
-const RUNNING_MODIFIER = 1.97
-const CROUCHING_MODIFIER = 0.75
+const RUNNING_MODIFIER = 1.98
+const CROUCHING_MODIFIER = 0.65
+const CANNONBALL_MODIFIER = 1.55
 const JUMP_VELOCITY = 16.25
 
 const MAX_HEALTH = 20000
@@ -16,7 +17,7 @@ const MIN_HEALTH = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var min_pitch: float = -35.0
+var min_pitch: float = -45.5
 var max_pitch: float = 75.0
 
 var min_yaw: float = 0
@@ -36,6 +37,7 @@ var cur_max_health: float = DEFAULT_HEALTH
 var max_available_health: int = 10
 var health: int = 10
 var fire_res: bool = false
+var running: bool = false
 
 
 ## Movement HSM

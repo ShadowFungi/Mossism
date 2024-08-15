@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/various/limbo/BleedState.gd" id="6_l4x4v"]
 
 [node name="PainHSM" type="LimboHSM"]
+update_mode = 0
 process_mode = 1
 script = ExtResource("1_afoby")
 

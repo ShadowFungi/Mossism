@@ -29,8 +29,12 @@ func _enter() -> void:
 func _update(_delta: float) -> void:
 	if !Input.is_action_pressed('player-%s_crouch' % player.id):
 		dispatch(&'crouch_ended')
-	player.velocity.x = player.velocity.x * player.CROUCHING_MODIFIER
-	player.velocity.z = player.velocity.z * player.CROUCHING_MODIFIER
+	if player.velocity.y != 0 and player.running == true:
+		player.velocity.x = player.velocity.x * player.CANNONBALL_MODIFIER
+		player.velocity.z = player.velocity.z * player.CANNONBALL_MODIFIER
+	else:
+		player.velocity.x = player.velocity.x * player.CROUCHING_MODIFIER
+		player.velocity.z = player.velocity.z * player.CROUCHING_MODIFIER
 
 
 func _exit() -> void:

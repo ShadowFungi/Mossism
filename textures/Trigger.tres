@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bvmeebhhvfw5n"]
+
+[ext_resource type="Texture2D" uid="uid://duvfmbu84wk6f" path="res://textures/Trigger.png" id="1_pxpxh"]
+
+[resource]
+transparency = 1
+depth_draw_mode = 1
+no_depth_test = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.960354, 0.0644448, 0.241506, 1)
+albedo_texture = ExtResource("1_pxpxh")
+texture_filter = 0

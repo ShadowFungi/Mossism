@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnt5650g5rqjd"]
+[gd_scene load_steps=9 format=3 uid="uid://cnt5650g5rqjd"]
 
 [ext_resource type="PackedScene" uid="uid://bh8pwec5ry6d3" path="res://assets/models/enemies/Mossling/Mossling.glb" id="1_b65re"]
 [ext_resource type="Script" path="res://scripts/enemy/mossling.gd" id="2_jjtwu"]
 [ext_resource type="Script" path="res://scripts/enemy/stab.gd" id="3_u70bt"]
+[ext_resource type="PackedScene" uid="uid://bpu0ofolmn50r" path="res://nodes/limbo/pain_hsm.tscn" id="4_j0xng"]
+[ext_resource type="PackedScene" uid="uid://bxfhu3rpvxcas" path="res://nodes/entities/enemies/health_bar.tscn" id="5_jtt33"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rufnw"]
 radius = 1.94
@@ -15,12 +17,14 @@ points = PackedVector3Array(0, 0, 0, 18, 5, -24, 20, 0, -24, 18, -10, -24, 0, -1
 radius = 0.625118
 height = 2.9126
 
-[node name="Mossling" node_paths=PackedStringArray("ray") instance=ExtResource("1_b65re")]
+[node name="Mossling" node_paths=PackedStringArray("ray", "pain_hsm") groups=["enemy"] instance=ExtResource("1_b65re")]
+process_mode = 1
 collision_layer = 134217728
 collision_mask = 2281701391
 script = ExtResource("2_jjtwu")
-speed = 35
+speed = 15
 ray = NodePath("RayCast3D")
+pain_hsm = NodePath("PainHSM")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/1/rotation = Quaternion(-0.219353, -0.639501, 0.0481058, 0.735261)
@@ -158,186 +162,414 @@ bones/105/rotation = Quaternion(5.0243e-15, 0.707107, 0.707107, -5.33851e-08)
 [node name="TopFinger_Tip_L" parent="Armature/Skeleton3D" index="0"]
 transform = Transform3D(0.257672, 0.104323, -0.960585, -0.63692, -0.729253, -0.25005, -0.726595, 0.676245, -0.121462, 3.56566, 6.25953, 1.2061)
 
+[node name="TopFinger_Tip_L" parent="Armature/Skeleton3D/TopFinger_Tip_L" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="TopFinger_Middle_L" parent="Armature/Skeleton3D" index="1"]
 transform = Transform3D(0.257672, 0.104323, -0.960584, -0.63692, -0.729253, -0.25005, -0.726595, 0.676245, -0.121462, 3.59031, 6.82243, 0.721815)
+
+[node name="TopFinger_Middle_L" parent="Armature/Skeleton3D/TopFinger_Middle_L" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="TopFinger_Base_L" parent="Armature/Skeleton3D" index="2"]
 transform = Transform3D(0.257672, 0.104324, -0.960584, -0.63692, -0.729252, -0.250051, -0.726595, 0.676246, -0.121461, 3.37859, 7.29462, 0.229971)
 
+[node name="TopFinger_Base_L" parent="Armature/Skeleton3D/TopFinger_Base_L" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="RightFinger_Tip_L" parent="Armature/Skeleton3D" index="3"]
 transform = Transform3D(0.702693, 0.110796, 0.702813, 0.537481, -0.729903, -0.422323, 0.466193, 0.674511, -0.57245, 2.8236, 6.33486, 1.40565)
+
+[node name="RightFinger_Tip_L" parent="Armature/Skeleton3D/RightFinger_Tip_L" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="RightFinger_Middle_L" parent="Armature/Skeleton3D" index="4"]
 transform = Transform3D(0.702694, 0.110796, 0.702812, 0.53748, -0.729904, -0.422323, 0.466194, 0.674511, -0.57245, 2.66768, 6.9161, 0.969931)
 
+[node name="RightFinger_Middle_L" parent="Armature/Skeleton3D/RightFinger_Middle_L" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="RightFinger_Base_L" parent="Armature/Skeleton3D" index="5"]
 transform = Transform3D(0.702695, 0.110796, 0.702812, 0.537479, -0.729904, -0.422323, 0.466193, 0.674511, -0.572451, 2.69363, 7.36618, 0.416351)
+
+[node name="RightFinger_Base_L" parent="Armature/Skeleton3D/RightFinger_Base_L" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="LeftFinger_Tip_L" parent="Armature/Skeleton3D" index="6"]
 transform = Transform3D(-0.960371, 0.109037, 0.256514, 0.0994735, -0.725624, 0.680864, 0.260372, 0.679398, 0.686022, 3.02462, 5.84363, 0.84491)
 
+[node name="LeftFinger_Tip_L" parent="Armature/Skeleton3D/LeftFinger_Tip_L" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="LeftFinger_Middle_L" parent="Armature/Skeleton3D" index="7"]
 transform = Transform3D(-0.960371, 0.109035, 0.256512, 0.0994735, -0.725623, 0.680865, 0.26037, 0.679399, 0.686021, 2.91762, 6.30532, 0.272729)
+
+[node name="LeftFinger_Middle_L" parent="Armature/Skeleton3D/LeftFinger_Middle_L" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="LeftFinger_Base_L" parent="Armature/Skeleton3D" index="8"]
 transform = Transform3D(-0.960371, 0.109035, 0.256513, 0.0994743, -0.725622, 0.680865, 0.26037, 0.6794, 0.68602, 2.87662, 6.91153, -0.102149)
 
+[node name="LeftFinger_Base_L" parent="Armature/Skeleton3D/LeftFinger_Base_L" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Hand_L" parent="Armature/Skeleton3D" index="9"]
 transform = Transform3D(0.108052, 0.960172, -0.257673, -0.728265, 0.252882, 0.636931, 0.676724, 0.118832, 0.726584, 2.92852, 7.55759, -0.159462)
+
+[node name="Hand_L" parent="Armature/Skeleton3D/Hand_L" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Forearm_L" parent="Armature/Skeleton3D" index="10"]
 transform = Transform3D(0.102307, 0.960172, -0.260008, -0.713951, 0.252882, 0.652935, 0.692681, 0.118832, 0.711388, 2.55197, 10.1903, -2.71942)
 
+[node name="Forearm_L" parent="Armature/Skeleton3D/Forearm_L" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Arm_L" parent="Armature/Skeleton3D" index="11"]
 transform = Transform3D(0.216347, 0.960172, 0.176818, -0.403731, 0.252882, -0.879234, -0.888929, 0.118832, 0.442361, 1.90422, 11.3789, -0.0115905)
+
+[node name="Arm_L" parent="Armature/Skeleton3D/Arm_L" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="TopFinger_Tip_R" parent="Armature/Skeleton3D" index="12"]
 transform = Transform3D(-0.255356, -0.108714, 0.960716, -0.623934, -0.740532, -0.249638, -0.73858, 0.663169, -0.121269, -3.57374, 6.23875, 1.18208)
 
+[node name="TopFinger_Tip_R" parent="Armature/Skeleton3D/TopFinger_Tip_R" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="TopFinger_Middle_R" parent="Armature/Skeleton3D" index="13"]
 transform = Transform3D(-0.255356, -0.108715, 0.960716, -0.623934, -0.740532, -0.249639, -0.73858, 0.663169, -0.121269, -3.59519, 6.8099, 0.707404)
+
+[node name="TopFinger_Middle_R" parent="Armature/Skeleton3D/TopFinger_Middle_R" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="TopFinger_Base_R" parent="Armature/Skeleton3D" index="14"]
 transform = Transform3D(-0.255356, -0.108713, 0.960716, -0.623934, -0.740532, -0.249638, -0.73858, 0.663169, -0.12127, -3.38037, 7.29006, 0.224702)
 
+[node name="TopFinger_Base_R" parent="Armature/Skeleton3D/TopFinger_Base_R" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="LeftFinger_Tip_R" parent="Armature/Skeleton3D" index="15"]
 transform = Transform3D(-0.70395, -0.115181, -0.700847, 0.530669, -0.741142, -0.411216, 0.472064, 0.661394, -0.58285, -2.83249, 6.30934, 1.38633)
+
+[node name="LeftFinger_Tip_R" parent="Armature/Skeleton3D/LeftFinger_Tip_R" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="LeftFinger_Middle_R" parent="Armature/Skeleton3D" index="16"]
 transform = Transform3D(-0.703951, -0.115181, -0.700847, 0.530668, -0.741143, -0.411216, 0.472064, 0.661393, -0.582851, -2.67355, 6.89766, 0.961362)
 
+[node name="LeftFinger_Middle_R" parent="Armature/Skeleton3D/LeftFinger_Middle_R" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="LeftFinger_Base_R" parent="Armature/Skeleton3D" index="17"]
 transform = Transform3D(-0.703952, -0.115181, -0.700846, 0.530668, -0.741143, -0.411216, 0.472063, 0.661393, -0.582852, -2.69616, 7.3572, 0.415454)
+
+[node name="LeftFinger_Base_R" parent="Armature/Skeleton3D/LeftFinger_Base_R" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="RightFinger_Tip_R" parent="Armature/Skeleton3D" index="18"]
 transform = Transform3D(0.959313, -0.113436, -0.258557, 0.0932981, -0.736949, 0.669479, 0.266485, 0.666363, 0.696381, -3.03173, 5.82814, 0.816338)
 
+[node name="RightFinger_Tip_R" parent="Armature/Skeleton3D/RightFinger_Tip_R" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="RightFinger_Middle_R" parent="Armature/Skeleton3D" index="19"]
 transform = Transform3D(0.959312, -0.113435, -0.258557, 0.0932989, -0.736949, 0.669479, 0.266486, 0.666362, 0.696381, -2.92128, 6.29936, 0.252656)
+
+[node name="RightFinger_Middle_R" parent="Armature/Skeleton3D/RightFinger_Middle_R" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="RightFinger_Base_R" parent="Armature/Skeleton3D" index="20"]
 transform = Transform3D(0.959312, -0.113435, -0.258558, 0.0932997, -0.736948, 0.669479, 0.266486, 0.666363, 0.69638, -2.8775, 6.91181, -0.111595)
 
+[node name="RightFinger_Base_R" parent="Armature/Skeleton3D/RightFinger_Base_R" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Hand_R" parent="Armature/Skeleton3D" index="21"]
 transform = Transform3D(-0.112444, -0.960286, 0.255358, -0.739547, 0.252515, 0.623945, 0.663647, 0.11869, 0.73857, -2.92804, 7.55888, -0.158105)
+
+[node name="Hand_R" parent="Armature/Skeleton3D/Hand_R" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Forearm_R" parent="Armature/Skeleton3D" index="22"]
 transform = Transform3D(-0.106749, -0.960286, 0.25779, -0.725518, 0.252515, 0.640203, 0.679873, 0.11869, 0.723661, -2.53508, 10.2343, -2.67081)
 
+[node name="Forearm_R" parent="Armature/Skeleton3D/Forearm_R" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Arm_R" parent="Armature/Skeleton3D" index="23"]
 transform = Transform3D(-0.213751, -0.960286, -0.179337, -0.392366, 0.252515, -0.884469, -0.894628, 0.11869, 0.430758, -1.89534, 11.3881, 0.0536934)
+
+[node name="Arm_R" parent="Armature/Skeleton3D/Arm_R" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Cone" parent="Armature/Skeleton3D" index="24"]
 transform = Transform3D(0.973759, -0.225023, 0.0340165, 0.207622, 0.817175, -0.537697, 0.0931966, 0.53065, 0.842452, 0.06379, 10.2258, 0.332082)
 
+[node name="Cone" parent="Armature/Skeleton3D/Cone" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Cone_001" parent="Armature/Skeleton3D" index="25"]
 transform = Transform3D(0.909049, -0.416417, 0.0150696, 0.395089, 0.84987, -0.348748, 0.132417, 0.322983, 0.937095, 0.242469, 10.2636, 0.400665)
+
+[node name="Cone_001" parent="Armature/Skeleton3D/Cone_001" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Cone_002" parent="Armature/Skeleton3D" index="26"]
 transform = Transform3D(-0.0103878, -0.478862, 0.877829, 0.699077, 0.624212, 0.348785, -0.714971, 0.617293, 0.328277, 0.381307, 10.2991, 0.511425)
 
+[node name="Cone_002" parent="Armature/Skeleton3D/Cone_002" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Cone_003" parent="Armature/Skeleton3D" index="27"]
 transform = Transform3D(0.991438, 0.115146, -0.0615763, -0.129408, 0.929394, -0.345661, 0.0174272, 0.35067, 0.936337, -0.0542488, 10.2025, 0.320966)
+
+[node name="Cone_003" parent="Armature/Skeleton3D/Cone_003" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Cone_004" parent="Armature/Skeleton3D" index="28"]
 transform = Transform3D(0.901976, 0.431524, 0.0150696, -0.39973, 0.847698, -0.348748, -0.163268, 0.308539, 0.937095, -0.129694, 10.2312, 0.368773)
 
+[node name="Cone_004" parent="Armature/Skeleton3D/Cone_004" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Cone_005" parent="Armature/Skeleton3D" index="29"]
 transform = Transform3D(-0.00856675, 0.546352, 0.837512, 0.78391, 0.523648, -0.333584, -0.620815, 0.653676, -0.432777, -0.211438, 10.2354, 0.430828)
+
+[node name="Cone_005" parent="Armature/Skeleton3D/Cone_005" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Cone_006" parent="Armature/Skeleton3D" index="30"]
 transform = Transform3D(-0.0141301, 0.373382, 0.92757, 0.443386, 0.833812, -0.328886, -0.89622, 0.406624, -0.177334, -0.322108, 10.3452, 0.453435)
 
+[node name="Cone_006" parent="Armature/Skeleton3D/Cone_006" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Cone_007" parent="Armature/Skeleton3D" index="31"]
 transform = Transform3D(0.789861, 0.0451306, 0.611623, -0.251107, -0.886062, 0.389666, 0.559522, -0.461365, -0.688533, -0.193839, 10.4562, 0.607103)
+
+[node name="Cone_007" parent="Armature/Skeleton3D/Cone_007" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Cone_008" parent="Armature/Skeleton3D" index="32"]
 transform = Transform3D(-0.702623, -0.106311, -0.703576, 0.380823, -0.891431, -0.245612, -0.601078, -0.44051, 0.666826, 0.176389, 10.4652, 0.635686)
 
+[node name="Cone_008" parent="Armature/Skeleton3D/Cone_008" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Cone_009" parent="Armature/Skeleton3D" index="33"]
 transform = Transform3D(-0.99979, -0.00502399, -0.0198608, 0.0155112, -0.818941, -0.573668, -0.0133826, -0.573856, 0.818847, 0.386518, 10.5474, 0.660685)
+
+[node name="Cone_009" parent="Armature/Skeleton3D/Cone_009" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Cone_010" parent="Armature/Skeleton3D" index="34"]
 transform = Transform3D(-0.913333, -0.21225, -0.347525, 0.362512, -0.812545, -0.456461, -0.185496, -0.542882, 0.819067, -0.516169, 10.6325, 0.706335)
 
+[node name="Cone_010" parent="Armature/Skeleton3D/Cone_010" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Cone_011" parent="Armature/Skeleton3D" index="35"]
 transform = Transform3D(0.13767, -0.141963, 0.980252, 0.516188, 0.854937, 0.0513196, -0.845339, 0.498929, 0.190978, -0.62004, 10.4744, 0.547345)
+
+[node name="Cone_011" parent="Armature/Skeleton3D/Cone_011" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Cone_012" parent="Armature/Skeleton3D" index="36"]
 transform = Transform3D(-0.92677, -0.267503, 0.263703, 0.129745, -0.88679, -0.443588, 0.35251, -0.37689, 0.856557, -0.386994, 10.5475, 0.68273)
 
+[node name="Cone_012" parent="Armature/Skeleton3D/Cone_012" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Cone_013" parent="Armature/Skeleton3D" index="37"]
 transform = Transform3D(-0.931476, 0.279915, -0.23238, -0.0443432, -0.721344, -0.691156, -0.361091, -0.63349, 0.684327, 0.549638, 10.6093, 0.673054)
+
+[node name="Cone_013" parent="Armature/Skeleton3D/Cone_013" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Cone_014" parent="Armature/Skeleton3D" index="38"]
 transform = Transform3D(0.947323, -0.302938, -0.103956, 0.17033, 0.751401, -0.637483, 0.27123, 0.586196, 0.763419, 0.702324, 10.547, 0.591648)
 
+[node name="Cone_014" parent="Armature/Skeleton3D/Cone_014" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Cone_015" parent="Armature/Skeleton3D" index="39"]
 transform = Transform3D(0.080308, 0.823268, 0.561943, 0.34411, 0.506206, -0.790787, -0.935489, 0.256877, -0.242642, -0.784946, 10.6944, 0.714149)
+
+[node name="Cone_015" parent="Armature/Skeleton3D/Cone_015" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Cone_016" parent="Armature/Skeleton3D" index="40"]
 transform = Transform3D(-0.994665, -0.0996692, -0.0265872, 0.10121, -0.893133, -0.438259, 0.0199352, -0.438612, 0.898455, 0.755808, 10.7228, 0.754461)
 
+[node name="Cone_016" parent="Armature/Skeleton3D/Cone_016" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Cone_017" parent="Armature/Skeleton3D" index="41"]
 transform = Transform3D(-0.901539, -0.41662, -0.116858, 0.403435, -0.711703, -0.575082, 0.156423, -0.565604, 0.809706, -0.66259, 10.6758, 0.75623)
+
+[node name="Cone_017" parent="Armature/Skeleton3D/Cone_017" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Head_002" parent="Armature/Skeleton3D" index="42"]
 transform = Transform3D(0.999852, 0.00988558, 0.0141044, -0.00256197, 0.895139, -0.44578, -0.0170324, 0.445678, 0.895032, -0.00399105, 10.4523, -0.379983)
 
+[node name="Head_002" parent="Armature/Skeleton3D/Head_002" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Plate_009" parent="Armature/Skeleton3D" index="43"]
 transform = Transform3D(0.984063, -0.170246, -0.0513489, 0.0870797, 0.713142, -0.69559, 0.15504, 0.680033, 0.716602, 0.0288084, 10.154, -0.594322)
+
+[node name="Plate_009" parent="Armature/Skeleton3D/Plate_009" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Plate_008" parent="Armature/Skeleton3D" index="44"]
 transform = Transform3D(0.943882, -0.280708, -0.174039, 0.0868413, 0.719325, -0.689225, 0.318661, 0.635433, 0.703335, 0.112832, 9.89499, -0.831033)
 
+[node name="Plate_008" parent="Armature/Skeleton3D/Plate_008" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Plate_007" parent="Armature/Skeleton3D" index="45"]
 transform = Transform3D(0.87567, -0.305874, -0.373689, 0.105312, 0.876158, -0.47038, 0.471288, 0.372543, 0.799437, 0.219384, 9.60326, -1.0075)
+
+[node name="Plate_007" parent="Armature/Skeleton3D/Plate_007" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Plate_006" parent="Armature/Skeleton3D" index="46"]
 transform = Transform3D(0.782476, -0.208294, -0.586808, 0.199474, 0.976578, -0.0806597, 0.589865, -0.0539384, 0.805698, 0.310136, 9.26621, -1.0556)
 
+[node name="Plate_006" parent="Armature/Skeleton3D/Plate_006" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Plate_005" parent="Armature/Skeleton3D" index="47"]
 transform = Transform3D(0.689557, -0.0202365, -0.723949, 0.344967, 0.888106, 0.303754, 0.636796, -0.459194, 0.61938, 0.347649, 8.931, -0.954709)
+
+[node name="Plate_005" parent="Armature/Skeleton3D/Plate_005" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Plate_004" parent="Armature/Skeleton3D" index="48"]
 transform = Transform3D(0.606732, 0.16264, -0.77809, 0.47242, 0.713447, 0.517507, 0.639293, -0.681573, 0.356037, 0.317967, 8.64534, -0.743751)
 
+[node name="Plate_004" parent="Armature/Skeleton3D/Plate_004" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Plate_003" parent="Armature/Skeleton3D" index="49"]
 transform = Transform3D(0.506806, 0.277954, -0.81602, 0.537182, 0.638515, 0.55112, 0.674228, -0.717663, 0.174291, 0.235059, 8.39823, -0.486068)
+
+[node name="Plate_003" parent="Armature/Skeleton3D/Plate_003" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Plate_002" parent="Armature/Skeleton3D" index="50"]
 transform = Transform3D(0.360153, 0.302679, -0.882426, 0.511766, 0.726765, 0.458158, 0.77999, -0.616603, 0.106845, 0.129597, 8.1496, -0.247109)
 
+[node name="Plate_002" parent="Armature/Skeleton3D/Plate_002" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Plate_001" parent="Armature/Skeleton3D" index="51"]
 transform = Transform3D(0.177449, 0.209812, -0.961504, 0.351294, 0.89914, 0.261036, 0.919296, -0.384091, 0.0858456, 0.0391049, 7.85182, -0.0715865)
+
+[node name="Plate_001" parent="Armature/Skeleton3D/Plate_001" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Waist_001" parent="Armature/Skeleton3D" index="52"]
 transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 2.96411e-17, 7.17, 0)
 
+[node name="Waist_001" parent="Armature/Skeleton3D/Waist_001" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Calf_L_001" parent="Armature/Skeleton3D" index="53"]
 transform = Transform3D(-1, -1.50996e-07, -5.54223e-13, 1.50955e-07, -0.999733, -0.0231276, 3.49168e-09, -0.0231276, 0.999733, 0.883497, 3.72317, 0.0863727)
+
+[node name="Calf_L_001" parent="Armature/Skeleton3D/Calf_L_001" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="Thigh_L_001" parent="Armature/Skeleton3D" index="54"]
 transform = Transform3D(-1, -1.50996e-07, -2.38419e-07, 1.42948e-07, -0.999442, 0.0334017, -2.4333e-07, 0.0334017, 0.999442, 0.883497, 6.21944, 0.000654243)
 
+[node name="Thigh_L_001" parent="Armature/Skeleton3D/Thigh_L_001" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Calf_R_001" parent="Armature/Skeleton3D" index="55"]
 transform = Transform3D(1, 1.50996e-07, 1.50996e-07, 1.54448e-07, -0.999733, -0.0231276, -1.47464e-07, -0.0231276, 0.999733, -0.883503, 3.72317, 0.0863727)
 
+[node name="Calf_R_001" parent="Armature/Skeleton3D/Calf_R_001" index="0"]
+layers = 131072
+gi_mode = 0
+
 [node name="Thigh_R_001" parent="Armature/Skeleton3D" index="56"]
 transform = Transform3D(1, 1.50996e-07, 3.89415e-07, 1.37904e-07, -0.999442, 0.0334017, -3.94241e-07, 0.0334017, 0.999442, -0.883503, 6.21944, 0.000654276)
+
+[node name="Thigh_R_001" parent="Armature/Skeleton3D/Thigh_R_001" index="0"]
+layers = 131072
+gi_mode = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.754, 0)
 shape = SubResource("CapsuleShape3D_rufnw")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
+path_desired_distance = 3.0
 target_desired_distance = 3.0
 path_height_offset = 2.0
-path_postprocessing = 1
 avoidance_enabled = true
-height = 14.0
-radius = 2.0
-max_neighbors = 8
+height = 13.5
+radius = 1.94
+max_speed = 25.0
 
 [node name="Area3D" type="Area3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.016, -1.527)
@@ -370,6 +602,16 @@ script = ExtResource("3_u70bt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox3D2" index="0"]
 shape = SubResource("CapsuleShape3D_ejftg")
+
+[node name="PainHSM" parent="." index="8" node_paths=PackedStringArray("holder", "health_bar") instance=ExtResource("4_j0xng")]
+holder = NodePath("..")
+health_bar = NodePath("../HealthBar")
+health = 1500
+current_health = 1500
+current_max_health = 1500
+fire_damage_multiplier = 2
+
+[node name="HealthBar" parent="." index="9" instance=ExtResource("5_jtt33")]
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_velocity_computed"]

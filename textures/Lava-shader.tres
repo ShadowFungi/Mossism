@@ -52,9 +52,10 @@ uniform float wave_speed_z = 1.0;
 uniform bool wave_direction_z = true; // true = upward, false = downward
 uniform float overall_opacity = 1.0;
 
-uniform float emit : hint_range(0.0, 1.0, 0.05);
-uniform float rim : hint_range(0.0, 1.0, 0.05);
-uniform float rim_tint : hint_range(0.0, 1.0, 0.05);
+uniform float emit : hint_range(0.0, 1.0, 0.01) = 1.0;
+uniform float radiance_amount : hint_range(0.0, 250.0, 0.1) = 125;
+uniform float rim : hint_range(0.0, 1.0, 0.01) = 1.0;
+uniform float rim_tint : hint_range(0.0, 1.0, 0.01) = 0.75;
 uniform sampler2D emit_texture : source_color,filter_nearest,repeat_enable;
 
 
@@ -127,7 +128,7 @@ void fragment() {
 	RIM = rim;
 	RIM_TINT = rim_tint;
 	EMISSION = mix(vec3(0.1), emit_value, emit);
-	RADIANCE = vec4(emit_value, 1.0);
+	RADIANCE = vec4(emit_value, radiance_amount);
 
 
     // Apply the overlay textures

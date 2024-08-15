@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cimd1va2qm3l"]
+[gd_scene load_steps=9 format=3 uid="uid://cimd1va2qm3l"]
 
 [ext_resource type="Script" path="res://scripts/player/weapons/bullet.gd" id="1_bpp6f"]
 [ext_resource type="PhysicsMaterial" uid="uid://d2nltka00g486" path="res://physics/bullet.tres" id="1_t8lct"]
 [ext_resource type="SphereMesh" uid="uid://blxgpqvac2dmf" path="res://assets/meshes/bullet.tres" id="3_rxemu"]
 [ext_resource type="AudioStream" uid="uid://btjt23mujq6lv" path="res://assets/sounds/effects/bullet_explode.tres" id="4_1or1a"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_k2nd7"]
-custom_solver_bias = 0.2
+[sub_resource type="SphereShape3D" id="SphereShape3D_q1lwa"]
 radius = 0.1
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_je4sx"]
@@ -36,22 +35,27 @@ height = 0.2
 radial_segments = 5
 rings = 5
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_k2nd7"]
+radius = 0.15
+
 [node name="Bullet" type="RigidBody3D" groups=["bullet"]]
 collision_layer = 1073741824
 collision_mask = 2281701391
 input_ray_pickable = false
 mass = 2.0
 physics_material_override = ExtResource("1_t8lct")
+continuous_cd = true
 max_contacts_reported = 3
 contact_monitor = true
 script = ExtResource("1_bpp6f")
 explodes = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_k2nd7")
+shape = SubResource("SphereShape3D_q1lwa")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 262144
+gi_mode = 0
 mesh = ExtResource("3_rxemu")
 
 [node name="Timer" type="Timer" parent="."]
@@ -65,7 +69,7 @@ unit_size = 8.0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 layers = 262144
-gi_mode = 2
+gi_mode = 0
 emitting = false
 lifetime = 1.5
 one_shot = true
@@ -77,6 +81,15 @@ visibility_aabb = AABB(-1.91628, -1.93849, -1.91117, 3.83255, 3.87698, 3.82235)
 process_material = SubResource("ParticleProcessMaterial_je4sx")
 draw_pass_1 = SubResource("SphereMesh_4632c")
 
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 1073741824
+collision_mask = 2281701376
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_k2nd7")
+
 [connection signal="body_entered" from="." to="." method="body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_sound_finished"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

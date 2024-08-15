@@ -1,10 +1,13 @@
 extends LimboState
 
 
-@onready var fire_damage_multiplier: float = get_parent().fire_damage_multiplier
+@onready var fire_damage_multiplier: int = get_parent().fire_damage_multiplier
 @onready var holder: CharacterBody3D = get_parent().holder
 @onready var pain_hsm: LimboHSM = get_parent()
 @onready var fire_res: bool = get_parent().fire_res
+@onready var damage_multiplier: int = get_parent().damage_multiplier
+@onready var damage_additional: int = get_parent().damage_additional
+
 var ended: bool = false
 var strength: int
 
@@ -18,7 +21,7 @@ func _enter() -> void:
 
 
 func _update(_delta: float) -> void:
-	if get_parent().damage_type == 'none':
+	if pain_hsm.damage_type == 'none':
 		dispatch(&'pain_stopped')
 	#while pain_hsm.damage_type == 'fire':
 	if ended == true:

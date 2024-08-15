@@ -7,10 +7,10 @@ extends LimboState
 func _update(_delta: float) -> void:
 	match pain_hsm.damage_type:
 		'fire':
-			print('caught fire')
+			#print('caught fire')
 			dispatch(&'caught_fire')
 		'explosion':
-			dispatch(&'exlpoded')
+			dispatch(&'exploded')
 		'shot':
 			dispatch(&'shot')
 		'slash':
