@@ -84,6 +84,13 @@ func update_properties() -> void:
 	if 'can_move_self' in properties:
 		can_move_self = properties.can_move_self
 	
+	#if 'render_layers' in properties:
+	#	await self.ready
+	#	for dimension in 3:
+	#		if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
+	#			#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
+	#			find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
+	
 	if 'collision_mask' in properties:
 		set_collision_mask_value(1, false)
 		for dimension in 3:

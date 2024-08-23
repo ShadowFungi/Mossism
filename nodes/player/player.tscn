@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dqj64b3y24pyv"]
+[gd_scene load_steps=38 format=3 uid="uid://dqj64b3y24pyv"]
 
 [ext_resource type="PackedScene" uid="uid://bot0f53hv0v3k" path="res://assets/models/player/character/player.rigged.glb" id="1_88fmg"]
 [ext_resource type="Script" path="res://scripts/player/player_rigged_glb.gd" id="2_l0nax"]
@@ -10,6 +10,7 @@
 [ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="7_driho"]
 [ext_resource type="PackedScene" uid="uid://rmyrp0rpg0pp" path="res://nodes/player/sawed_off.tscn" id="8_en11i"]
 [ext_resource type="PackedScene" uid="uid://yqh4nksms18t" path="res://nodes/player/HeadsUpDisplay.tscn" id="9_8jwsx"]
+[ext_resource type="CameraAttributesPractical" uid="uid://gkwjgf6vkw8d" path="res://styles/camera_attributes/player.tres" id="10_rporx"]
 [ext_resource type="PackedScene" uid="uid://bhe4g8hhy6h80" path="res://nodes/menus/player/PauseMenu.tscn" id="10_s7si3"]
 [ext_resource type="PackedScene" uid="uid://d3uacef8ml2pc" path="res://nodes/menus/player/GameOver.tscn" id="11_df4gm"]
 [ext_resource type="Script" path="res://scripts/player/limbo/PlayerIdleState.gd" id="12_s7kid"]
@@ -28,7 +29,7 @@
 [sub_resource type="Sky" id="Sky_6tkic"]
 sky_material = SubResource("ProceduralSkyMaterial_i6h3a")
 
-[sub_resource type="Environment" id="Environment_8b7nh"]
+[sub_resource type="Environment" id="Environment_ys8lc"]
 background_color = Color(0.247059, 0.337255, 0.231373, 1)
 sky = SubResource("Sky_6tkic")
 ambient_light_source = 2
@@ -53,7 +54,7 @@ glow_hdr_threshold = 0.5
 glow_hdr_scale = 4.0
 fog_enabled = true
 fog_light_color = Color(0.259416, 0.42423, 0.212468, 1)
-fog_density = 0.025
+fog_density = 0.0125
 fog_sky_affect = 0.35
 fog_height = -1024.0
 volumetric_fog_density = 0.085
@@ -66,10 +67,17 @@ adjustment_brightness = 0.9
 adjustment_contrast = 0.95
 adjustment_saturation = 0.95
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_yofmu"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2jg22"]
 exposure_multiplier = 0.25
 auto_exposure_scale = 0.03
 auto_exposure_max_sensitivity = 0.0
+
+[sub_resource type="Curve3D" id="Curve3D_rbbgu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0)
+}
+point_count = 1
 
 [sub_resource type="Resource" id="Resource_myjsg"]
 script = ExtResource("5_rj1tq")
@@ -120,6 +128,10 @@ height = 5.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_isqdb"]
 size = Vector3(0.925, 0.975, 0.55)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vv8u1"]
+height = 1.879
+radius = 0.6
 
 [node name="Player" node_paths=PackedStringArray("pcam", "pivot", "skel", "look_pivot", "sawed_off", "ground_ray", "step_shape", "hud", "gameover") groups=["player"] instance=ExtResource("1_88fmg")]
 process_mode = 1
@@ -462,24 +474,23 @@ process_priority = 1
 root_bone = &"spine"
 tip_bone = &"head"
 use_magnet = true
-magnet = Vector3(0, 16.265, 0)
+magnet = Vector3(0, 16.265, 5.165)
 target_node = NodePath("../../../HeadLoc3D")
 script = ExtResource("3_hjwlr")
 
 [node name="SkeletonIK3D6" type="SkeletonIK3D" parent="metarig/Skeleton3D" index="52"]
 process_priority = 1
 root_bone = &"head"
-tip_bone = &"head.001"
-override_tip_basis = false
+tip_bone = &"Head"
 use_magnet = true
-magnet = Vector3(0, -2.715, -1.31)
-target_node = NodePath("../../../HeadLoc3D/Marker3D")
+magnet = Vector3(0, -2.525, -1.31)
+target_node = NodePath("../../../HeadLoc3D/HeadMarker3D")
 script = ExtResource("3_hjwlr")
 
 [node name="Camera3D" type="Camera3D" parent="." index="1"]
-transform = Transform3D(1, -1.74845e-07, 8.74226e-08, 1.74845e-07, 1, -1.2517e-08, -8.74226e-08, 1.2517e-08, 1, -3.18943e-09, 4.80462, -0.0364842)
-environment = SubResource("Environment_8b7nh")
-attributes = SubResource("CameraAttributesPractical_yofmu")
+transform = Transform3D(0.999999, -1.7484e-07, 8.74204e-08, 1.74845e-07, 0.999966, -1.25167e-08, -8.74225e-08, 1.25166e-08, 0.999975, -3.18943e-09, 4.80462, -0.0364842)
+environment = SubResource("Environment_ys8lc")
+attributes = SubResource("CameraAttributesPractical_2jg22")
 doppler_tracking = 2
 current = true
 near = 0.175
@@ -488,13 +499,16 @@ near = 0.175
 script = ExtResource("3_ibfff")
 
 [node name="HeadLoc3D" type="Node3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.995396, 0.0958458, 0, -0.0958458, 0.995396, 0, 4.497, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75, 0)
 
-[node name="Marker3D" type="Marker3D" parent="HeadLoc3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, -5.96046e-08)
+[node name="HeadMarker3D" type="Marker3D" parent="HeadLoc3D" index="0"]
+
+[node name="Path3D" type="Path3D" parent="HeadLoc3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.563)
+curve = SubResource("Curve3D_rbbgu")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." index="3" node_paths=PackedStringArray("follow_target", "look_at_target")]
-transform = Transform3D(1, -1.74845e-07, 8.74226e-08, 1.74845e-07, 1, -1.2517e-08, -8.74226e-08, 1.2517e-08, 1, -3.18943e-09, 4.80462, -0.0364842)
+transform = Transform3D(0.999999, -1.7484e-07, 8.74204e-08, 1.74845e-07, 0.999966, -1.25167e-08, -8.74225e-08, 1.25166e-08, 0.999975, -3.18943e-09, 4.80462, -0.0364842)
 script = ExtResource("4_v5tf1")
 priority = 2
 follow_mode = 2
@@ -508,7 +522,7 @@ environment = ExtResource("7_driho")
 attributes = SubResource("CameraAttributesPractical_hc01b")
 
 [node name="SawedOff" parent="PhantomCamera3D" index="0" node_paths=PackedStringArray("player") instance=ExtResource("8_en11i")]
-transform = Transform3D(1, 1.74846e-07, 1.74845e-07, -1.74846e-07, 1, -1.75238e-07, -1.74845e-07, 1.75238e-07, 1, 0.724795, -0.721606, -1.61847)
+transform = Transform3D(1, 2.03288e-20, 1.74846e-07, -2.03288e-20, 1, 5.92401e-28, -1.74846e-07, -4.14681e-27, 1, 0.724795, -0.721606, -1.61847)
 player = NodePath("../..")
 
 [node name="Marker3D" type="Marker3D" parent="PhantomCamera3D/SawedOff" index="5"]
@@ -520,16 +534,21 @@ transform = Transform3D(1, -1.01644e-20, 0, 0, 1, 0, 0, 0, 1, -0.161799, -0.1535
 [node name="Marker3D" type="Marker3D" parent="PhantomCamera3D" index="1"]
 transform = Transform3D(1, 1.64747e-19, 0, 1.64747e-19, 1, 0, 0, 0, 1, 0.725, -0.623, -3.187)
 
-[node name="TPPhantomCamera3D" type="Node3D" parent="." index="4" node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(1, -1.74846e-07, 9.09495e-13, 1.74846e-07, 1, 1.75238e-07, -9.40134e-13, -1.75238e-07, 1, -3.18215e-09, 4.80463, 7.96352)
+[node name="TPPhantomCamera3D" type="Node3D" parent="." index="4" node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
+transform = Transform3D(0.999928, 0, 0, 0, 0.999927, 0, 0, 0, 0.999841, 0, 4.75, 4.563)
 visible = false
 script = ExtResource("4_v5tf1")
 priority = 3
-follow_mode = 6
-follow_target = NodePath("../metarig/Skeleton3D/Head")
+follow_mode = 4
+follow_target = NodePath("..")
+follow_path = NodePath("../HeadLoc3D/Path3D")
+look_at_mode = 1
+look_at_target = NodePath("../HeadLoc3D/HeadMarker3D")
 tween_resource = SubResource("Resource_1886p")
 tween_on_load = false
 camera_3d_resource = SubResource("Resource_mke3j")
+environment = ExtResource("7_driho")
+attributes = ExtResource("10_rporx")
 follow_damping = true
 follow_distance = 8.0
 dead_zone_width = 0.342
@@ -539,7 +558,7 @@ collision_mask = 15
 shape = SubResource("SeparationRayShape3D_fycoq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.599, 0)
+transform = Transform3D(0.999946, 0, -0.0103496, 0, 1, 0, 0.0103496, 0, 0.999946, 0, 2.599, 0)
 shape = SubResource("CapsuleShape3D_xjtji")
 
 [node name="Targets" type="Node3D" parent="." index="6"]
@@ -562,16 +581,22 @@ shape = SubResource("BoxShape3D_isqdb")
 target_position = Vector3(0, 0, -0.6)
 collision_mask = 5
 
-[node name="HUD" parent="." index="9" instance=ExtResource("9_8jwsx")]
+[node name="CrouchCast3D" type="ShapeCast3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26678, 0)
+shape = SubResource("CylinderShape3D_vv8u1")
+target_position = Vector3(0, 1, 0)
+collision_mask = 15
 
-[node name="PauseMenu" parent="." index="10" node_paths=PackedStringArray("player") instance=ExtResource("10_s7si3")]
+[node name="HUD" parent="." index="10" instance=ExtResource("9_8jwsx")]
+
+[node name="PauseMenu" parent="." index="11" node_paths=PackedStringArray("player") instance=ExtResource("10_s7si3")]
 visible = false
 player = NodePath("..")
 
-[node name="GameOver" parent="." index="11" instance=ExtResource("11_df4gm")]
+[node name="GameOver" parent="." index="12" instance=ExtResource("11_df4gm")]
 visible = false
 
-[node name="MovementHSM" type="LimboHSM" parent="." index="12"]
+[node name="MovementHSM" type="LimboHSM" parent="." index="13"]
 
 [node name="PlayerIdleState" type="LimboState" parent="MovementHSM" index="0" node_paths=PackedStringArray("player")]
 script = ExtResource("12_s7kid")
@@ -585,7 +610,7 @@ player = NodePath("../..")
 script = ExtResource("14_vfbvu")
 player = NodePath("../..")
 
-[node name="ElevationHSM" type="LimboHSM" parent="." index="13"]
+[node name="ElevationHSM" type="LimboHSM" parent="." index="14"]
 
 [node name="PlayerGroundedState" type="LimboState" parent="ElevationHSM" index="0" node_paths=PackedStringArray("player", "ground_ray")]
 script = ExtResource("15_1iibm")
@@ -606,7 +631,7 @@ script = ExtResource("18_wkc1q")
 player = NodePath("../..")
 ground_ray = NodePath("../../GroundRay3D")
 
-[node name="HeightHSM" type="LimboHSM" parent="." index="14"]
+[node name="HeightHSM" type="LimboHSM" parent="." index="15"]
 
 [node name="PlayerStandingState" type="LimboState" parent="HeightHSM" index="0" node_paths=PackedStringArray("player", "col_shape", "head_target", "meta_rig")]
 script = ExtResource("19_b3koa")
@@ -615,15 +640,16 @@ col_shape = NodePath("../../CollisionShape3D")
 head_target = NodePath("../../HeadLoc3D")
 meta_rig = NodePath("../../metarig")
 
-[node name="PlayerCrouchingState" type="LimboState" parent="HeightHSM" index="1" node_paths=PackedStringArray("player", "col_shape", "head_target", "meta_rig")]
+[node name="PlayerCrouchingState" type="LimboState" parent="HeightHSM" index="1" node_paths=PackedStringArray("player", "col_shape", "head_target", "meta_rig", "crouch_cast")]
 script = ExtResource("20_uo0ao")
 crouch_size = 4.298
 player = NodePath("../..")
 col_shape = NodePath("../../CollisionShape3D")
 head_target = NodePath("../../HeadLoc3D")
 meta_rig = NodePath("../../metarig")
+crouch_cast = NodePath("../../CrouchCast3D")
 
-[node name="PainHSM" parent="." index="15" node_paths=PackedStringArray("holder", "health_label") instance=ExtResource("22_85xb5")]
+[node name="PainHSM" parent="." index="16" node_paths=PackedStringArray("holder", "health_label") instance=ExtResource("22_85xb5")]
 holder = NodePath("..")
 health_label = NodePath("../HUD/PanelContainer/HBoxContainer/MarginContainer2/Label2")
 fire_damage_multiplier = 2

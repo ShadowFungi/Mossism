@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnt5650g5rqjd"]
+[gd_scene load_steps=11 format=3 uid="uid://cnt5650g5rqjd"]
 
 [ext_resource type="PackedScene" uid="uid://bh8pwec5ry6d3" path="res://assets/models/enemies/Mossling/Mossling.glb" id="1_b65re"]
 [ext_resource type="Script" path="res://scripts/enemy/mossling.gd" id="2_jjtwu"]
@@ -11,20 +11,31 @@ radius = 1.94
 height = 13.5
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hxyr0"]
-points = PackedVector3Array(0, 0, 0, 18, 5, -24, 20, 0, -24, 18, -10, -24, 0, -15, -24, -18, 5, -24, 0, 8, -24, -20, 0, -24, -18, -10, -24, -8, -8, -1, 8, -8, -1, -10, 3, -5, 10, 3, -5)
+points = PackedVector3Array(0, 0, 0, 18, 5, -24, 20, 0, -24, 18, -10, -24, 0, -15, -24, -18, 5, -24, 0, 8, -24, -20, 0, -24, -18, -10, -24, -8, -11, -1, 8, -11, -1, -10, 3, -5, 10, 3, -5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lx5xo"]
+height = 8.5
+radius = 1.945
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wmbv0"]
+height = 13.5
+radius = 2.13
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ejftg"]
 radius = 0.625118
 height = 2.9126
 
-[node name="Mossling" node_paths=PackedStringArray("ray", "pain_hsm") groups=["enemy"] instance=ExtResource("1_b65re")]
+[node name="Mossling" node_paths=PackedStringArray("ray", "pain_hsm", "crouch_cast", "rotate_cast", "collision_shape") groups=["enemy"] instance=ExtResource("1_b65re")]
 process_mode = 1
 collision_layer = 134217728
-collision_mask = 2281701391
+collision_mask = 3355443215
 script = ExtResource("2_jjtwu")
-speed = 15
+speed = 17
 ray = NodePath("RayCast3D")
 pain_hsm = NodePath("PainHSM")
+crouch_cast = NodePath("ShapeCast3D")
+rotate_cast = NodePath("RotateCast3D")
+collision_shape = NodePath("CollisionShape3D")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/1/rotation = Quaternion(-0.219353, -0.639501, 0.0481058, 0.735261)
@@ -563,13 +574,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.754, 0)
 shape = SubResource("CapsuleShape3D_rufnw")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
-path_desired_distance = 3.0
-target_desired_distance = 3.0
-path_height_offset = 2.0
-avoidance_enabled = true
+path_desired_distance = 1.5
+target_desired_distance = 1.5
+path_height_offset = 0.25
+path_max_distance = 10.01
+path_postprocessing = 1
+simplify_path = true
+simplify_epsilon = 0.25
 height = 13.5
 radius = 1.94
-max_speed = 25.0
+max_speed = 27.5
+use_3d_avoidance = true
+debug_use_custom = true
+debug_path_custom_point_size = 12.0
 
 [node name="Area3D" type="Area3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.016, -1.527)
@@ -581,11 +598,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.97595)
 shape = SubResource("ConvexPolygonShape3D_hxyr0")
 
 [node name="RayCast3D" type="RayCast3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.088, -1.311)
-target_position = Vector3(0, 0, -28)
-collision_mask = 2147483648
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.088, 0)
+target_position = Vector3(0, 0, -30)
+collision_mask = 2147483663
 
-[node name="HitBox3D" type="Area3D" parent="." index="6"]
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+shape = SubResource("CylinderShape3D_lx5xo")
+target_position = Vector3(0, 1, 0)
+margin = 0.5
+max_results = 1
+collision_mask = 15
+debug_shape_custom_color = Color(0.219608, 0.615686, 0.164706, 1)
+
+[node name="RotateCast3D" type="ShapeCast3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.75, 0)
+shape = SubResource("CylinderShape3D_wmbv0")
+target_position = Vector3(0, 0, 0)
+margin = 0.5
+max_results = 1
+collision_mask = 1073741824
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0.737255, 0.113725, 0.737255, 1)
+
+[node name="HitBox3D" type="Area3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 0.734713, -0.678378, 0, 0.678378, 0.734713, 3.05726, 6.46416, -0.879726)
 collision_layer = 67108864
 collision_mask = 2147483648
@@ -594,7 +631,7 @@ script = ExtResource("3_u70bt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox3D" index="0"]
 shape = SubResource("CapsuleShape3D_ejftg")
 
-[node name="HitBox3D2" type="Area3D" parent="." index="7"]
+[node name="HitBox3D2" type="Area3D" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 0.734713, -0.678378, 0, 0.678378, 0.734713, -3.057, 6.464, -0.88)
 collision_layer = 67108864
 collision_mask = 2147483648
@@ -603,7 +640,7 @@ script = ExtResource("3_u70bt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox3D2" index="0"]
 shape = SubResource("CapsuleShape3D_ejftg")
 
-[node name="PainHSM" parent="." index="8" node_paths=PackedStringArray("holder", "health_bar") instance=ExtResource("4_j0xng")]
+[node name="PainHSM" parent="." index="10" node_paths=PackedStringArray("holder", "health_bar") instance=ExtResource("4_j0xng")]
 holder = NodePath("..")
 health_bar = NodePath("../HealthBar")
 health = 1500
@@ -611,7 +648,7 @@ current_health = 1500
 current_max_health = 1500
 fire_damage_multiplier = 2
 
-[node name="HealthBar" parent="." index="9" instance=ExtResource("5_jtt33")]
+[node name="HealthBar" parent="." index="11" instance=ExtResource("5_jtt33")]
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_velocity_computed"]

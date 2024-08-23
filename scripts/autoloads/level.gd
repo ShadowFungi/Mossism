@@ -56,4 +56,5 @@ func _bake_complete() -> void:
 func rebake_map():
 	print("bake_started")
 	primary_instance.bake_navigation_mesh(true)
+	NavigationServer3D.bake_from_source_geometry_data_async(nav_mesh, nav_mesh_data)
 	bake_map = false

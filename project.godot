@@ -14,7 +14,7 @@ config/name="Mossism"
 run/main_scene="res://nodes/menus/StartMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Mossism/"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 0)
 boot_splash/image="res://assets/menus/BootSplash.png"
@@ -81,13 +81,11 @@ fonts/canvas_textures/default_texture_filter=0
 
 [navigation]
 
-3d/default_cell_size=1.0
-3d/default_cell_height=1.75
-3d/physics_jitter_fix=0.0
+3d/default_cell_height=1.5
 
 [physics]
 
-3d/physics_engine="GodotPhysics3D"
+3d/physics_engine="JoltPhysics3D"
 3d/default_gravity=14.8
 
 [rendering]

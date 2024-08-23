@@ -18,6 +18,7 @@ shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_shg3r")
 texture_filter = 0
 texture_repeat = false
+disable_receive_shadows = true
 billboard_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ovr68"]

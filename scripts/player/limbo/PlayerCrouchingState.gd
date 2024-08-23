@@ -9,6 +9,7 @@ extends LimboState
 @export var anim_player: AnimationPlayer
 @export var head_target: Node3D
 @export var meta_rig: Node3D
+@export var crouch_cast: ShapeCast3D
 
 var shape: CapsuleShape3D
 var og_size: float
@@ -27,7 +28,7 @@ func _enter() -> void:
 
 
 func _update(_delta: float) -> void:
-	if !Input.is_action_pressed('player-%s_crouch' % player.id):
+	if !Input.is_action_pressed('player-%s_crouch' % player.id) and crouch_cast.is_colliding() == false:
 		dispatch(&'crouch_ended')
 	if player.velocity.y != 0 and player.running == true:
 		player.velocity.x = player.velocity.x * player.CANNONBALL_MODIFIER

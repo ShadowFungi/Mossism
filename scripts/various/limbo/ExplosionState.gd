@@ -38,5 +38,3 @@ func _prolonged_damage(prolonged_time: int):
 			damage = damage / 1.25
 		pain_hsm.current_health -= damage
 	ended = true
-
-

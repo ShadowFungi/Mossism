@@ -23,6 +23,7 @@ func _on_timer_timeout():
 
 
 func _on_sound_finished() -> void:
+	await get_tree().create_timer(0.15, false)
 	queue_free()
 
 
@@ -32,17 +33,21 @@ func _emit_damage(body: PhysicsBody3D) -> void:
 			body.damage('explosion')
 		else:
 			body.damage('shot')
-		self.hide()
-		await get_tree().create_timer(0.15, false).timeout
+		get_node('MeshInstance3D').hide()
+		$GPUParticles3D.emitting = true
+		$AudioStreamPlayer3D.play()
+		await get_tree().create_timer(0.1, false).timeout
 		body.damage('none')
-		await get_tree().create_timer(0.25, false).timeout
+		await get_tree().create_timer(0.15, false).timeout
 		queue_free()
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group(&'player'):
 		if body.id != host_player_id:
+			freeze = true
 			_emit_damage(body)
 	#if body.is_in_group(&'enemy'):
 	else:
+		freeze = true
 		_emit_damage(body)

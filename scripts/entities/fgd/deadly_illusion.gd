@@ -24,6 +24,13 @@ func update_properties() -> void:
 		if properties.damage_type == 'poison':
 			type = properties.damage_type
 	
+	#if 'render_layers' in properties:
+	#	await self.ready
+	#	for dimension in 3:
+	#		if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
+	#			#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
+	#			find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
+	
 	if 'collision_mask' in properties:
 		for dimension in 3:
 			if properties.collision_mask[dimension] > int(0) and properties.collision_mask[dimension] < int(33):

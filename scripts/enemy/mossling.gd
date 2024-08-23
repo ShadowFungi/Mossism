@@ -9,20 +9,17 @@ extends CharacterBody3D
 		if(properties != new_properties):
 			properties = new_properties
 			update_properties()
-			
 
 
 @export var path: PackedVector3Array
 @export var speed: int = 30
-@export var vision_angle := 145
-@export var angle_between_rays := 5.0
-@export var max_view := 500.0
+
+@export_subgroup('Dependencies')
 @export var ray: RayCast3D
 @export var pain_hsm: LimboHSM
-
-
-var vision_angle_rad := deg_to_rad(vision_angle)
-var angle_between_rays_rad := deg_to_rad(angle_between_rays)
+@export var crouch_cast: ShapeCast3D
+@export var rotate_cast: ShapeCast3D
+@export var collision_shape: CollisionShape3D
 
 var player: CharacterBody3D = null
 var player_found: bool = false
@@ -34,6 +31,8 @@ var previous_target_pos: Vector3
 @onready var translation_points: PackedVector3Array
 @onready var current_point: int = 0
 @onready var total_points: int = 0
+@onready var size: float
+@onready var col_height: float
 
 
 func _init() -> void:
@@ -57,7 +56,9 @@ func update_properties() -> void:
 
 func _ready() -> void:
 	max_slides = 2
+	size = collision_shape.shape.height
 	original_pos = global_position
+	col_height = collision_shape.position.y
 	#print(original_pos)
 	#print(translation_points)
 	var previous_point: Vector3 = global_position
@@ -69,10 +70,9 @@ func _ready() -> void:
 			var translation = previous_point + translation_points[i]
 			previous_point = translation
 			translation_points.set(i, translation)
-			print(translation_points)
-			print(total_points)
+			#print(translation_points)
+			#print(total_points)
 			#print(translation)
-			
 
 
 func _physics_process(delta: float) -> void:
@@ -91,27 +91,59 @@ func _physics_process(delta: float) -> void:
 		ray.look_at(player.global_position)
 	
 	if ray.is_colliding() and ray.get_collider().is_in_group('player'):
-			update_target_location(ray.get_collider().global_position * Vector3(1.25, 0, 1.25))
+			update_target_location(ray.get_collider().global_position * Vector3(1.15, 0, 1.15))
+	elif ray.is_colliding() and ray.get_collider().is_in_group('player') == false and previous_target_pos != Vector3.ZERO:
+		update_target_location(previous_target_pos)
 	#new_vel.y -= ProjectSettings.get_setting('physics/3d/default_gravity')
 	
+	if crouch_cast.is_colliding() == true:
+		#for collider in rotate_cast.get_collision_count():
+			#if crouch_cast.get_collider(collider).is_in_group('bullet') == false:
+				collision_shape.shape.height = size / 2.75
+				collision_shape.position.y = col_height / 2.75
+	if crouch_cast.is_colliding() == false:
+		if crouch_cast.get_collision_count() <= 0:
+			collision_shape.shape.height = size
+			collision_shape.position.y = col_height
+	
+	if rotate_cast.is_colliding() == true:
+		#if rotate_cast.get_collider(0).is_in_group('bullet') == true:
+		print('bullet')
+		look_at_point(rotate_cast.get_collision_normal(0))
+		await get_tree().create_timer(0.25, 0, false)
+		#for collider in rotate_cast.get_collision_count():
+			#if collider <= rotate_cast.get_collision_count() -1 :
+				#if rotate_cast.get_collider(collider).is_in_group('bullet') == true:
+					#print('bullet')
+					#look_at_point(rotate_cast.get_collision_normal(collider))
+					#look_at(rotate_cast.get_collision_normal(collider))
+		pass
+	
+	velocity = new_vel
 	nav_agent.set_velocity(new_vel)
+	move_and_collide(velocity)
+
 
 
 func update_target_location(target_location: Vector3):
 	nav_agent.set_target_position(target_location)
+	look_at_point(target_location)
+	#look_at(Vector3(target_location.x, global_position.y, target_location.z))
+
+
+func look_at_point(look_to: Vector3):
 	var new_transform = transform.interpolate_with(
 		transform.looking_at(
 			Vector3(
-				target_location.x,
+				look_to.x,
 				global_position.y,
-				target_location.z
+				look_to.z
 			)
 		),
-		0.05
+		0.5
 	)
 	if transform != new_transform:
 		transform = new_transform
-	#look_at(Vector3(target_location.x, global_position.y, target_location.z))
 
 
 func _on_area_entered(body: Node3D) -> void:
@@ -129,7 +161,7 @@ func _on_area_exited(body: Node3D) -> void:
 
 func _on_target_reached() -> void:
 	#print("reached")
-	prints(current_point, total_points)
+	#prints(current_point, total_points)
 	if current_point < total_points and player_found == false:
 		current_point += 1
 	if current_point >= total_points and player_found == false:
@@ -143,11 +175,10 @@ func _on_target_reached() -> void:
 
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	previous_target_pos = global_position
-	velocity = velocity.move_toward(safe_velocity, 0.25)
-	move_and_collide(velocity)
+	#velocity = velocity.move_toward(safe_velocity, 0.5)
 	#move_and_slide()
 
 
 func damage(type: String) -> void:
 	pain_hsm.damage_type = type
-	print(type)
+	#print(type)

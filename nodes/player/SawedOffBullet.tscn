@@ -38,15 +38,15 @@ rings = 5
 [sub_resource type="SphereShape3D" id="SphereShape3D_k2nd7"]
 radius = 0.15
 
-[node name="Bullet" type="RigidBody3D" groups=["bullet"]]
+[node name="Bullet" type="RigidBody3D"]
 collision_layer = 1073741824
 collision_mask = 2281701391
 input_ray_pickable = false
 mass = 2.0
 physics_material_override = ExtResource("1_t8lct")
 continuous_cd = true
-max_contacts_reported = 3
 contact_monitor = true
+max_contacts_reported = 3
 script = ExtResource("1_bpp6f")
 explodes = true
 

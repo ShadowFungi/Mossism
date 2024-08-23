@@ -1,15 +1,17 @@
 [gd_resource type="NavigationMesh" format=3 uid="uid://c3ob6o44qcuhk"]
 
 [resource]
-sample_partition_type = 1
+geometry_parsed_geometry_type = 1
+geometry_collision_mask = 15
 geometry_source_geometry_mode = 1
 geometry_source_group_name = &"ground"
-cell_size = 1.0
-cell_height = 1.75
-agent_height = 14.0
-agent_radius = 0.97
-agent_max_climb = 2.0
-agent_max_slope = 65.0
-region_min_size = 0.25
-region_merge_size = 22.0
-vertices_per_polygon = 12.0
+cell_height = 1.5
+agent_height = 6.75
+agent_radius = 0.65
+agent_max_climb = 1.5
+agent_max_slope = 55.0
+region_min_size = 4.0
+region_merge_size = 50.0
+edge_max_error = 2.0
+vertices_per_polygon = 18.0
+detail_sample_distance = 3.0

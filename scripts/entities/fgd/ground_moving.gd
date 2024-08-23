@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends AnimatableBody3D
 
 @export var properties : Dictionary :
 	get:
@@ -34,6 +34,13 @@ func update_properties() -> void:
 	
 	if 'speed' in properties:
 		speed = properties.speed
+	
+	#if 'render_layers' in properties:
+	#	await self.ready
+	#	for dimension in 3:
+	#		if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
+	#			#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
+	#			find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
 
 
 func _process(delta: float) -> void:

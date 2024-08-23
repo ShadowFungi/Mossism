@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends AnimatableBody3D
 
 @export var properties : Dictionary :
 	get:
@@ -7,6 +7,8 @@ extends CharacterBody3D
 		if(properties != new_properties):
 			properties = new_properties
 			update_properties()
+
+signal motion_finished()
 
 var base_transform: Transform3D
 var offset_transform: Transform3D
@@ -37,6 +39,19 @@ func update_properties() -> void:
 	
 	if 'reversible' in properties:
 		reversible_property = properties.reversible
+	
+	#if 'render_layers' in properties:
+	#	await self.ready
+	#	for dimension in 3:
+	#		if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
+	#			#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
+	#			find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
+	
+	#if 'collision_layers' in properties:
+	#	for dimension in 3:
+	#		set_collision_layer_value(1, false)
+	#		if properties.collision_layers[dimension] > int(0) and properties.collision_layers[dimension] < int(33):
+	#			set_collision_layer_value(properties.collision_layers[dimension], true)
 
 func _process(delta: float) -> void:
 	if transform.origin != target_transform.origin:
@@ -83,10 +98,9 @@ func reverse_motion() -> void:
 		reversible = false
 
 func motion_ended() -> void:
-	self.add_to_group("ground", true)
+	#self.add_to_group("ground", true)
 	#navmeshi.bake_navigation_mesh(true)
-	Level.map_baked = true
-	Level.map_bake_ended = false
+	emit_signal('motion_finished')
 
 func _baked():
 	Level.map_bake_ended = true

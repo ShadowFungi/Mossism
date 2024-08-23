@@ -68,8 +68,8 @@ func fire():
 	
 	## FIRE!
 	## Launch sawed_off_bullets through a central impulse
-	shot1.apply_central_impulse(-muzzle_1.global_transform.basis.z * 60)
-	shot2.apply_central_impulse(-muzzle_2.global_transform.basis.z * 60)
+	shot1.apply_central_impulse(-muzzle_1.global_transform.basis.z * 77.5)
+	shot2.apply_central_impulse(-muzzle_2.global_transform.basis.z * 77.5)
 	await get_tree().create_timer(0.25, false).timeout
 	can_fire = true
 

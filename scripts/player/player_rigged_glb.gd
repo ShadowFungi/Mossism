@@ -17,13 +17,13 @@ const MIN_HEALTH = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var min_pitch: float = -45.5
-var max_pitch: float = 75.0
+var min_pitch: float = -22.5
+var max_pitch: float = 34.0
 
 var min_yaw: float = 0
 var max_yaw: float = 360
 
-var mouse_pos : Vector2
+var mouse_pos: Vector2
 
 var active_object: Array = []
 
@@ -80,7 +80,7 @@ func get_input_dir() -> Vector2:
 		'player-%s_strafe_left' % id,
 		'player-%s_strafe_right' % id,
 		'player-%s_forward' % id,
-		'player-%s_back' % id
+		'player-%s_back' % id,
 		).normalized()
 	return input_dir
 
@@ -113,10 +113,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED && id == 1:
 		if event is InputEventMouseMotion:
 			mouse_pos = (event.relative * SFInputRemapper.mouse_sensitivity)
-			#metarig.rotate_y(deg_to_rad(-mouse_pos.x))
 			pivot.rotate_x(-deg_to_rad(mouse_pos.y))
-			#skel.set_bone_pose_rotation(3, Quaternion(Vector3(1, 0, 0), deg_to_rad(mouse_pos.y)))
-			pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
+			pivot.global_rotation.x = clamp(pivot.global_rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
 			rotate_y(deg_to_rad(-mouse_pos.x))
 
 

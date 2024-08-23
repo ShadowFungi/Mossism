@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://dmf1837mexi4y"]
+
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_sja52"]
+[ext_resource type="Script" path="res://scripts/entities/fgd/nav_baker.gd" id="2_v8ndb"]
+
+[resource]
+script = ExtResource("1_sja52")
+script_class = ExtResource("2_v8ndb")
+apply_rotation_on_map_build = false
+classname = "nav_baker"
+description = "Bake NavMesh"
+qodot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {}
+class_property_descriptions = {}
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
+node_class = ""
+transient_node = false
