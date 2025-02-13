@@ -17,8 +17,8 @@ Movement and the capability of dying.
 ## To Do:
 
 - [ ] Controller support
-- [ ] Functioning health system
-- [x] Bouncy bullets {partial}
+- [x] Functioning health system (partial)
+- [x] Bouncy bullets (partial)
 - [ ] Skill tree
 	- [ ] Decisions matter (only one or two will be implemented)
 		- [ ] Some skills will block other paths
@@ -43,6 +43,8 @@ Movement and the capability of dying.
 		- [ ] Crowbar
 		- [ ] Axe
 		- [ ] Vine whip
+	- [ ] Defensive weapons
+		- [ ] Mushroom parasol (slow, low damage, release spores that poison large enemies, and controls small ones for a short time)
 	- [ ] Mossling weapons {may or may not be usable by player, have yet to decide}
 	- [ ] Defense Orbiter(s) (Temporary defense orb item)
 		- [ ] Light
@@ -63,11 +65,11 @@ Movement and the capability of dying.
 	- [ ] Moss Arbiter
 - [ ] VFX
 	- [ ] Moss roots follow behind the enemies
-- [ ] Enemy health system
-- [ ] Enemy damage
-- [ ] Player damage
+- [x] Enemy health system (partial)
+- [x] Enemy damage (partial)
+- [x] Player damage (partial)
 - [ ] Split screen/multiplayer support
-- [x] Single screen/solo support {re-implemented. partial}
+- [x] Single screen/solo support (re-implemented. partial)
 - [ ] Tutorial map
 - [x] Story maps {partial}
 - [ ] Multiplayer gamemodes (for people who have friend... unlike you) {not final}
@@ -132,6 +134,12 @@ However the contents of directories under the [addons](/addons) directory are un
 - Qodot license
 	- [Main repository](https://raw.githubusercontent.com/QodotPlugin/Qodot/main/LICENSE)
 	- [Local](/addons/qodot/LICENSE)
+- Func_Godot license
+	- [Main repository](https://github.com/func-godot/func_godot_plugin/blob/main/LICENSE)
+	- [Local](/addons/func_godot/LICENSE)
+- SFInputRemapper license
+	- [Main repository](https://gitlab.com/ShadowFungi/SFInputRemapper/-/blob/master/LICENSE.md)
+	- [Local](/addons/fungi_input_remapper/LICENSE.md)
 - LimboAI license
 	- [Main repository](https://github.com/limbonaut/limboai/blob/master/LICENSE.md)
 	- [Local](/addons/limboai/LICENSE.md)
