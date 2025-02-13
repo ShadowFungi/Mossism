@@ -27,12 +27,12 @@ extends ScrollContainer
 	6 : 'player-0_jump',
 }
 @onready var buttons : Array = [
-	button_forward,
-	button_backward,
-	button_left,
-	button_right,
-	button_shoot_key,
-	button_jump,
+	#button_forward,
+	#button_backward,
+	#button_left,
+	#button_right,
+	#button_shoot_key,
+	#button_jump,
 ]
 
 var ca : Callable
@@ -43,12 +43,12 @@ var wanted_text : int
 var remap_wanted = false
 
 var button_text : Array = [
-	InputRemapper.forward,
-	InputRemapper.back,
-	InputRemapper.strafe_left,
-	InputRemapper.strafe_right,
-	InputRemapper.tool_key,
-	InputRemapper.jump,
+	#InputRemapper.forward,
+	#InputRemapper.back,
+	#InputRemapper.strafe_left,
+	#InputRemapper.strafe_right,
+	#InputRemapper.tool_key,
+	#InputRemapper.jump,
 ]
 
 

@@ -20,3 +20,4 @@ ao_light_affect = 0.28
 ao_texture = ExtResource("2_6whba")
 ao_texture_channel = 3
 texture_filter = 0
+grow_amount = 10.24

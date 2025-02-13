@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDPointClass" load_steps=3 format=3 uid="uid://bfr3b6y0ps67k"]
+
+[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="1_y5oon"]
+[ext_resource type="Script" path="res://scripts/entities/fgd/nav_baker.gd" id="2_x506q"]
+
+[resource]
+script = ExtResource("1_y5oon")
+script_class = ExtResource("2_x506q")
+apply_rotation_on_map_build = false
+classname = "nav_baker"
+description = "Bake NavMesh"
+func_godot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {}
+class_property_descriptions = {}
+auto_apply_to_matching_node_properties = false
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
+node_class = ""
+name_property = ""

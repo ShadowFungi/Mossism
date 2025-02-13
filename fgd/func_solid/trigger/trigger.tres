@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=2 format=3 uid="uid://be5gn2c6yu13s"]
+
+[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_mw7iv"]
+
+[resource]
+script = ExtResource("1_mw7iv")
+spawn_type = 2
+origin_type = 4
+build_visuals = false
+use_in_baked_light = true
+shadow_casting_setting = 1
+build_occlusion = false
+render_layers = 2
+collision_shape_type = 1
+collision_layer = 0
+collision_mask = 2147483648
+collision_priority = 1.0
+collision_shape_margin = 0.04
+add_textures_metadata = false
+add_vertex_metadata = false
+add_face_position_metadata = false
+add_face_normal_metadata = false
+add_collision_shape_face_range_metadata = false
+classname = "trigger"
+description = "An area which activates when entered/exited"
+func_godot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {
+"collision_layers": Vector3(0, 0, 0),
+"collision_mask": Vector3(0, 0, 0),
+"toggle_enter": 0.0,
+"toggle_exit": 0.0
+}
+class_property_descriptions = {}
+auto_apply_to_matching_node_properties = false
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
+node_class = "Area3D"
+name_property = ""

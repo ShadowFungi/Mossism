@@ -19,7 +19,7 @@ func _enter() -> void:
 #	return true
 
 func _update(delta: float) -> void:
-	if !Input.is_action_pressed("player-{n}_jump".format({"n":1})):
+	if !Input.is_action_pressed("jump".format({"n":1})):
 		await get_tree().create_timer(0.055, false, true).timeout
 		start_fall = true
 	if start_fall == true:

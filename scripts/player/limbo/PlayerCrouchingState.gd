@@ -10,6 +10,8 @@ extends LimboState
 @export var head_target: Node3D
 @export var meta_rig: Node3D
 @export var crouch_cast: ShapeCast3D
+@export var col_shape_1: CollisionShape3D
+@export var col_shape_2: CollisionShape3D
 
 var shape: CapsuleShape3D
 var og_size: float
@@ -20,6 +22,8 @@ func _ready() -> void:
 
 func _enter() -> void:
 	head_target.global_position.y = head_target.global_position.y - 1.28
+	col_shape_1.global_position.y -= 1.28
+	col_shape_2.global_position.y -= 1.28
 	meta_rig.global_position.y = meta_rig.global_position.y - 0.835
 	og_size = shape.height
 	shape.height = crouch_size
@@ -28,7 +32,7 @@ func _enter() -> void:
 
 
 func _update(_delta: float) -> void:
-	if !Input.is_action_pressed('player-%s_crouch' % player.id) and crouch_cast.is_colliding() == false:
+	if !Input.is_action_pressed('crouch') and crouch_cast.is_colliding() == false:
 		dispatch(&'crouch_ended')
 	if player.velocity.y != 0 and player.running == true:
 		player.velocity.x = player.velocity.x * player.CANNONBALL_MODIFIER
@@ -39,6 +43,8 @@ func _update(_delta: float) -> void:
 
 
 func _exit() -> void:
+	col_shape_1.global_position.y += 1.28
+	col_shape_2.global_position.y += 1.28
 	head_target.global_position.y = head_target.global_position.y + 1.28
 	meta_rig.global_position.y = meta_rig.global_position.y + 0.835
 	col_shape.position = (col_shape.position * 1.3)

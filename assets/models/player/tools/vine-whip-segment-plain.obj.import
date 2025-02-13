@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://mawhistrgcts"
+path="res://.godot/imported/vine-whip-segment-plain.obj-5dc3c1c1bb3a259057cfc919952c9faa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/vine-whip-segment-plain.obj-5dc3c1c1bb3a259057cfc919952c9faa.mesh"]
+
+source_file="res://assets/models/player/tools/vine-whip-segment-plain.obj"
+dest_files=["res://.godot/imported/vine-whip-segment-plain.obj-5dc3c1c1bb3a259057cfc919952c9faa.mesh", "res://.godot/imported/vine-whip-segment-plain.obj-5dc3c1c1bb3a259057cfc919952c9faa.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(2, 2, 2)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

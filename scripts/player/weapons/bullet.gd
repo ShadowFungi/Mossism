@@ -23,7 +23,7 @@ func _on_timer_timeout():
 
 
 func _on_sound_finished() -> void:
-	await get_tree().create_timer(0.15, false)
+	await get_tree().create_timer(0.15, false).timeout
 	queue_free()
 
 

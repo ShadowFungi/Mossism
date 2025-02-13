@@ -51,6 +51,7 @@ func fire():
 	if can_fire == false:
 		return
 	can_fire = false
+	SFInputHaptics.rumble(0.2, 0.35, 0.85, player.id)
 	## Prepare sawed_off_bullet instances
 	var shot1 = bullet.duplicate()
 	var shot2 = bullet.duplicate()

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDPointClass" load_steps=4 format=3 uid="uid://boay3ye28n27f"]
+
+[ext_resource type="Resource" uid="uid://cx1i7b6tbo01q" path="res://fgd/func_base/targetname_base_class.tres" id="1_d7s0i"]
+[ext_resource type="Resource" uid="uid://c4lsmkleyiphx" path="res://fgd/func_base/target_base_class.tres" id="2_t3mia"]
+[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="3_41gj1"]
+
+[resource]
+script = ExtResource("3_41gj1")
+apply_rotation_on_map_build = true
+classname = "receiver"
+description = "Receiver"
+func_godot_internal = false
+base_classes = Array[Resource]([ExtResource("1_d7s0i"), ExtResource("2_t3mia")])
+class_properties = {
+"receiver_name": ""
+}
+class_property_descriptions = {
+"slot_name": "Receiver method to target"
+}
+auto_apply_to_matching_node_properties = false
+meta_properties = {
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
+node_class = ""
+name_property = ""

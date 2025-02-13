@@ -17,10 +17,11 @@ nodes/root_type="CharacterBody3D"
 nodes/root_name="Player"
 nodes/apply_root_scale=true
 nodes/root_scale=0.5
+nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
-meshes/light_baking=3
+meshes/light_baking=0
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
@@ -28,6 +29,7 @@ animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "animations": {
@@ -5453,6 +5455,9 @@ _subresources={
 "import_tracks/position": 0,
 "import_tracks/rotation": 0,
 "import_tracks/scale": 0
+},
+"PATH:metarig/Skeleton3D": {
+"rest_pose/external_animation_library": null
 },
 "PATH:metarig/Skeleton3D/BodyLower/BodyLower": {
 "mesh_instance/layers": 524288

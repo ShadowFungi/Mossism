@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDModelPointClass" load_steps=3 format=3 uid="uid://dmdicxeoljuhc"]
+
+[ext_resource type="Resource" uid="uid://c5o31v30rw7v5" path="res://addons/qodot/game_definitions/fgd/base_classes/light_base_class.tres" id="1_t6nmj"]
+[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd" id="2_m4xup"]
+
+[resource]
+script = ExtResource("2_m4xup")
+target_map_editor = 0
+models_sub_folder = ""
+scale_expression = ""
+generate_size_property = false
+generate_gd_ignore_file = false
+apply_rotation_on_map_build = true
+classname = "light_hanging_lantern"
+description = ""
+func_godot_internal = false
+base_classes = Array[Resource]([ExtResource("1_t6nmj")])
+class_properties = {}
+class_property_descriptions = {}
+auto_apply_to_matching_node_properties = false
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
+node_class = ""
+name_property = ""

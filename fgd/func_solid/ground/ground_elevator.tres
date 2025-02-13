@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=2 format=3 uid="uid://dojhel4bdcmdm"]
+
+[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_3ia6d"]
+
+[resource]
+script = ExtResource("1_3ia6d")
+spawn_type = 2
+origin_type = 4
+build_visuals = true
+use_in_baked_light = true
+shadow_casting_setting = 1
+build_occlusion = false
+render_layers = 2
+collision_shape_type = 1
+collision_layer = 4
+collision_mask = 2281701376
+collision_priority = 1.0
+collision_shape_margin = 0.04
+add_textures_metadata = false
+add_vertex_metadata = false
+add_face_position_metadata = false
+add_face_normal_metadata = false
+add_collision_shape_face_range_metadata = false
+classname = "ground_elevator"
+description = "A moving impassable wall"
+func_godot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {
+"reversible": 0.0,
+"rotation": Vector3(0, 0, 0),
+"scale": Vector3(1, 1, 1),
+"speed": 0.0,
+"translation": Vector3(0, 0, 0)
+}
+class_property_descriptions = {}
+auto_apply_to_matching_node_properties = false
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
+node_class = "AnimatableBody3D"
+name_property = ""

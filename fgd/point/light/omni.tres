@@ -5,10 +5,8 @@
 
 [resource]
 script = ExtResource("2_ewkcp")
-scene = "----------------------------------------------------------------"
-scripting = "----------------------------------------------------------------"
 script_class = ExtResource("2_5ltt5")
-class_options = "----------------------------------------------------------------"
+apply_rotation_on_map_build = true
 classname = "light_omni"
 description = "Invisible omnidirectional light source "
 qodot_internal = false
@@ -35,6 +33,5 @@ class_property_descriptions = {
 meta_properties = {
 "color": Color(0.835294, 0.8, 0, 1)
 }
-node_options = "----------------------------------------------------------------"
 node_class = "Spatial"
 transient_node = false

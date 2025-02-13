@@ -17,10 +17,11 @@ nodes/root_type="CharacterBody3D"
 nodes/root_name="Mossling"
 nodes/apply_root_scale=true
 nodes/root_scale=0.6
+nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
-meshes/light_baking=1
+meshes/light_baking=0
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
@@ -28,6 +29,7 @@ animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "animations": {
@@ -1829,6 +1831,29 @@ _subresources={
 "slice_99/save_to_file/path": "",
 "slice_99/start_frame": 0,
 "slices/amount": 0
+}
+},
+"materials": {
+"BloodyMoss": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/enemies/Mossling/textures/BloodyMoss.tres"
+},
+"LessBloodyMoss": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/enemies/Mossling/textures/LessBloodyMoss.tres"
+},
+"Moss": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/enemies/Mossling/textures/Moss.tres"
+},
+"Tooth": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/enemies/Mossling/textures/Tooth.tres"
+}
+},
+"nodes": {
+"PATH:Armature/Skeleton3D": {
+"rest_pose/external_animation_library": null
 }
 }
 }

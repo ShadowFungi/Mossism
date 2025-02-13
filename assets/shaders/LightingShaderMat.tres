@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://jal1mvy6vk3r"]
+
+[ext_resource type="Shader" path="res://assets/shaders/moebius.gdshader" id="1_eqy2n"]
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_eqy2n")
+shader_parameter/zNear = 0.05
+shader_parameter/zFar = 100.0
+shader_parameter/outlineThickness = 1.75
+shader_parameter/outlineColor = Color(1, 1, 1, 1)
+shader_parameter/wiggleFrequency = 0.08
+shader_parameter/wiggleAmplitude = 2.16

@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody3D
 
 
-const BASE_SPEED = 10.0
+const BASE_SPEED = 12.0
 const WALKING_MODIFIER = 1.45
 const RUNNING_MODIFIER = 1.98
 const CROUCHING_MODIFIER = 0.65
@@ -17,8 +17,8 @@ const MIN_HEALTH = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var min_pitch: float = -22.5
-var max_pitch: float = 34.0
+var min_pitch: float = -55.0
+var max_pitch: float = 80.0
 
 var min_yaw: float = 0
 var max_yaw: float = 360
@@ -27,8 +27,10 @@ var mouse_pos: Vector2
 
 var active_object: Array = []
 
-var can_step_up: bool = true
-var can_snap_down: bool = false
+var can_step_up: bool = false
+var can_snap_down: bool = true
+var is_grounded: bool = false
+var was_grounded: bool = false
 
 var smooth_step: bool = false
 
@@ -52,6 +54,7 @@ var running: bool = false
 @onready var coyote_state: LimboState = get_node('ElevationHSM/PlayerCoyoteState')
 @onready var fall_state: LimboState = get_node('ElevationHSM/PlayerFallState')
 @onready var grounded_state: LimboState = get_node('ElevationHSM/PlayerGroundedState')
+@onready var ledge_state: LimboState = get_node('ElevationHSM/PlayerLedgeGrabState')
 
 ## Height HSM
 @onready var height_hsm: LimboHSM = get_node('HeightHSM')
@@ -74,16 +77,26 @@ var running: bool = false
 @export var step_shape: ShapeCast3D
 @export var hud: Control
 @export var gameover: Control
+@export var max_step_up : float = 0.5
+@export var max_step_down : float = -0.5
 
 func get_input_dir() -> Vector2:
 	var input_dir = Input.get_vector(
-		'player-%s_strafe_left' % id,
-		'player-%s_strafe_right' % id,
-		'player-%s_forward' % id,
-		'player-%s_back' % id,
+		'analog--strafe_left',
+		'analog--strafe_right',
+		'analog--forward',
+		'analog--backward',
 		).normalized()
 	return input_dir
 
+func get_camera_dir() -> Vector2:
+	var camera_dir = ((Input.get_vector(
+		'analog--camera_down',
+		'analog--camera_up',
+		'analog--camera_right',
+		'analog--camera_left'
+		) * SFInputRemapper.joypad_sensitivity) * SFInputRemapper.joypad_rotation_mult)
+	return camera_dir
 
 func _timeline_ended():
 	toggle_mouse_lock()
@@ -107,34 +120,53 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		toggle_mouse_lock(true, true)
-	if event.is_action_pressed('player-%s_pause' % id):
+	if event.is_action_pressed('pause_native'):
 		get_node('PauseMenu').pause()
 		set_process_input(true)
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED && id == 1:
 		if event is InputEventMouseMotion:
 			mouse_pos = (event.relative * SFInputRemapper.mouse_sensitivity)
 			pivot.rotate_x(-deg_to_rad(mouse_pos.y))
-			pivot.global_rotation.x = clamp(pivot.global_rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
-			rotate_y(deg_to_rad(-mouse_pos.x))
+			pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
+			rotate_y(-deg_to_rad(mouse_pos.x))
+	if Input.is_action_just_pressed('analog--tool'.format({'n':1})) and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		sawed_off.fire()
+	elif Input.is_action_just_pressed('analog--tool'.format({'n':1})):
+		toggle_mouse_lock()
 
 
-func _physics_process(_delta):
+func _physics_process(delta: float):
+	_pre_phys_proc()
+	_post_phys_proc.call_deferred()
+
+
+func _pre_phys_proc():
 	if pain_hsm.current_health <= 0:
 		gameover.died()
 		toggle_mouse_lock(true, false)
-	if velocity.x == 0 or velocity.z == 0:
-		step_shape.enabled = false
+	if abs(get_camera_dir().y) >= 0.01 or abs(get_camera_dir().x) >= 0.01:
+		var camera_pos = get_camera_dir()
+		pivot.rotation.x += deg_to_rad(camera_pos.x)
+		pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
+		rotation.y += deg_to_rad(camera_pos.y)
+	
+	was_grounded = is_grounded
+	
+	if is_on_floor():
+		is_grounded = true
 	else:
-		step_shape.enabled = true
-	step_shape.look_at(Vector3(global_transform.origin.x + velocity.x, global_transform.origin.y, global_transform.origin.z + velocity.z), Vector3(0, 0, 1))
+		is_grounded = false
+
+
+func _post_phys_proc():
+	#if velocity.x == 0 or velocity.z == 0:
+	#	step_shape.enabled = false
+	#else:
+	#	step_shape.enabled = true
+	#step_shape.look_at(Vector3(global_transform.origin.x + velocity.x, global_transform.origin.y, global_transform.origin.z + velocity.z), Vector3(0, 0, 1))
 	move_and_slide()
-	if !is_on_floor():
-		can_snap_down = true
-	if Input.is_action_just_pressed('analog--tool'.format({'n':1})):
-		toggle_mouse_lock()
-	if Input.is_action_just_pressed('player-%s_tool_mouse' % id) and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		sawed_off.fire()
-#	snap_down()
+	#if !is_on_floor():
+	#	can_snap_down = true
 
 
 func toggle_mouse_lock(forced: bool = false, locked: bool = false):
@@ -166,12 +198,15 @@ func _init_movement_hsm() -> void:
 
 func _init_elevation_hsm() -> void:
 	elevation_hsm.add_transition(fall_state, grounded_state, &'grounded')
+	elevation_hsm.add_transition(fall_state, ledge_state, &'grab_started')
 	elevation_hsm.add_transition(jump_state, fall_state, &'jump_end')
 	elevation_hsm.add_transition(grounded_state, jump_state, &'jump_started')
 	elevation_hsm.add_transition(grounded_state, coyote_state, &'ground_lost')
 	elevation_hsm.add_transition(coyote_state, fall_state, &'coyote_ended')
 	elevation_hsm.add_transition(coyote_state, jump_state, &'jump_started')
-	elevation_hsm.initial_state = grounded_state
+	elevation_hsm.add_transition(ledge_state, jump_state, &'jump_started')
+	elevation_hsm.add_transition(ledge_state, fall_state, &'grab_ended')
+	elevation_hsm.initial_state = fall_state
 	elevation_hsm.initialize(self)
 	elevation_hsm.set_active(true)
 

@@ -71,6 +71,9 @@ layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../MarginContainer2/OptionsButton")
+focus_next = NodePath("../../MarginContainer2/OptionsButton")
+focus_previous = NodePath("../../MarginContainer3/QuitButton")
 text = "PLAY"
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
@@ -78,6 +81,10 @@ layout_mode = 2
 
 [node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../MarginContainer/PlayButton")
+focus_neighbor_bottom = NodePath("../../MarginContainer3/QuitButton")
+focus_next = NodePath("../../MarginContainer3/QuitButton")
+focus_previous = NodePath("../../MarginContainer/PlayButton")
 text = "OPTIONS"
 
 [node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
@@ -85,8 +92,14 @@ layout_mode = 2
 
 [node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer3"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../MarginContainer2/OptionsButton")
+focus_neighbor_bottom = NodePath("../../MarginContainer/PlayButton")
+focus_next = NodePath("../../MarginContainer/PlayButton")
+focus_previous = NodePath("../../MarginContainer2/OptionsButton")
 text = "SURRENDER"
 
 [node name="OptionsMenu" parent="." instance=ExtResource("4_jldj4")]
 visible = false
 layout_mode = 1
+
+[connection signal="visibility_changed" from="HBoxContainer" to="." method="_on_visibility_changed"]

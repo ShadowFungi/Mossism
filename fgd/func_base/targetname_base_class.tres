@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDBaseClass" load_steps=2 format=3 uid="uid://cx1i7b6tbo01q"]
+
+[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_base_class.gd" id="1_20j8m"]
+
+[resource]
+script = ExtResource("1_20j8m")
+classname = "Targetname"
+description = "Subscribes to actions (signal callbacks, reciever methods) performed by other entities with a matching 'target'."
+func_godot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {
+"targetname": ""
+}
+class_property_descriptions = {
+"targetname": "Name of target to subscribe to."
+}
+auto_apply_to_matching_node_properties = false
+meta_properties = {}
+node_class = ""
+name_property = ""

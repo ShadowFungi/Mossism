@@ -1,5 +1,5 @@
 extends Area3D
-
+class_name HitBox3D
 
 @export var damage_type: String = 'stab'
 var host_player_id: int

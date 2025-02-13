@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://pj1oat8gokhs"
+path="res://.godot/imported/vine-whip-segment-flower.obj-0a1a83eb7bc49832e037dca7528a6225.mesh"
+
+[deps]
+
+files=["res://.godot/imported/vine-whip-segment-flower.obj-0a1a83eb7bc49832e037dca7528a6225.mesh"]
+
+source_file="res://assets/models/player/tools/vine-whip-segment-flower.obj"
+dest_files=["res://.godot/imported/vine-whip-segment-flower.obj-0a1a83eb7bc49832e037dca7528a6225.mesh", "res://.godot/imported/vine-whip-segment-flower.obj-0a1a83eb7bc49832e037dca7528a6225.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(2, 2, 2)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

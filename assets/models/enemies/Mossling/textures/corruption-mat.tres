@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bfa4bwq4pvxbl"]
+
+[ext_resource type="Shader" uid="uid://6io2yfa8n51e" path="res://assets/models/enemies/Mossling/textures/corruption.tres" id="1_rj777"]
+[ext_resource type="Texture2D" uid="uid://bo4pyqvh1xj8b" path="res://assets/models/enemies/Mossling/bloodymoss.png" id="2_um20e"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rj777")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/uv_scrolling_velocity = Vector2(0.005, -0.005)
+shader_parameter/corruption_amount = 0.285
+shader_parameter/corruption_seed = 1.205
+shader_parameter/corrupt_red = false
+shader_parameter/corruption_amount_red = 0.325
+shader_parameter/corrupt_green = true
+shader_parameter/corruption_amount_green = 0.418
+shader_parameter/corrupt_blue = true
+shader_parameter/corruption_amount_blue = 0.41
+shader_parameter/checker = true
+shader_parameter/checker_size = Vector2(16, 16)
+shader_parameter/checker_offset = 2.0
+shader_parameter/albedo = ExtResource("2_um20e")

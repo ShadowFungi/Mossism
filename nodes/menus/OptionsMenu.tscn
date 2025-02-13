@@ -1,13 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbceyy600jouo"]
+[gd_scene load_steps=11 format=3 uid="uid://cbceyy600jouo"]
 
 [ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_4y5vp"]
 [ext_resource type="Script" path="res://scripts/menus/OptionsMenu.gd" id="1_74say"]
 [ext_resource type="Script" path="res://scripts/menus/KeymapGUI.gd" id="3_otn8f"]
 [ext_resource type="Script" path="res://nodes/menus/audio.gd" id="4_ddvi5"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egh6j"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2as51"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egh6j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvsfi"]
 
@@ -15,10 +15,14 @@
 device = -1
 keycode = 4194305
 
-[sub_resource type="Shortcut" id="Shortcut_qmjsv"]
-events = [SubResource("InputEventKey_eb6xf")]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_4xelr"]
+device = -1
+button_index = 1
 
-[node name="OptionsMenu" type="Control"]
+[sub_resource type="Shortcut" id="Shortcut_qmjsv"]
+events = [SubResource("InputEventKey_eb6xf"), SubResource("InputEventJoypadButton_4xelr")]
+
+[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("focused_button")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -30,6 +34,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_4y5vp")
 script = ExtResource("1_74say")
+focused_button = NodePath("MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer3/LoadKeyMapButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -41,14 +46,16 @@ grow_vertical = 2
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_egh6j")
 theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_2as51")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_egh6j")
 tab_alignment = 1
+current_tab = 0
 all_tabs_in_front = true
 
 [node name="KEYMAPS" type="HBoxContainer" parent="MarginContainer/TabContainer"]
 layout_mode = 2
 alignment = 1
+metadata/_tab_index = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/KEYMAPS"]
 layout_mode = 2
@@ -61,10 +68,9 @@ layout_mode = 2
 [node name="LoadKeyMapButton" type="OptionButton" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer3"]
 layout_mode = 2
 alignment = 1
-item_count = 1
 selected = 0
+item_count = 1
 popup/item_0/text = "DEFAULT KEY MAP"
-popup/item_0/id = 0
 popup/item_0/separator = true
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/KEYMAPS/VBoxContainer"]
@@ -354,6 +360,7 @@ visible = false
 layout_mode = 2
 alignment = 1
 script = ExtResource("4_ddvi5")
+metadata/_tab_index = 1
 
 [node name="MasterContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/AUDIO"]
 layout_mode = 2
@@ -425,6 +432,7 @@ ok_button_text = "Save KeyMap"
 access = 2
 filters = PackedStringArray("*.cfg")
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer3/LoadKeyMapButton" to="." method="_on_load_key_map_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer/ImportKeyMapButton" to="." method="_on_import_key_map_button_pressed"]
 [connection signal="pressed" from="MarginContainer/TabContainer/KEYMAPS/VBoxContainer/MarginContainer4/SaveKeyMapButton" to="." method="_on_save_key_map_button_pressed"]

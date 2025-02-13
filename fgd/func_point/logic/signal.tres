@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDPointClass" load_steps=4 format=3 uid="uid://b8l858p3yed58"]
+
+[ext_resource type="Resource" uid="uid://cx1i7b6tbo01q" path="res://fgd/func_base/targetname_base_class.tres" id="1_j666l"]
+[ext_resource type="Resource" uid="uid://c4lsmkleyiphx" path="res://fgd/func_base/target_base_class.tres" id="2_pmn5g"]
+[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="3_q38l1"]
+
+[resource]
+script = ExtResource("3_q38l1")
+apply_rotation_on_map_build = true
+classname = "signal"
+description = "Signal"
+func_godot_internal = false
+base_classes = Array[Resource]([ExtResource("1_j666l"), ExtResource("2_pmn5g")])
+class_properties = {
+"signal_name": ""
+}
+class_property_descriptions = {
+"signal_name": "Signal to target"
+}
+auto_apply_to_matching_node_properties = false
+meta_properties = {
+"size": AABB(-8, -8, -8, 8, 8, 8)
+}
+node_class = ""
+name_property = ""

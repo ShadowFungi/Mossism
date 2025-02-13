@@ -22,7 +22,7 @@ func _enter() -> void:
 	pass
 
 func _update(_delta: float) -> void:
-	if Input.is_action_pressed('player-%s_crouch' % player.id):
+	if Input.is_action_pressed('crouch'.format({'id': player.id})):
 		dispatch(&'crouch_started')
 
 

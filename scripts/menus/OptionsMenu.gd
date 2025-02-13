@@ -1,6 +1,8 @@
 extends Control
 
 
+@export var focused_button : Button
+@export_subgroup('Transition Options')
 @export var fade_speed : float = 1.0
 @export var fade_pattern : String = "fade"
 @export var fade_smoothness = 0.1
@@ -15,6 +17,7 @@ extends Control
 func _ready() -> void:
 	js_select_define()
 
+
 func _on_import_key_map_button_pressed() -> void:
 	#print(OS.get_name())
 	#print(OS.has_feature('web'))
@@ -23,7 +26,7 @@ func _on_import_key_map_button_pressed() -> void:
 		await gui_input
 		#print(JavaScriptBridge.eval("fileName;", true))
 		#print(JavaScriptBridge.eval("fileData;", true))
-		InputRemapper.import_map_web(JavaScriptBridge.eval("fileData;", true))
+#		InputRemapper.import_map_web(JavaScriptBridge.eval("fileData;", true))
 	else: $ImportKeyMap.show()
 
 
@@ -33,16 +36,18 @@ func _on_load_key_map_button_pressed() -> void:
 
 
 func _on_save_key_map_button_pressed() -> void:
-	InputRemapper.set_default_map()
+#	InputRemapper.set_default_map()
 	$SaveKeyMap.show()
 
 
 func _on_save_key_map_file_selected(path: String) -> void:
-	InputRemapper.save_map(path)
+	pass
+#	InputRemapper.save_map(path)
 
 
 func _on_import_key_map_file_selected(path: String) -> void:
-	InputRemapper.import_map(path)
+	pass
+#	InputRemapper.import_map(path)
 
 
 func _on_back_button_pressed() -> void:
@@ -91,3 +96,8 @@ func _on_remap_keys_toggled(button_pressed: bool) -> void:
 	else:
 		get_node('MarginContainer/TabContainer/KEYMAPS/ScrollContainer').hide()
 		get_node('MarginContainer/TabContainer/KEYMAPS/ScrollContainer').set_process_unhandled_key_input(false)
+
+
+func _on_visibility_changed() -> void:
+	if visible == true:
+		focused_button.grab_focus()

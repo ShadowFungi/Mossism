@@ -110,7 +110,7 @@ func _physics_process(delta: float) -> void:
 		#if rotate_cast.get_collider(0).is_in_group('bullet') == true:
 		print('bullet')
 		look_at_point(rotate_cast.get_collision_normal(0))
-		await get_tree().create_timer(0.25, 0, false)
+		await get_tree().create_timer(0.25, 0, false).timeout
 		#for collider in rotate_cast.get_collision_count():
 			#if collider <= rotate_cast.get_collision_count() -1 :
 				#if rotate_cast.get_collider(collider).is_in_group('bullet') == true:

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c13ctbsvdi3qo"
+path="res://.godot/imported/vine-whip-segment-thorn.obj-08f27df8bbb4079ed3b4c8078dffb7c8.mesh"
+
+[deps]
+
+files=["res://.godot/imported/vine-whip-segment-thorn.obj-08f27df8bbb4079ed3b4c8078dffb7c8.mesh"]
+
+source_file="res://assets/models/player/tools/vine-whip-segment-thorn.obj"
+dest_files=["res://.godot/imported/vine-whip-segment-thorn.obj-08f27df8bbb4079ed3b4c8078dffb7c8.mesh", "res://.godot/imported/vine-whip-segment-thorn.obj-08f27df8bbb4079ed3b4c8078dffb7c8.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(2, 2, 2)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
