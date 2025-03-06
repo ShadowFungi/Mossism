@@ -41,6 +41,8 @@ var health: int = 10
 var fire_res: bool = false
 var running: bool = false
 
+var joypad_rotation_mult: float = 180.0 * PI / 90.0
+
 
 ## Movement HSM
 @onready var movement_hsm: LimboHSM = get_node('MovementHSM')
@@ -95,7 +97,7 @@ func get_camera_dir() -> Vector2:
 		'analog--camera_up',
 		'analog--camera_right',
 		'analog--camera_left'
-		) * SFInputRemapper.joypad_sensitivity) * SFInputRemapper.joypad_rotation_mult)
+		) * SFInputRemapper.joypad_sensitivity) * joypad_rotation_mult)
 	return camera_dir
 
 func _timeline_ended():
