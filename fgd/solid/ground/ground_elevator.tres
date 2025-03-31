@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://bvp3tghwr8nnq"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_wsjb4"]
-[ext_resource type="Script" path="res://scripts/entities/fgd/ground_elevator.gd" id="2_cp8it"]
+[ext_resource type="Script" uid="uid://q5w1awqffbeb" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_wsjb4"]
+[ext_resource type="Script" uid="uid://jfyvt6745yhg" path="res://scripts/entities/fgd/ground_elevator.gd" id="2_cp8it"]
 
 [resource]
 script = ExtResource("1_wsjb4")

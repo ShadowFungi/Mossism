@@ -14,11 +14,11 @@ config/name="Mossism"
 run/main_scene="res://nodes/menus/StartMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Mossism/"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 0)
-boot_splash/image="res://assets/menus/BootSplash.png"
 boot_splash/use_filter=false
+boot_splash/image="res://assets/menus/BootSplash.png"
 config/icon="res://logo.svg"
 boot_splash/minimum_display_time=250
 
@@ -54,7 +54,7 @@ project/assembly_name="Mossism-qodot"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/func_godot/plugin.cfg", "res://addons/fungi_input_remapper/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/qodot/plugin.cfg")
+enabled=PackedStringArray("res://addons/func_godot/plugin.cfg", "res://addons/fungi_input_remapper/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [filesystem]
 
@@ -118,8 +118,9 @@ ledge_grab={
 
 [physics]
 
-3d/physics_engine="JoltPhysics3D"
+3d/physics_engine="Jolt Physics"
 3d/default_gravity=14.8
+common/physics_interpolation=true
 
 [rendering]
 

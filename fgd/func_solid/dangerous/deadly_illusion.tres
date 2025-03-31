@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=2 format=3 uid="uid://dkbq81x4a8u00"]
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=3 format=3 uid="uid://dkbq81x4a8u00"]
 
-[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_kprcr"]
+[ext_resource type="Script" uid="uid://vl84643em7hg" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_kprcr"]
+[ext_resource type="Script" uid="uid://ccpskalku4wnh" path="res://scripts/entities/fgd/deadly_illusion.gd" id="2_ajly5"]
 
 [resource]
 script = ExtResource("1_kprcr")
@@ -21,6 +22,7 @@ add_vertex_metadata = false
 add_face_position_metadata = false
 add_face_normal_metadata = false
 add_collision_shape_face_range_metadata = false
+script_class = ExtResource("2_ajly5")
 classname = "dangerous_deadly_illusion"
 description = ""
 func_godot_internal = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://rmyrp0rpg0pp"]
 
-[ext_resource type="Script" path="res://scripts/player/weapons/SawedOffBody.gd" id="1_4l8f6"]
+[ext_resource type="Script" uid="uid://fej75jnblg5n" path="res://scripts/player/weapons/SawedOffBody.gd" id="1_4l8f6"]
 [ext_resource type="PackedScene" uid="uid://w5b1u8f35fmo" path="res://nodes/player/sawed_off_model.tscn" id="2_1eqnc"]
 [ext_resource type="AudioStream" uid="uid://6d3q0w8fpxkl" path="res://assets/sounds/effects/slide.tres" id="3_1f7wj"]
 

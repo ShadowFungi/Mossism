@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7dv4s3mekot1"]
 
 [ext_resource type="PackedScene" uid="uid://bh8pwec5ry6d3" path="res://assets/models/enemies/Mossling/Mossling.glb" id="1_2s7h6"]
-[ext_resource type="Script" path="res://scripts/enemy/mossling.gd" id="2_q4pxl"]
+[ext_resource type="Script" uid="uid://cfe5kth7c2od6" path="res://scripts/enemy/mossling.gd" id="2_q4pxl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rufnw"]
 radius = 1.94

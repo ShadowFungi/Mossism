@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3uacef8ml2pc"]
 
 [ext_resource type="Theme" uid="uid://o8pjo3ilr2b6" path="res://styles/StartMenu.tres" id="1_lorqo"]
-[ext_resource type="Script" path="res://scripts/menus/player/GameOver.gd" id="2_16iup"]
+[ext_resource type="Script" uid="uid://d3gxwfnk86vf7" path="res://scripts/menus/player/GameOver.gd" id="2_16iup"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_cower"]
 color = Color(0, 0, 0, 0)

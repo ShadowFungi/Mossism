@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxfhu3rpvxcas"]
 
-[ext_resource type="Script" path="res://scripts/enemy/health_bar.gd" id="1_jk2b7"]
+[ext_resource type="Script" uid="uid://b04mmihn4271r" path="res://scripts/enemy/health_bar.gd" id="1_jk2b7"]
 [ext_resource type="StyleBox" uid="uid://wb18m4p0tho4" path="res://styles/health_bar.tres" id="2_vbfcr"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hn10p"]

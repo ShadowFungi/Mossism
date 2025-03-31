@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QodotWorldspawnLayer" load_steps=3 format=3 uid="uid://d4hwu1l0dcldv"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/worldspawn_layer.gd" id="1"]
-[ext_resource type="Script" path="res://addons/qodot/game_definitions/worldspawn_layers/liquid/water.gd" id="2"]
+[ext_resource type="Script" uid="uid://bf7tdwdktx6t5" path="res://addons/qodot/src/resources/worldspawn_layer.gd" id="1"]
+[ext_resource type="Script" uid="uid://2332xqfhlf4v" path="res://addons/qodot/game_definitions/worldspawn_layers/liquid/water.gd" id="2"]
 
 [resource]
 resource_name = "Water Layer"

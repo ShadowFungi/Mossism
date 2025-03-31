@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://csg3odp4eaj7x"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="3"]
-[ext_resource type="Script" path="res://addons/qodot/example_scenes/2-miscallaneous/1-runtime-map-building/orbit_arm.gd" id="5"]
+[ext_resource type="Script" uid="uid://dpr81ljljmh1h" path="res://addons/qodot/src/nodes/qodot_map.gd" id="3"]
+[ext_resource type="Script" uid="uid://c2qgst3qqswv" path="res://addons/qodot/example_scenes/2-miscallaneous/1-runtime-map-building/orbit_arm.gd" id="5"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="14"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_87nb4"]

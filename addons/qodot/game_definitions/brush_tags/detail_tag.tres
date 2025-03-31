@@ -1,11 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" script_class="TrenchBroomTag" load_steps=2 format=3 uid="uid://ct5fknxur570c"]
 
-[ext_resource path="res://addons/qodot/src/resources/game-definitions/trenchbroom/trenchbroom_tag.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://bk3dc5chdii5y" path="res://addons/qodot/src/resources/game-definitions/trenchbroom/trenchbroom_tag.gd" id="1"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 tag_name = "Detail"
-tag_attributes = [  ]
+tag_attributes = []
 tag_match_type = 4
 tag_pattern = "detail*"
 texture_name = ""

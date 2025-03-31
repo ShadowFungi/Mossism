@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://dqhjlwnhieyj7"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_6afyx"]
+[ext_resource type="Script" uid="uid://ghubh5wlwjcs" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_6afyx"]
 [ext_resource type="PackedScene" uid="uid://cnt5650g5rqjd" path="res://nodes/entities/enemies/mossling.tscn" id="1_hq7d0"]
 
 [resource]

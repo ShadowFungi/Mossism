@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cimd1va2qm3l"]
 
-[ext_resource type="Script" path="res://scripts/player/weapons/bullet.gd" id="1_bpp6f"]
+[ext_resource type="Script" uid="uid://b1hrad15gicer" path="res://scripts/player/weapons/bullet.gd" id="1_bpp6f"]
 [ext_resource type="PhysicsMaterial" uid="uid://d2nltka00g486" path="res://physics/bullet.tres" id="1_t8lct"]
 [ext_resource type="SphereMesh" uid="uid://blxgpqvac2dmf" path="res://assets/meshes/bullet.tres" id="3_rxemu"]
 [ext_resource type="AudioStream" uid="uid://btjt23mujq6lv" path="res://assets/sounds/effects/bullet_explode.tres" id="4_1or1a"]

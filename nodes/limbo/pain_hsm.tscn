@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://bpu0ofolmn50r"]
 
-[ext_resource type="Script" path="res://scripts/various/limbo/PainHSM.gd" id="1_afoby"]
-[ext_resource type="Script" path="res://scripts/various/limbo/SafeState.gd" id="2_c5hnw"]
-[ext_resource type="Script" path="res://scripts/various/limbo/FireState.gd" id="3_sdir0"]
-[ext_resource type="Script" path="res://scripts/various/limbo/MeleeState.gd" id="4_gfbyx"]
-[ext_resource type="Script" path="res://scripts/various/limbo/ExplosionState.gd" id="4_sdhm6"]
-[ext_resource type="Script" path="res://scripts/various/limbo/BleedState.gd" id="6_l4x4v"]
+[ext_resource type="Script" uid="uid://cvfd3qe07b4fx" path="res://scripts/various/limbo/PainHSM.gd" id="1_afoby"]
+[ext_resource type="Script" uid="uid://7x6n0knoime3" path="res://scripts/various/limbo/SafeState.gd" id="2_c5hnw"]
+[ext_resource type="Script" uid="uid://2hmxbymns0go" path="res://scripts/various/limbo/FireState.gd" id="3_sdir0"]
+[ext_resource type="Script" uid="uid://dtnyh7hsbenwb" path="res://scripts/various/limbo/MeleeState.gd" id="4_gfbyx"]
+[ext_resource type="Script" uid="uid://dumqmobtbriqf" path="res://scripts/various/limbo/ExplosionState.gd" id="4_sdhm6"]
+[ext_resource type="Script" uid="uid://b7f3rwcv2y50b" path="res://scripts/various/limbo/BleedState.gd" id="6_l4x4v"]
 
 [node name="PainHSM" type="LimboHSM"]
 update_mode = 0

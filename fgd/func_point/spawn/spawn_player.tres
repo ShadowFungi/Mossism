@@ -1,24 +1,26 @@
-[gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://dwsexaas3o2w"]
+[gd_resource type="Resource" script_class="FuncGodotFGDPointClass" load_steps=3 format=3 uid="uid://dwsexaas3o2w"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_kemvi"]
-[ext_resource type="Script" path="res://scripts/entities/fgd/player_spawner.gd" id="2_gvjqk"]
+[ext_resource type="Script" uid="uid://1tmcb8lfy0la" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="1_pnm56"]
+[ext_resource type="Script" uid="uid://bt8v4qnmtymf0" path="res://scripts/entities/fgd/player_spawner.gd" id="2_gvjqk"]
 
 [resource]
-script = ExtResource("1_kemvi")
+script = ExtResource("1_pnm56")
 script_class = ExtResource("2_gvjqk")
-apply_rotation_on_map_build = true
+apply_rotation_on_map_build = false
+apply_scale_on_map_build = false
 classname = "spawner_player"
 description = "A Player spawn point"
-qodot_internal = false
+func_godot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
 "angle": 0.0,
 "priority": 0
 }
 class_property_descriptions = {}
+auto_apply_to_matching_node_properties = false
 meta_properties = {
 "color": Color(0.694118, 0.160784, 0.466667, 1),
 "size": AABB(-8, -8, -8, 8, 8, 8)
 }
 node_class = "Area3D"
-transient_node = false
+name_property = ""

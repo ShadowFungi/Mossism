@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=2 format=3 uid="uid://b60yl81t62scq"]
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=3 format=3 uid="uid://b60yl81t62scq"]
 
-[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_jbve0"]
+[ext_resource type="Script" uid="uid://vl84643em7hg" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_jbve0"]
+[ext_resource type="Script" uid="uid://bhvfvynjm1tlk" path="res://scripts/entities/fgd/ground_solid.gd" id="2_j8lxj"]
 
 [resource]
 script = ExtResource("1_jbve0")
@@ -21,6 +22,7 @@ add_vertex_metadata = false
 add_face_position_metadata = false
 add_face_normal_metadata = false
 add_collision_shape_face_range_metadata = false
+script_class = ExtResource("2_j8lxj")
 classname = "ground_solid"
 description = "A solid impassable wall"
 func_godot_internal = false

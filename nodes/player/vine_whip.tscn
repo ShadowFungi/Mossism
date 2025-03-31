@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dkw5qon1jolll"]
 
-[ext_resource type="Script" path="res://scripts/player/weapons/vine-whip-geo.gd" id="1_24425"]
-[ext_resource type="Script" path="res://scripts/player/weapons/vine_whip.gd" id="1_tow56"]
+[ext_resource type="Script" uid="uid://rt6fm8fh1g00" path="res://scripts/player/weapons/vine-whip-geo.gd" id="1_24425"]
+[ext_resource type="Script" uid="uid://dxmhxrdv74ibd" path="res://scripts/player/weapons/vine_whip.gd" id="1_tow56"]
 [ext_resource type="ArrayMesh" uid="uid://pj1oat8gokhs" path="res://assets/models/player/tools/vine-whip-segment-flower.obj" id="1_vqlxm"]
 [ext_resource type="ArrayMesh" uid="uid://c13ctbsvdi3qo" path="res://assets/models/player/tools/vine-whip-segment-thorn.obj" id="3_xwylk"]
 [ext_resource type="ArrayMesh" uid="uid://2gsilo60ra0f" path="res://assets/models/player/tools/vine-whip-segment-leaf.obj" id="4_24r2s"]
@@ -73,6 +73,7 @@ path_interval_type = 0
 path_interval = 0.15
 path_simplify_angle = 10.0
 path_rotation = 2
+path_rotation_accurate = false
 path_local = false
 path_continuous_u = true
 path_u_distance = 1.0

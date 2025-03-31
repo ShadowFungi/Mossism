@@ -2,11 +2,12 @@
 
 [ext_resource type="Resource" uid="uid://cx1i7b6tbo01q" path="res://fgd/func_base/targetname_base_class.tres" id="1_j666l"]
 [ext_resource type="Resource" uid="uid://c4lsmkleyiphx" path="res://fgd/func_base/target_base_class.tres" id="2_pmn5g"]
-[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="3_q38l1"]
+[ext_resource type="Script" uid="uid://1tmcb8lfy0la" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="3_q38l1"]
 
 [resource]
 script = ExtResource("3_q38l1")
-apply_rotation_on_map_build = true
+apply_rotation_on_map_build = false
+apply_scale_on_map_build = false
 classname = "signal"
 description = "Signal"
 func_godot_internal = false
@@ -21,5 +22,5 @@ auto_apply_to_matching_node_properties = false
 meta_properties = {
 "size": AABB(-8, -8, -8, 8, 8, 8)
 }
-node_class = ""
+node_class = "Node3D"
 name_property = ""

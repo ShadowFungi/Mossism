@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=2 format=3 uid="uid://dhtuwhdulj6uw"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_kg3q4"]
+[ext_resource type="Script" uid="uid://ghubh5wlwjcs" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_kg3q4"]
 
 [resource]
 script = ExtResource("1_kg3q4")
+apply_rotation_on_map_build = true
 classname = ""
 description = ""
 qodot_internal = false

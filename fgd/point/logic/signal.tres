@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=4 format=3 uid="uid://cxquaj3pk21cf"]
 
 [ext_resource type="Resource" uid="uid://ccdjpf5j25aua" path="res://addons/qodot/game_definitions/fgd/base_classes/targetname_base_class.tres" id="1_d6ygp"]
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_high3"]
+[ext_resource type="Script" uid="uid://ghubh5wlwjcs" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_high3"]
 [ext_resource type="Resource" uid="uid://dgm276g7bw8q5" path="res://addons/qodot/game_definitions/fgd/base_classes/target_base_class.tres" id="2_tl6ox"]
 
 [resource]

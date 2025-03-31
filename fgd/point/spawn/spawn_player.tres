@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://c0wc3cl8jepqi"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_gvp6v"]
-[ext_resource type="Script" path="res://scripts/entities/fgd/player_spawner.gd" id="2_8pa58"]
+[ext_resource type="Script" uid="uid://ghubh5wlwjcs" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_gvp6v"]
+[ext_resource type="Script" uid="uid://bt8v4qnmtymf0" path="res://scripts/entities/fgd/player_spawner.gd" id="2_8pa58"]
 
 [resource]
 script = ExtResource("1_gvp6v")

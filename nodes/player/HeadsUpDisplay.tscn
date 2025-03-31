@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://yqh4nksms18t"]
 
 [ext_resource type="Theme" uid="uid://chmxi4wab3f42" path="res://styles/Hud.tres" id="1_th0wk"]
-[ext_resource type="Script" path="res://scripts/player/HeadsUpDisplay.gd" id="2_tpgrf"]
+[ext_resource type="Script" uid="uid://bbg5bwgmsns76" path="res://scripts/player/HeadsUpDisplay.gd" id="2_tpgrf"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3

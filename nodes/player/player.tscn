@@ -1,37 +1,37 @@
 [gd_scene load_steps=44 format=3 uid="uid://dqj64b3y24pyv"]
 
 [ext_resource type="PackedScene" uid="uid://bot0f53hv0v3k" path="res://assets/models/player/character/player.rigged.glb" id="1_88fmg"]
-[ext_resource type="Script" path="res://scripts/player/player_rigged_glb.gd" id="2_l0nax"]
-[ext_resource type="Script" path="res://scripts/player/IK.gd" id="3_hjwlr"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_ibfff"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_v5tf1"]
+[ext_resource type="Script" uid="uid://cabwuajcurnhv" path="res://scripts/player/player_rigged_glb.gd" id="2_l0nax"]
+[ext_resource type="Script" uid="uid://wlei70qow2t5" path="res://scripts/player/IK.gd" id="3_hjwlr"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_ibfff"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_v5tf1"]
 [ext_resource type="Material" uid="uid://jal1mvy6vk3r" path="res://assets/shaders/LightingShaderMat.tres" id="5_mselp"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_rj1tq"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_q7651"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_rj1tq"]
+[ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_q7651"]
 [ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="7_driho"]
 [ext_resource type="PackedScene" uid="uid://rmyrp0rpg0pp" path="res://nodes/player/sawed_off.tscn" id="8_en11i"]
 [ext_resource type="PackedScene" uid="uid://yqh4nksms18t" path="res://nodes/player/HeadsUpDisplay.tscn" id="9_8jwsx"]
 [ext_resource type="CameraAttributesPractical" uid="uid://gkwjgf6vkw8d" path="res://styles/camera_attributes/player.tres" id="10_rporx"]
 [ext_resource type="PackedScene" uid="uid://bhe4g8hhy6h80" path="res://nodes/menus/player/PauseMenu.tscn" id="10_s7si3"]
 [ext_resource type="PackedScene" uid="uid://d3uacef8ml2pc" path="res://nodes/menus/player/GameOver.tscn" id="11_df4gm"]
-[ext_resource type="Script" path="res://scripts/player/limbo/PlayerIdleState.gd" id="12_s7kid"]
-[ext_resource type="Script" path="res://scripts/player/limbo/PlayerWalkingState.gd" id="13_t70bm"]
-[ext_resource type="Script" path="res://scripts/player/limbo/PlayerRunningState.gd" id="14_vfbvu"]
-[ext_resource type="Script" path="res://scripts/player/limbo/PlayerGroundedState.gd" id="15_1iibm"]
-[ext_resource type="Script" path="res://scripts/player/limbo/PlayerJumpState.gd" id="16_ki2hn"]
-[ext_resource type="Script" path="res://scripts/player/limbo/PlayerCoyoteState.gd" id="17_44ywj"]
-[ext_resource type="Script" path="res://scripts/player/limbo/PlayerFallState.gd" id="18_wkc1q"]
-[ext_resource type="Script" path="res://scripts/player/limbo/PlayerStandingState.gd" id="19_b3koa"]
-[ext_resource type="Script" path="res://scripts/player/limbo/PlayerCrouchingState.gd" id="20_uo0ao"]
+[ext_resource type="Script" uid="uid://dwnyj3nk0u1vi" path="res://scripts/player/limbo/PlayerIdleState.gd" id="12_s7kid"]
+[ext_resource type="Script" uid="uid://c75ytvtoelj6b" path="res://scripts/player/limbo/PlayerWalkingState.gd" id="13_t70bm"]
+[ext_resource type="Script" uid="uid://cgi2s8krm5til" path="res://scripts/player/limbo/PlayerRunningState.gd" id="14_vfbvu"]
+[ext_resource type="Script" uid="uid://cuegiyftmihx0" path="res://scripts/player/limbo/PlayerGroundedState.gd" id="15_1iibm"]
+[ext_resource type="Script" uid="uid://dbw028keul5eo" path="res://scripts/player/limbo/PlayerJumpState.gd" id="16_ki2hn"]
+[ext_resource type="Script" uid="uid://b7rhbhjq0mtxq" path="res://scripts/player/limbo/PlayerCoyoteState.gd" id="17_44ywj"]
+[ext_resource type="Script" uid="uid://cffgu8gmfmkf0" path="res://scripts/player/limbo/PlayerFallState.gd" id="18_wkc1q"]
+[ext_resource type="Script" uid="uid://nk04lhy1kjnc" path="res://scripts/player/limbo/PlayerStandingState.gd" id="19_b3koa"]
+[ext_resource type="Script" uid="uid://ifwk2qrditii" path="res://scripts/player/limbo/PlayerCrouchingState.gd" id="20_uo0ao"]
 [ext_resource type="PackedScene" uid="uid://bpu0ofolmn50r" path="res://nodes/limbo/pain_hsm.tscn" id="22_85xb5"]
-[ext_resource type="Script" path="res://scripts/player/limbo/PlayerLedgeGrabState.gd" id="22_g72mu"]
+[ext_resource type="Script" uid="uid://dwprmggg3yl20" path="res://scripts/player/limbo/PlayerLedgeGrabState.gd" id="22_g72mu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i6h3a"]
 
 [sub_resource type="Sky" id="Sky_6tkic"]
 sky_material = SubResource("ProceduralSkyMaterial_i6h3a")
 
-[sub_resource type="Environment" id="Environment_w4d8t"]
+[sub_resource type="Environment" id="Environment_43f2u"]
 background_color = Color(0.247059, 0.337255, 0.231373, 1)
 sky = SubResource("Sky_6tkic")
 ambient_light_source = 2
@@ -67,7 +67,7 @@ volumetric_fog_length = 32.0
 volumetric_fog_temporal_reprojection_enabled = false
 adjustment_enabled = true
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0gi3j"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_awvti"]
 exposure_multiplier = 1.75
 auto_exposure_scale = 0.04
 dof_blur_far_enabled = true
@@ -88,12 +88,13 @@ point_count = 1
 
 [sub_resource type="Resource" id="Resource_t48na"]
 script = ExtResource("5_rj1tq")
-duration = 1.0
+duration = 0.5
 transition = 0
 ease = 2
 
 [sub_resource type="Resource" id="Resource_40cjh"]
 script = ExtResource("6_q7651")
+keep_aspect = 1
 cull_mask = 1048575
 h_offset = 0.0
 v_offset = 0.0
@@ -122,6 +123,7 @@ ease = 2
 
 [sub_resource type="Resource" id="Resource_mke3j"]
 script = ExtResource("6_q7651")
+keep_aspect = 1
 cull_mask = 1048575
 h_offset = 0.0
 v_offset = 0.0
@@ -368,9 +370,10 @@ target_node = NodePath("../../../HeadLoc3D/HeadMarker3D")
 script = ExtResource("3_hjwlr")
 
 [node name="Camera3D" type="Camera3D" parent="." index="1"]
-transform = Transform3D(1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, 1, -3.18942e-09, 4.80462, 0.258516)
-environment = SubResource("Environment_w4d8t")
-attributes = SubResource("CameraAttributesPractical_0gi3j")
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, 1, -3.18942e-09, 4.80462, -0.141484)
+environment = SubResource("Environment_43f2u")
+attributes = SubResource("CameraAttributesPractical_awvti")
 doppler_tracking = 2
 current = true
 near = 0.001
@@ -403,18 +406,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.563)
 curve = SubResource("Curve3D_rbbgu")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." index="3" node_paths=PackedStringArray("follow_target", "look_at_target")]
-transform = Transform3D(1.68, 0, 1.4687e-07, 0, 1.68, 0, -1.4687e-07, 0, 1.68, -3.18942e-09, 4.80462, 0.258516)
+transform = Transform3D(1.68, 0, 1.4687e-07, 0, 1.68, 0, -1.4687e-07, 0, 1.68, -3.18942e-09, 4.80462, -0.141484)
 top_level = true
 script = ExtResource("4_v5tf1")
 follow_mode = 2
-follow_target = NodePath("../metarig/Skeleton3D/Head/Head")
+follow_target = NodePath("../metarig/Skeleton3D/Head")
 look_at_mode = 1
 look_at_target = NodePath("../metarig/Skeleton3D/Head/Head")
 tween_resource = SubResource("Resource_t48na")
 camera_3d_resource = SubResource("Resource_40cjh")
 attributes = SubResource("CameraAttributesPractical_hc01b")
 environment = ExtResource("7_driho")
-follow_offset = Vector3(0, 0, 0.295)
+follow_offset = Vector3(0, 0, -0.105)
 
 [node name="SawedOff" parent="PhantomCamera3D" index="0" node_paths=PackedStringArray("player") instance=ExtResource("8_en11i")]
 transform = Transform3D(1, 2.03288e-20, 1.74846e-07, -2.03288e-20, 1, 5.92401e-28, -1.74846e-07, -4.14681e-27, 1, 0.724795, -0.721606, -1.61847)
@@ -491,7 +494,7 @@ transform = Transform3D(0.960736, -0.277264, -0.0104717, 0.277313, 0.960773, 0.0
 shape = SubResource("BoxShape3D_18ptl")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="." index="8"]
-transform = Transform3D(-4.37113e-08, -1, 8.74228e-08, 0.999999, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, 1, -2.21357e-08, 4.80462, -0.00725514)
+transform = Transform3D(-4.37113e-08, -1, 8.74228e-08, 0.999999, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, 1, -2.21357e-08, 4.80462, -0.407255)
 shape = SubResource("SphereShape3D_rkx05")
 
 [node name="Targets" type="Node3D" parent="." index="9"]

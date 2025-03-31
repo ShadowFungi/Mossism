@@ -24,6 +24,10 @@ signal became_active
 ## Emitted when the [param PhantomCamera2D] becomes inactive.
 signal became_inactive
 
+## Emitted when the follow_mode changes.
+## Note: This is for internal use only
+signal follow_mode_changed
+
 ## Emitted when [member follow_target] changes.
 signal follow_target_changed
 
@@ -99,14 +103,14 @@ enum FollowLockAxis {
 ## running a build export of the game.
 @export var priority_override: bool = false:
 	set(value):
-		if Engine.is_editor_hint() and _has_valid_pcam_owner():
-			if value == true:
-				priority_override = value
-				get_pcam_host_owner().pcam_priority_override(self)
+		priority_override = value
+		if Engine.is_editor_hint():
+			if value:
+				if not Engine.has_singleton(_constants.PCAM_MANAGER_NODE_NAME): return
+				Engine.get_singleton(_constants.PCAM_MANAGER_NODE_NAME).pcam_priority_override.emit(self, true)
 			else:
-				priority_override = value
-				get_pcam_host_owner().pcam_priority_updated(self)
-				get_pcam_host_owner().pcam_priority_override_disabled()
+				if not Engine.has_singleton(_constants.PCAM_MANAGER_NODE_NAME): return
+				Engine.get_singleton(_constants.PCAM_MANAGER_NODE_NAME).pcam_priority_override.emit(self, false)
 	get:
 		return priority_override
 
@@ -156,6 +160,7 @@ enum FollowLockAxis {
 				dead_zone_changed.disconnect(_on_dead_zone_changed)
 
 		top_level = true
+		follow_mode_changed.emit()
 		notify_property_list_changed()
 	get:
 		return follow_mode
@@ -234,6 +239,12 @@ enum FollowLockAxis {
 ## to improve performance.
 @export var inactive_update_mode: InactiveUpdateMode = InactiveUpdateMode.ALWAYS
 
+## Determines which layers this [PhantomCamera2D] should be able to find [PhantomCamera2D] / [PhantomCamera3D].
+## A corresponding layer needs to be set on the PhantomCamera node.
+@export_flags_2d_render var host_layers: int = 1:
+	set = set_host_layers,
+	get = get_host_layers
+
 @export_group("Follow Parameters")
 ## Offsets the [member follow_target] position.
 @export var follow_offset: Vector2 = Vector2.ZERO:
@@ -255,7 +266,6 @@ enum FollowLockAxis {
 	set = set_follow_damping_value,
 	get = get_follow_damping_value
 
-
 ## Prevents the [param PhantomCamera2D] from moving in a designated axis.
 ## This can be enabled or disabled at runtime or from the editor directly.
 @export var follow_axis_lock: FollowLockAxis = FollowLockAxis.NONE:
@@ -276,6 +286,7 @@ var _follow_axis_lock_value: Vector2 = Vector2.ZERO
 @export var auto_zoom: bool = false:
 	set = set_auto_zoom,
 	get = get_auto_zoom
+
 ## Sets the param minimum zoom amount, in other words how far away the
 ## [param Camera2D] can be from scene.[br][br]
 ## This only works when [member auto_zoom] is enabled.
@@ -289,10 +300,10 @@ var _follow_axis_lock_value: Vector2 = Vector2.ZERO
 @export var auto_zoom_max: float = 5:
 	set = set_auto_zoom_max,
 	get = get_auto_zoom_max
+
 ## Determines how close to the edges the targets are allowed to be.
 ## This is useful to avoid targets being cut off at the edges of the screen.
 ## [br][br]
-
 ## The Vector4 parameter order goes: [param Left] - [param Top] - [param Right]
 ## - [param Bottom].
 @export var auto_zoom_margin: Vector4 = Vector4.ZERO:
@@ -414,11 +425,6 @@ var _follow_axis_lock_value: Vector2 = Vector2.ZERO
 
 var _is_active: bool = false
 
-## The [PhantomCameraHost] that owns this [param PhantomCamera2D].
-var pcam_host_owner: PhantomCameraHost = null:
-	set = set_pcam_host_owner,
-	get = get_pcam_host_owner
-
 var _should_follow: bool = false
 var _follow_framed_offset: Vector2 = Vector2.ZERO
 var _follow_target_physics_based: bool = false
@@ -447,6 +453,8 @@ var _limit_node: Node2D
 
 var _limit_inactive_pcam: bool
 
+var _target_transform: Transform2D
+
 var _transform_output: Transform2D
 var _transform_noise: Transform2D
 
@@ -473,7 +481,7 @@ var viewport_position: Vector2
 
 #endregion
 
-#region Property Validator
+#region Private Functions
 
 func _validate_property(property: Dictionary) -> void:
 	################
@@ -553,15 +561,15 @@ func _validate_property(property: Dictionary) -> void:
 	if property.name == "limit_margin" and not _limit_node:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
 
-	################
-	## Frame Preview
-	################
-	if property.name == "frame_preview" and _is_active:
-		property.usage |= PROPERTY_USAGE_READ_ONLY
-
-#region Private Functions
 
 func _enter_tree() -> void:
+	_phantom_camera_manager = Engine.get_singleton(_constants.PCAM_MANAGER_NODE_NAME)
+	_tween_skip = !tween_on_load
+
+	_phantom_camera_manager.pcam_added(self)
+
+	priority_override = false
+
 	_should_follow_checker()
 	if follow_mode == FollowMode.GROUP:
 		_follow_targets_size_check()
@@ -571,23 +579,16 @@ func _enter_tree() -> void:
 	if not visibility_changed.is_connected(_check_visibility):
 		visibility_changed.connect(_check_visibility)
 
-	_phantom_camera_manager = get_tree().root.get_node(_constants.PCAM_MANAGER_NODE_NAME)
-	_phantom_camera_manager.pcam_added(self)
 	update_limit_all_sides()
 
-	if not _phantom_camera_manager.get_phantom_camera_hosts().is_empty():
-		set_pcam_host_owner(_phantom_camera_manager.get_phantom_camera_hosts()[0])
 
 
 func _exit_tree() -> void:
-	if is_instance_valid(_phantom_camera_manager):
-		_phantom_camera_manager.pcam_removed(self)
-
-	if _has_valid_pcam_owner():
-		get_pcam_host_owner().pcam_removed_from_scene(self)
-
 	if not follow_mode == FollowMode.GROUP:
 		follow_targets = []
+
+	if not is_instance_valid(_phantom_camera_manager): return
+	_phantom_camera_manager.pcam_removed(self)
 
 
 func _ready() -> void:
@@ -615,8 +616,6 @@ func process_logic(delta: float) -> void:
 	if _is_active:
 		if _has_noise_resource and _preview_noise:
 			_transform_noise = noise.get_noise_transform(delta)
-			if _transform_noise.get_rotation() != 0:
-				push_warning(pcam_host_owner.camera_2d.name, " has ignore_rotation enabled.")
 	else:
 		match inactive_update_mode:
 			InactiveUpdateMode.NEVER: return
@@ -637,12 +636,12 @@ func process_logic(delta: float) -> void:
 	if _follow_axis_is_locked:
 		match follow_axis_lock:
 			FollowLockAxis.X:
-				_transform_output.origin.x = _follow_axis_lock_value.x
+				_transform_output.origin.x = _follow_axis_lock_value.x + follow_offset.x
 			FollowLockAxis.Y:
-				_transform_output.origin.y = _follow_axis_lock_value.y
+				_transform_output.origin.y = _follow_axis_lock_value.y + follow_offset.y
 			FollowLockAxis.XY:
-				_transform_output.origin.x = _follow_axis_lock_value.x
-				_transform_output.origin.y = _follow_axis_lock_value.y
+				_transform_output.origin.x = _follow_axis_lock_value.x + follow_offset.x
+				_transform_output.origin.y = _follow_axis_lock_value.y + follow_offset.y
 
 
 func _limit_checker() -> void:
@@ -653,13 +652,12 @@ func _limit_checker() -> void:
 
 
 func _follow(delta: float) -> void:
-	var follow_position: Vector2
 	match follow_mode:
 		FollowMode.GLUED:
-			follow_position = follow_target.global_position
+			_target_transform.origin = follow_target.global_position
 
 		FollowMode.SIMPLE:
-			follow_position = _target_position_with_offset()
+			_target_transform.origin = _target_position_with_offset()
 
 		FollowMode.GROUP:
 			if _has_multiple_follow_targets:
@@ -674,19 +672,18 @@ func _follow(delta: float) -> void:
 						auto_zoom_margin.w
 					)
 
-					var screen_size: Vector2 = get_viewport_rect().size
-					if rect.size.x > rect.size.y * screen_size.aspect():
-						zoom = clamp(screen_size.x / rect.size.x, auto_zoom_min, auto_zoom_max) * Vector2.ONE
+					if rect.size.x > rect.size.y * _phantom_camera_manager.screen_size.aspect():
+						zoom = clamp(_phantom_camera_manager.screen_size.x / rect.size.x, auto_zoom_min, auto_zoom_max) * Vector2.ONE
 					else:
-						zoom = clamp(screen_size.y / rect.size.y, auto_zoom_min, auto_zoom_max) * Vector2.ONE
-				follow_position = rect.get_center()
+						zoom = clamp(_phantom_camera_manager.screen_size.y / rect.size.y, auto_zoom_min, auto_zoom_max) * Vector2.ONE
+				_target_transform.origin = rect.get_center() + follow_offset
 			else:
-				follow_position = follow_targets[_follow_targets_single_target_index].global_position
+				_target_transform.origin = follow_targets[_follow_targets_single_target_index].global_position + follow_offset
 
 		FollowMode.PATH:
 			var path_position: Vector2 = follow_path.global_position
 
-			follow_position = \
+			_target_transform.origin = \
 				follow_path.curve.get_closest_point(
 					_target_position_with_offset() - path_position
 				) + path_position
@@ -702,37 +699,37 @@ func _follow(delta: float) -> void:
 
 					if dead_zone_width == 0 || dead_zone_height == 0:
 						if dead_zone_width == 0 && dead_zone_height != 0:
-							follow_position = _target_position_with_offset()
+							_target_transform.origin = _target_position_with_offset()
 						elif dead_zone_width != 0 && dead_zone_height == 0:
 							glo_pos = _target_position_with_offset()
 							glo_pos.x += target_position.x - global_position.x
-							follow_position = glo_pos
+							_target_transform.origin = glo_pos
 						else:
-							follow_position = _target_position_with_offset()
+							_target_transform.origin = _target_position_with_offset()
 
 					# If a horizontal dead zone is reached
 					if framed_side_offset.x != 0 and framed_side_offset.y == 0:
-						follow_position.y = _transform_output.origin.y
-						follow_position.x = target_position.x
+						_target_transform.origin.y = _transform_output.origin.y
+						_target_transform.origin.x = target_position.x
 						_follow_framed_offset.y = global_position.y - _target_position_with_offset().y
 						dead_zone_reached.emit(Vector2(framed_side_offset.x, 0))
 					# If a vertical dead zone is reached
 					elif framed_side_offset.x == 0 and framed_side_offset.y != 0:
-						follow_position.x = _transform_output.origin.x
-						follow_position.y = target_position.y
+						_target_transform.origin.x = _transform_output.origin.x
+						_target_transform.origin.y = target_position.y
 						_follow_framed_offset.x = global_position.x - _target_position_with_offset().x
 						dead_zone_reached.emit(Vector2(0, framed_side_offset.y))
 					# If a deadzone corner is reached
 					else:
-						follow_position = target_position
+						_target_transform.origin = target_position
 						dead_zone_reached.emit(Vector2(framed_side_offset.x, framed_side_offset.y))
 				else:
 					_follow_framed_offset = _transform_output.origin - _target_position_with_offset()
 					return
 			else:
-				follow_position = _target_position_with_offset()
+				_target_transform.origin = _target_position_with_offset()
 
-	_interpolate_position(follow_position, delta)
+	_interpolate_position(_target_transform.origin, delta)
 
 
 func _set_follow_velocity(index: int, value: float):
@@ -796,16 +793,11 @@ func _draw() -> void:
 	if not Engine.is_editor_hint(): return
 
 	if frame_preview and not _is_active:
-		var screen_size_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
-		var screen_size_height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
-		var screen_size_zoom: Vector2 = Vector2(screen_size_width / get_zoom().x, screen_size_height / get_zoom().y)
 		draw_rect(_camera_frame_rect(), Color("3ab99a"), false, 2)
 
 
 func _camera_frame_rect() -> Rect2:
-	var screen_size_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
-	var screen_size_height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
-	var screen_size_zoom: Vector2 = Vector2(screen_size_width / get_zoom().x, screen_size_height / get_zoom().y)
+	var screen_size_zoom: Vector2 = Vector2(_phantom_camera_manager.screen_size.x / get_zoom().x, _phantom_camera_manager.screen_size.y / get_zoom().y)
 
 	return Rect2(-screen_size_zoom / 2, screen_size_zoom)
 
@@ -820,12 +812,6 @@ func _target_position_with_offset() -> Vector2:
 
 func _on_dead_zone_changed() -> void:
 	set_global_position( _target_position_with_offset() )
-
-
-func _has_valid_pcam_owner() -> bool:
-	if not is_instance_valid(get_pcam_host_owner()): return false
-	if not is_instance_valid(get_pcam_host_owner().camera_2d): return false
-	return true
 
 
 func _get_framed_side_offset() -> Vector2:
@@ -851,8 +837,8 @@ func _get_framed_side_offset() -> Vector2:
 
 
 func _draw_camera_2d_limit() -> void:
-	if _has_valid_pcam_owner():
-		get_pcam_host_owner().camera_2d.set_limit_drawing_enabled(draw_limits)
+	if not is_instance_valid(_phantom_camera_manager): return
+	_phantom_camera_manager.draw_limit_2d.emit(draw_limits)
 
 
 func _check_limit_is_not_default() -> void:
@@ -862,15 +848,8 @@ func _check_limit_is_not_default() -> void:
 		_limit_inactive_pcam = true
 
 
-func _set_camera_2d_limit(side: int, limit: int) -> void:
-	if not _has_valid_pcam_owner(): return
-	if not _is_active: return
-	get_pcam_host_owner().camera_2d.set_limit(side, limit)
-
-
 func _check_visibility() -> void:
-	if not is_instance_valid(pcam_host_owner): return
-	pcam_host_owner.refresh_pcam_list_priorty()
+	_phantom_camera_manager.pcam_visibility_changed.emit(self)
 
 
 func _follow_target_tree_exiting(target: Node) -> void:
@@ -922,10 +901,6 @@ func _noise_emitted(emitter_noise_output: Transform2D, emitter_layer: int) -> vo
 	if noise_emitter_layer & emitter_layer != 0:
 		noise_emitted.emit(emitter_noise_output)
 
-		if not pcam_host_owner.camera_2d.ignore_rotation: return
-		if emitter_noise_output.get_rotation() != 0:
-			push_warning(pcam_host_owner.camera_2d.name, " has ignore_rotation enabled.")
-
 
 func _set_layer(current_layers: int, layer_number: int, value: bool) -> int:
 	var mask: int = current_layers
@@ -944,17 +919,20 @@ func _set_layer(current_layers: int, layer_number: int, value: bool) -> int:
 
 func _check_physics_body(target: Node2D) -> void:
 	if target is PhysicsBody2D:
+		var show_jitter_tips := ProjectSettings.get_setting("phantom_camera/tips/show_jitter_tips")
+		var physics_interpolation_enabled := ProjectSettings.get_setting("physics/common/physics_interpolation")
+
 		## NOTE - Feature Toggle
 		if Engine.get_version_info().major == 4 and \
 		Engine.get_version_info().minor < 3:
-			if ProjectSettings.get_setting("phantom_camera/tips/show_jitter_tips"):
+			if show_jitter_tips == null: # Default value is null when referencing custom Project Setting
 				print_rich("Following a [b]PhysicsBody2D[/b] node will likely result in jitter - on lower physics ticks in particular.")
 				print_rich("If possible, will recommend upgrading to Godot 4.3, as it has built-in support for 2D Physics Interpolation, which will mitigate this issue.")
 				print_rich("Otherwise, try following the guide on the [url=https://phantom-camera.dev/support/faq#i-m-seeing-jitter-what-can-i-do]documentation site[/url] for better results.")
 				print_rich("This tip can be disabled from within [code]Project Settings / Phantom Camera / Tips / Show Jitter Tips[/code]")
 			return
 			## NOTE - Only supported in Godot 4.3 or above
-		elif not ProjectSettings.get_setting("physics/common/physics_interpolation") and ProjectSettings.get_setting("phantom_camera/tips/show_jitter_tips"):
+		elif not physics_interpolation_enabled and show_jitter_tips == null: # Default value is null when referencing custom Project Setting
 			printerr("Physics Interpolation is disabled in the Project Settings, recommend enabling it to smooth out physics-based camera movement")
 			print_rich("This tip can be disabled from within [code]Project Settings / Phantom Camera / Tips / Show Jitter Tips[/code]")
 		_follow_target_physics_based = true
@@ -1035,21 +1013,22 @@ func update_limit_all_sides() -> void:
 		_limit_sides.w = roundi(limit_rect.position.y + limit_rect.size.y)
 
 	_check_limit_is_not_default()
-
-	if _is_active and _has_valid_pcam_owner():
-		_set_camera_2d_limit(SIDE_LEFT, _limit_sides.x)
-		_set_camera_2d_limit(SIDE_TOP, _limit_sides.y)
-		_set_camera_2d_limit(SIDE_RIGHT, _limit_sides.z)
-		_set_camera_2d_limit(SIDE_BOTTOM, _limit_sides.w)
+	if not _is_active: return
+	if not is_instance_valid(_phantom_camera_manager): return
+	_phantom_camera_manager.limit_2d_changed.emit(SIDE_LEFT, _limit_sides.x)
+	_phantom_camera_manager.limit_2d_changed.emit(SIDE_TOP, _limit_sides.y)
+	_phantom_camera_manager.limit_2d_changed.emit(SIDE_RIGHT, _limit_sides.z)
+	_phantom_camera_manager.limit_2d_changed.emit(SIDE_BOTTOM, _limit_sides.w)
+	_phantom_camera_manager.draw_limit_2d.emit(draw_limits)
 
 
 func reset_limit() -> void:
-	if not _has_valid_pcam_owner(): return
-	if not _is_active: return
-	get_pcam_host_owner().camera_2d.set_limit(SIDE_LEFT, _limit_sides_default.x)
-	get_pcam_host_owner().camera_2d.set_limit(SIDE_TOP, _limit_sides_default.y)
-	get_pcam_host_owner().camera_2d.set_limit(SIDE_RIGHT, _limit_sides_default.z)
-	get_pcam_host_owner().camera_2d.set_limit(SIDE_BOTTOM, _limit_sides_default.w)
+	if not is_instance_valid(_phantom_camera_manager): return
+	_phantom_camera_manager.limit_2d_changed.emit(SIDE_LEFT, _limit_sides_default.x)
+	_phantom_camera_manager.limit_2d_changed.emit(SIDE_TOP, _limit_sides_default.y)
+	_phantom_camera_manager.limit_2d_changed.emit(SIDE_RIGHT, _limit_sides_default.z)
+	_phantom_camera_manager.limit_2d_changed.emit(SIDE_BOTTOM, _limit_sides_default.w)
+	_phantom_camera_manager.draw_limit_2d.emit(draw_limits)
 
 
 ## Assigns the value of the [param has_tweened] property.
@@ -1079,31 +1058,18 @@ func get_noise_transform() -> Transform2D:
 func emit_noise(value: Transform2D) -> void:
 	noise_emitted.emit(value)
 
+
+## Teleports the [param PhantomCamera2D] and [Camera2D] to their designated position,
+## bypassing the damping process.
+func teleport_position() -> void:
+	_follow_velocity_ref = Vector2.ZERO
+	_transform_output.origin = _target_transform.origin
+	_phantom_camera_manager.pcam_teleport.emit()
+
 #endregion
 
 
 #region Setter & Getter Functions
-
-## Assigns the [param PhantomCamera2D] to a new [PhantomCameraHost].[br]
-## [b][color=yellow]Important:[/color][/b] This is currently restricted to
-## plugin internals. Proper support will be added in issue #26.
-func set_pcam_host_owner(value: PhantomCameraHost) -> void:
-	pcam_host_owner = value
-	if is_instance_valid(pcam_host_owner):
-		pcam_host_owner.pcam_added_to_scene(self)
-	#if value.size() == 1:
-#	else:
-#		for camera_host in camera_host_group:
-#			print("Multiple PhantomCameraBases in scene")
-#			print(pcam_host_group)
-#			print(pcam.get_tree().get_nodes_in_group(PhantomCameraGroupNames.PHANTOM_CAMERA_HOST_GROUP_NAME))
-#			multiple_pcam_host_group.append(camera_host)
-#			return nullfunc assign_pcam_host() -> void:
-## Gets the current [PhantomCameraHost] this [param PhantomCamera2D] is
-## assigned to.
-func get_pcam_host_owner() -> PhantomCameraHost:
-	return pcam_host_owner
-
 
 ## Assigns new Zoom value.
 func set_zoom(value: Vector2) -> void:
@@ -1118,8 +1084,8 @@ func get_zoom() -> Vector2:
 ## Assigns new Priority value.
 func set_priority(value: int) -> void:
 	priority = abs(value)
-	if _has_valid_pcam_owner():
-		get_pcam_host_owner().pcam_priority_updated(self)
+	if not Engine.has_singleton(_constants.PCAM_MANAGER_NODE_NAME): return
+	Engine.get_singleton(_constants.PCAM_MANAGER_NODE_NAME).pcam_priority_changed.emit(self)
 
 ## Gets current Priority value.
 func get_priority() -> int:
@@ -1176,6 +1142,7 @@ func set_is_active(node, value) -> void:
 		_is_active = value
 		if value:
 			_should_follow_checker()
+		queue_redraw()
 	else:
 		printerr("PCams can only be set from the PhantomCameraHost")
 
@@ -1193,6 +1160,20 @@ func set_tween_on_load(value: bool) -> void:
 ## Gets the current [member tween_on_load] value.
 func get_tween_on_load() -> bool:
 	return tween_on_load
+
+## Sets the [member host_layers] value.
+func set_host_layers(value: int) -> void:
+	host_layers = value
+	if is_instance_valid(_phantom_camera_manager):
+		_phantom_camera_manager.pcam_host_layer_changed.emit(self)
+
+## Enables or disables a given layer of [member host_layers].
+func set_host_layers_value(layer: int, value: bool) -> void:
+	host_layers = _set_layer(host_layers, layer, value)
+
+## Gets the current [member host_layers].
+func get_host_layers() -> int:
+	return host_layers
 
 
 ## Gets the current follow mode as an enum int based on [enum FollowMode].[br]
@@ -1323,7 +1304,7 @@ func set_follow_damping_value(value: Vector2) -> void:
 func get_follow_damping_value() -> Vector2:
 	return follow_damping_value
 
-
+## Assigns a new [member follow_axis] member. Value is based on [enum FollowLockAxis] enum.
 func set_lock_axis(value: FollowLockAxis) -> void:
 	follow_axis_lock = value
 
@@ -1344,6 +1325,7 @@ func set_lock_axis(value: FollowLockAxis) -> void:
 	else:
 		_follow_axis_is_locked = false
 
+## Gets the current [member follow_axis_lock] value. Value is based on [enum FollowLockAxis] enum.
 func get_lock_axis() -> FollowLockAxis:
 	return follow_axis_lock
 
@@ -1496,7 +1478,6 @@ func set_limit_target(value: NodePath) -> void:
 		else:
 			printerr("Limit Target is not a TileMap, TileMapLayer or CollisionShape2D node")
 			return
-
 	elif value == NodePath(""):
 		reset_limit()
 		limit_target = ""
@@ -1529,8 +1510,6 @@ func get_limit_margin() -> Vector4i:
 ### Enables or disables the Limit Smoothing beaviour.
 #func set_limit_smoothing(value: bool) -> void:
 	#limit_smoothed = value
-	#if is_active() and _has_valid_pcam_owner():
-		#get_pcam_host_owner().camera_2d.reset_smoothing()
 ### Returns the Limit Smoothing beaviour.
 #func get_limit_smoothing() -> bool:
 	#return limit_smoothed
@@ -1555,7 +1534,7 @@ func get_noise() -> PhantomCameraNoise2D:
 func set_noise_emitter_layer(value: int) -> void:
 	noise_emitter_layer = value
 
-## Enables or disables a given layer of the [member noise_emitter_layer] value.
+## Enables or disables a given layer of [member noise_emitter_layer].
 func set_noise_emitter_layer_value(value: int, enabled: bool) -> void:
 	noise_emitter_layer = _set_layer(noise_emitter_layer, value, enabled)
 

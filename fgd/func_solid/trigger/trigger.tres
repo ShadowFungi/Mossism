@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=2 format=3 uid="uid://be5gn2c6yu13s"]
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=5 format=3 uid="uid://be5gn2c6yu13s"]
 
-[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_mw7iv"]
+[ext_resource type="Resource" uid="uid://cx1i7b6tbo01q" path="res://fgd/func_base/targetname_base_class.tres" id="1_7k00a"]
+[ext_resource type="Script" uid="uid://vl84643em7hg" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_mw7iv"]
+[ext_resource type="Script" uid="uid://baw4lprux4o17" path="res://scripts/entities/fgd/trigger.gd" id="2_0v8rb"]
+[ext_resource type="Resource" uid="uid://c4lsmkleyiphx" path="res://fgd/func_base/target_base_class.tres" id="2_7ntj7"]
 
 [resource]
 script = ExtResource("1_mw7iv")
 spawn_type = 2
 origin_type = 4
 build_visuals = false
-use_in_baked_light = true
+use_in_baked_light = false
 shadow_casting_setting = 1
 build_occlusion = false
 render_layers = 2
@@ -21,10 +24,11 @@ add_vertex_metadata = false
 add_face_position_metadata = false
 add_face_normal_metadata = false
 add_collision_shape_face_range_metadata = false
+script_class = ExtResource("2_0v8rb")
 classname = "trigger"
 description = "An area which activates when entered/exited"
 func_godot_internal = false
-base_classes = Array[Resource]([])
+base_classes = Array[Resource]([ExtResource("1_7k00a"), ExtResource("2_7ntj7")])
 class_properties = {
 "collision_layers": Vector3(0, 0, 0),
 "collision_mask": Vector3(0, 0, 0),

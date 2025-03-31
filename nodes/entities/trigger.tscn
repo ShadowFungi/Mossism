@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://deglaa3vuql6q"]
 
-[ext_resource type="Script" path="res://scripts/entities/fgd/trigger_enter_only.gd" id="1_xhqsl"]
+[sub_resource type="Resource" id="Resource_d0ypg"]
+metadata/__load_path__ = "res://scripts/entities/fgd/trigger_enter_only.gd"
 
 [node name="Area3D" type="Area3D"]
-script = ExtResource("1_xhqsl")
+script = SubResource("Resource_d0ypg")

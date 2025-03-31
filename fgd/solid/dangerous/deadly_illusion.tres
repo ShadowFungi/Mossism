@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QodotFGDSolidClass" load_steps=3 format=3 uid="uid://dhscvf6wr1ecd"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_lsr2c"]
-[ext_resource type="Script" path="res://scripts/entities/fgd/deadly_illusion.gd" id="2_betrc"]
+[ext_resource type="Script" uid="uid://q5w1awqffbeb" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_solid_class.gd" id="1_lsr2c"]
+[ext_resource type="Script" uid="uid://ccpskalku4wnh" path="res://scripts/entities/fgd/deadly_illusion.gd" id="2_betrc"]
 
 [resource]
 script = ExtResource("1_lsr2c")

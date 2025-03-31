@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://jal1mvy6vk3r"]
 
-[ext_resource type="Shader" path="res://assets/shaders/moebius.gdshader" id="1_eqy2n"]
+[ext_resource type="Shader" uid="uid://dmmxbaj5mmal4" path="res://assets/shaders/moebius.gdshader" id="1_eqy2n"]
 
 [resource]
 render_priority = 1

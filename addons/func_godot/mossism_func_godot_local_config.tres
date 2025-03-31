@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FuncGodotLocalConfig" load_steps=2 format=3 uid="uid://tfe5enq2hhj6"]
+
+[ext_resource type="Script" uid="uid://n7rjcldlkxub" path="res://addons/func_godot/src/util/func_godot_local_config.gd" id="1_if3bm"]
+
+[resource]
+script = ExtResource("1_if3bm")
+export_func_godot_settings = false
+reload_func_godot_settings = false

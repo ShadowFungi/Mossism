@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDBaseClass" load_steps=2 format=3 uid="uid://c4lsmkleyiphx"]
 
-[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_base_class.gd" id="1_kjypk"]
+[ext_resource type="Script" uid="uid://bm2db3yshtq2j" path="res://addons/func_godot/src/fgd/func_godot_fgd_base_class.gd" id="1_kjypk"]
 
 [resource]
 script = ExtResource("1_kjypk")
-classname = "Target"
+classname = "target"
 description = "Performs actions (signal callbacks, methods) on entities with a matching 'targetname'."
 func_godot_internal = false
 base_classes = Array[Resource]([])

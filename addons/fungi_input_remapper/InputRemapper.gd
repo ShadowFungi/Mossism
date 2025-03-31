@@ -25,12 +25,12 @@ var input_actions_default: Dictionary = {
 
 @export var input_actions: Dictionary = input_actions_default.duplicate(true)
 
-
 func _ready() -> void:
 	load_example_map()
 
 
 func load_example_map():
+	await get_tree().create_timer(0.5, false).timeout
 	load_map("res://addons/fungi_input_remapper/example_keymap.cfg")
 
 
@@ -71,6 +71,8 @@ func save_map(path: String = "user://config/sfir/current_keymap.cfg", controller
 	conf_file.set_value("{0}".format([controller_id]), "analog", analog_dict)
 	conf_file.set_value("{0}".format([controller_id]), "joymap", joymap_dict)
 	conf_file.set_value("{0}".format([controller_id]), "keymap", keymap_dict)
+	conf_file.set_value("{0}".format([controller_id]), "keymap", keymap_dict)
+	conf_file.set_value("{0}".format([controller_id]), "mousemap", mousemap_dict)
 	
 	
 	conf_file.save(path)
@@ -90,8 +92,10 @@ func load_map(map: String = "user://config/sfir/current_keymap.cfg"):
 				pass
 				#print(conf_file.get_value(device, "action_names"))
 				var conf_keys := conf_file.get_section_keys(device)
-				print(conf_keys)
+				#print(conf_keys)
+				#prints("z")
 				if "action_names" in conf_keys:
+					#prints("x")
 					var inputs: Array = conf_file.get_value(device, "action_names") 
 					for action_name in inputs:
 						var new_action_name: String
@@ -116,20 +120,47 @@ func load_map(map: String = "user://config/sfir/current_keymap.cfg"):
 						if "analog" in conf_keys:
 							pass
 							analog_map = conf_file.get_value(device, "analog")
+							if action_name in conf_file.get_value(device, "analog"):
+								pass
+								if _is_analog_control(action_name) == true:
+									pass
+									#print(analog)
+									analog = true
+									analog_dir = analog_map[action_name]
 						if "joymap" in conf_keys:
 							pass
 							joymap = conf_file.get_value(device, "joymap")
-							for joy_input in joymap:
+							#for joy_input in joymap:
+								#pass
+							if action_name in conf_file.get_value(device, "joymap"):
 								pass
-								if _is_analog_control(joy_input) == true:
+								if _is_analog_control(action_name) == true:
 									pass
+									#print(analog)
 									analog = true
-									analog_dir = conf_file.get_value("analog", joy_input)
+									analog_dir = analog_map[action_name]
+									joy_axis = SFInputKeycodes.joy_axis[joymap[action_name]]
+								elif _is_gamepad_control(action_name) == true:
+									pass
+									gamepad = true
+									joy_button = SFInputKeycodes.joy_buttons[joymap[action_name]]
+								else:
+									joy_button = SFInputKeycodes.joy_buttons[joymap[action_name]]
 						if "keymap" in conf_keys:
 							pass
 							keymap = conf_file.get_value(device, "keymap")
+							if action_name in conf_file.get_value(device, "keymap"):
+								pass
+							#else:
+								key_button = SFInputKeycodes.keys[keymap[action_name]]
 						if "mousemap" in conf_keys:
 							pass
+							mousemap = conf_file.get_value(device, "mousemap")
+							if action_name in conf_file.get_value(device, "mousemap"):
+								pass
+							#else:
+								mouse_button = SFInputKeycodes.mouse_buttons_as_enums[mousemap[action_name]]
+						add_input(new_action_name, "", key_button, joy_button, mouse_button, gamepad, keyboard, analog, mouse, analog_dir, joy_axis)
 			#if "all_inputs" in conf_file.get_sections():
 				#for action_name in conf_file.get_section_keys("all_inputs"):
 					#var new_action_name: String
@@ -183,8 +214,8 @@ func load_map(map: String = "user://config/sfir/current_keymap.cfg"):
 		return message
 
 
-func get_action_input_string(action: String, gamepad: bool = false, keyboard: bool = false, analog: bool = false) -> Array:
-	if !_only_one_true(gamepad, keyboard, analog):
+func get_action_input_string(action: String, gamepad: bool = false, keyboard: bool = false, mouse: bool = false, analog: bool = false) -> Array:
+	if !_only_one_true([gamepad, keyboard, analog, mouse]):
 		return ["FAILED"]
 	#if analog:
 	#	return ["analog should be replaced with keyboard, and gamepad, run separately"]
@@ -290,8 +321,12 @@ func _is_mouse_control(action_name: String) -> bool:
 
 func _is_analog_control(action_name: String) -> bool:
 	var reg: RegEx = RegEx.new()
-	reg.compile("(analog--)\\w+")
+	var err = reg.compile("(analog--)\\w+")
+	if err != OK:
+		return false
 	var res = reg.search(action_name)
+	if res == null:
+		return false
 	if res:
 		return true
 	else:
@@ -302,16 +337,17 @@ func import_map_web(map: String):
 	var split_map = map.split("\n", false)
 
 
-func _only_one_true(first_bool: bool, second_bool: bool, third_bool: bool = false) -> bool:
-	if first_bool == true and second_bool == true or first_bool == true and third_bool == true or third_bool == true and second_bool == true:
+func _only_one_true(bool_array: Array) -> bool:
+	if bool_array.count(true) > 1:
+	#if first_bool == true and second_bool == true or first_bool == true and third_bool == true or third_bool == true and second_bool == true:
 		push_error("ONLY ONE OF THE FOLLOWING ARGUMENTS SHOULD BE SET TO \"true\":\n \"gamepad_only\", \"keyboard_only\", \"analog\"\n THE OTHERS SHOULD BE SET TO \"false\"!\nI'LL BE BACK... IF YOU DON'T FIX IT!")
 		return false
 	else:
 		return true
 
 
-func add_input(action_name: String, action_name_prefix: String, keycode := KEY_NONE, joy_button := JOY_BUTTON_INVALID, gamepad_only: bool = false, keyboard_only: bool = false, analog: bool = false, analog_direction: float = 0.0, joy_axis := JOY_AXIS_INVALID, gamepad_index: int = -1) -> int:
-	if !_only_one_true(gamepad_only, keyboard_only, analog):
+func add_input(action_name: String, action_name_prefix: String, keycode := KEY_NONE, joy_button := JOY_BUTTON_INVALID, mouse_button := MOUSE_BUTTON_NONE, gamepad_only: bool = false, keyboard_only: bool = false, analog: bool = false, mouse_only: bool = false, analog_direction: float = 0.0, joy_axis := JOY_AXIS_INVALID, gamepad_index: int = -1) -> int:
+	if !_only_one_true([gamepad_only, keyboard_only, analog, mouse_only]):
 		return -1
 	var full_action_name: String = get_full_action_name(action_name, action_name_prefix, gamepad_only, keyboard_only, analog)
 	if InputMap.has_action(full_action_name):
@@ -321,19 +357,24 @@ func add_input(action_name: String, action_name_prefix: String, keycode := KEY_N
 		InputMap.add_action(full_action_name)
 	var new_key_action_event: InputEventKey = InputEventKey.new()
 	var new_joy_action_event: InputEventJoypadButton = InputEventJoypadButton.new()
-	if analog == true or gamepad_only == true or keyboard_only == true:
+	var new_mouse_action_event: InputEventMouseButton = InputEventMouseButton.new()
+	if analog == true or gamepad_only == true or keyboard_only == true or mouse_only == true:
 		var new_joy_motion_action_event: InputEventJoypadMotion = InputEventJoypadMotion.new()
 		if analog == true:
 			input_actions["analog_input_axis"][full_action_name] = analog_direction
 			new_key_action_event.keycode = keycode
+			new_mouse_action_event = new_mouse_action_event.duplicate()
 			new_joy_motion_action_event.axis = joy_axis
 			new_joy_motion_action_event.axis_value = input_actions["analog_input_axis"].get(full_action_name, 0)
 			new_joy_motion_action_event.device = gamepad_index
+			new_mouse_action_event.button_index = mouse_button
 			InputMap.action_set_deadzone(full_action_name, 0.12)
 			InputMap.action_add_event(full_action_name, new_joy_motion_action_event)
 			InputMap.action_add_event(full_action_name, new_key_action_event)
+			InputMap.action_add_event(full_action_name, new_mouse_action_event)
 			input_actions["keyboard_controls"].append(keycode)
 			input_actions["gamepad_controls"].append(joy_axis)
+			input_actions["mouse_controls"].append(mouse_button)
 		if gamepad_only == true:
 			new_joy_action_event.button_index = joy_button
 			new_joy_action_event.device = gamepad_index
@@ -346,6 +387,11 @@ func add_input(action_name: String, action_name_prefix: String, keycode := KEY_N
 			InputMap.action_add_event(full_action_name, new_key_action_event)
 			input_actions["keyboard_controls"].append(keycode)
 			input_actions["gamepad_controls"].append(joy_button)
+		if mouse_only == true:
+			new_mouse_action_event = new_mouse_action_event.duplicate()
+			new_mouse_action_event.button_index = mouse_button
+			InputMap.action_add_event(full_action_name, new_mouse_action_event)
+			input_actions["mouse_controls"].append(mouse_button)
 		input_actions["input_names"].append(full_action_name)
 		#print(full_action_name, ": ", InputMap.action_get_events(full_action_name), "\n")
 		return input_actions["input_names"].find(full_action_name)
@@ -353,20 +399,23 @@ func add_input(action_name: String, action_name_prefix: String, keycode := KEY_N
 		input_actions["input_names"].append(full_action_name)
 		input_actions["keyboard_controls"].append(keycode)
 		input_actions["gamepad_controls"].append(joy_button)
+		input_actions["mouse_controls"].append(mouse_button)
 		new_key_action_event = new_key_action_event.duplicate()
 		new_joy_action_event = new_joy_action_event.duplicate()
+		new_mouse_action_event = new_mouse_action_event.duplicate()
 		new_key_action_event.keycode = keycode
 		new_joy_action_event.button_index = joy_button
 		new_joy_action_event.device = gamepad_index
+		new_mouse_action_event.button_index = mouse_button
 		InputMap.action_add_event(full_action_name, new_key_action_event)
 		InputMap.action_add_event(full_action_name, new_joy_action_event)
-		#print(InputMap.action_get_events(full_action_name))
+		InputMap.action_add_event(full_action_name, new_mouse_action_event)
+		prints(full_action_name, InputMap.action_get_events(full_action_name))
 		return input_actions["input_names"].find(full_action_name)
 
 
-func modify_input(action_name: String, action_name_prefix: String, keycode := KEY_NONE, joy_button := JOY_BUTTON_INVALID, gamepad_only: bool = false, keyboard_only: bool = false, analog: bool = false, analog_direction: float = 0.0, joy_axis := JOY_AXIS_INVALID, gamepad_index: int = -1) -> int:
-	if gamepad_only == true and keyboard_only == true or gamepad_only == true and analog == true or analog == true and keyboard_only == true:
-		push_error("ONLY ONE OF THE FOLLOWING ARGUMENTS SHOULD BE SET TO \"true\": \"gamepad_only\", \"keyboard_only\", \"analog\" THE OTHERS SHOULD BE SET TO \"false\"!\nI'LL BE BACK... IF YOU DON'T FIX IT!")
+func modify_input(action_name: String, action_name_prefix: String, keycode := KEY_NONE, joy_button := JOY_BUTTON_INVALID, gamepad_only: bool = false, keyboard_only: bool = false, mouse_only: bool = false, analog: bool = false, analog_direction: float = 0.0, joy_axis := JOY_AXIS_INVALID, gamepad_index: int = -1) -> int:
+	if !_only_one_true([gamepad_only, keyboard_only, analog, mouse_only]):
 		return -1
 	var full_action_name: String = get_full_action_name(action_name, action_name_prefix, gamepad_only, keyboard_only, analog)
 	if input_actions["input_names"].has(full_action_name) == false:
@@ -411,8 +460,8 @@ func modify_input(action_name: String, action_name_prefix: String, keycode := KE
 		return input_actions["input_names"].find(full_action_name)
 
 
-func remove_input(action_name: String, action_name_prefix: String = "", gamepad_only: bool = false, keyboard_only: bool = false, analog: bool = false) -> int:
-	if gamepad_only == true and keyboard_only == true or gamepad_only == true and analog == true or analog == true and keyboard_only == true:
+func remove_input(action_name: String, action_name_prefix: String = "", gamepad_only: bool = false, keyboard_only: bool = false, mouse_only: bool = false, analog: bool = false) -> int:
+	if !_only_one_true([gamepad_only, keyboard_only, analog, mouse_only]):
 		push_error("ONLY ONE OF THE FOLLOWING ARGUMENTS SHOULD BE SET TO \"true\": \"gamepad_only\", \"keyboard_only\", \"analog\" THE OTHERS SHOULD BE SET TO \"false\"!\nI'LL BE BACK... IF YOU DON'T FIX IT!")
 		return -1
 	if action_name == "":
@@ -433,6 +482,8 @@ func remove_input(action_name: String, action_name_prefix: String = "", gamepad_
 	if keyboard_only == true:
 		input_actions["keyboard_controls"].remove_at(ret)
 		return ret
+	if mouse_only == true:
+		input_actions["mouse_controls"].remove_at(ret)
 	return ret
 
 
@@ -441,3 +492,4 @@ func wipe_all_actions():
 	input_actions["input_names"].clear()
 	input_actions["keyboard_controls"].clear()
 	input_actions["gamepad_controls"].clear()
+	input_actions["mouse_controls"].clear()

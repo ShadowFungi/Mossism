@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDPointClass" load_steps=3 format=3 uid="uid://bm2ymft0asnpb"]
 
-[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="1_jjdbd"]
-[ext_resource type="Script" path="res://scripts/entities/fgd/point/light.gd" id="2_l8d6d"]
+[ext_resource type="Script" uid="uid://1tmcb8lfy0la" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="1_jjdbd"]
+[ext_resource type="Script" uid="uid://bpkbw3ik442xh" path="res://scripts/entities/fgd/point/light.gd" id="2_l8d6d"]
 
 [resource]
 script = ExtResource("1_jjdbd")
 script_class = ExtResource("2_l8d6d")
-apply_rotation_on_map_build = true
+apply_rotation_on_map_build = false
+apply_scale_on_map_build = false
 classname = "light_omni"
 description = "Invisible omnidirectional light source "
 func_godot_internal = false
@@ -34,5 +35,5 @@ auto_apply_to_matching_node_properties = false
 meta_properties = {
 "color": Color(0.835294, 0.8, 0, 1)
 }
-node_class = "Spatial"
+node_class = "OmniLight3D"
 name_property = ""

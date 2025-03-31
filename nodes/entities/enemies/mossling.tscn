@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://cnt5650g5rqjd"]
 
 [ext_resource type="PackedScene" uid="uid://bh8pwec5ry6d3" path="res://assets/models/enemies/Mossling/Mossling.glb" id="1_b65re"]
-[ext_resource type="Script" path="res://scripts/enemy/mossling.gd" id="2_jjtwu"]
-[ext_resource type="Script" path="res://scripts/enemy/stab.gd" id="3_u70bt"]
+[ext_resource type="Script" uid="uid://cfe5kth7c2od6" path="res://scripts/enemy/mossling.gd" id="2_jjtwu"]
+[ext_resource type="Script" uid="uid://b0eivksulsi0" path="res://scripts/enemy/stab.gd" id="3_u70bt"]
 [ext_resource type="Material" uid="uid://bfa4bwq4pvxbl" path="res://assets/models/enemies/Mossling/textures/corruption-mat.tres" id="3_wmsic"]
 [ext_resource type="PackedScene" uid="uid://bpu0ofolmn50r" path="res://nodes/limbo/pain_hsm.tscn" id="4_j0xng"]
 [ext_resource type="PackedScene" uid="uid://bxfhu3rpvxcas" path="res://nodes/entities/enemies/health_bar.tscn" id="5_jtt33"]

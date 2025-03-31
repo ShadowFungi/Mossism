@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=4 format=3 uid="uid://ccwosedfa8v8d"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1"]
-[ext_resource type="Script" path="res://addons/qodot/game_definitions/fgd/point_classes/light.gd" id="2"]
+[ext_resource type="Script" uid="uid://ghubh5wlwjcs" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1"]
+[ext_resource type="Script" uid="uid://1i4g2nx7dmfs" path="res://addons/qodot/game_definitions/fgd/point_classes/light.gd" id="2"]
 [ext_resource type="Resource" uid="uid://c5o31v30rw7v5" path="res://addons/qodot/game_definitions/fgd/base_classes/light_base_class.tres" id="3"]
 
 [resource]

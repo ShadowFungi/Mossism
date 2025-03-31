@@ -9,10 +9,14 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_6vp7u")
+shader_parameter/albedo_texture = ExtResource("1_iyekq")
 shader_parameter/albedo_amount = 1.0
+shader_parameter/normal_texture = ExtResource("3_cty3q")
 shader_parameter/normal_amount = 1.0
 shader_parameter/roughness_amount = 0.0
+shader_parameter/ao_texture = ExtResource("2_xeux0")
 shader_parameter/ao_amount = 1.0
+shader_parameter/metal_texture = ExtResource("4_tcjc3")
 shader_parameter/metal_amount = 26.345
 shader_parameter/specular_amount = 0.0
 shader_parameter/overlay_amount_01 = 0.0
@@ -44,8 +48,4 @@ shader_parameter/emit = 1.0
 shader_parameter/radiance_amount = 250.0
 shader_parameter/rim = 0.21
 shader_parameter/rim_tint = 0.96
-shader_parameter/albedo_texture = ExtResource("1_iyekq")
-shader_parameter/normal_texture = ExtResource("3_cty3q")
-shader_parameter/ao_texture = ExtResource("2_xeux0")
-shader_parameter/metal_texture = ExtResource("4_tcjc3")
 shader_parameter/emit_texture = ExtResource("1_iyekq")

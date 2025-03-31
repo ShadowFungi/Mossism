@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDFile" load_steps=21 format=3 uid="uid://ckqih8tkk28k"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="1_2qkf7"]
+[ext_resource type="Script" uid="uid://b30c1gq31sevl" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="1_2qkf7"]
 [ext_resource type="Resource" uid="uid://2utlowtag63b" path="res://fgd/point/light/lantern.tres" id="1_rhtbg"]
 [ext_resource type="Resource" uid="uid://d4an230vux6yl" path="res://fgd/point/light/omni.tres" id="2_6bs40"]
 [ext_resource type="Resource" uid="uid://rbexii4bcriq" path="res://fgd/point/logic/reciever.tres" id="3_d2ic6"]
