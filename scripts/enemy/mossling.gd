@@ -1,15 +1,8 @@
+@tool
 extends CharacterBody3D
 
 
-
-@export var properties : Dictionary :
-	get:
-		return properties
-	set(new_properties):
-		if(properties != new_properties):
-			properties = new_properties
-			update_properties()
-
+@export var func_godot_properties: Dictionary
 
 @export var path: PackedVector3Array
 @export var speed: int = 30
@@ -28,7 +21,7 @@ var previous_target_pos: Vector3
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var original_pos: Vector3 = global_position
-@onready var translation_points: PackedVector3Array
+#@onready var path: PackedVector3Array
 @onready var current_point: int = 0
 @onready var total_points: int = 0
 @onready var size: float
@@ -39,43 +32,52 @@ func _init() -> void:
 	self.add_to_group("player_spawn")
 
 
-func update_properties() -> void:
-	if 'angle' in properties:
-		self.rotate(Vector3.UP, deg_to_rad(properties.angle))
-	if 'translation_1' in properties:
-		translation_points.append(properties.translation_1)
-	if 'translation_2' in properties:
-		translation_points.append(properties.translation_2)
-	if 'translation_3' in properties:
-		translation_points.append(properties.translation_3)
-	if 'translation_4' in properties:
-		translation_points.append(properties.translation_4)
-	if 'translation_5' in properties:
-		translation_points.append(properties.translation_5)
+#func update_properties() -> void:
+	#if 'angle' in func_godot_properties:
+		#self.rotate(Vector3.UP, deg_to_rad(func_godot_properties.angle))
+	#if 'translation_1' in func_godot_properties:
+		#path.append(func_godot_properties.translation_1)
+	#if 'translation_2' in func_godot_properties:
+		#path.append(func_godot_properties.translation_2)
+	#if 'translation_3' in func_godot_properties:
+		#path.append(func_godot_properties.translation_3)
+	#if 'translation_4' in func_godot_properties:
+		#path.append(func_godot_properties.translation_4)
+	#if 'translation_5' in func_godot_properties:
+		#path.append(func_godot_properties.translation_5)
 
+func _func_godot_apply_properties(props: Dictionary) -> void:
+	if 'angle' in props:
+		self.rotate(Vector3.UP, deg_to_rad(props['angle'] as float))
+	for prop in props.keys():
+		if 'translation' in prop:
+			path.append(AlertTrigger.id_vec_to_godot_vec(props[prop]))
+			#path.append(props[prop])
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): self.set_process(false)
 	max_slides = 2
 	size = collision_shape.shape.height
 	original_pos = global_position
 	col_height = collision_shape.position.y
 	#print(original_pos)
-	#print(translation_points)
+	#print(path)
 	var previous_point: Vector3 = global_position
-	for i in 4:
-		if translation_points.size() >= 1:
-			if translation_points[i] == Vector3.ZERO:
+	for i in path.size() - 1:
+		if path.size() >= 1:
+			if path[i] == Vector3.ZERO:
 				break
 			total_points += 1
-			var translation = previous_point + translation_points[i]
+			var translation = previous_point + path[i]
 			previous_point = translation
-			translation_points.set(i, translation)
-			#print(translation_points)
+			path.set(i, translation)
+			#print(path)
 			#print(total_points)
 			#print(translation)
 
 
 func _physics_process(delta: float) -> void:
+	if is_part_of_edited_scene() == true: return
 	var next_pos: Vector3 = nav_agent.get_next_path_position()
 	#var new_vel: Vector3 = (Vector3(next_pos - global_position).normalized() * speed)
 	var new_vel: Vector3 = (Vector3(next_pos - global_position).normalized() * speed) * delta
@@ -84,7 +86,7 @@ func _physics_process(delta: float) -> void:
 		#
 		#update_target_location(player.global_position)
 	if !player_found and total_points >= 1:
-		update_target_location(Vector3(translation_points[current_point].x, global_position.y, translation_points[current_point].z))
+		update_target_location(Vector3(path[current_point].x, global_position.y, path[current_point].z))
 	elif !player_found and path.size() >= 1 :
 		update_target_location(path[path_target])
 	elif player != null:

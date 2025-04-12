@@ -1,12 +1,12 @@
 extends Area3D
 
 
-@export var properties : Dictionary :
+@export var func_godot_properties : Dictionary :
 	get:
-		return properties
+		return func_godot_properties
 	set(new_properties):
-		if(properties != new_properties):
-			properties = new_properties
+		if(func_godot_properties != new_properties):
+			func_godot_properties = new_properties
 			update_properties()
 
 var layers : Dictionary
@@ -14,22 +14,22 @@ var layer_collection : int
 
 
 func update_properties() -> void:
-	if 'collision_mask' in properties:
+	if 'collision_mask' in func_godot_properties:
 		for dimension in 3:
-			if properties.collision_mask[dimension] > int(0) and properties.collision_mask[dimension] < int(33):
-				set_collision_mask_value(properties.collision_mask[dimension], true)
+			if func_godot_properties.collision_mask[dimension] > int(0) and func_godot_properties.collision_mask[dimension] < int(33):
+				set_collision_mask_value(func_godot_properties.collision_mask[dimension], true)
 	
-	if 'collision_layers' in properties:
+	if 'collision_layers' in func_godot_properties:
 		for dimension in 3:
-			if properties.collision_layers[dimension] > int(0) and properties.collision_layers[dimension] < int(33):
-				set_collision_layer_value(properties.collision_layers[dimension], true)
+			if func_godot_properties.collision_layers[dimension] > int(0) and func_godot_properties.collision_layers[dimension] < int(33):
+				set_collision_layer_value(func_godot_properties.collision_layers[dimension], true)
 	
-	#if 'render_layers' in properties:
+	#if 'render_layers' in func_godot_properties:
 	#	await self.ready
 	#	for dimension in 3:
-	#		if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
-	#			#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
-	#			find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
+	#		if func_godot_properties.render_layers[dimension] > int(0) and func_godot_properties.render_layers[dimension] < int(21):
+	#			#print(self.find_child("*_mesh_instance", true, true), func_godot_properties.render_layers[dimension])
+	#			find_child("*mesh_instance").set_layer_mask_value(func_godot_properties.render_layers[dimension], true)
 
 
 func _ready() -> void:

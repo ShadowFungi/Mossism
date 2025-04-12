@@ -9,7 +9,7 @@ description = "Performs actions (signal callbacks, methods) on entities with a m
 func_godot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"target": ""
+"target": NodePath("")
 }
 class_property_descriptions = {
 "target": "Name of entity (targetname) to target."

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=25 format=3 uid="uid://c6mtvjh5nblta"]
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=26 format=3 uid="uid://c6mtvjh5nblta"]
 
 [ext_resource type="Resource" uid="uid://crgpdahjaj" path="res://addons/func_godot/fgd/func_godot_fgd.tres" id="1_2r121"]
 [ext_resource type="Script" uid="uid://ica44hh21p3y" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="1_ayy5o"]
@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://djju67r1grvx" path="res://fgd/func_base/light_base_class.tres" id="21_aj07j"]
 [ext_resource type="Resource" uid="uid://cx1i7b6tbo01q" path="res://fgd/func_base/targetname_base_class.tres" id="22_w830b"]
 [ext_resource type="Resource" uid="uid://c4lsmkleyiphx" path="res://fgd/func_base/target_base_class.tres" id="23_nvevg"]
+[ext_resource type="Resource" uid="uid://bc0wuf57otjiy" path="res://fgd/func_point/other/sound.tres" id="24_w830b"]
 
 [resource]
 script = ExtResource("1_ayy5o")
@@ -31,5 +32,5 @@ export_file = false
 target_map_editor = 1
 fgd_name = "Mossism"
 base_fgd_files = Array[Resource]([ExtResource("1_2r121")])
-entity_definitions = Array[Resource]([ExtResource("1_t1mui"), ExtResource("2_2r121"), ExtResource("3_dujk8"), ExtResource("4_sdc7t"), ExtResource("5_aj07j"), ExtResource("6_w830b"), ExtResource("7_nvevg"), ExtResource("8_3atsh"), ExtResource("9_k7xgv"), ExtResource("10_56c3b"), ExtResource("11_2c4st"), ExtResource("12_hqlw4"), ExtResource("13_fvfqo"), ExtResource("14_nl1wo"), ExtResource("15_erhrc"), ExtResource("16_6gw2l"), ExtResource("17_772lx"), ExtResource("18_7ocm5"), ExtResource("19_tdkke"), ExtResource("21_aj07j"), ExtResource("22_w830b"), ExtResource("23_nvevg")])
+entity_definitions = Array[Resource]([ExtResource("1_t1mui"), ExtResource("2_2r121"), ExtResource("3_dujk8"), ExtResource("4_sdc7t"), ExtResource("5_aj07j"), ExtResource("6_w830b"), ExtResource("7_nvevg"), ExtResource("8_3atsh"), ExtResource("9_k7xgv"), ExtResource("10_56c3b"), ExtResource("11_2c4st"), ExtResource("12_hqlw4"), ExtResource("13_fvfqo"), ExtResource("14_nl1wo"), ExtResource("15_erhrc"), ExtResource("16_6gw2l"), ExtResource("17_772lx"), ExtResource("18_7ocm5"), ExtResource("19_tdkke"), ExtResource("21_aj07j"), ExtResource("22_w830b"), ExtResource("23_nvevg"), ExtResource("24_w830b")])
 metadata/_custom_type_script = "uid://ica44hh21p3y"

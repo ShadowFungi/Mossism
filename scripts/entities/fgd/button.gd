@@ -1,16 +1,16 @@
+@tool
+class_name Button3D
 extends Area3D
 
 signal trigger()
 signal pressed()
 signal released()
 
-@export var properties: Dictionary :
-	get:
-		return properties # TODOConverter40 Non existent get function 
-	set(new_properties):
-		if(properties != new_properties):
-			properties = new_properties
-			update_properties()
+@export var func_godot_properties: Dictionary
+
+@export var target: String = ""
+@export var targetfunc: String = ""
+@export var targetname: String = ""
 
 var is_pressed = false
 var base_translation = Vector3.ZERO
@@ -25,47 +25,54 @@ var release_signal_delay :=  0.0
 var overlaps := 0
 var kill_bullets : bool = 0
 
-func update_properties() -> void:
-	if 'axis' in properties:
-		axis = properties.axis.normalized()
+func _func_godot_apply_properties(props: Dictionary) -> void:
+	if 'target' in props:
+		target = props["target"] as String
+	if 'targetfunc' in props:
+		targetfunc = props["targetfunc"] as String
+	if 'targetname' in props:
+		targetname = props["targetname"] as String
 	
-	if 'kill_bullets' in properties:
-		kill_bullets = properties.kill_bullets
+	if 'axis' in props:
+		axis = props['axis'].normalized()
 	
-	if 'speed' in properties:
-		speed = properties.speed
+	if 'kill_bullets' in props:
+		kill_bullets = props['kill_bullets']
 	
-	if 'depth' in properties:
-		depth = float(properties.depth)
+	if 'speed' in props:
+		speed = props['speed']
 	
-	if 'release_delay' in properties:
-		release_delay = properties.release_delay
+	if 'depth' in props:
+		depth = float(props['depth'])
 	
-	if 'trigger_signal_delay' in properties:
-		trigger_signal_delay = properties.trigger_signal_delay
+	if 'release_delay' in props:
+		release_delay = props['release_delay']
 	
-	if 'press_signal_delay' in properties:
-		press_signal_delay = properties.press_signal_delay
+	if 'trigger_signal_delay' in props:
+		trigger_signal_delay = props['trigger_signal_delay']
 	
-	if 'release_signal_delay' in properties:
-		release_signal_delay = properties.release_signal_delay
+	if 'press_signal_delay' in props:
+		press_signal_delay = props['press_signal_delay']
 	
-	#if 'render_layers' in properties:
+	if 'release_signal_delay' in props:
+		release_signal_delay = props['release_signal_delay']
+	
+	#if 'render_layers' in props:
 	#	await self.ready
 	#	for dimension in 3:
-	#		if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
-	#			#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
-	#			find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
+	#		if props.render_layers[dimension] > int(0) and props.render_layers[dimension] < int(21):
+	#			#print(self.find_child("*_mesh_instance", true, true), props.render_layers[dimension])
+	#			find_child("*mesh_instance").set_layer_mask_value(props.render_layers[dimension], true)
 	
-	if 'collision_mask' in properties:
+	if 'collision_mask' in props:
 		for dimension in 3:
-			if properties.collision_mask[dimension] > int(0) and properties.collision_mask[dimension] < int(33):
-				set_collision_mask_value(properties.collision_mask[dimension], true)
+			if props['collision_mask'][dimension] > int(0) and props['collision_mask'][dimension] < int(33):
+				set_collision_mask_value(props['collision_mask'][dimension], true)
 	
-	if 'collision_layers' in properties:
+	if 'collision_layers' in props:
 		for dimension in 3:
-			if properties.collision_layers[dimension] > int(0) and properties.collision_layers[dimension] < int(33):
-				set_collision_layer_value(properties.collision_layers[dimension], true)
+			if props['collision_layers'][dimension] > int(0) and props['collision_layers'][dimension] < int(33):
+				set_collision_layer_value(props['collision_layers'][dimension], true)
 
 func _init() -> void:
 	connect('body_shape_entered', body_shape_entered)
@@ -113,11 +120,13 @@ func press() -> void:
 
 func emit_trigger() -> void:
 	await get_tree().create_timer(trigger_signal_delay).timeout
-	trigger.emit()
+	AlertTriggers.activate_targets(self, target)
+
 
 func emit_pressed() -> void:
 	await get_tree().create_timer(press_signal_delay).timeout
-	pressed.emit()
+	AlertTriggers.activate_targets(self, target)
+
 
 func release() -> void:
 	if not is_pressed:

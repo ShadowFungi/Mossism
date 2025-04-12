@@ -141,6 +141,7 @@ enum FollowLockAxis {
 	get:
 		return priority_override
 
+
 ## It defines which [param PhantomCamera3D] a scene's [param Camera3D] should
 ## be corresponding with and be attached to. This is decided by the
 ## [param PhantomCamera3D] with the highest [param priority].
@@ -154,6 +155,7 @@ enum FollowLockAxis {
 @export var priority: int = 0:
 	set = set_priority,
 	get = get_priority
+
 
 ## Determines the positional logic for a given [param PhantomCamera3D].
 ## The different modes have different functionalities and purposes, so
@@ -221,6 +223,7 @@ enum FollowLockAxis {
 	set = set_follow_path,
 	get = get_follow_path
 
+
 ## Determines the rotational logic for a given [param PhantomCamera3D].
 ## The different modes has different functionalities and purposes,
 ## so choosing the correct mode depends on what each
@@ -260,6 +263,7 @@ enum FollowLockAxis {
 	set = set_look_at_targets,
 	get = get_look_at_targets
 
+
 ## Defines how [param ]PhantomCamera3Ds] transition between one another.
 ## Changing the tween values for a given [param PhantomCamera3D]
 ## determines how transitioning to that instance will look like.
@@ -281,6 +285,7 @@ enum FollowLockAxis {
 	set = set_tween_on_load,
 	get = get_tween_on_load
 
+
 ## Determines how often an inactive [param PhantomCamera3D] should update
 ## its positional and rotational values. This is meant to reduce the amount
 ## of calculations inactive [param PhantomCamera3Ds] are doing when idling
@@ -289,11 +294,13 @@ enum FollowLockAxis {
 	set = set_inactive_update_mode,
 	get = get_inactive_update_mode
 
+
 ## Determines which layers this [PhantomCamera2D] should be able to find [PhantomCamera2D] / [PhantomCamera3D].
 ## A corresponding layer needs to be set on the PhantomCamera node.
 @export_flags_3d_render var host_layers: int = 1:
 	set = set_host_layers,
 	get = get_host_layers
+
 
 ## A resource type that allows for overriding the [param Camera3D] node's
 ## properties.
@@ -301,15 +308,18 @@ enum FollowLockAxis {
 	set = set_camera_3d_resource,
 	get = get_camera_3d_resource
 
+
 ## Overrides the [member Camera3D.attribuets] resource property.
 @export var attributes: CameraAttributes = null:
 	set = set_attributes,
 	get = get_attributes
 
+
 ## Overrides the [member Camera3D.environment] resource property.
 @export var environment: Environment = null:
 	set = set_environment,
 	get = get_environment
+
 
 @export_group("Follow Parameters")
 ## Offsets the [member follow_target] position.
@@ -387,6 +397,7 @@ var _follow_axis_lock_value: Vector3 = Vector3.ZERO
 	set = set_auto_follow_distance_divisor,
 	get = get_auto_follow_distance_divisor
 
+
 @export_subgroup("Dead Zones")
 ## Defines the horizontal dead zone area. While the target is within it, the
 ## [param PhantomCamera3D] will not move in the horizontal axis.
@@ -441,6 +452,7 @@ var _follow_axis_lock_value: Vector3 = Vector3.ZERO
 	set = set_margin,
 	get = get_margin
 
+
 @export_group("Look At Parameters")
 ## Offsets the target's [param Vector3] position that the
 ## [param PhantomCamera3D] is looking at.
@@ -462,6 +474,20 @@ var _follow_axis_lock_value: Vector3 = Vector3.ZERO
 @export_range(0.0, 1.0, 0.001, "or_greater") var look_at_damping_value: float = 0.25:
 	set = set_look_at_damping_value,
 	get = get_look_at_damping_value
+
+@export_subgroup("Up Direction")
+
+## Defines the upward direction of the [param PhantomCamera3D] when [member look_at_mode] is set. [br]
+## This value will be overriden if [member up_target] is defined.
+@export var up: Vector3 = Vector3.UP:
+	set = set_up,
+	get = get_up
+
+## Applies and continuously updates the [param up] direction of the [param PhantomCamera3D] based on this target when [member look_at_mode] is set.[br]
+## Setting a value here will override the [member up] value.
+@export var up_target: Node3D = null:
+	set = set_up_target,
+	get = get_up_target
 
 
 @export_group("Noise")
@@ -501,7 +527,7 @@ var _physics_interpolation_enabled: bool = false ## TOOD - Should be enbled once
 
 var _has_multiple_follow_targets: bool = false
 var _follow_targets_single_target_index: int = 0
-var _follow_targets: Array[Node3D]
+var _follow_targets: Array[Node3D] = []
 
 var _should_look_at: bool = false
 var _look_at_target_physics_based: bool = false
@@ -509,24 +535,29 @@ var _look_at_target_physics_based: bool = false
 var _has_multiple_look_at_targets: bool = false
 var _look_at_targets_single_target_index: int = 0
 
+var _current_rotation: Vector3 = Vector3.ZERO
+
+var _up: Vector3 = Vector3.UP
+var _has_up_target: bool = false
+
+var _target_transform: Transform3D = Transform3D()
+
+var _transform_output: Transform3D = Transform3D()
+var _transform_noise: Transform3D = Transform3D()
+
 var _tween_skip: bool = false
 
 var _follow_velocity_ref: Vector3 = Vector3.ZERO # Stores and applies the velocity of the movement
 
 var _follow_framed_initial_set: bool = false
-var _follow_framed_offset: Vector3
+var _follow_framed_offset: Vector3 = Vector3.ZERO
 
 var _follow_spring_arm: SpringArm3D
 var _has_follow_spring_arm: bool = false
 
-var _current_rotation: Vector3
 
 var _has_noise_resource: bool = false
 
-var _target_transform: Transform3D
-
-var _transform_output: Transform3D
-var _transform_noise: Transform3D
 
 # NOTE - Temp solution until Godot has better plugin autoload recognition out-of-the-box.
 var _phantom_camera_manager: Node
@@ -603,7 +634,8 @@ func _validate_property(property: Dictionary) -> void:
 		match property.name:
 			"follow_offset", \
 			"follow_damping", \
-			"follow_damping_value":
+			"follow_damping_value", \
+			"follow_axis_lock":
 				property.usage = PROPERTY_USAGE_NO_EDITOR
 
 	if property.name == "follow_offset":
@@ -691,6 +723,9 @@ func _validate_property(property: Dictionary) -> void:
 	not look_at_damping:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
 
+	if property.name == "up" and _has_up_target:
+		property.usage = PROPERTY_USAGE_NO_EDITOR
+
 
 func _enter_tree() -> void:
 	_phantom_camera_manager = Engine.get_singleton(_constants.PCAM_MANAGER_NODE_NAME)
@@ -733,6 +768,7 @@ func _ready():
 	match follow_mode:
 		FollowMode.THIRD_PERSON:
 			_is_third_person_follow = true
+			_transform_output.origin = _get_position_offset_distance()
 			if not Engine.is_editor_hint():
 				if not is_instance_valid(_follow_spring_arm):
 					_follow_spring_arm = SpringArm3D.new()
@@ -802,24 +838,24 @@ func process_logic(delta: float) -> void:
 	if _follow_axis_is_locked:
 		match follow_axis_lock:
 			FollowLockAxis.X:
-				_transform_output.origin.x = _follow_axis_lock_value.x + follow_offset.x
+				_transform_output.origin.x = _follow_axis_lock_value.x
 			FollowLockAxis.Y:
-				_transform_output.origin.y = _follow_axis_lock_value.y + follow_offset.y
+				_transform_output.origin.y = _follow_axis_lock_value.y
 			FollowLockAxis.Z:
-				_transform_output.origin.z = _follow_axis_lock_value.z + follow_offset.z
+				_transform_output.origin.z = _follow_axis_lock_value.z
 			FollowLockAxis.XY:
-				_transform_output.origin.x = _follow_axis_lock_value.x + follow_offset.x
-				_transform_output.origin.y = _follow_axis_lock_value.y + follow_offset.y
+				_transform_output.origin.x = _follow_axis_lock_value.x
+				_transform_output.origin.y = _follow_axis_lock_value.y
 			FollowLockAxis.XZ:
-				_transform_output.origin.x = _follow_axis_lock_value.x + follow_offset.x
-				_transform_output.origin.z = _follow_axis_lock_value.z + follow_offset.z
+				_transform_output.origin.x = _follow_axis_lock_value.x
+				_transform_output.origin.z = _follow_axis_lock_value.z
 			FollowLockAxis.YZ:
-				_transform_output.origin.y = _follow_axis_lock_value.y + follow_offset.y
-				_transform_output.origin.z = _follow_axis_lock_value.z + follow_offset.z
+				_transform_output.origin.y = _follow_axis_lock_value.y
+				_transform_output.origin.z = _follow_axis_lock_value.z
 			FollowLockAxis.XYZ:
-				_transform_output.origin.x = _follow_axis_lock_value.x + follow_offset.x
-				_transform_output.origin.y = _follow_axis_lock_value.y + follow_offset.y
-				_transform_output.origin.z = _follow_axis_lock_value.z + follow_offset.z
+				_transform_output.origin.x = _follow_axis_lock_value.x
+				_transform_output.origin.y = _follow_axis_lock_value.y
+				_transform_output.origin.z = _follow_axis_lock_value.z
 
 
 func _follow(delta: float) -> void:
@@ -1020,7 +1056,12 @@ func _interpolate_position(target_position: Vector3, delta: float, camera_target
 
 func _interpolate_rotation(target_trans: Vector3, delta: float) -> void:
 	var direction: Vector3 = (target_trans - global_position + look_at_offset).normalized()
-	var target_basis: Basis = Basis().looking_at(direction)
+
+	# Grabs the Up vector of the up_target if present
+	if _has_up_target:
+		_up = up_target.get_global_transform().basis.y
+
+	var target_basis: Basis = Basis().looking_at(direction, _up)
 	var target_quat: Quaternion = target_basis.get_rotation_quaternion().normalized()
 	if look_at_damping:
 		var current_quat: Quaternion = quaternion.normalized()
@@ -1178,6 +1219,8 @@ func _look_at_target_tree_exiting(target: Node) -> void:
 	if look_at_targets.has(target):
 		erase_look_at_targets(target)
 
+func _up_target_tree_exiting() -> void:
+	up_target = null
 
 func _look_at_targets_size_check() -> void:
 	var targets_size: int = 0
@@ -1487,7 +1530,31 @@ func get_follow_targets() -> Array[Node3D]:
 
 ## Assigns a new [param Vector3] for the [param follow_offset] property.
 func set_follow_offset(value: Vector3) -> void:
+	var temp_offset: Vector3 = follow_offset
 	follow_offset = value
+
+	if follow_axis_lock != FollowLockAxis.NONE:
+		temp_offset = temp_offset - value
+		match value:
+			FollowLockAxis.X:
+				_follow_axis_lock_value.x = _transform_output.origin.x + temp_offset.x
+			FollowLockAxis.Y:
+				_follow_axis_lock_value.y = _transform_output.origin.y + temp_offset.y
+			FollowLockAxis.Z:
+				_follow_axis_lock_value.z = _transform_output.origin.z + temp_offset.z
+			FollowLockAxis.XY:
+				_follow_axis_lock_value.x = _transform_output.origin.x + temp_offset.x
+				_follow_axis_lock_value.y = _transform_output.origin.y + temp_offset.y
+			FollowLockAxis.XZ:
+				_follow_axis_lock_value.x = _transform_output.origin.x + temp_offset.x
+				_follow_axis_lock_value.z = _transform_output.origin.z + temp_offset.z
+			FollowLockAxis.YZ:
+				_follow_axis_lock_value.y = _transform_output.origin.y + temp_offset.y
+				_follow_axis_lock_value.z = _transform_output.origin.z + temp_offset.z
+			FollowLockAxis.XYZ:
+				_follow_axis_lock_value.x = _transform_output.origin.x + temp_offset.x
+				_follow_axis_lock_value.y = _transform_output.origin.y + temp_offset.y
+				_follow_axis_lock_value.z = _transform_output.origin.z + temp_offset.z
 
 ## Gets the current [param Vector3] for the [param follow_offset] property.
 func get_follow_offset() -> Vector3:
@@ -1798,6 +1865,38 @@ func set_follow_axis_lock(value: FollowLockAxis) -> void:
 ## Gets the current [member follow_axis_lock] property. Value is based on [enum FollowLockAxis] enum.
 func get_follow_axis_lock() -> FollowLockAxis:
 	return follow_axis_lock
+
+
+## Sets the [member up] value.
+func set_up(value: Vector3) -> void:
+	if value == Vector3.ZERO:
+		value = Vector3.UP
+		push_warning("Up value cannot be (0, 0, 0), resetting to (0, 1, 0).")
+
+	up = value
+	if not _has_up_target:
+		_up = value
+
+## Gets the [member up] value.
+func get_up() -> Vector3:
+	return up
+
+
+## Sets the [member up_target].
+func set_up_target(value: Node3D) -> void:
+	up_target = value
+	if is_instance_valid(value):
+		_has_up_target = true
+		if not value.tree_exiting.is_connected(_up_target_tree_exiting):
+			value.tree_exiting.connect(_up_target_tree_exiting)
+	else:
+		_has_up_target = false
+		_up = up
+	notify_property_list_changed()
+
+## Gets the [member up_target].
+func get_up_target() -> Node3D:
+	return up_target
 
 
 ## Sets a [PhantomCameraNoise3D] resource.

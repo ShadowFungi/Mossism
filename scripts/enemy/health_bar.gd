@@ -117,6 +117,8 @@ func rotate_area_to_billboard():
 		# Get the camera.
 		var camera = get_viewport().get_camera_3d()
 		# Look in the same direction as the camera.
+		if camera == null:
+			return
 		var look = camera.to_global(Vector3(0, 0, -100)) - camera.global_transform.origin
 		look = node_area.position + look
 

@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=3 format=3 uid="uid://bdgonjc4r6y0p"]
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=5 format=3 uid="uid://bdgonjc4r6y0p"]
 
 [ext_resource type="Script" uid="uid://vl84643em7hg" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_3jxik"]
+[ext_resource type="Resource" uid="uid://cx1i7b6tbo01q" path="res://fgd/func_base/targetname_base_class.tres" id="1_n5465"]
 [ext_resource type="Script" uid="uid://b07q850kelrms" path="res://scripts/entities/fgd/ground_moving.gd" id="2_rp5lh"]
+[ext_resource type="Resource" uid="uid://c4lsmkleyiphx" path="res://fgd/func_base/target_base_class.tres" id="2_xm35c"]
 
 [resource]
 script = ExtResource("1_3jxik")
@@ -26,7 +28,7 @@ script_class = ExtResource("2_rp5lh")
 classname = "ground_moving"
 description = "A moving impassable wall"
 func_godot_internal = false
-base_classes = Array[Resource]([])
+base_classes = Array[Resource]([ExtResource("1_n5465"), ExtResource("2_xm35c")])
 class_properties = {
 "rotation": Vector3(0, 0, 0),
 "scale": Vector3(1, 1, 1),

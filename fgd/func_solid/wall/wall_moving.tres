@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=3 format=3 uid="uid://brew6xrethbyq"]
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=4 format=3 uid="uid://brew6xrethbyq"]
 
 [ext_resource type="Script" uid="uid://vl84643em7hg" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_3chme"]
+[ext_resource type="Resource" uid="uid://cx1i7b6tbo01q" path="res://fgd/func_base/targetname_base_class.tres" id="1_jcgr2"]
 [ext_resource type="Script" uid="uid://bpbm0hejyhox7" path="res://scripts/entities/fgd/wall_moving.gd" id="2_mrioa"]
 
 [resource]
@@ -26,9 +27,9 @@ script_class = ExtResource("2_mrioa")
 classname = "wall_moving"
 description = "A moving impassable wall"
 func_godot_internal = false
-base_classes = Array[Resource]([])
+base_classes = Array[Resource]([ExtResource("1_jcgr2")])
 class_properties = {
-"reversible": 0.0,
+"can_reverse_motion": false,
 "rotation": Vector3(0, 0, 0),
 "scale": Vector3(1, 1, 1),
 "speed": 0.0,
@@ -40,5 +41,5 @@ meta_properties = {
 "color": Color(0.8, 0.8, 0.8, 1),
 "size": AABB(-8, -8, -8, 8, 8, 8)
 }
-node_class = "AnimatableBody3D"
+node_class = "StaticBody3D"
 name_property = ""

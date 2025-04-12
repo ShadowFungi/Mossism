@@ -4,12 +4,12 @@ signal trigger()
 signal pressed()
 signal released()
 
-@export var properties: Dictionary :
+@export var func_godot_properties: Dictionary :
 	get:
-		return properties # TODOConverter40 Non existent get function 
+		return func_godot_properties # TODOConverter40 Non existent get function 
 	set(new_properties):
-		if(properties != new_properties):
-			properties = new_properties
+		if(func_godot_properties != new_properties):
+			func_godot_properties = new_properties
 			update_properties()
 
 var is_pressed = false
@@ -40,68 +40,68 @@ var reversible_property: bool = 0
 var can_move_self: bool = 1
 
 func update_properties() -> void:
-	if 'axis' in properties:
-		axis = properties.axis.normalized()
+	if 'axis' in func_godot_properties:
+		axis = func_godot_properties.axis.normalized()
 	
-	if 'kill_bullets' in properties:
-		kill_bullets = properties.kill_bullets
+	if 'kill_bullets' in func_godot_properties:
+		kill_bullets = func_godot_properties.kill_bullets
 	
-	if 'button_speed' in properties:
-		button_speed = properties.button_speed
+	if 'button_speed' in func_godot_properties:
+		button_speed = func_godot_properties.button_speed
 	
-	if 'depth' in properties:
-		depth = float(properties.depth)
+	if 'depth' in func_godot_properties:
+		depth = float(func_godot_properties.depth)
 	
-	if 'release_delay' in properties:
-		release_delay = properties.release_delay
+	if 'release_delay' in func_godot_properties:
+		release_delay = func_godot_properties.release_delay
 	
-	if 'trigger_signal_delay' in properties:
-		trigger_signal_delay = properties.trigger_signal_delay
+	if 'trigger_signal_delay' in func_godot_properties:
+		trigger_signal_delay = func_godot_properties.trigger_signal_delay
 	
-	if 'press_signal_delay' in properties:
-		press_signal_delay = properties.press_signal_delay
+	if 'press_signal_delay' in func_godot_properties:
+		press_signal_delay = func_godot_properties.press_signal_delay
 	
-	if 'release_signal_delay' in properties:
-		release_signal_delay = properties.release_signal_delay
+	if 'release_signal_delay' in func_godot_properties:
+		release_signal_delay = func_godot_properties.release_signal_delay
 	
-	if 'translation' in properties:
-		offset_transform.origin = properties.translation
+	if 'translation' in func_godot_properties:
+		offset_transform.origin = func_godot_properties.translation
 	
-	if 'rotation' in properties:
-		offset_transform.basis = offset_transform.basis.rotated(Vector3.RIGHT, properties.rotation.x)
-		offset_transform.basis = offset_transform.basis.rotated(Vector3.UP, properties.rotation.y)
-		offset_transform.basis = offset_transform.basis.rotated(Vector3.FORWARD, properties.rotation.z)
+	if 'rotation' in func_godot_properties:
+		offset_transform.basis = offset_transform.basis.rotated(Vector3.RIGHT, func_godot_properties.rotation.x)
+		offset_transform.basis = offset_transform.basis.rotated(Vector3.UP, func_godot_properties.rotation.y)
+		offset_transform.basis = offset_transform.basis.rotated(Vector3.FORWARD, func_godot_properties.rotation.z)
 	
-	if 'scale' in properties:
-		offset_transform.basis = offset_transform.basis.scaled(properties.scale)
+	if 'scale' in func_godot_properties:
+		offset_transform.basis = offset_transform.basis.scaled(func_godot_properties.scale)
 	
-	if 'movement_speed' in properties:
-		movement_speed = properties.movement_speed
+	if 'movement_speed' in func_godot_properties:
+		movement_speed = func_godot_properties.movement_speed
 	
-	if 'reversible' in properties:
-		reversible_property = properties.reversible
+	if 'reversible' in func_godot_properties:
+		reversible_property = func_godot_properties.reversible
 	
-	if 'can_move_self' in properties:
-		can_move_self = properties.can_move_self
+	if 'can_move_self' in func_godot_properties:
+		can_move_self = func_godot_properties.can_move_self
 	
-	#if 'render_layers' in properties:
+	#if 'render_layers' in func_godot_properties:
 	#	await self.ready
 	#	for dimension in 3:
-	#		if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
-	#			#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
-	#			find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
+	#		if func_godot_properties.render_layers[dimension] > int(0) and func_godot_properties.render_layers[dimension] < int(21):
+	#			#print(self.find_child("*_mesh_instance", true, true), func_godot_properties.render_layers[dimension])
+	#			find_child("*mesh_instance").set_layer_mask_value(func_godot_properties.render_layers[dimension], true)
 	
-	if 'collision_mask' in properties:
+	if 'collision_mask' in func_godot_properties:
 		set_collision_mask_value(1, false)
 		for dimension in 3:
-			if properties.collision_mask[dimension] > int(0) and properties.collision_mask[dimension] < int(33):
-				set_collision_mask_value(properties.collision_mask[dimension], true)
+			if func_godot_properties.collision_mask[dimension] > int(0) and func_godot_properties.collision_mask[dimension] < int(33):
+				set_collision_mask_value(func_godot_properties.collision_mask[dimension], true)
 	
-	if 'collision_layers' in properties:
+	if 'collision_layers' in func_godot_properties:
 		set_collision_layer_value(1, false)
 		for dimension in 3:
-			if properties.collision_layers[dimension] > int(0) and properties.collision_layers[dimension] < int(33):
-				set_collision_layer_value(properties.collision_layers[dimension], true)
+			if func_godot_properties.collision_layers[dimension] > int(0) and func_godot_properties.collision_layers[dimension] < int(33):
+				set_collision_layer_value(func_godot_properties.collision_layers[dimension], true)
 
 func _init() -> void:
 	connect('body_shape_entered', body_shape_entered)

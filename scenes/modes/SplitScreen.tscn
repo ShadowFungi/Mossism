@@ -1,14 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bl5k4opsieliy"]
+[gd_scene load_steps=6 format=3 uid="uid://bl5k4opsieliy"]
 
 [ext_resource type="Script" uid="uid://ypxl7vc7v7dr" path="res://scripts/levels/the_pit.gd" id="1_dmid3"]
 [ext_resource type="CameraAttributesPractical" uid="uid://gkwjgf6vkw8d" path="res://styles/camera_attributes/player.tres" id="2_mfrh2"]
-[ext_resource type="Environment" uid="uid://g7s3pnn5xp4p" path="res://styles/environments/primary_environment.tres" id="3_jcn2s"]
 [ext_resource type="NavigationMesh" uid="uid://c3ob6o44qcuhk" path="res://assets/nav_mesh/SplitScreen.tres" id="4_criqv"]
 [ext_resource type="PackedScene" uid="uid://cmsdyakbquy16" path="res://scenes/levels/ThePit.tscn" id="5_fct7e"]
-[ext_resource type="PackedScene" uid="uid://dqj64b3y24pyv" path="res://nodes/player/player.tscn" id="6_1f3y6"]
 
 [sub_resource type="World3D" id="World3D_wecad"]
-environment = ExtResource("3_jcn2s")
 camera_attributes = ExtResource("2_mfrh2")
 
 [node name="SplitScreen" type="Control"]
@@ -56,6 +53,3 @@ render_target_update_mode = 4
 navigation_mesh = ExtResource("4_criqv")
 
 [node name="ThePit" parent="GridContainer/SubViewportContainer/SubViewport/NavigationRegion3D" instance=ExtResource("5_fct7e")]
-
-[node name="Player" parent="GridContainer/SubViewportContainer/SubViewport" instance=ExtResource("6_1f3y6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.695, 0)

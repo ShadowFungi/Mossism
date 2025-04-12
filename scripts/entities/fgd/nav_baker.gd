@@ -1,12 +1,12 @@
 extends Node3D
 
 
-@export var properties : Dictionary :
+@export var func_godot_properties : Dictionary :
 	get:
-		return properties
+		return func_godot_properties
 	set(new_properties):
-		if(properties != new_properties):
-			properties = new_properties
+		if(func_godot_properties != new_properties):
+			func_godot_properties = new_properties
 			update_properties()
 
 signal trigger()
@@ -17,8 +17,8 @@ var wait_time: float
 
 
 func update_properties() -> void:
-	if 'wait_time' in properties:
-		wait_time = properties.wait_time
+	if 'wait_time' in func_godot_properties:
+		wait_time = func_godot_properties.wait_time
 
 
 func use() -> void:

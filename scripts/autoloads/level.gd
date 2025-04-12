@@ -1,4 +1,4 @@
-extends Timer
+extends Node
 
 
 var map_baked: bool = false

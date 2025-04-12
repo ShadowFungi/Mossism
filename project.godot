@@ -31,13 +31,13 @@ buses/channel_disable_time=3.0
 [autoload]
 
 Level="*res://scripts/autoloads/level.gd"
-Keycodes="*res://scripts/autoloads/keycodes.gd"
 SpawnPlayer="*res://scripts/autoloads/SpawnPlayer.gd"
 SceneSwap="*res://scripts/autoloads/scene_swap.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 SFInputKeycodes="*res://addons/fungi_input_remapper/Keycodes.gd"
 SFInputRemapper="*res://addons/fungi_input_remapper/InputRemapper.gd"
 SFInputHaptics="*res://addons/fungi_input_remapper/Haptics.gd"
+AlertTriggers="*res://scripts/autoloads/alert_triggers.gd"
 
 [display]
 
@@ -59,6 +59,10 @@ enabled=PackedStringArray("res://addons/func_godot/plugin.cfg", "res://addons/fu
 [filesystem]
 
 import/blender/enabled=false
+
+[global_group]
+
+player=""
 
 [gui]
 
@@ -132,3 +136,4 @@ environment/ssao/quality=1
 environment/ssil/quality=1
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 0)
 occlusion_culling/use_occlusion_culling=true
+environment/defaults/default_environment="uid://g7s3pnn5xp4p"

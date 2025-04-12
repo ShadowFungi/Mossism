@@ -1,13 +1,9 @@
+@tool
+class_name DeadlyIllusion3D
 extends Area3D
 
 
-@export var properties: Dictionary:
-	get:
-		return properties
-	set(new_properties):
-		if(properties != new_properties):
-			properties = new_properties
-			update_properties()
+@export var func_godot_properties: Dictionary
 
 var layers: Dictionary
 var layer_collection: int
@@ -17,29 +13,29 @@ var damagable: bool = false
 var type: String = ''
 
 
-func update_properties() -> void:
-	if 'damage_type' in properties:
-		if properties.damage_type == 'fire':
-			type = properties.damage_type
-		if properties.damage_type == 'poison':
-			type = properties.damage_type
+func _func_godot_apply_properties(props: Dictionary) -> void:
+	if 'damage_type' in props:
+		if props.damage_type == 'fire':
+			type = props.damage_type
+		if props.damage_type == 'poison':
+			type = props.damage_type
 	
-	#if 'render_layers' in properties:
+	#if 'render_layers' in props:
 	#	await self.ready
 	#	for dimension in 3:
-	#		if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
-	#			#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
-	#			find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
+	#		if props.render_layers[dimension] > int(0) and props.render_layers[dimension] < int(21):
+	#			#print(self.find_child("*_mesh_instance", true, true), props.render_layers[dimension])
+	#			find_child("*mesh_instance").set_layer_mask_value(props.render_layers[dimension], true)
 	
-	if 'collision_mask' in properties:
+	if 'collision_mask' in props:
 		for dimension in 3:
-			if properties.collision_mask[dimension] > int(0) and properties.collision_mask[dimension] < int(33):
-				set_collision_mask_value(properties.collision_mask[dimension], true)
+			if props.collision_mask[dimension] > int(0) and props.collision_mask[dimension] < int(33):
+				set_collision_mask_value(props.collision_mask[dimension], true)
 	
-	if 'collision_layers' in properties:
+	if 'collision_layers' in props:
 		for dimension in 3:
-			if properties.collision_layers[dimension] > int(0) and properties.collision_layers[dimension] < int(33):
-				set_collision_layer_value(properties.collision_layers[dimension], true)
+			if props.collision_layers[dimension] > int(0) and props.collision_layers[dimension] < int(33):
+				set_collision_layer_value(props.collision_layers[dimension], true)
 
 
 func _ready() -> void:

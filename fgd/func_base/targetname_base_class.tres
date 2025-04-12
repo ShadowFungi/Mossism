@@ -9,7 +9,7 @@ description = "Subscribes to actions (signal callbacks, reciever methods) perfor
 func_godot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"targetname": ""
+"targetname": null
 }
 class_property_descriptions = {
 "targetname": "Name of target to subscribe to."

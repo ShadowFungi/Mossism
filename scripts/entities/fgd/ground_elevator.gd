@@ -1,13 +1,9 @@
+@tool
+class_name GroundElevator3D
 extends AnimatableBody3D
 
 
-@export var properties : Dictionary :
-	get:
-		return properties
-	set(new_properties):
-		if(properties != new_properties):
-			properties = new_properties
-			update_properties()
+@export var func_godot_properties : Dictionary
 
 signal motion_finished()
 
@@ -26,33 +22,34 @@ var reversible_property : bool = 0
 var did_motion_start: bool = false
 
 
-func update_properties() -> void:
-	if 'translation' in properties:
-		offset_transform.origin = properties.translation
+func _func_godot_apply_properties(props: Dictionary) -> void:
+	if 'translation' in props:
+		offset_transform.origin = props.translation
 	
-	if 'rotation' in properties:
-		offset_transform.basis = offset_transform.basis.rotated(Vector3.RIGHT, properties.rotation.x)
-		offset_transform.basis = offset_transform.basis.rotated(Vector3.UP, properties.rotation.y)
-		offset_transform.basis = offset_transform.basis.rotated(Vector3.FORWARD, properties.rotation.z)
+	if 'rotation' in props:
+		offset_transform.basis = offset_transform.basis.rotated(Vector3.RIGHT, props.rotation.x)
+		offset_transform.basis = offset_transform.basis.rotated(Vector3.UP, props.rotation.y)
+		offset_transform.basis = offset_transform.basis.rotated(Vector3.FORWARD, props.rotation.z)
 	
-	if 'scale' in properties:
-		offset_transform.basis = offset_transform.basis.scaled(properties.scale)
+	if 'scale' in props:
+		offset_transform.basis = offset_transform.basis.scaled(props.scale)
 	
-	if 'speed' in properties:
-		speed = properties.speed
+	if 'speed' in props:
+		speed = props.speed
 	
-	if 'reversible' in properties:
-		reversible_property = properties.reversible
+	if 'reversible' in props:
+		reversible_property = props.reversible
 	
-	#if 'render_layers' in properties:
+	#if 'render_layers' in props:
 	#	await self.ready
 	#	for dimension in 3:
-	#		if properties.render_layers[dimension] > int(0) and properties.render_layers[dimension] < int(21):
-	#			#print(self.find_child("*_mesh_instance", true, true), properties.render_layers[dimension])
-	#			find_child("*mesh_instance").set_layer_mask_value(properties.render_layers[dimension], true)
+	#		if props.render_layers[dimension] > int(0) and props.render_layers[dimension] < int(21):
+	#			#print(self.find_child("*_mesh_instance", true, true), props.render_layers[dimension])
+	#			find_child("*mesh_instance").set_layer_mask_value(props.render_layers[dimension], true)
 
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint() == true: return
 	if transform.origin != target_transform.origin:
 		transform.origin = transform.origin.move_toward(target_transform.origin, speed * delta)
 	if transform.origin.is_equal_approx(target_transform.origin) and did_motion_start:
@@ -70,6 +67,8 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	self.add_to_group("ground", true)
+	if Engine.is_editor_hint() == true: return
 	var mesh: ArrayMesh = get_child(0).mesh
 	var player_detect = Area3D.new()
 	player_detect.set_collision_mask_value(32, true)
@@ -77,7 +76,6 @@ func _ready() -> void:
 	player_detect.set_collision_layer_value(1, false)
 	var _sig: StringName = "area_entered"
 	add_child(player_detect)
-	self.add_to_group("ground", true)
 	var detect_col := self.get_child(1).duplicate()
 	player_detect.add_child(detect_col)
 	player_detect.position.y -= mesh.get_aabb().size.y

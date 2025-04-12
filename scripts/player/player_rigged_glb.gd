@@ -106,8 +106,8 @@ func _timeline_ended():
 	movement_hsm.set_active(true)
 	height_hsm.set_active(true)
 
-
 func _ready() -> void:
+	get_node("Camera3D").make_current()
 	#skel.set_bone_enabled(3, true)
 	SFInputRemapper.mouse_sensitivity = 0.15
 	SFInputRemapper.load_example_map()

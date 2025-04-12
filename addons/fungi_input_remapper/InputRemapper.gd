@@ -410,7 +410,7 @@ func add_input(action_name: String, action_name_prefix: String, keycode := KEY_N
 		InputMap.action_add_event(full_action_name, new_key_action_event)
 		InputMap.action_add_event(full_action_name, new_joy_action_event)
 		InputMap.action_add_event(full_action_name, new_mouse_action_event)
-		prints(full_action_name, InputMap.action_get_events(full_action_name))
+		#prints(full_action_name, InputMap.action_get_events(full_action_name))
 		return input_actions["input_names"].find(full_action_name)
 
 

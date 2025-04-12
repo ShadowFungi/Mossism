@@ -3,15 +3,21 @@ extends Node
 var rand = RandomNumberGenerator.new()
 var reg = RegEx.new()
 
-func spawn_player(spawns : Array = get_spawns()):
-	randomize()
-	reg.compile(".+(?<=player)")
-	var reg_r
-	
-	if spawns.size() > 1:
-		reg_r = reg.search(String(spawns[rand.randi_range(0, spawns.size() - 1)].to_string()))
-	else:
-		reg_r = reg.search(String(spawns[0].to_string()))
+func spawn_player(player: PackedScene, spawns : Array = get_spawns()):
+	if get_tree().get_nodes_in_group('player').size() < 1 :
+		var player_instance = player.instantiate()
+		randomize()
+		reg.compile(".+(?<=player)")
+		var reg_r
+		if spawns.size() > 1:
+			var spawn = spawns[rand.randi_range(0, spawns.size() - 1)]
+			player_instance.global_position = spawn.get_global_position()
+			reg_r = reg.search(String(spawn.to_string()))
+		else:
+			player_instance.global_position = spawns[0].get_global_position()
+			reg_r = reg.search(String(spawns[0].to_string()))
+		get_node("/root/SplitScreen/GridContainer/SubViewportContainer/SubViewport").add_child.call_deferred(player_instance)
+		prints(reg_r)
 	
 	#print(spawns.pick_random())
 	#if Keyboard.total_players > 3:
@@ -34,4 +40,4 @@ func get_spawns() -> Array:
 	
 	#if Keyboard.total_players >= 2:
 	#	return spawns
-	return spawner_primary
+	return spawns

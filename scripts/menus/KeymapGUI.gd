@@ -57,7 +57,7 @@ func _ready() -> void:
 	for button in buttons:
 		#print(button)
 		ca = Callable(self, "func_%s" % buttons_dict[button_no])
-		button.set_text(Keycodes.key_letters[button_text[button_no - 1]])
+		button.set_text(SFInputKeycodes.key_letters[button_text[button_no - 1]])
 		button_no += 1
 		button.pressed.connect(ca)
 

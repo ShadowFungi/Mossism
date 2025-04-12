@@ -3,19 +3,9 @@ class_name FuncGodotLight
 extends Light3D
 
 
-@export var properties: Dictionary:
-	get:
-		return properties  # TODO Converter40 Non existent get function
-	set(new_properties):
-		if properties != new_properties:
-			properties = new_properties
-			update_properties()
+@export var func_godot_properties: Dictionary
 
-
-var light_node: Light3D = null
-
-
-func update_properties():
+func _func_godot_apply_properties(props: Dictionary) -> void:
 	if not Engine.is_editor_hint():
 		return
 	
@@ -23,35 +13,31 @@ func update_properties():
 		remove_child(child)
 		child.queue_free()
 	
-	if 'mangle' in properties:
-		light_node = SpotLight3D.new()
+	if 'mangle' in props:	
+		var yaw = props['mangle'].x
+		var pitch = props['mangle'].y
+		rotate(Vector3.UP, deg_to_rad(180 + yaw))
+		rotate(transform.basis.x, deg_to_rad(180 + pitch))
 	
-		var yaw = properties['mangle'].x
-		var pitch = properties['mangle'].y
-		light_node.rotate(Vector3.UP, deg_to_rad(180 + yaw))
-		light_node.rotate(light_node.transform.basis.x, deg_to_rad(180 + pitch))
-	
-		if 'angle' in properties:
-			light_node.set_param(Light3D.PARAM_SPOT_ANGLE, properties['angle'])
-	else:
-		light_node = OmniLight3D.new()
+		if 'angle' in props:
+			set_param(Light3D.PARAM_SPOT_ANGLE, props['angle'])
 	
 	var light_brightness = 300
-	if 'light' in properties:
-		light_brightness = properties['light']
-		light_node.set_param(Light3D.PARAM_ENERGY, light_brightness / 100.0)
-		light_node.set_param(Light3D.PARAM_INDIRECT_ENERGY, light_brightness / 100.0)
+	if 'light' in props:
+		light_brightness = props['light']
+		set_param(Light3D.PARAM_ENERGY, light_brightness / 100.0)
+		set_param(Light3D.PARAM_INDIRECT_ENERGY, light_brightness / 100.0)
 	
 	var light_range := 1.0
-	if 'wait' in properties:
-		light_range = properties['wait']
+	if 'wait' in props:
+		light_range = props['wait']
 	
 	var normalized_brightness = light_brightness / 300.0
-	light_node.set_param(Light3D.PARAM_RANGE, 16.0 * light_range * (normalized_brightness * normalized_brightness))
+	set_param(Light3D.PARAM_RANGE, 16.0 * light_range * (normalized_brightness * normalized_brightness))
 	
 	var light_attenuation = 0
-	if 'delay' in properties:
-		light_attenuation = properties['delay']
+	if 'delay' in props:
+		light_attenuation = props['delay']
 	
 	var attenuation = 0
 	match light_attenuation:
@@ -70,21 +56,12 @@ func update_properties():
 		_:
 			attenuation = 1
 	
-	light_node.set_param(Light3D.PARAM_ATTENUATION, attenuation)
-	light_node.set_shadow(true)
-	light_node.set_bake_mode(Light3D.BAKE_STATIC)
+	set_param(Light3D.PARAM_ATTENUATION, attenuation)
+	set_shadow(true)
+	set_bake_mode(Light3D.BAKE_STATIC)
 	
 	var light_color = Color.WHITE
-	if '_color' in properties:
-		light_color = properties['_color']
+	if '_color' in props:
+		light_color = props['_color']
 	
-	light_node.set_color(light_color)
-	
-	add_child(light_node)
-	
-	if is_inside_tree():
-		var tree = get_tree()
-		if tree:
-			var edited_scene_root = tree.get_edited_scene_root()
-			if edited_scene_root:
-				light_node.set_owner(edited_scene_root)
+	set_color(light_color)

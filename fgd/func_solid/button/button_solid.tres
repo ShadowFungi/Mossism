@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=3 format=3 uid="uid://c65x24s1slmy1"]
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=5 format=3 uid="uid://c65x24s1slmy1"]
 
 [ext_resource type="Script" uid="uid://vl84643em7hg" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_lfbpq"]
+[ext_resource type="Resource" uid="uid://cx1i7b6tbo01q" path="res://fgd/func_base/targetname_base_class.tres" id="1_xs78l"]
 [ext_resource type="Script" uid="uid://1clnm78vfw0a" path="res://scripts/entities/fgd/button.gd" id="2_eqrtd"]
+[ext_resource type="Resource" uid="uid://c4lsmkleyiphx" path="res://fgd/func_base/target_base_class.tres" id="2_p42k6"]
 
 [resource]
 script = ExtResource("1_lfbpq")
@@ -26,7 +28,7 @@ script_class = ExtResource("2_eqrtd")
 classname = "button_solid"
 description = "A non-movable button"
 func_godot_internal = false
-base_classes = Array[Resource]([])
+base_classes = Array[Resource]([ExtResource("1_xs78l"), ExtResource("2_p42k6")])
 class_properties = {
 "axis": Vector3(0, -1, 0),
 "collision_layers": Vector3(0, 0, 0),

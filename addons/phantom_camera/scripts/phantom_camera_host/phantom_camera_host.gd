@@ -520,8 +520,8 @@ func _assign_new_active_pcam(pcam: Node) -> void:
 			# Signal to detect if the Camera3D properties are being changed in the inspector
 			# This is to prevent accidential misalignment between the Camera3D and Camera3DResource
 			if Engine.is_editor_hint():
-				if not EditorInterface.get_inspector().property_edited.is_connected(_camera_3d_edited):
-					EditorInterface.get_inspector().property_edited.connect(_camera_3d_edited)
+				if not Engine.get_singleton(&"EditorInterface").get_inspector().property_edited.is_connected(_camera_3d_edited):
+					Engine.get_singleton(&"EditorInterface").get_inspector().property_edited.connect(_camera_3d_edited)
 			if _prev_cam_h_offset != _active_pcam_3d.h_offset:
 				_cam_h_offset_changed = true
 			if _prev_cam_v_offset != _active_pcam_3d.v_offset:
@@ -546,8 +546,8 @@ func _assign_new_active_pcam(pcam: Node) -> void:
 			_cam_far_changed = false
 			_cam_attribute_changed = false
 			if Engine.is_editor_hint():
-				if EditorInterface.get_inspector().property_edited.is_connected(_camera_3d_edited):
-					EditorInterface.get_inspector().property_edited.disconnect(_camera_3d_edited)
+				if Engine.get_singleton(&"EditorInterface").get_inspector().property_edited.is_connected(_camera_3d_edited):
+					Engine.get_singleton(&"EditorInterface").get_inspector().property_edited.disconnect(_camera_3d_edited)
 
 		if _active_pcam_3d.attributes == null:
 			_cam_attribute_changed = false
@@ -750,9 +750,17 @@ func _physics_process(delta: float) -> void:
 
 func _tween_follow_checker(delta: float) -> void:
 	if _is_2d:
+		if not is_instance_valid(_active_pcam_2d):
+			_active_pcam_missing = true
+			return
+
 		_active_pcam_2d.process_logic(delta)
 		_active_pcam_2d_glob_transform = _active_pcam_2d.get_transform_output()
 	else:
+		if not is_instance_valid(_active_pcam_3d):
+			_active_pcam_missing = true
+			return
+
 		_active_pcam_3d.process_logic(delta)
 		_active_pcam_3d_glob_transform = _active_pcam_3d.get_transform_output()
 
@@ -774,12 +782,6 @@ func _tween_follow_checker(delta: float) -> void:
 
 
 func _pcam_follow(_delta: float) -> void:
-	# TODO - Should be optimised
-	if _is_2d:
-		if not is_instance_valid(_active_pcam_2d): return
-	else:
-		if not is_instance_valid(_active_pcam_3d): return
-
 	if _active_pcam_missing or not _is_child_of_camera: return
 
 	if _is_2d:
@@ -821,8 +823,8 @@ func _noise_emitted_3d(noise_output: Transform3D) -> void:
 func _camera_3d_resource_changed() -> void:
 	if _active_pcam_3d.camera_3d_resource:
 		if Engine.is_editor_hint():
-			if not EditorInterface.get_inspector().property_edited.is_connected(_camera_3d_edited):
-				EditorInterface.get_inspector().property_edited.connect(_camera_3d_edited)
+			if not Engine.get_singleton(&"EditorInterface").get_inspector().property_edited.is_connected(_camera_3d_edited):
+				Engine.get_singleton(&"EditorInterface").get_inspector().property_edited.connect(_camera_3d_edited)
 		camera_3d.keep_aspect = _active_pcam_3d.keep_aspect
 		camera_3d.cull_mask = _active_pcam_3d.cull_mask
 		camera_3d.h_offset = _active_pcam_3d.h_offset
@@ -835,11 +837,11 @@ func _camera_3d_resource_changed() -> void:
 		camera_3d.far = _active_pcam_3d.far
 	else:
 		if Engine.is_editor_hint():
-			if EditorInterface.get_inspector().property_edited.is_connected(_camera_3d_edited):
-				EditorInterface.get_inspector().property_edited.disconnect(_camera_3d_edited)
+			if Engine.get_singleton(&"EditorInterface").get_inspector().property_edited.is_connected(_camera_3d_edited):
+				Engine.get_singleton(&"EditorInterface").get_inspector().property_edited.disconnect(_camera_3d_edited)
 
 func _camera_3d_edited(value: String) -> void:
-	if not EditorInterface.get_inspector().get_edited_object() == camera_3d: return
+	if not Engine.get_singleton(&"EditorInterface").get_inspector().get_edited_object() == camera_3d: return
 	camera_3d.set(value, _active_pcam_3d.camera_3d_resource.get(value))
 	push_warning("Camera3D properties are being overridden by ", _active_pcam_3d.name, "'s Camera3DResource")
 

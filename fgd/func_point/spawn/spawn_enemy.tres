@@ -29,6 +29,7 @@ class_property_descriptions = {}
 auto_apply_to_matching_node_properties = false
 meta_properties = {
 "color": Color(0.694118, 0.160784, 0.466667, 1),
+"model": "\"assets/models/spawner_enemy.glb\"",
 "size": AABB(-8, -8, -8, 8, 8, 8),
 "studio": "\"assets/models/spawner_enemy.glb\""
 }

@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=3 format=3 uid="uid://noagmr7sc4th"]
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" load_steps=5 format=3 uid="uid://noagmr7sc4th"]
 
+[ext_resource type="Resource" uid="uid://cx1i7b6tbo01q" path="res://fgd/func_base/targetname_base_class.tres" id="1_dex6t"]
 [ext_resource type="Script" uid="uid://vl84643em7hg" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_h2e4g"]
+[ext_resource type="Resource" uid="uid://c4lsmkleyiphx" path="res://fgd/func_base/target_base_class.tres" id="2_fuiug"]
 [ext_resource type="Script" uid="uid://cdofb65j4r51x" path="res://scripts/entities/fgd/button_movable.gd" id="2_hugkl"]
 
 [resource]
@@ -26,7 +28,7 @@ script_class = ExtResource("2_hugkl")
 classname = "button_movable"
 description = "A button which moves"
 func_godot_internal = false
-base_classes = Array[Resource]([])
+base_classes = Array[Resource]([ExtResource("1_dex6t"), ExtResource("2_fuiug")])
 class_properties = {
 "axis": Vector3(0, 0, 0),
 "can_move_self": 1.0,
